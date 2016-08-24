@@ -1,0 +1,11 @@
+C:\PCatequese\PCateq\PCateq\bin\Debug\PCateq.exe
+C:\PCatequese\PCateq\PCateq\bin\Debug\PCateq.pdb
+C:\PCatequese\PCateq\PCateq\bin\Debug\PCateq.xml
+C:\PCatequese\PCateq\PCateq\obj\Debug\PCateq.FormPrincipal.resources
+C:\PCatequese\PCateq\PCateq\obj\Debug\PCateq.Resources.resources
+C:\PCatequese\PCateq\PCateq\obj\Debug\PCateq.vbproj.GenerateResource.Cache
+C:\PCatequese\PCateq\PCateq\obj\Debug\PCateq.exe
+C:\PCatequese\PCateq\PCateq\obj\Debug\PCateq.xml
+C:\PCatequese\PCateq\PCateq\obj\Debug\PCateq.pdb
+C:\PCatequese\PCateq\PCateq\obj\Debug\PCateq.FormAluno.resources
+C:\PCatequese\PCateq\PCateq\obj\Debug\PCateq.FormCatequista.resources
