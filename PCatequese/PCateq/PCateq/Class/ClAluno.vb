@@ -173,6 +173,14 @@ Public Class ClAluno
         End Set
     End Property
 
+    Public Property Batizado() As Boolean
+        Get
+            Return vBatizado
+        End Get
+        Set(ByVal value As Boolean)
+            vBatizado = value
+        End Set
+    End Property
 #End Region
 
 
@@ -199,8 +207,8 @@ Public Class ClAluno
         'dados em na forma de string da sql
         Dim Sql As String
         Sql = "Insert Into ALUNO " & _
-            " ( nome, endereco, cidade, bairro, UF, telefone, CEP, Estado, PAI, Mae, Naturalidade, DataCadastro, DataNascimento) " & _
-            "values ( @nome, @endereco, @cidade, @bairro, @UF, @telefone, @CEP, @Estado, @PAI, @Mae, @Naturalidade, @DataCadastro, @DataNascimento)"
+            " ( nome, endereco, cidade, bairro, UF, telefone, CEP, Estado, PAI, Mae, Naturalidade, DataCadastro, DataNascimento,Batizado) " & _
+            "values ( @nome, @endereco, @cidade, @bairro, @UF, @telefone, @CEP, @Estado, @PAI, @Mae, @Naturalidade, @DataCadastro, @DataNascimento,@Batizado)"
 
         Dim comando As SqlCommand
         comando = New SqlCommand(Sql, Conexao)
@@ -221,7 +229,7 @@ Public Class ClAluno
         comando.Parameters.Add("@Naturalizade", SqlDbType.VarChar).Value = Naturalidade
         comando.Parameters.Add("@DataCadastro", SqlDbType.Date).Value = DataCad
         comando.Parameters.Add("@DataNascimento", SqlDbType.Date).Value = DataNasc
-
+        comando.Parameters.Add("@Batizado", SqlDbType.Bit).Value = Batizado
 
         'comando sql
         comando.ExecuteNonQuery()
@@ -321,7 +329,7 @@ Public Class ClAluno
         comando.Parameters.Add("@Naturalizade", SqlDbType.VarChar).Value = Naturalidade
         comando.Parameters.Add("@DataCadastro", SqlDbType.Date).Value = DataCad
         comando.Parameters.Add("@DataNascimento", SqlDbType.Date).Value = DataNasc
-       
+        comando.Parameters.Add("@Batizado", SqlDbType.Bit).Value = Batizado
 
 
         comando.ExecuteNonQuery()

@@ -93,6 +93,12 @@
     <Compile Include="FormCatequista.vb">
       <SubType>Form</SubType>
     </Compile>
+    <Compile Include="FormTurma.Designer.vb">
+      <DependentUpon>FormTurma.vb</DependentUpon>
+    </Compile>
+    <Compile Include="FormTurma.vb">
+      <SubType>Form</SubType>
+    </Compile>
     <Compile Include="My Project\AssemblyInfo.vb" />
     <Compile Include="My Project\Application.Designer.vb">
       <AutoGen>True</AutoGen>
@@ -118,6 +124,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="FormCatequista.resx">
       <DependentUpon>FormCatequista.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FormTurma.resx">
+      <DependentUpon>FormTurma.vb</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="My Project\Resources.resx">
       <Generator>VbMyResourcesResXFileCodeGenerator</Generator>

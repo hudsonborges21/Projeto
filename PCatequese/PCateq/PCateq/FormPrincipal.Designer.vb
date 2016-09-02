@@ -23,11 +23,11 @@ Partial Class FormPrincipal
     <System.Diagnostics.DebuggerStepThrough()> _
     Private Sub InitializeComponent()
         Me.GroupBox1 = New System.Windows.Forms.GroupBox()
-        Me.Label1 = New System.Windows.Forms.Label()
-        Me.Button1 = New System.Windows.Forms.Button()
-        Me.Button2 = New System.Windows.Forms.Button()
-        Me.Button3 = New System.Windows.Forms.Button()
         Me.Button4 = New System.Windows.Forms.Button()
+        Me.Button3 = New System.Windows.Forms.Button()
+        Me.Button2 = New System.Windows.Forms.Button()
+        Me.Button1 = New System.Windows.Forms.Button()
+        Me.Label1 = New System.Windows.Forms.Label()
         Me.GroupBox1.SuspendLayout()
         Me.SuspendLayout()
         '
@@ -46,6 +46,42 @@ Partial Class FormPrincipal
         Me.GroupBox1.TabIndex = 0
         Me.GroupBox1.TabStop = False
         '
+        'Button4
+        '
+        Me.Button4.Location = New System.Drawing.Point(6, 172)
+        Me.Button4.Name = "Button4"
+        Me.Button4.Size = New System.Drawing.Size(210, 29)
+        Me.Button4.TabIndex = 4
+        Me.Button4.Text = "Matriculas"
+        Me.Button4.UseVisualStyleBackColor = True
+        '
+        'Button3
+        '
+        Me.Button3.Location = New System.Drawing.Point(6, 137)
+        Me.Button3.Name = "Button3"
+        Me.Button3.Size = New System.Drawing.Size(210, 29)
+        Me.Button3.TabIndex = 3
+        Me.Button3.Text = "Turma"
+        Me.Button3.UseVisualStyleBackColor = True
+        '
+        'Button2
+        '
+        Me.Button2.Location = New System.Drawing.Point(6, 102)
+        Me.Button2.Name = "Button2"
+        Me.Button2.Size = New System.Drawing.Size(210, 29)
+        Me.Button2.TabIndex = 2
+        Me.Button2.Text = "Catequista"
+        Me.Button2.UseVisualStyleBackColor = True
+        '
+        'Button1
+        '
+        Me.Button1.Location = New System.Drawing.Point(6, 67)
+        Me.Button1.Name = "Button1"
+        Me.Button1.Size = New System.Drawing.Size(210, 29)
+        Me.Button1.TabIndex = 1
+        Me.Button1.Text = "Catequisando"
+        Me.Button1.UseVisualStyleBackColor = True
+        '
         'Label1
         '
         Me.Label1.Anchor = CType(((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Left) _
@@ -59,42 +95,6 @@ Partial Class FormPrincipal
         Me.Label1.TabIndex = 0
         Me.Label1.Text = "Menu"
         Me.Label1.TextAlign = System.Drawing.ContentAlignment.MiddleCenter
-        '
-        'Button1
-        '
-        Me.Button1.Location = New System.Drawing.Point(6, 67)
-        Me.Button1.Name = "Button1"
-        Me.Button1.Size = New System.Drawing.Size(210, 29)
-        Me.Button1.TabIndex = 1
-        Me.Button1.Text = "Catequisando"
-        Me.Button1.UseVisualStyleBackColor = True
-        '
-        'Button2
-        '
-        Me.Button2.Location = New System.Drawing.Point(6, 102)
-        Me.Button2.Name = "Button2"
-        Me.Button2.Size = New System.Drawing.Size(210, 29)
-        Me.Button2.TabIndex = 2
-        Me.Button2.Text = "Catequista"
-        Me.Button2.UseVisualStyleBackColor = True
-        '
-        'Button3
-        '
-        Me.Button3.Location = New System.Drawing.Point(6, 137)
-        Me.Button3.Name = "Button3"
-        Me.Button3.Size = New System.Drawing.Size(210, 29)
-        Me.Button3.TabIndex = 3
-        Me.Button3.Text = "Turma"
-        Me.Button3.UseVisualStyleBackColor = True
-        '
-        'Button4
-        '
-        Me.Button4.Location = New System.Drawing.Point(6, 172)
-        Me.Button4.Name = "Button4"
-        Me.Button4.Size = New System.Drawing.Size(210, 29)
-        Me.Button4.TabIndex = 4
-        Me.Button4.Text = "Matriculas"
-        Me.Button4.UseVisualStyleBackColor = True
         '
         'FormPrincipal
         '
