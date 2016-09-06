@@ -1,6 +1,6 @@
 ﻿Imports System.Data.SqlClient
 
-Public Class ClCatequista
+Public Class Catequista
 
 
 #Region "Atributos"
@@ -26,7 +26,7 @@ Public Class ClCatequista
     Private vStrConexao As String
 
     'objeto da classe conexao
-    Dim CON As New CLConexao
+    Dim CON As New Conexao
 
 #End Region
 
@@ -118,7 +118,7 @@ Public Class ClCatequista
         End Set
     End Property
 
-    
+
     Public Property DataCad() As Date
         Get
             Return vDataCadastro

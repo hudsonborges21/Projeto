@@ -39,10 +39,11 @@ Partial Class FormPrincipal
         Me.GroupBox1.Controls.Add(Me.Button2)
         Me.GroupBox1.Controls.Add(Me.Button1)
         Me.GroupBox1.Controls.Add(Me.Label1)
+        Me.GroupBox1.Dock = System.Windows.Forms.DockStyle.Left
         Me.GroupBox1.FlatStyle = System.Windows.Forms.FlatStyle.Popup
-        Me.GroupBox1.Location = New System.Drawing.Point(12, 12)
+        Me.GroupBox1.Location = New System.Drawing.Point(0, 0)
         Me.GroupBox1.Name = "GroupBox1"
-        Me.GroupBox1.Size = New System.Drawing.Size(220, 387)
+        Me.GroupBox1.Size = New System.Drawing.Size(220, 411)
         Me.GroupBox1.TabIndex = 0
         Me.GroupBox1.TabStop = False
         '

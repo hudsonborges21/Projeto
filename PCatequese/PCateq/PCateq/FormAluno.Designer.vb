@@ -24,45 +24,45 @@ Partial Class FormAluno
     Private Sub InitializeComponent()
         Me.TabControl1 = New System.Windows.Forms.TabControl()
         Me.TabPage1 = New System.Windows.Forms.TabPage()
-        Me.TabPage2 = New System.Windows.Forms.TabPage()
-        Me.GroupBox1 = New System.Windows.Forms.GroupBox()
-        Me.Button1 = New System.Windows.Forms.Button()
-        Me.Button2 = New System.Windows.Forms.Button()
-        Me.Button3 = New System.Windows.Forms.Button()
         Me.Button4 = New System.Windows.Forms.Button()
-        Me.Label1 = New System.Windows.Forms.Label()
-        Me.Label2 = New System.Windows.Forms.Label()
-        Me.Label3 = New System.Windows.Forms.Label()
-        Me.Label4 = New System.Windows.Forms.Label()
-        Me.Label5 = New System.Windows.Forms.Label()
-        Me.Label6 = New System.Windows.Forms.Label()
-        Me.Label7 = New System.Windows.Forms.Label()
-        Me.Label8 = New System.Windows.Forms.Label()
-        Me.Label9 = New System.Windows.Forms.Label()
-        Me.Label10 = New System.Windows.Forms.Label()
-        Me.GroupBox2 = New System.Windows.Forms.GroupBox()
-        Me.RadioButton1 = New System.Windows.Forms.RadioButton()
-        Me.RadioButton2 = New System.Windows.Forms.RadioButton()
-        Me.Label11 = New System.Windows.Forms.Label()
+        Me.Button3 = New System.Windows.Forms.Button()
+        Me.Button2 = New System.Windows.Forms.Button()
+        Me.Button1 = New System.Windows.Forms.Button()
+        Me.GroupBox1 = New System.Windows.Forms.GroupBox()
+        Me.tMae = New System.Windows.Forms.TextBox()
+        Me.tPai = New System.Windows.Forms.TextBox()
+        Me.tTelefone = New System.Windows.Forms.TextBox()
+        Me.tNaturalidade = New System.Windows.Forms.TextBox()
+        Me.TDataNasc = New System.Windows.Forms.TextBox()
+        Me.TDataCad = New System.Windows.Forms.MaskedTextBox()
+        Me.tCep = New System.Windows.Forms.TextBox()
+        Me.Tcidade = New System.Windows.Forms.TextBox()
+        Me.tBairro = New System.Windows.Forms.TextBox()
+        Me.TEndereco = New System.Windows.Forms.TextBox()
+        Me.TNome = New System.Windows.Forms.TextBox()
+        Me.tCodigo = New System.Windows.Forms.TextBox()
         Me.Label12 = New System.Windows.Forms.Label()
-        Me.TextBox1 = New System.Windows.Forms.TextBox()
-        Me.TextBox2 = New System.Windows.Forms.TextBox()
-        Me.TextBox3 = New System.Windows.Forms.TextBox()
-        Me.TextBox4 = New System.Windows.Forms.TextBox()
-        Me.TextBox5 = New System.Windows.Forms.TextBox()
-        Me.TextBox6 = New System.Windows.Forms.TextBox()
-        Me.MaskedTextBox1 = New System.Windows.Forms.MaskedTextBox()
-        Me.TextBox7 = New System.Windows.Forms.TextBox()
-        Me.TextBox8 = New System.Windows.Forms.TextBox()
-        Me.TextBox9 = New System.Windows.Forms.TextBox()
-        Me.TextBox10 = New System.Windows.Forms.TextBox()
-        Me.TextBox11 = New System.Windows.Forms.TextBox()
+        Me.Label11 = New System.Windows.Forms.Label()
+        Me.GroupBox2 = New System.Windows.Forms.GroupBox()
+        Me.RadioButton2 = New System.Windows.Forms.RadioButton()
+        Me.RadioButton1 = New System.Windows.Forms.RadioButton()
+        Me.Label10 = New System.Windows.Forms.Label()
+        Me.Label9 = New System.Windows.Forms.Label()
+        Me.Label8 = New System.Windows.Forms.Label()
+        Me.Label7 = New System.Windows.Forms.Label()
+        Me.Label6 = New System.Windows.Forms.Label()
+        Me.Label5 = New System.Windows.Forms.Label()
+        Me.Label4 = New System.Windows.Forms.Label()
+        Me.Label3 = New System.Windows.Forms.Label()
+        Me.Label2 = New System.Windows.Forms.Label()
+        Me.Label1 = New System.Windows.Forms.Label()
+        Me.TabPage2 = New System.Windows.Forms.TabPage()
         Me.DataGridView1 = New System.Windows.Forms.DataGridView()
         Me.TabControl1.SuspendLayout()
         Me.TabPage1.SuspendLayout()
-        Me.TabPage2.SuspendLayout()
         Me.GroupBox1.SuspendLayout()
         Me.GroupBox2.SuspendLayout()
+        Me.TabPage2.SuspendLayout()
         CType(Me.DataGridView1, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.SuspendLayout()
         '
@@ -92,32 +92,57 @@ Partial Class FormAluno
         Me.TabPage1.Text = "Cadastro"
         Me.TabPage1.UseVisualStyleBackColor = True
         '
-        'TabPage2
+        'Button4
         '
-        Me.TabPage2.Controls.Add(Me.DataGridView1)
-        Me.TabPage2.Location = New System.Drawing.Point(4, 22)
-        Me.TabPage2.Name = "TabPage2"
-        Me.TabPage2.Padding = New System.Windows.Forms.Padding(3)
-        Me.TabPage2.Size = New System.Drawing.Size(684, 449)
-        Me.TabPage2.TabIndex = 1
-        Me.TabPage2.Text = "Pesquisa"
-        Me.TabPage2.UseVisualStyleBackColor = True
+        Me.Button4.Location = New System.Drawing.Point(434, 418)
+        Me.Button4.Name = "Button4"
+        Me.Button4.Size = New System.Drawing.Size(75, 23)
+        Me.Button4.TabIndex = 4
+        Me.Button4.Text = "Cancelar"
+        Me.Button4.UseVisualStyleBackColor = True
+        '
+        'Button3
+        '
+        Me.Button3.Location = New System.Drawing.Point(353, 418)
+        Me.Button3.Name = "Button3"
+        Me.Button3.Size = New System.Drawing.Size(75, 23)
+        Me.Button3.TabIndex = 3
+        Me.Button3.Text = "Confimar"
+        Me.Button3.UseVisualStyleBackColor = True
+        '
+        'Button2
+        '
+        Me.Button2.Location = New System.Drawing.Point(136, 418)
+        Me.Button2.Name = "Button2"
+        Me.Button2.Size = New System.Drawing.Size(75, 23)
+        Me.Button2.TabIndex = 2
+        Me.Button2.Text = "Excluir"
+        Me.Button2.UseVisualStyleBackColor = True
+        '
+        'Button1
+        '
+        Me.Button1.Location = New System.Drawing.Point(42, 418)
+        Me.Button1.Name = "Button1"
+        Me.Button1.Size = New System.Drawing.Size(75, 23)
+        Me.Button1.TabIndex = 1
+        Me.Button1.Text = "Incluir"
+        Me.Button1.UseVisualStyleBackColor = True
         '
         'GroupBox1
         '
         Me.GroupBox1.BackColor = System.Drawing.Color.Transparent
-        Me.GroupBox1.Controls.Add(Me.TextBox11)
-        Me.GroupBox1.Controls.Add(Me.TextBox10)
-        Me.GroupBox1.Controls.Add(Me.TextBox9)
-        Me.GroupBox1.Controls.Add(Me.TextBox8)
-        Me.GroupBox1.Controls.Add(Me.TextBox7)
-        Me.GroupBox1.Controls.Add(Me.MaskedTextBox1)
-        Me.GroupBox1.Controls.Add(Me.TextBox6)
-        Me.GroupBox1.Controls.Add(Me.TextBox5)
-        Me.GroupBox1.Controls.Add(Me.TextBox4)
-        Me.GroupBox1.Controls.Add(Me.TextBox3)
-        Me.GroupBox1.Controls.Add(Me.TextBox2)
-        Me.GroupBox1.Controls.Add(Me.TextBox1)
+        Me.GroupBox1.Controls.Add(Me.tMae)
+        Me.GroupBox1.Controls.Add(Me.tPai)
+        Me.GroupBox1.Controls.Add(Me.tTelefone)
+        Me.GroupBox1.Controls.Add(Me.tNaturalidade)
+        Me.GroupBox1.Controls.Add(Me.TDataNasc)
+        Me.GroupBox1.Controls.Add(Me.TDataCad)
+        Me.GroupBox1.Controls.Add(Me.tCep)
+        Me.GroupBox1.Controls.Add(Me.Tcidade)
+        Me.GroupBox1.Controls.Add(Me.tBairro)
+        Me.GroupBox1.Controls.Add(Me.TEndereco)
+        Me.GroupBox1.Controls.Add(Me.TNome)
+        Me.GroupBox1.Controls.Add(Me.tCodigo)
         Me.GroupBox1.Controls.Add(Me.Label12)
         Me.GroupBox1.Controls.Add(Me.Label11)
         Me.GroupBox1.Controls.Add(Me.GroupBox2)
@@ -137,131 +162,107 @@ Partial Class FormAluno
         Me.GroupBox1.TabIndex = 0
         Me.GroupBox1.TabStop = False
         '
-        'Button1
+        'tMae
         '
-        Me.Button1.Location = New System.Drawing.Point(42, 418)
-        Me.Button1.Name = "Button1"
-        Me.Button1.Size = New System.Drawing.Size(75, 23)
-        Me.Button1.TabIndex = 1
-        Me.Button1.Text = "Button1"
-        Me.Button1.UseVisualStyleBackColor = True
+        Me.tMae.Location = New System.Drawing.Point(60, 191)
+        Me.tMae.Name = "tMae"
+        Me.tMae.Size = New System.Drawing.Size(441, 20)
+        Me.tMae.TabIndex = 24
         '
-        'Button2
+        'tPai
         '
-        Me.Button2.Location = New System.Drawing.Point(136, 418)
-        Me.Button2.Name = "Button2"
-        Me.Button2.Size = New System.Drawing.Size(75, 23)
-        Me.Button2.TabIndex = 2
-        Me.Button2.Text = "Button2"
-        Me.Button2.UseVisualStyleBackColor = True
+        Me.tPai.Location = New System.Drawing.Point(60, 162)
+        Me.tPai.Name = "tPai"
+        Me.tPai.Size = New System.Drawing.Size(441, 20)
+        Me.tPai.TabIndex = 23
         '
-        'Button3
+        'tTelefone
         '
-        Me.Button3.Location = New System.Drawing.Point(353, 418)
-        Me.Button3.Name = "Button3"
-        Me.Button3.Size = New System.Drawing.Size(75, 23)
-        Me.Button3.TabIndex = 3
-        Me.Button3.Text = "Button3"
-        Me.Button3.UseVisualStyleBackColor = True
+        Me.tTelefone.Location = New System.Drawing.Point(379, 131)
+        Me.tTelefone.Name = "tTelefone"
+        Me.tTelefone.Size = New System.Drawing.Size(122, 20)
+        Me.tTelefone.TabIndex = 22
         '
-        'Button4
+        'tNaturalidade
         '
-        Me.Button4.Location = New System.Drawing.Point(434, 418)
-        Me.Button4.Name = "Button4"
-        Me.Button4.Size = New System.Drawing.Size(75, 23)
-        Me.Button4.TabIndex = 4
-        Me.Button4.Text = "Button4"
-        Me.Button4.UseVisualStyleBackColor = True
+        Me.tNaturalidade.Location = New System.Drawing.Point(84, 131)
+        Me.tNaturalidade.Name = "tNaturalidade"
+        Me.tNaturalidade.Size = New System.Drawing.Size(234, 20)
+        Me.tNaturalidade.TabIndex = 21
         '
-        'Label1
+        'TDataNasc
         '
-        Me.Label1.AutoSize = True
-        Me.Label1.Location = New System.Drawing.Point(6, 20)
-        Me.Label1.Name = "Label1"
-        Me.Label1.Size = New System.Drawing.Size(40, 13)
-        Me.Label1.TabIndex = 0
-        Me.Label1.Text = "Código"
+        Me.TDataNasc.Location = New System.Drawing.Point(419, 13)
+        Me.TDataNasc.Name = "TDataNasc"
+        Me.TDataNasc.Size = New System.Drawing.Size(82, 20)
+        Me.TDataNasc.TabIndex = 20
         '
-        'Label2
+        'TDataCad
         '
-        Me.Label2.AutoSize = True
-        Me.Label2.Location = New System.Drawing.Point(11, 46)
-        Me.Label2.Name = "Label2"
-        Me.Label2.Size = New System.Drawing.Size(35, 13)
-        Me.Label2.TabIndex = 1
-        Me.Label2.Text = "Nome"
+        Me.TDataCad.Location = New System.Drawing.Point(236, 13)
+        Me.TDataCad.Name = "TDataCad"
+        Me.TDataCad.Size = New System.Drawing.Size(82, 20)
+        Me.TDataCad.TabIndex = 19
         '
-        'Label3
+        'tCep
         '
-        Me.Label3.AutoSize = True
-        Me.Label3.Location = New System.Drawing.Point(155, 20)
-        Me.Label3.Name = "Label3"
-        Me.Label3.Size = New System.Drawing.Size(75, 13)
-        Me.Label3.TabIndex = 2
-        Me.Label3.Text = "Data Cadastro"
+        Me.tCep.Location = New System.Drawing.Point(401, 105)
+        Me.tCep.Name = "tCep"
+        Me.tCep.Size = New System.Drawing.Size(100, 20)
+        Me.tCep.TabIndex = 18
         '
-        'Label4
+        'Tcidade
         '
-        Me.Label4.AutoSize = True
-        Me.Label4.Location = New System.Drawing.Point(324, 20)
-        Me.Label4.Name = "Label4"
-        Me.Label4.Size = New System.Drawing.Size(89, 13)
-        Me.Label4.TabIndex = 3
-        Me.Label4.Text = "Data Nascimento"
+        Me.Tcidade.Location = New System.Drawing.Point(60, 102)
+        Me.Tcidade.Name = "Tcidade"
+        Me.Tcidade.Size = New System.Drawing.Size(258, 20)
+        Me.Tcidade.TabIndex = 17
         '
-        'Label5
+        'tBairro
         '
-        Me.Label5.AutoSize = True
-        Me.Label5.Location = New System.Drawing.Point(6, 72)
-        Me.Label5.Name = "Label5"
-        Me.Label5.Size = New System.Drawing.Size(53, 13)
-        Me.Label5.TabIndex = 4
-        Me.Label5.Text = "Endereço"
+        Me.tBairro.Location = New System.Drawing.Point(364, 76)
+        Me.tBairro.Name = "tBairro"
+        Me.tBairro.Size = New System.Drawing.Size(137, 20)
+        Me.tBairro.TabIndex = 16
         '
-        'Label6
+        'TEndereco
         '
-        Me.Label6.AutoSize = True
-        Me.Label6.Location = New System.Drawing.Point(324, 79)
-        Me.Label6.Name = "Label6"
-        Me.Label6.Size = New System.Drawing.Size(34, 13)
-        Me.Label6.TabIndex = 5
-        Me.Label6.Text = "Bairro"
+        Me.TEndereco.Location = New System.Drawing.Point(60, 72)
+        Me.TEndereco.Name = "TEndereco"
+        Me.TEndereco.Size = New System.Drawing.Size(258, 20)
+        Me.TEndereco.TabIndex = 15
         '
-        'Label7
+        'TNome
         '
-        Me.Label7.AutoSize = True
-        Me.Label7.Location = New System.Drawing.Point(14, 112)
-        Me.Label7.Name = "Label7"
-        Me.Label7.Size = New System.Drawing.Size(40, 13)
-        Me.Label7.TabIndex = 6
-        Me.Label7.Text = "Cidade"
+        Me.TNome.Location = New System.Drawing.Point(60, 43)
+        Me.TNome.Name = "TNome"
+        Me.TNome.Size = New System.Drawing.Size(441, 20)
+        Me.TNome.TabIndex = 14
         '
-        'Label8
+        'tCodigo
         '
-        Me.Label8.AutoSize = True
-        Me.Label8.Location = New System.Drawing.Point(367, 112)
-        Me.Label8.Name = "Label8"
-        Me.Label8.Size = New System.Drawing.Size(28, 13)
-        Me.Label8.TabIndex = 7
-        Me.Label8.Text = "CEP"
+        Me.tCodigo.Location = New System.Drawing.Point(60, 13)
+        Me.tCodigo.Name = "tCodigo"
+        Me.tCodigo.Size = New System.Drawing.Size(86, 20)
+        Me.tCodigo.TabIndex = 13
         '
-        'Label9
+        'Label12
         '
-        Me.Label9.AutoSize = True
-        Me.Label9.Location = New System.Drawing.Point(11, 136)
-        Me.Label9.Name = "Label9"
-        Me.Label9.Size = New System.Drawing.Size(67, 13)
-        Me.Label9.TabIndex = 8
-        Me.Label9.Text = "Naturalidade"
+        Me.Label12.AutoSize = True
+        Me.Label12.Location = New System.Drawing.Point(26, 194)
+        Me.Label12.Name = "Label12"
+        Me.Label12.Size = New System.Drawing.Size(28, 13)
+        Me.Label12.TabIndex = 12
+        Me.Label12.Text = "Mãe"
         '
-        'Label10
+        'Label11
         '
-        Me.Label10.AutoSize = True
-        Me.Label10.Location = New System.Drawing.Point(324, 138)
-        Me.Label10.Name = "Label10"
-        Me.Label10.Size = New System.Drawing.Size(49, 13)
-        Me.Label10.TabIndex = 9
-        Me.Label10.Text = "Telefone"
+        Me.Label11.AutoSize = True
+        Me.Label11.Location = New System.Drawing.Point(32, 169)
+        Me.Label11.Name = "Label11"
+        Me.Label11.Size = New System.Drawing.Size(22, 13)
+        Me.Label11.TabIndex = 11
+        Me.Label11.Text = "Pai"
         '
         'GroupBox2
         '
@@ -274,17 +275,6 @@ Partial Class FormAluno
         Me.GroupBox2.TabStop = False
         Me.GroupBox2.Text = "Batizado"
         '
-        'RadioButton1
-        '
-        Me.RadioButton1.AutoSize = True
-        Me.RadioButton1.Location = New System.Drawing.Point(18, 19)
-        Me.RadioButton1.Name = "RadioButton1"
-        Me.RadioButton1.Size = New System.Drawing.Size(42, 17)
-        Me.RadioButton1.TabIndex = 0
-        Me.RadioButton1.TabStop = True
-        Me.RadioButton1.Text = "Sim"
-        Me.RadioButton1.UseVisualStyleBackColor = True
-        '
         'RadioButton2
         '
         Me.RadioButton2.AutoSize = True
@@ -296,107 +286,117 @@ Partial Class FormAluno
         Me.RadioButton2.Text = "Não"
         Me.RadioButton2.UseVisualStyleBackColor = True
         '
-        'Label11
+        'RadioButton1
         '
-        Me.Label11.AutoSize = True
-        Me.Label11.Location = New System.Drawing.Point(32, 169)
-        Me.Label11.Name = "Label11"
-        Me.Label11.Size = New System.Drawing.Size(22, 13)
-        Me.Label11.TabIndex = 11
-        Me.Label11.Text = "Pai"
+        Me.RadioButton1.AutoSize = True
+        Me.RadioButton1.Location = New System.Drawing.Point(18, 19)
+        Me.RadioButton1.Name = "RadioButton1"
+        Me.RadioButton1.Size = New System.Drawing.Size(42, 17)
+        Me.RadioButton1.TabIndex = 0
+        Me.RadioButton1.TabStop = True
+        Me.RadioButton1.Text = "Sim"
+        Me.RadioButton1.UseVisualStyleBackColor = True
         '
-        'Label12
+        'Label10
         '
-        Me.Label12.AutoSize = True
-        Me.Label12.Location = New System.Drawing.Point(26, 194)
-        Me.Label12.Name = "Label12"
-        Me.Label12.Size = New System.Drawing.Size(28, 13)
-        Me.Label12.TabIndex = 12
-        Me.Label12.Text = "Mãe"
+        Me.Label10.AutoSize = True
+        Me.Label10.Location = New System.Drawing.Point(324, 138)
+        Me.Label10.Name = "Label10"
+        Me.Label10.Size = New System.Drawing.Size(49, 13)
+        Me.Label10.TabIndex = 9
+        Me.Label10.Text = "Telefone"
         '
-        'TextBox1
+        'Label9
         '
-        Me.TextBox1.Location = New System.Drawing.Point(60, 13)
-        Me.TextBox1.Name = "TextBox1"
-        Me.TextBox1.Size = New System.Drawing.Size(86, 20)
-        Me.TextBox1.TabIndex = 13
+        Me.Label9.AutoSize = True
+        Me.Label9.Location = New System.Drawing.Point(11, 136)
+        Me.Label9.Name = "Label9"
+        Me.Label9.Size = New System.Drawing.Size(67, 13)
+        Me.Label9.TabIndex = 8
+        Me.Label9.Text = "Naturalidade"
         '
-        'TextBox2
+        'Label8
         '
-        Me.TextBox2.Location = New System.Drawing.Point(60, 43)
-        Me.TextBox2.Name = "TextBox2"
-        Me.TextBox2.Size = New System.Drawing.Size(441, 20)
-        Me.TextBox2.TabIndex = 14
+        Me.Label8.AutoSize = True
+        Me.Label8.Location = New System.Drawing.Point(367, 112)
+        Me.Label8.Name = "Label8"
+        Me.Label8.Size = New System.Drawing.Size(28, 13)
+        Me.Label8.TabIndex = 7
+        Me.Label8.Text = "CEP"
         '
-        'TextBox3
+        'Label7
         '
-        Me.TextBox3.Location = New System.Drawing.Point(60, 72)
-        Me.TextBox3.Name = "TextBox3"
-        Me.TextBox3.Size = New System.Drawing.Size(258, 20)
-        Me.TextBox3.TabIndex = 15
+        Me.Label7.AutoSize = True
+        Me.Label7.Location = New System.Drawing.Point(14, 112)
+        Me.Label7.Name = "Label7"
+        Me.Label7.Size = New System.Drawing.Size(40, 13)
+        Me.Label7.TabIndex = 6
+        Me.Label7.Text = "Cidade"
         '
-        'TextBox4
+        'Label6
         '
-        Me.TextBox4.Location = New System.Drawing.Point(364, 76)
-        Me.TextBox4.Name = "TextBox4"
-        Me.TextBox4.Size = New System.Drawing.Size(137, 20)
-        Me.TextBox4.TabIndex = 16
+        Me.Label6.AutoSize = True
+        Me.Label6.Location = New System.Drawing.Point(324, 79)
+        Me.Label6.Name = "Label6"
+        Me.Label6.Size = New System.Drawing.Size(34, 13)
+        Me.Label6.TabIndex = 5
+        Me.Label6.Text = "Bairro"
         '
-        'TextBox5
+        'Label5
         '
-        Me.TextBox5.Location = New System.Drawing.Point(60, 102)
-        Me.TextBox5.Name = "TextBox5"
-        Me.TextBox5.Size = New System.Drawing.Size(258, 20)
-        Me.TextBox5.TabIndex = 17
+        Me.Label5.AutoSize = True
+        Me.Label5.Location = New System.Drawing.Point(6, 72)
+        Me.Label5.Name = "Label5"
+        Me.Label5.Size = New System.Drawing.Size(53, 13)
+        Me.Label5.TabIndex = 4
+        Me.Label5.Text = "Endereço"
         '
-        'TextBox6
+        'Label4
         '
-        Me.TextBox6.Location = New System.Drawing.Point(401, 105)
-        Me.TextBox6.Name = "TextBox6"
-        Me.TextBox6.Size = New System.Drawing.Size(100, 20)
-        Me.TextBox6.TabIndex = 18
+        Me.Label4.AutoSize = True
+        Me.Label4.Location = New System.Drawing.Point(324, 20)
+        Me.Label4.Name = "Label4"
+        Me.Label4.Size = New System.Drawing.Size(89, 13)
+        Me.Label4.TabIndex = 3
+        Me.Label4.Text = "Data Nascimento"
         '
-        'MaskedTextBox1
+        'Label3
         '
-        Me.MaskedTextBox1.Location = New System.Drawing.Point(236, 13)
-        Me.MaskedTextBox1.Name = "MaskedTextBox1"
-        Me.MaskedTextBox1.Size = New System.Drawing.Size(82, 20)
-        Me.MaskedTextBox1.TabIndex = 19
+        Me.Label3.AutoSize = True
+        Me.Label3.Location = New System.Drawing.Point(155, 20)
+        Me.Label3.Name = "Label3"
+        Me.Label3.Size = New System.Drawing.Size(75, 13)
+        Me.Label3.TabIndex = 2
+        Me.Label3.Text = "Data Cadastro"
         '
-        'TextBox7
+        'Label2
         '
-        Me.TextBox7.Location = New System.Drawing.Point(419, 13)
-        Me.TextBox7.Name = "TextBox7"
-        Me.TextBox7.Size = New System.Drawing.Size(82, 20)
-        Me.TextBox7.TabIndex = 20
+        Me.Label2.AutoSize = True
+        Me.Label2.Location = New System.Drawing.Point(11, 46)
+        Me.Label2.Name = "Label2"
+        Me.Label2.Size = New System.Drawing.Size(35, 13)
+        Me.Label2.TabIndex = 1
+        Me.Label2.Text = "Nome"
         '
-        'TextBox8
+        'Label1
         '
-        Me.TextBox8.Location = New System.Drawing.Point(84, 131)
-        Me.TextBox8.Name = "TextBox8"
-        Me.TextBox8.Size = New System.Drawing.Size(234, 20)
-        Me.TextBox8.TabIndex = 21
+        Me.Label1.AutoSize = True
+        Me.Label1.Location = New System.Drawing.Point(6, 20)
+        Me.Label1.Name = "Label1"
+        Me.Label1.Size = New System.Drawing.Size(40, 13)
+        Me.Label1.TabIndex = 0
+        Me.Label1.Text = "Código"
         '
-        'TextBox9
+        'TabPage2
         '
-        Me.TextBox9.Location = New System.Drawing.Point(379, 131)
-        Me.TextBox9.Name = "TextBox9"
-        Me.TextBox9.Size = New System.Drawing.Size(122, 20)
-        Me.TextBox9.TabIndex = 22
-        '
-        'TextBox10
-        '
-        Me.TextBox10.Location = New System.Drawing.Point(60, 162)
-        Me.TextBox10.Name = "TextBox10"
-        Me.TextBox10.Size = New System.Drawing.Size(441, 20)
-        Me.TextBox10.TabIndex = 23
-        '
-        'TextBox11
-        '
-        Me.TextBox11.Location = New System.Drawing.Point(60, 191)
-        Me.TextBox11.Name = "TextBox11"
-        Me.TextBox11.Size = New System.Drawing.Size(441, 20)
-        Me.TextBox11.TabIndex = 24
+        Me.TabPage2.Controls.Add(Me.DataGridView1)
+        Me.TabPage2.Location = New System.Drawing.Point(4, 22)
+        Me.TabPage2.Name = "TabPage2"
+        Me.TabPage2.Padding = New System.Windows.Forms.Padding(3)
+        Me.TabPage2.Size = New System.Drawing.Size(684, 449)
+        Me.TabPage2.TabIndex = 1
+        Me.TabPage2.Text = "Pesquisa"
+        Me.TabPage2.UseVisualStyleBackColor = True
         '
         'DataGridView1
         '
@@ -417,11 +417,11 @@ Partial Class FormAluno
         Me.Text = "Catequista"
         Me.TabControl1.ResumeLayout(False)
         Me.TabPage1.ResumeLayout(False)
-        Me.TabPage2.ResumeLayout(False)
         Me.GroupBox1.ResumeLayout(False)
         Me.GroupBox1.PerformLayout()
         Me.GroupBox2.ResumeLayout(False)
         Me.GroupBox2.PerformLayout()
+        Me.TabPage2.ResumeLayout(False)
         CType(Me.DataGridView1, System.ComponentModel.ISupportInitialize).EndInit()
         Me.ResumeLayout(False)
 
@@ -433,18 +433,18 @@ Partial Class FormAluno
     Friend WithEvents Button2 As System.Windows.Forms.Button
     Friend WithEvents Button1 As System.Windows.Forms.Button
     Friend WithEvents GroupBox1 As System.Windows.Forms.GroupBox
-    Friend WithEvents TextBox11 As System.Windows.Forms.TextBox
-    Friend WithEvents TextBox10 As System.Windows.Forms.TextBox
-    Friend WithEvents TextBox9 As System.Windows.Forms.TextBox
-    Friend WithEvents TextBox8 As System.Windows.Forms.TextBox
-    Friend WithEvents TextBox7 As System.Windows.Forms.TextBox
-    Friend WithEvents MaskedTextBox1 As System.Windows.Forms.MaskedTextBox
-    Friend WithEvents TextBox6 As System.Windows.Forms.TextBox
-    Friend WithEvents TextBox5 As System.Windows.Forms.TextBox
-    Friend WithEvents TextBox4 As System.Windows.Forms.TextBox
-    Friend WithEvents TextBox3 As System.Windows.Forms.TextBox
-    Friend WithEvents TextBox2 As System.Windows.Forms.TextBox
-    Friend WithEvents TextBox1 As System.Windows.Forms.TextBox
+    Friend WithEvents tMae As System.Windows.Forms.TextBox
+    Friend WithEvents tPai As System.Windows.Forms.TextBox
+    Friend WithEvents tTelefone As System.Windows.Forms.TextBox
+    Friend WithEvents tNaturalidade As System.Windows.Forms.TextBox
+    Friend WithEvents TDataNasc As System.Windows.Forms.TextBox
+    Friend WithEvents TDataCad As System.Windows.Forms.MaskedTextBox
+    Friend WithEvents tCep As System.Windows.Forms.TextBox
+    Friend WithEvents Tcidade As System.Windows.Forms.TextBox
+    Friend WithEvents tBairro As System.Windows.Forms.TextBox
+    Friend WithEvents TEndereco As System.Windows.Forms.TextBox
+    Friend WithEvents TNome As System.Windows.Forms.TextBox
+    Friend WithEvents tCodigo As System.Windows.Forms.TextBox
     Friend WithEvents Label12 As System.Windows.Forms.Label
     Friend WithEvents Label11 As System.Windows.Forms.Label
     Friend WithEvents GroupBox2 As System.Windows.Forms.GroupBox

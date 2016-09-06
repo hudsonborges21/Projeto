@@ -69,11 +69,11 @@
     <Import Include="System.Xml.Linq" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Class\CLAluno.vb" />
-    <Compile Include="Class\CLCatequista.vb" />
-    <Compile Include="Class\CLConexao.vb" />
-    <Compile Include="Class\CLDisciplina.vb" />
-    <Compile Include="Class\CLTurma.vb" />
+    <Compile Include="Class\Aluno.vb" />
+    <Compile Include="Class\Catequista.vb" />
+    <Compile Include="Class\Conexao.vb" />
+    <Compile Include="Class\Disciplina.vb" />
+    <Compile Include="Class\Turma.vb" />
     <Compile Include="FormPrincipal.vb">
       <SubType>Form</SubType>
     </Compile>

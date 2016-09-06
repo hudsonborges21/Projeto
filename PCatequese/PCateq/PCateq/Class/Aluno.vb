@@ -1,7 +1,7 @@
 ﻿Imports System.Data.SqlClient
 Imports System.Text
 
-Public Class ClAluno
+Public Class Aluno
 
 #Region "Atributos"
 
@@ -194,7 +194,8 @@ Public Class ClAluno
 
     Private Shared Function ObterSqlUpdate() As String
         Dim sql As New StringBuilder
-        sql.AppendLine(" Update ALUNO Set ")
+        'sql.AppendLine(" Update ALUNO Set ")
+        sql.AppendLine(" Update Catequista Set ")
         sql.AppendLine(" nome=@nome, cnpj=@cnpj,Endereco=@endereco,cidade=@cidade, ")
         sql.AppendLine(" bairro=@bairro,uf=@uf,telefone=@telefone,cep=@cep, Estado =@Estado, ")
         sql.AppendLine(" Pai=@Pai, Mae=@Mae, Naturalidade=@Naturalidade, batizado=@batizado, ")
@@ -205,13 +206,14 @@ Public Class ClAluno
 
     Private Shared Function ObterSqlSelectTodosCampo() As String
         Dim sql As New StringBuilder
-        sql.AppendLine(" SELECT * From ALUNO ")
+        'sql.AppendLine(" SELECT * From ALUNO ")
+        sql.AppendLine(" SELECT * From Catequista ")
         Return sql.ToString()
     End Function
 
-    Private Shared Sub PopularComando(ByRef comando As SqlCommand, ByVal aluno As ClAluno, byval incluindo as Boolean)
-        if Not incluindo Then
-            comando.Parameters.Add("@id", SqlDbType.VarChar).Value = aluno.vCodigo 
+    Private Shared Sub PopularComando(ByRef comando As SqlCommand, ByVal aluno As Aluno, ByVal incluindo As Boolean)
+        If Not incluindo Then
+            comando.Parameters.Add("@id", SqlDbType.VarChar).Value = aluno.vCodigo
         End If
         comando.Parameters.Add("@nome", SqlDbType.VarChar).Value = aluno.Nome
         comando.Parameters.Add("@endereco", SqlDbType.VarChar).Value = aluno.Endereco
@@ -230,15 +232,15 @@ Public Class ClAluno
     End Sub
 
     Private Sub PopularObjeto(ByVal reader As IDataRecord)
-        vCodigo = reader("id")
+        vCodigo = reader("Codigo")
         vNome = reader("nome")
         If Not IsDBNull(reader("endereco")) Then vEndereco = (reader("endereco"))
         If Not IsDBNull(reader("cidade")) Then vCidade = reader("cidade")
         If Not IsDBNull(reader("bairro")) Then vBairro = reader("bairro")
         If Not IsDBNull(reader("uf")) Then vUF = reader("UF")
-        If Not IsDBNull(reader("telefone")) Then vTelefone = reader("telefone")
+        ' If Not IsDBNull(reader("telefone")) Then vTelefone = reader("telefone")
         If Not IsDBNull(reader("CEP")) Then vCEP = reader("CEP")
-        If Not IsDBNull(reader("Estado")) Then vEstado = reader("estado")
+        'If Not IsDBNull(reader("Estado")) Then vEstado = reader("estado")
         If Not IsDBNull(reader("Pai")) Then vPai = reader("Pai")
         If Not IsDBNull(reader("mae")) Then vMae = reader("mae")
         If Not IsDBNull(reader("Naturalidade")) Then vNaturaliade = reader("Naturalidade")
@@ -249,11 +251,11 @@ Public Class ClAluno
 
     'METODO INCLUIR 
     Public Sub Incluir()
-        Using conexao As SqlConnection = New CLConexao().GetConnection()
+        Using conexao As SqlConnection = New Conexao().GetConnection()
             'abrindo conexao 
             conexao.Open()
             Using comando = New SqlCommand(ObterSqlInsert(), conexao)
-                PopularComando(comando, Me,True)
+                PopularComando(comando, Me, True)
 
                 'comando sql
                 comando.ExecuteNonQuery()
@@ -265,21 +267,22 @@ Public Class ClAluno
 
     'CONSULTAR 
     Public Function Consultar(ByVal codigolinha As Integer) As Boolean
-    Dim dataReader As SqlDataReader
+        Dim dataReader As SqlDataReader
 
-        Using conexao As SqlConnection = New CLConexao().GetConnection()
+        Using conexao As SqlConnection = New Conexao().GetConnection()
             'abrindo conexao 
             conexao.Open()
-            Dim sql as string
-            sql = ObterSqlSelectTodosCampo() & " where id = " & codigolinha    
+            Dim sql As String
+            sql = ObterSqlSelectTodosCampo() & " where Codigo = " & codigolinha
             Using comando = New SqlCommand(sql, conexao)
                 dataReader = comando.ExecuteReader
                 If dataReader.HasRows Then
+                    dataReader.Read()
                     PopularObjeto(dataReader)
                     conexao.Close()
                     Return True
                 Else
-                    conexao.Close() 
+                    conexao.Close()
                     Return False
                 End If
             End Using
@@ -287,12 +290,12 @@ Public Class ClAluno
     End Function
 
     'ALTERAR  - UPDATE
-    Public sub Alterar() 
-        Using conexao As SqlConnection = New CLConexao().GetConnection()
+    Public Sub Alterar()
+        Using conexao As SqlConnection = New Conexao().GetConnection()
             'abrindo conexao 
             conexao.Open()
             Using comando = New SqlCommand(ObterSqlUpdate(), conexao)
-                PopularComando(comando, Me,True)
+                PopularComando(comando, Me, True)
 
                 'comando sql
                 comando.ExecuteNonQuery()
@@ -300,17 +303,17 @@ Public Class ClAluno
             'fechando a conexao 
             conexao.Close()
         End Using
-    End sub
+    End Sub
 
     'EXCLUIR  - DELETE
-    Public sub Excluir(ByVal parmCodigo As Integer)
-        Using conexao As SqlConnection = New CLConexao().GetConnection()
+    Public Sub Excluir(ByVal parmCodigo As Integer)
+        Using conexao As SqlConnection = New Conexao().GetConnection()
             'abrindo conexao 
             conexao.Open()
             Dim sql As String
             sql = "DELETE FROM ALUNO WHERE id = " & parmCodigo
             Using comando = New SqlCommand(sql, conexao)
-                PopularComando(comando, Me,True)
+                PopularComando(comando, Me, True)
 
                 'comando sql
                 comando.ExecuteNonQuery()
@@ -318,6 +321,6 @@ Public Class ClAluno
             'fechando a conexao 
             conexao.Close()
         End Using
-    End sub
+    End Sub
 #End Region
 End Class
