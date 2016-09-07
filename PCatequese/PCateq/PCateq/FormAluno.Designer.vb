@@ -24,16 +24,16 @@ Partial Class FormAluno
     Private Sub InitializeComponent()
         Me.TabControl1 = New System.Windows.Forms.TabControl()
         Me.TabPage1 = New System.Windows.Forms.TabPage()
-        Me.Button4 = New System.Windows.Forms.Button()
-        Me.Button3 = New System.Windows.Forms.Button()
-        Me.Button2 = New System.Windows.Forms.Button()
-        Me.Button1 = New System.Windows.Forms.Button()
+        Me.BtnCancelar = New System.Windows.Forms.Button()
+        Me.btnConfirmar = New System.Windows.Forms.Button()
+        Me.btnExluir = New System.Windows.Forms.Button()
+        Me.btnIncluir = New System.Windows.Forms.Button()
         Me.GroupBox1 = New System.Windows.Forms.GroupBox()
+        Me.TDataNasc = New System.Windows.Forms.MaskedTextBox()
         Me.tMae = New System.Windows.Forms.TextBox()
         Me.tPai = New System.Windows.Forms.TextBox()
         Me.tTelefone = New System.Windows.Forms.TextBox()
         Me.tNaturalidade = New System.Windows.Forms.TextBox()
-        Me.TDataNasc = New System.Windows.Forms.TextBox()
         Me.TDataCad = New System.Windows.Forms.MaskedTextBox()
         Me.tCep = New System.Windows.Forms.TextBox()
         Me.Tcidade = New System.Windows.Forms.TextBox()
@@ -57,12 +57,18 @@ Partial Class FormAluno
         Me.Label2 = New System.Windows.Forms.Label()
         Me.Label1 = New System.Windows.Forms.Label()
         Me.TabPage2 = New System.Windows.Forms.TabPage()
+        Me.GroupBox3 = New System.Windows.Forms.GroupBox()
+        Me.Button1 = New System.Windows.Forms.Button()
+        Me.tConsultaCodigo = New System.Windows.Forms.TextBox()
+        Me.BtnConsulta = New System.Windows.Forms.Button()
+        Me.txtConsulta = New System.Windows.Forms.TextBox()
         Me.DataGridView1 = New System.Windows.Forms.DataGridView()
         Me.TabControl1.SuspendLayout()
         Me.TabPage1.SuspendLayout()
         Me.GroupBox1.SuspendLayout()
         Me.GroupBox2.SuspendLayout()
         Me.TabPage2.SuspendLayout()
+        Me.GroupBox3.SuspendLayout()
         CType(Me.DataGridView1, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.SuspendLayout()
         '
@@ -79,10 +85,10 @@ Partial Class FormAluno
         '
         'TabPage1
         '
-        Me.TabPage1.Controls.Add(Me.Button4)
-        Me.TabPage1.Controls.Add(Me.Button3)
-        Me.TabPage1.Controls.Add(Me.Button2)
-        Me.TabPage1.Controls.Add(Me.Button1)
+        Me.TabPage1.Controls.Add(Me.BtnCancelar)
+        Me.TabPage1.Controls.Add(Me.btnConfirmar)
+        Me.TabPage1.Controls.Add(Me.btnExluir)
+        Me.TabPage1.Controls.Add(Me.btnIncluir)
         Me.TabPage1.Controls.Add(Me.GroupBox1)
         Me.TabPage1.Location = New System.Drawing.Point(4, 22)
         Me.TabPage1.Name = "TabPage1"
@@ -92,50 +98,54 @@ Partial Class FormAluno
         Me.TabPage1.Text = "Cadastro"
         Me.TabPage1.UseVisualStyleBackColor = True
         '
-        'Button4
+        'BtnCancelar
         '
-        Me.Button4.Location = New System.Drawing.Point(434, 418)
-        Me.Button4.Name = "Button4"
-        Me.Button4.Size = New System.Drawing.Size(75, 23)
-        Me.Button4.TabIndex = 4
-        Me.Button4.Text = "Cancelar"
-        Me.Button4.UseVisualStyleBackColor = True
+        Me.BtnCancelar.Enabled = False
+        Me.BtnCancelar.Location = New System.Drawing.Point(483, 342)
+        Me.BtnCancelar.Name = "BtnCancelar"
+        Me.BtnCancelar.Size = New System.Drawing.Size(75, 23)
+        Me.BtnCancelar.TabIndex = 4
+        Me.BtnCancelar.Text = "Cancelar"
+        Me.BtnCancelar.UseVisualStyleBackColor = True
         '
-        'Button3
+        'btnConfirmar
         '
-        Me.Button3.Location = New System.Drawing.Point(353, 418)
-        Me.Button3.Name = "Button3"
-        Me.Button3.Size = New System.Drawing.Size(75, 23)
-        Me.Button3.TabIndex = 3
-        Me.Button3.Text = "Confimar"
-        Me.Button3.UseVisualStyleBackColor = True
+        Me.btnConfirmar.Enabled = False
+        Me.btnConfirmar.Location = New System.Drawing.Point(402, 342)
+        Me.btnConfirmar.Name = "btnConfirmar"
+        Me.btnConfirmar.Size = New System.Drawing.Size(75, 23)
+        Me.btnConfirmar.TabIndex = 3
+        Me.btnConfirmar.Text = "Confimar"
+        Me.btnConfirmar.UseVisualStyleBackColor = True
         '
-        'Button2
+        'btnExluir
         '
-        Me.Button2.Location = New System.Drawing.Point(136, 418)
-        Me.Button2.Name = "Button2"
-        Me.Button2.Size = New System.Drawing.Size(75, 23)
-        Me.Button2.TabIndex = 2
-        Me.Button2.Text = "Excluir"
-        Me.Button2.UseVisualStyleBackColor = True
+        Me.btnExluir.Enabled = False
+        Me.btnExluir.Location = New System.Drawing.Point(185, 342)
+        Me.btnExluir.Name = "btnExluir"
+        Me.btnExluir.Size = New System.Drawing.Size(75, 23)
+        Me.btnExluir.TabIndex = 2
+        Me.btnExluir.Text = "Excluir"
+        Me.btnExluir.UseVisualStyleBackColor = True
         '
-        'Button1
+        'btnIncluir
         '
-        Me.Button1.Location = New System.Drawing.Point(42, 418)
-        Me.Button1.Name = "Button1"
-        Me.Button1.Size = New System.Drawing.Size(75, 23)
-        Me.Button1.TabIndex = 1
-        Me.Button1.Text = "Incluir"
-        Me.Button1.UseVisualStyleBackColor = True
+        Me.btnIncluir.Enabled = False
+        Me.btnIncluir.Location = New System.Drawing.Point(91, 342)
+        Me.btnIncluir.Name = "btnIncluir"
+        Me.btnIncluir.Size = New System.Drawing.Size(75, 23)
+        Me.btnIncluir.TabIndex = 1
+        Me.btnIncluir.Text = "Incluir"
+        Me.btnIncluir.UseVisualStyleBackColor = True
         '
         'GroupBox1
         '
         Me.GroupBox1.BackColor = System.Drawing.Color.Transparent
+        Me.GroupBox1.Controls.Add(Me.TDataNasc)
         Me.GroupBox1.Controls.Add(Me.tMae)
         Me.GroupBox1.Controls.Add(Me.tPai)
         Me.GroupBox1.Controls.Add(Me.tTelefone)
         Me.GroupBox1.Controls.Add(Me.tNaturalidade)
-        Me.GroupBox1.Controls.Add(Me.TDataNasc)
         Me.GroupBox1.Controls.Add(Me.TDataCad)
         Me.GroupBox1.Controls.Add(Me.tCep)
         Me.GroupBox1.Controls.Add(Me.Tcidade)
@@ -156,11 +166,20 @@ Partial Class FormAluno
         Me.GroupBox1.Controls.Add(Me.Label3)
         Me.GroupBox1.Controls.Add(Me.Label2)
         Me.GroupBox1.Controls.Add(Me.Label1)
-        Me.GroupBox1.Location = New System.Drawing.Point(8, 23)
+        Me.GroupBox1.Location = New System.Drawing.Point(64, 33)
         Me.GroupBox1.Name = "GroupBox1"
-        Me.GroupBox1.Size = New System.Drawing.Size(668, 284)
+        Me.GroupBox1.Size = New System.Drawing.Size(531, 284)
         Me.GroupBox1.TabIndex = 0
         Me.GroupBox1.TabStop = False
+        '
+        'TDataNasc
+        '
+        Me.TDataNasc.Location = New System.Drawing.Point(419, 13)
+        Me.TDataNasc.Mask = "00/00/0000"
+        Me.TDataNasc.Name = "TDataNasc"
+        Me.TDataNasc.Size = New System.Drawing.Size(82, 20)
+        Me.TDataNasc.TabIndex = 25
+        Me.TDataNasc.ValidatingType = GetType(Date)
         '
         'tMae
         '
@@ -190,19 +209,14 @@ Partial Class FormAluno
         Me.tNaturalidade.Size = New System.Drawing.Size(234, 20)
         Me.tNaturalidade.TabIndex = 21
         '
-        'TDataNasc
-        '
-        Me.TDataNasc.Location = New System.Drawing.Point(419, 13)
-        Me.TDataNasc.Name = "TDataNasc"
-        Me.TDataNasc.Size = New System.Drawing.Size(82, 20)
-        Me.TDataNasc.TabIndex = 20
-        '
         'TDataCad
         '
         Me.TDataCad.Location = New System.Drawing.Point(236, 13)
+        Me.TDataCad.Mask = "00/00/0000"
         Me.TDataCad.Name = "TDataCad"
         Me.TDataCad.Size = New System.Drawing.Size(82, 20)
         Me.TDataCad.TabIndex = 19
+        Me.TDataCad.ValidatingType = GetType(Date)
         '
         'tCep
         '
@@ -241,6 +255,7 @@ Partial Class FormAluno
         '
         'tCodigo
         '
+        Me.tCodigo.Enabled = False
         Me.tCodigo.Location = New System.Drawing.Point(60, 13)
         Me.tCodigo.Name = "tCodigo"
         Me.tCodigo.Size = New System.Drawing.Size(86, 20)
@@ -389,6 +404,7 @@ Partial Class FormAluno
         '
         'TabPage2
         '
+        Me.TabPage2.Controls.Add(Me.GroupBox3)
         Me.TabPage2.Controls.Add(Me.DataGridView1)
         Me.TabPage2.Location = New System.Drawing.Point(4, 22)
         Me.TabPage2.Name = "TabPage2"
@@ -398,11 +414,63 @@ Partial Class FormAluno
         Me.TabPage2.Text = "Pesquisa"
         Me.TabPage2.UseVisualStyleBackColor = True
         '
+        'GroupBox3
+        '
+        Me.GroupBox3.Controls.Add(Me.Button1)
+        Me.GroupBox3.Controls.Add(Me.tConsultaCodigo)
+        Me.GroupBox3.Controls.Add(Me.BtnConsulta)
+        Me.GroupBox3.Controls.Add(Me.txtConsulta)
+        Me.GroupBox3.Location = New System.Drawing.Point(8, 385)
+        Me.GroupBox3.Name = "GroupBox3"
+        Me.GroupBox3.Size = New System.Drawing.Size(681, 58)
+        Me.GroupBox3.TabIndex = 10
+        Me.GroupBox3.TabStop = False
+        Me.GroupBox3.Text = "Pesquisar"
+        '
+        'Button1
+        '
+        Me.Button1.Location = New System.Drawing.Point(491, 29)
+        Me.Button1.Name = "Button1"
+        Me.Button1.Size = New System.Drawing.Size(75, 23)
+        Me.Button1.TabIndex = 5
+        Me.Button1.Text = "Código"
+        Me.Button1.UseVisualStyleBackColor = True
+        '
+        'tConsultaCodigo
+        '
+        Me.tConsultaCodigo.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle
+        Me.tConsultaCodigo.Location = New System.Drawing.Point(383, 32)
+        Me.tConsultaCodigo.Name = "tConsultaCodigo"
+        Me.tConsultaCodigo.Size = New System.Drawing.Size(102, 20)
+        Me.tConsultaCodigo.TabIndex = 4
+        Me.tConsultaCodigo.Visible = False
+        '
+        'BtnConsulta
+        '
+        Me.BtnConsulta.Location = New System.Drawing.Point(252, 29)
+        Me.BtnConsulta.Name = "BtnConsulta"
+        Me.BtnConsulta.Size = New System.Drawing.Size(75, 23)
+        Me.BtnConsulta.TabIndex = 1
+        Me.BtnConsulta.Text = "Nome"
+        Me.BtnConsulta.UseVisualStyleBackColor = True
+        '
+        'txtConsulta
+        '
+        Me.txtConsulta.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle
+        Me.txtConsulta.Location = New System.Drawing.Point(6, 32)
+        Me.txtConsulta.Name = "txtConsulta"
+        Me.txtConsulta.Size = New System.Drawing.Size(240, 20)
+        Me.txtConsulta.TabIndex = 0
+        Me.txtConsulta.Visible = False
+        '
         'DataGridView1
         '
         Me.DataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize
         Me.DataGridView1.Location = New System.Drawing.Point(3, 3)
+        Me.DataGridView1.MultiSelect = False
         Me.DataGridView1.Name = "DataGridView1"
+        Me.DataGridView1.ReadOnly = True
+        Me.DataGridView1.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect
         Me.DataGridView1.Size = New System.Drawing.Size(681, 376)
         Me.DataGridView1.TabIndex = 0
         '
@@ -422,22 +490,23 @@ Partial Class FormAluno
         Me.GroupBox2.ResumeLayout(False)
         Me.GroupBox2.PerformLayout()
         Me.TabPage2.ResumeLayout(False)
+        Me.GroupBox3.ResumeLayout(False)
+        Me.GroupBox3.PerformLayout()
         CType(Me.DataGridView1, System.ComponentModel.ISupportInitialize).EndInit()
         Me.ResumeLayout(False)
 
     End Sub
     Friend WithEvents TabControl1 As System.Windows.Forms.TabControl
     Friend WithEvents TabPage1 As System.Windows.Forms.TabPage
-    Friend WithEvents Button4 As System.Windows.Forms.Button
-    Friend WithEvents Button3 As System.Windows.Forms.Button
-    Friend WithEvents Button2 As System.Windows.Forms.Button
-    Friend WithEvents Button1 As System.Windows.Forms.Button
+    Friend WithEvents BtnCancelar As System.Windows.Forms.Button
+    Friend WithEvents btnConfirmar As System.Windows.Forms.Button
+    Friend WithEvents btnExluir As System.Windows.Forms.Button
+    Friend WithEvents btnIncluir As System.Windows.Forms.Button
     Friend WithEvents GroupBox1 As System.Windows.Forms.GroupBox
     Friend WithEvents tMae As System.Windows.Forms.TextBox
     Friend WithEvents tPai As System.Windows.Forms.TextBox
     Friend WithEvents tTelefone As System.Windows.Forms.TextBox
     Friend WithEvents tNaturalidade As System.Windows.Forms.TextBox
-    Friend WithEvents TDataNasc As System.Windows.Forms.TextBox
     Friend WithEvents TDataCad As System.Windows.Forms.MaskedTextBox
     Friend WithEvents tCep As System.Windows.Forms.TextBox
     Friend WithEvents Tcidade As System.Windows.Forms.TextBox
@@ -462,4 +531,10 @@ Partial Class FormAluno
     Friend WithEvents Label1 As System.Windows.Forms.Label
     Friend WithEvents TabPage2 As System.Windows.Forms.TabPage
     Friend WithEvents DataGridView1 As System.Windows.Forms.DataGridView
+    Friend WithEvents TDataNasc As System.Windows.Forms.MaskedTextBox
+    Friend WithEvents GroupBox3 As System.Windows.Forms.GroupBox
+    Friend WithEvents BtnConsulta As System.Windows.Forms.Button
+    Friend WithEvents txtConsulta As System.Windows.Forms.TextBox
+    Friend WithEvents Button1 As System.Windows.Forms.Button
+    Friend WithEvents tConsultaCodigo As System.Windows.Forms.TextBox
 End Class
