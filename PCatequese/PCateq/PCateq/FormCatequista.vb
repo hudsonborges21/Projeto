@@ -131,7 +131,6 @@ Public Class FormCatequista
             obj.Telefone = tTelefone.Text
             obj.UF = "MG"
 
-            'TDataNasc.Text = Date.Today.Date
             If Not IsDBNull(TDataCad.Text) And TDataCad.Mask <> "00/00/0000" Then obj.DataCad = Convert.ToDateTime(TDataCad.Text)
             If Not IsDBNull(TDataNasc.Text) And TDataNasc.Mask <> "00/00/0000" Then obj.DataNasc = Convert.ToDateTime(TDataNasc.Text)
             If RadioButton1.Checked Then
@@ -143,7 +142,7 @@ Public Class FormCatequista
             If Not incluindo Then
                 'chamando o metodo da classe responsavel por incluir os dados 
                 obj.Codigo = tCodigo.Text
-                obj.Alterar(obj.Codigo)
+                obj.Alterar()
                 MsgBox("Registro salvo com sucesso.", MsgBoxStyle.Information, "")
                 incluindo = False
             Else
@@ -151,19 +150,7 @@ Public Class FormCatequista
                 'chamando o metodo da classe responsavel por incluir os dados 
                 obj.Incluir()
                 MsgBox("Registro salvo com sucesso.", MsgBoxStyle.Information, "")
-                'If obj.Consultar(tCodigo.Text) Then
-
-                '    tCodigo.Text = obj.Codigo
-                '    TNome.Text = obj.Nome
-                '    TEndereco.Text = obj.Endereco
-                '    tBairro.Text = obj.Bairro
-                '    Tcidade.Text = obj.Cidade
-                '    tNaturalidade.Text = obj.Naturalidade
-                '    tCep.Text = obj.CEP
-                '    tPai.Text = obj.Pai
-                '    tMae.Text = obj.Mae
-                '    Habilita()
-                'End If
+                
                 incluindo = False
             End If
             AtulizarGrid("Select codigo,nome,Endereco,cidade From Catequista", "Catequista")
@@ -228,7 +215,6 @@ Public Class FormCatequista
         End If
     End Sub
 
-    
 
     Private Sub Button1_Click(sender As Object, e As EventArgs) Handles Button1.Click
         tConsultaCodigo.Text = ""

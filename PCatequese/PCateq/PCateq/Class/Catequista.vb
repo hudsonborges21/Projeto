@@ -171,157 +171,26 @@ Public Class Catequista
 
 
 
+
 #Region "Metodos"
-
-    Private Shared Function ObterSqlInsert() As String
-        Dim sql As New StringBuilder
-        'sql.AppendLine(" Insert Into ALUNO ")
-        'sql.AppendLine(" Insert Into Catequista ")
-        'sql.AppendLine(" ( nome, endereco, cidade, bairro, ")
-        'sql.AppendLine(" UF, telefone, CEP, PAI, Mae, ")
-        'sql.AppendLine(" Naturalidade, DataCadastro, DataNascimento,Batizado) ")
-        'sql.AppendLine(" values ")
-        'sql.AppendLine(" @nome, @endereco, @cidade, @bairro, ")
-        'sql.AppendLine(" @UF, @telefone, @CEP, @PAI, @Mae, ")
-        'sql.AppendLine(" @Naturalidade, @DataCadastro, @DataNascimento,@Batizado) ")
-        sql.AppendLine("Insert Into Catequista ")
-        sql.AppendLine(" ( nome, endereco, cidade, bairro, UF, telefone, CEP, PAI, Mae, Naturalidade, DataCadastro, DataNascimento,Batizado) ")
-        sql.AppendLine("values ( @nome, @endereco, @cidade, @bairro, @UF, @telefone, @CEP,  @PAI, @Mae, @Naturalidade, @DataCadastro, @DataNascimento,@Batizado)")
-
-        'MsgBox(sql.ToString())
-        Return sql.ToString()
-
-    End Function
-
-    Private Shared Function ObterSqlUpdate(ByVal parmCodigo As Integer) As String
-        Dim sql As New StringBuilder
-        'sql.AppendLine(" Update ALUNO Set ")
-        sql.AppendLine(" Update Catequista Set ")
-        sql.AppendLine(" nome=@nome, Endereco=@endereco,cidade=@cidade, ")
-        sql.AppendLine(" bairro=@bairro,uf=@uf,telefone=@telefone,cep=@cep, ")
-        sql.AppendLine(" Pai=@Pai, Mae=@Mae, Naturalidade=@Naturalidade, batizado=@batizado, ")
-        sql.AppendLine(" DataCadastro=@DataCadastro, datanascimento=@datanascimento ")
-        sql.AppendLine(" where Codigo='" & parmCodigo & "'")
-        Return sql.ToString()
-    End Function
-
-    Private Shared Function ObterSqlSelectTodosCampo() As String
-        Dim sql As New StringBuilder
-        'sql.AppendLine(" SELECT * From ALUNO ")
-        sql.AppendLine(" SELECT * From Catequista ")
-        Return sql.ToString()
-    End Function
-
-    Private Shared Sub PopularComando(ByRef comando As SqlCommand, ByVal Catequista As Catequista, ByVal incluindo As Boolean)
-        If Not incluindo Then
-            comando.Parameters.Add("@Codigo", SqlDbType.VarChar).Value = Catequista.vCodigo
-        End If
-        comando.Parameters.Add("@nome", SqlDbType.VarChar).Value = Catequista.Nome
-        comando.Parameters.Add("@Endereco", SqlDbType.VarChar).Value = Catequista.Endereco
-        comando.Parameters.Add("@Cidade", SqlDbType.VarChar).Value = Catequista.Cidade
-        comando.Parameters.Add("@Bairro", SqlDbType.VarChar).Value = Catequista.Bairro
-        comando.Parameters.Add("@UF", SqlDbType.VarChar).Value = Catequista.UF
-        comando.Parameters.Add("@telefone", SqlDbType.VarChar).Value = Catequista.Telefone
-        comando.Parameters.Add("@CEP", SqlDbType.VarChar).Value = Catequista.CEP
-        comando.Parameters.Add("@Pai", SqlDbType.VarChar).Value = Catequista.Pai
-        comando.Parameters.Add("@Mae", SqlDbType.VarChar).Value = Catequista.Mae
-        comando.Parameters.Add("@Naturalidade", SqlDbType.VarChar).Value = Catequista.Naturalidade
-        comando.Parameters.Add("@DataCadastro", SqlDbType.Date).Value = Catequista.DataCad
-        comando.Parameters.Add("@DataNascimento", SqlDbType.Date).Value = Catequista.DataNasc
-        comando.Parameters.Add("@Batizado", SqlDbType.Bit).Value = Catequista.Batizado
-    End Sub
-
-    Private Sub PopularObjeto(ByVal reader As IDataRecord)
-        vCodigo = reader("Codigo")
-        vNome = reader("nome")
-        If Not IsDBNull(reader("endereco")) Then vEndereco = (reader("endereco"))
-        If Not IsDBNull(reader("cidade")) Then vCidade = reader("cidade")
-        If Not IsDBNull(reader("bairro")) Then vBairro = reader("bairro")
-        If Not IsDBNull(reader("uf")) Then vUF = reader("UF")
-        If Not IsDBNull(reader("telefone")) Then vTelefone = reader("telefone")
-        If Not IsDBNull(reader("CEP")) Then vCEP = reader("CEP")
-        If Not IsDBNull(reader("Pai")) Then vPai = reader("Pai")
-        If Not IsDBNull(reader("mae")) Then vMae = reader("mae")
-        If Not IsDBNull(reader("Naturalidade")) Then vNaturaliade = reader("Naturalidade")
-        If Not IsDBNull(reader("DataCadastro")) Then vDataCadastro = reader("DataCadastro")
-        If Not IsDBNull(reader("DataNascimento")) Then vDataNasc = reader("DataNascimento")
-        If Not IsDBNull(reader("Batizado")) Then vBatizado = reader("Batizado")
-    End Sub
-
-    'METODO INCLUIR 
     Public Sub Incluir()
-        Using conexao As SqlConnection = New Conexao().GetConnection()
-            'abrindo conexao 
-            conexao.Open()
-            Using comando = New SqlCommand(ObterSqlInsert(), conexao)
-                PopularComando(comando, Me, True)
-
-                'comando sql
-                comando.ExecuteNonQuery()
-            End Using
-            'fechando a conexao 
-            conexao.Close()
-        End Using
+        Call New CatequistaDAO().Incluir(Me)
     End Sub
 
-    'CONSULTAR 
-    Public Function Consultar(ByVal codigolinha As Integer) As Boolean
-        Dim dataReader As SqlDataReader
+    Public Sub Alterar()
+        Call New CatequistaDAO().Alterar(Me)
+    End Sub
+    Public Sub Excluir()
+        Call New CatequistaDAO().Excluir(Me)
+    End Sub
 
-        Using conexao As SqlConnection = New Conexao().GetConnection()
-            'abrindo conexao 
-            conexao.Open()
-            Dim sql As String
-            sql = ObterSqlSelectTodosCampo() & " where Codigo = " & codigolinha
-            Using comando = New SqlCommand(sql, conexao)
-                dataReader = comando.ExecuteReader
-                If dataReader.HasRows Then
-                    dataReader.Read()
-                    PopularObjeto(dataReader)
-                    conexao.Close()
-                    Return True
-                Else
-                    conexao.Close()
-                    Return False
-                End If
-            End Using
-        End Using
+    Public Function Todos() As List(Of Catequista)
+        Return New CatequistaDAO().Todos()
     End Function
-
-    'ALTERAR  - UPDATE
-    Public Sub Alterar(ByVal parmCodigo As Integer)
-        Using conexao As SqlConnection = New Conexao().GetConnection()
-            'abrindo conexao 
-            conexao.Open()
-            Using comando = New SqlCommand(ObterSqlUpdate(parmCodigo), conexao)
-                PopularComando(comando, Me, True)
-                'comando sql
-                comando.ExecuteNonQuery()
-            End Using
-            'fechando a conexao 
-            conexao.Close()
-        End Using
-    End Sub
-
-    'EXCLUIR  - DELETE
-    Public Sub Excluir(ByVal parmCodigo As Integer)
-        Using conexao As SqlConnection = New Conexao().GetConnection()
-            'abrindo conexao 
-            conexao.Open()
-            Dim sql As String
-            sql = "DELETE FROM Catequista WHERE Codigo = " & parmCodigo
-            Using comando = New SqlCommand(sql, conexao)
-                PopularComando(comando, Me, True)
-
-                'comando sql
-                comando.ExecuteNonQuery()
-            End Using
-            'fechando a conexao 
-            conexao.Close()
-        End Using
-    End Sub
+    Public Function Consultar(ByVal pCod As String)
+        Return New CatequistaDAO().Consultar(pCod, Me)
+    End Function
 #End Region
-
     
 
 
