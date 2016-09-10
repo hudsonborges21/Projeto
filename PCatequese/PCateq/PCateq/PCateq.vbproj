@@ -76,6 +76,7 @@
     <Compile Include="Class\Turma.vb" />
     <Compile Include="DAO\AlunoDAO.vb" />
     <Compile Include="DAO\CatequistaDAO.vb" />
+    <Compile Include="DAO\TurmaDAO.vb" />
     <Compile Include="FormPrincipal.vb">
       <SubType>Form</SubType>
     </Compile>

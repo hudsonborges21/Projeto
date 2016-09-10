@@ -166,9 +166,9 @@ Public Class AlunoDAO
             'abrindo conexao 
             conexao.Open()
             Dim sql As String
-            sql = "DELETE FROM ALUNO WHERE id = " & aluno.Codigo
+            sql = "DELETE FROM Catequista WHERE codigo = " & aluno.Codigo
             Using comando = New SqlCommand(sql, conexao)
-                comando.Parameters.Add("@id", SqlDbType.VarChar).Value = aluno.Codigo
+                comando.Parameters.Add("@Codigo", SqlDbType.VarChar).Value = aluno.Codigo
                 'comando sql
                 comando.ExecuteNonQuery()
             End Using

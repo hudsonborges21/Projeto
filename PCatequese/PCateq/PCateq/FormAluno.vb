@@ -230,4 +230,69 @@ Public Class FormAluno
             tConsultaCodigo.Visible = False
         End If
     End Sub
+
+    Private Sub btnExluir_Click(sender As Object, e As EventArgs) Handles btnExluir.Click
+        Try
+            If Not incluindo Then
+                If Not IsDBNull(tCodigo.Text) Then
+                    Dim obj As Aluno = New Aluno
+                    obj.Codigo = tCodigo.Text
+                    obj.Excluir()
+                    Call Limpar(Me)
+                    Habilita()
+                    MsgBox("Registro Excluído", MsgBoxStyle.Information, "")
+
+                    AtulizarGrid("Select codigo,nome,Endereco,cidade From Catequista", "Catequista")
+
+                End If
+            End If
+        Catch ex As Exception
+            MsgBox("Erro ao Excluir o registro.", MsgBoxStyle.Critical, "")
+        End Try
+    End Sub
+
+    Private Sub BtnCancelar_Click(sender As Object, e As EventArgs) Handles BtnCancelar.Click
+        Try
+            Dim obj As Aluno = New Aluno
+           
+            obj.Consultar(tCodigo.Text)
+            tCodigo.Text = obj.Codigo
+            TNome.Text = obj.Nome
+            TEndereco.Text = obj.Endereco
+            tBairro.Text = obj.Bairro
+            Tcidade.Text = obj.Cidade
+            tNaturalidade.Text = obj.Naturalidade
+            tCep.Text = obj.CEP
+            tPai.Text = obj.Pai
+            tMae.Text = obj.Mae
+            TDataCad.Text = FormatDateTime(obj.DataCad, DateFormat.ShortDate)
+            TDataNasc.Text = FormatDateTime(obj.DataNasc, DateFormat.ShortDate)
+            If obj.Batizado Then
+                RadioButton1.Checked = True
+            Else
+                RadioButton2.Checked = True
+            End If
+
+            Habilita()
+
+        Catch ex As Exception
+            MsgBox("Erro ao Cancelar Operação", MsgBoxStyle.Critical, "Cancelando")
+        End Try
+    End Sub
+
+    Private Sub TDataCad_KeyPress(sender As Object, e As KeyPressEventArgs) Handles TDataCad.KeyPress
+        Desabilita()
+    End Sub
+
+    Private Sub TDataNasc_KeyPress(sender As Object, e As KeyPressEventArgs) Handles TDataNasc.KeyPress
+        Desabilita()
+    End Sub
+
+    Private Sub RadioButton1_Click(sender As Object, e As EventArgs) Handles RadioButton1.Click
+        Desabilita()
+    End Sub
+
+    Private Sub RadioButton2_Click(sender As Object, e As EventArgs) Handles RadioButton2.Click
+        Desabilita()
+    End Sub
 End Class
