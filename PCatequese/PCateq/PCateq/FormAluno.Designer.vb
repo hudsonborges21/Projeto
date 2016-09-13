@@ -63,6 +63,8 @@ Partial Class FormAluno
         Me.BtnConsulta = New System.Windows.Forms.Button()
         Me.txtConsulta = New System.Windows.Forms.TextBox()
         Me.DataGridView1 = New System.Windows.Forms.DataGridView()
+        Me.TxtMatricula = New System.Windows.Forms.TextBox()
+        Me.Label13 = New System.Windows.Forms.Label()
         Me.TabControl1.SuspendLayout()
         Me.TabPage1.SuspendLayout()
         Me.GroupBox1.SuspendLayout()
@@ -101,7 +103,7 @@ Partial Class FormAluno
         'BtnCancelar
         '
         Me.BtnCancelar.Enabled = False
-        Me.BtnCancelar.Location = New System.Drawing.Point(483, 342)
+        Me.BtnCancelar.Location = New System.Drawing.Point(483, 420)
         Me.BtnCancelar.Name = "BtnCancelar"
         Me.BtnCancelar.Size = New System.Drawing.Size(75, 23)
         Me.BtnCancelar.TabIndex = 4
@@ -111,7 +113,7 @@ Partial Class FormAluno
         'btnConfirmar
         '
         Me.btnConfirmar.Enabled = False
-        Me.btnConfirmar.Location = New System.Drawing.Point(402, 342)
+        Me.btnConfirmar.Location = New System.Drawing.Point(402, 420)
         Me.btnConfirmar.Name = "btnConfirmar"
         Me.btnConfirmar.Size = New System.Drawing.Size(75, 23)
         Me.btnConfirmar.TabIndex = 3
@@ -121,7 +123,7 @@ Partial Class FormAluno
         'btnExluir
         '
         Me.btnExluir.Enabled = False
-        Me.btnExluir.Location = New System.Drawing.Point(185, 342)
+        Me.btnExluir.Location = New System.Drawing.Point(185, 420)
         Me.btnExluir.Name = "btnExluir"
         Me.btnExluir.Size = New System.Drawing.Size(75, 23)
         Me.btnExluir.TabIndex = 2
@@ -131,7 +133,7 @@ Partial Class FormAluno
         'btnIncluir
         '
         Me.btnIncluir.Enabled = False
-        Me.btnIncluir.Location = New System.Drawing.Point(91, 342)
+        Me.btnIncluir.Location = New System.Drawing.Point(91, 420)
         Me.btnIncluir.Name = "btnIncluir"
         Me.btnIncluir.Size = New System.Drawing.Size(75, 23)
         Me.btnIncluir.TabIndex = 1
@@ -141,6 +143,8 @@ Partial Class FormAluno
         'GroupBox1
         '
         Me.GroupBox1.BackColor = System.Drawing.Color.Transparent
+        Me.GroupBox1.Controls.Add(Me.TxtMatricula)
+        Me.GroupBox1.Controls.Add(Me.Label13)
         Me.GroupBox1.Controls.Add(Me.TDataNasc)
         Me.GroupBox1.Controls.Add(Me.tMae)
         Me.GroupBox1.Controls.Add(Me.tPai)
@@ -166,15 +170,15 @@ Partial Class FormAluno
         Me.GroupBox1.Controls.Add(Me.Label3)
         Me.GroupBox1.Controls.Add(Me.Label2)
         Me.GroupBox1.Controls.Add(Me.Label1)
-        Me.GroupBox1.Location = New System.Drawing.Point(64, 33)
+        Me.GroupBox1.Location = New System.Drawing.Point(8, 6)
         Me.GroupBox1.Name = "GroupBox1"
-        Me.GroupBox1.Size = New System.Drawing.Size(531, 284)
+        Me.GroupBox1.Size = New System.Drawing.Size(668, 318)
         Me.GroupBox1.TabIndex = 0
         Me.GroupBox1.TabStop = False
         '
         'TDataNasc
         '
-        Me.TDataNasc.Location = New System.Drawing.Point(419, 13)
+        Me.TDataNasc.Location = New System.Drawing.Point(419, 59)
         Me.TDataNasc.Mask = "00/00/0000"
         Me.TDataNasc.Name = "TDataNasc"
         Me.TDataNasc.Size = New System.Drawing.Size(82, 20)
@@ -183,35 +187,35 @@ Partial Class FormAluno
         '
         'tMae
         '
-        Me.tMae.Location = New System.Drawing.Point(60, 191)
+        Me.tMae.Location = New System.Drawing.Point(60, 237)
         Me.tMae.Name = "tMae"
         Me.tMae.Size = New System.Drawing.Size(441, 20)
         Me.tMae.TabIndex = 24
         '
         'tPai
         '
-        Me.tPai.Location = New System.Drawing.Point(60, 162)
+        Me.tPai.Location = New System.Drawing.Point(60, 208)
         Me.tPai.Name = "tPai"
         Me.tPai.Size = New System.Drawing.Size(441, 20)
         Me.tPai.TabIndex = 23
         '
         'tTelefone
         '
-        Me.tTelefone.Location = New System.Drawing.Point(379, 131)
+        Me.tTelefone.Location = New System.Drawing.Point(379, 177)
         Me.tTelefone.Name = "tTelefone"
         Me.tTelefone.Size = New System.Drawing.Size(122, 20)
         Me.tTelefone.TabIndex = 22
         '
         'tNaturalidade
         '
-        Me.tNaturalidade.Location = New System.Drawing.Point(84, 131)
+        Me.tNaturalidade.Location = New System.Drawing.Point(84, 177)
         Me.tNaturalidade.Name = "tNaturalidade"
         Me.tNaturalidade.Size = New System.Drawing.Size(234, 20)
         Me.tNaturalidade.TabIndex = 21
         '
         'TDataCad
         '
-        Me.TDataCad.Location = New System.Drawing.Point(236, 13)
+        Me.TDataCad.Location = New System.Drawing.Point(236, 59)
         Me.TDataCad.Mask = "00/00/0000"
         Me.TDataCad.Name = "TDataCad"
         Me.TDataCad.Size = New System.Drawing.Size(82, 20)
@@ -220,35 +224,35 @@ Partial Class FormAluno
         '
         'tCep
         '
-        Me.tCep.Location = New System.Drawing.Point(401, 105)
+        Me.tCep.Location = New System.Drawing.Point(401, 151)
         Me.tCep.Name = "tCep"
         Me.tCep.Size = New System.Drawing.Size(100, 20)
         Me.tCep.TabIndex = 18
         '
         'Tcidade
         '
-        Me.Tcidade.Location = New System.Drawing.Point(60, 102)
+        Me.Tcidade.Location = New System.Drawing.Point(60, 148)
         Me.Tcidade.Name = "Tcidade"
         Me.Tcidade.Size = New System.Drawing.Size(258, 20)
         Me.Tcidade.TabIndex = 17
         '
         'tBairro
         '
-        Me.tBairro.Location = New System.Drawing.Point(364, 76)
+        Me.tBairro.Location = New System.Drawing.Point(364, 122)
         Me.tBairro.Name = "tBairro"
         Me.tBairro.Size = New System.Drawing.Size(137, 20)
         Me.tBairro.TabIndex = 16
         '
         'TEndereco
         '
-        Me.TEndereco.Location = New System.Drawing.Point(60, 72)
+        Me.TEndereco.Location = New System.Drawing.Point(60, 118)
         Me.TEndereco.Name = "TEndereco"
         Me.TEndereco.Size = New System.Drawing.Size(258, 20)
         Me.TEndereco.TabIndex = 15
         '
         'TNome
         '
-        Me.TNome.Location = New System.Drawing.Point(60, 43)
+        Me.TNome.Location = New System.Drawing.Point(60, 89)
         Me.TNome.Name = "TNome"
         Me.TNome.Size = New System.Drawing.Size(441, 20)
         Me.TNome.TabIndex = 14
@@ -256,7 +260,7 @@ Partial Class FormAluno
         'tCodigo
         '
         Me.tCodigo.Enabled = False
-        Me.tCodigo.Location = New System.Drawing.Point(60, 13)
+        Me.tCodigo.Location = New System.Drawing.Point(60, 59)
         Me.tCodigo.Name = "tCodigo"
         Me.tCodigo.Size = New System.Drawing.Size(86, 20)
         Me.tCodigo.TabIndex = 13
@@ -264,7 +268,7 @@ Partial Class FormAluno
         'Label12
         '
         Me.Label12.AutoSize = True
-        Me.Label12.Location = New System.Drawing.Point(26, 194)
+        Me.Label12.Location = New System.Drawing.Point(26, 240)
         Me.Label12.Name = "Label12"
         Me.Label12.Size = New System.Drawing.Size(28, 13)
         Me.Label12.TabIndex = 12
@@ -273,7 +277,7 @@ Partial Class FormAluno
         'Label11
         '
         Me.Label11.AutoSize = True
-        Me.Label11.Location = New System.Drawing.Point(32, 169)
+        Me.Label11.Location = New System.Drawing.Point(32, 215)
         Me.Label11.Name = "Label11"
         Me.Label11.Size = New System.Drawing.Size(22, 13)
         Me.Label11.TabIndex = 11
@@ -283,7 +287,7 @@ Partial Class FormAluno
         '
         Me.GroupBox2.Controls.Add(Me.RadioButton2)
         Me.GroupBox2.Controls.Add(Me.RadioButton1)
-        Me.GroupBox2.Location = New System.Drawing.Point(60, 217)
+        Me.GroupBox2.Location = New System.Drawing.Point(60, 263)
         Me.GroupBox2.Name = "GroupBox2"
         Me.GroupBox2.Size = New System.Drawing.Size(143, 45)
         Me.GroupBox2.TabIndex = 10
@@ -315,7 +319,7 @@ Partial Class FormAluno
         'Label10
         '
         Me.Label10.AutoSize = True
-        Me.Label10.Location = New System.Drawing.Point(324, 138)
+        Me.Label10.Location = New System.Drawing.Point(324, 184)
         Me.Label10.Name = "Label10"
         Me.Label10.Size = New System.Drawing.Size(49, 13)
         Me.Label10.TabIndex = 9
@@ -324,7 +328,7 @@ Partial Class FormAluno
         'Label9
         '
         Me.Label9.AutoSize = True
-        Me.Label9.Location = New System.Drawing.Point(11, 136)
+        Me.Label9.Location = New System.Drawing.Point(11, 182)
         Me.Label9.Name = "Label9"
         Me.Label9.Size = New System.Drawing.Size(67, 13)
         Me.Label9.TabIndex = 8
@@ -333,7 +337,7 @@ Partial Class FormAluno
         'Label8
         '
         Me.Label8.AutoSize = True
-        Me.Label8.Location = New System.Drawing.Point(367, 112)
+        Me.Label8.Location = New System.Drawing.Point(367, 158)
         Me.Label8.Name = "Label8"
         Me.Label8.Size = New System.Drawing.Size(28, 13)
         Me.Label8.TabIndex = 7
@@ -342,7 +346,7 @@ Partial Class FormAluno
         'Label7
         '
         Me.Label7.AutoSize = True
-        Me.Label7.Location = New System.Drawing.Point(14, 112)
+        Me.Label7.Location = New System.Drawing.Point(14, 158)
         Me.Label7.Name = "Label7"
         Me.Label7.Size = New System.Drawing.Size(40, 13)
         Me.Label7.TabIndex = 6
@@ -351,7 +355,7 @@ Partial Class FormAluno
         'Label6
         '
         Me.Label6.AutoSize = True
-        Me.Label6.Location = New System.Drawing.Point(324, 79)
+        Me.Label6.Location = New System.Drawing.Point(324, 125)
         Me.Label6.Name = "Label6"
         Me.Label6.Size = New System.Drawing.Size(34, 13)
         Me.Label6.TabIndex = 5
@@ -360,7 +364,7 @@ Partial Class FormAluno
         'Label5
         '
         Me.Label5.AutoSize = True
-        Me.Label5.Location = New System.Drawing.Point(6, 72)
+        Me.Label5.Location = New System.Drawing.Point(6, 118)
         Me.Label5.Name = "Label5"
         Me.Label5.Size = New System.Drawing.Size(53, 13)
         Me.Label5.TabIndex = 4
@@ -369,7 +373,7 @@ Partial Class FormAluno
         'Label4
         '
         Me.Label4.AutoSize = True
-        Me.Label4.Location = New System.Drawing.Point(324, 20)
+        Me.Label4.Location = New System.Drawing.Point(324, 66)
         Me.Label4.Name = "Label4"
         Me.Label4.Size = New System.Drawing.Size(89, 13)
         Me.Label4.TabIndex = 3
@@ -378,7 +382,7 @@ Partial Class FormAluno
         'Label3
         '
         Me.Label3.AutoSize = True
-        Me.Label3.Location = New System.Drawing.Point(155, 20)
+        Me.Label3.Location = New System.Drawing.Point(155, 66)
         Me.Label3.Name = "Label3"
         Me.Label3.Size = New System.Drawing.Size(75, 13)
         Me.Label3.TabIndex = 2
@@ -387,7 +391,7 @@ Partial Class FormAluno
         'Label2
         '
         Me.Label2.AutoSize = True
-        Me.Label2.Location = New System.Drawing.Point(11, 46)
+        Me.Label2.Location = New System.Drawing.Point(11, 92)
         Me.Label2.Name = "Label2"
         Me.Label2.Size = New System.Drawing.Size(35, 13)
         Me.Label2.TabIndex = 1
@@ -396,7 +400,7 @@ Partial Class FormAluno
         'Label1
         '
         Me.Label1.AutoSize = True
-        Me.Label1.Location = New System.Drawing.Point(6, 20)
+        Me.Label1.Location = New System.Drawing.Point(6, 66)
         Me.Label1.Name = "Label1"
         Me.Label1.Size = New System.Drawing.Size(40, 13)
         Me.Label1.TabIndex = 0
@@ -474,6 +478,23 @@ Partial Class FormAluno
         Me.DataGridView1.Size = New System.Drawing.Size(681, 376)
         Me.DataGridView1.TabIndex = 0
         '
+        'TxtMatricula
+        '
+        Me.TxtMatricula.Enabled = False
+        Me.TxtMatricula.Location = New System.Drawing.Point(61, 17)
+        Me.TxtMatricula.Name = "TxtMatricula"
+        Me.TxtMatricula.Size = New System.Drawing.Size(86, 20)
+        Me.TxtMatricula.TabIndex = 27
+        '
+        'Label13
+        '
+        Me.Label13.AutoSize = True
+        Me.Label13.Location = New System.Drawing.Point(7, 24)
+        Me.Label13.Name = "Label13"
+        Me.Label13.Size = New System.Drawing.Size(50, 13)
+        Me.Label13.TabIndex = 26
+        Me.Label13.Text = "Matricula"
+        '
         'FormAluno
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
@@ -537,4 +558,6 @@ Partial Class FormAluno
     Friend WithEvents txtConsulta As System.Windows.Forms.TextBox
     Friend WithEvents Button1 As System.Windows.Forms.Button
     Friend WithEvents tConsultaCodigo As System.Windows.Forms.TextBox
+    Friend WithEvents TxtMatricula As System.Windows.Forms.TextBox
+    Friend WithEvents Label13 As System.Windows.Forms.Label
 End Class

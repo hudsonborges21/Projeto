@@ -15,7 +15,7 @@ Public Class AlunoDAO
         'sql.AppendLine(" @nome, @endereco, @cidade, @bairro, ")
         'sql.AppendLine(" @UF, @telefone, @CEP, @PAI, @Mae, ")
         'sql.AppendLine(" @Naturalidade, @DataCadastro, @DataNascimento,@Batizado) ")
-        sql.AppendLine("Insert Into Catequista ")
+        sql.AppendLine("Insert Into ALUNO ")
         sql.AppendLine(" ( nome, endereco, cidade, bairro, UF, telefone, CEP, PAI, Mae, Naturalidade, DataCadastro, DataNascimento,Batizado) ")
         sql.AppendLine("values ( @nome, @endereco, @cidade, @bairro, @UF, @telefone, @CEP,  @PAI, @Mae, @Naturalidade, @DataCadastro, @DataNascimento,@Batizado)")
 
@@ -26,7 +26,7 @@ Public Class AlunoDAO
 
     Private Shared Function ObterSqlUpdate(ByVal parmCodigo As Integer) As String
         Dim sql As New StringBuilder
-        sql.AppendLine(" Update Catequista Set ")
+        sql.AppendLine(" Update ALUNO Set ")
         sql.AppendLine(" nome=@nome, Endereco=@endereco,cidade=@cidade, ")
         sql.AppendLine(" bairro=@bairro,uf=@uf,telefone=@telefone,cep=@cep, ")
         sql.AppendLine(" Pai=@Pai, Mae=@Mae, Naturalidade=@Naturalidade, batizado=@batizado, ")
@@ -37,14 +37,13 @@ Public Class AlunoDAO
 
     Private Shared Function ObterSqlSelectTodosCampo() As String
         Dim sql As New StringBuilder
-        'sql.AppendLine(" SELECT * From ALUNO ")
-        sql.AppendLine(" SELECT * From Catequista ")
+        sql.AppendLine(" SELECT * From ALUNO ")
         Return sql.ToString()
     End Function
 
     Private Shared Sub PopularComando(ByRef comando As SqlCommand, ByVal aluno As Aluno, ByVal incluindo As Boolean)
         If Not incluindo Then
-            comando.Parameters.Add("@id", SqlDbType.VarChar).Value = aluno.Codigo
+            comando.Parameters.Add("@codigo", SqlDbType.VarChar).Value = aluno.Codigo
         End If
         comando.Parameters.Add("@nome", SqlDbType.VarChar).Value = aluno.Nome
         comando.Parameters.Add("@endereco", SqlDbType.VarChar).Value = aluno.Endereco
@@ -166,7 +165,7 @@ Public Class AlunoDAO
             'abrindo conexao 
             conexao.Open()
             Dim sql As String
-            sql = "DELETE FROM Catequista WHERE codigo = " & aluno.Codigo
+            sql = "DELETE FROM ALUNO WHERE codigo = " & aluno.Codigo
             Using comando = New SqlCommand(sql, conexao)
                 comando.Parameters.Add("@Codigo", SqlDbType.VarChar).Value = aluno.Codigo
                 'comando sql

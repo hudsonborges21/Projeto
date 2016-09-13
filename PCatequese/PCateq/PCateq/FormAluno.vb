@@ -62,7 +62,7 @@ Public Class FormAluno
     End Sub
 
     Private Sub FormAluno_Load(sender As Object, e As EventArgs) Handles MyBase.Load
-        AtulizarGrid("Select codigo,nome,Endereco,cidade From Catequista", "Catequista")
+        AtulizarGrid("Select codigo,nome,Endereco,cidade From Aluno", "Aluno")
         'Dim obj As Aluno = New Aluno
 
         'DataGridView1.DataSource = obj.Todos()
@@ -161,7 +161,7 @@ Public Class FormAluno
                 
                 incluindo = False
             End If
-            AtulizarGrid("Select codigo,nome,Endereco,cidade From Catequista", "Catequista")
+            AtulizarGrid("Select codigo,nome,Endereco,cidade From Aluno", "Aluno")
             formatarGrid()
             Habilita()
         Catch ex As Exception
@@ -208,12 +208,12 @@ Public Class FormAluno
     Private Sub BtnConsulta_Click(sender As Object, e As EventArgs) Handles BtnConsulta.Click
         txtConsulta.Visible = True
         txtConsulta.Text = ""
-        AtulizarGrid("Select codigo,nome,Endereco,cidade From Catequista", "Catequista")
+        AtulizarGrid("Select codigo,nome,Endereco,cidade From Aluno", "Aluno")
     End Sub
 
     Private Sub txtConsulta_KeyDown(sender As Object, e As KeyEventArgs) Handles txtConsulta.KeyDown
         If e.KeyCode = Keys.Enter Then
-            AtulizarGrid("Select codigo,nome,Endereco,cidade From Catequista WHERE NOME Like ('%" & txtConsulta.Text & "%') order by Nome,Codigo", "Catequista")
+            AtulizarGrid("Select codigo,nome,Endereco,cidade From Aluno WHERE NOME Like ('%" & txtConsulta.Text & "%') order by Nome,Codigo", "Aluno")
             txtConsulta.Visible = False
         End If
     End Sub
@@ -221,12 +221,12 @@ Public Class FormAluno
     Private Sub Button1_Click(sender As Object, e As EventArgs) Handles Button1.Click
         tConsultaCodigo.Text = ""
         tConsultaCodigo.Visible = True
-        AtulizarGrid("Select codigo,nome,Endereco,cidade From Catequista", "Catequista")
+        AtulizarGrid("Select codigo,nome,Endereco,cidade From Aluno", "Aluno")
     End Sub
 
     Private Sub tConsultaCodigo_KeyDown(sender As Object, e As KeyEventArgs) Handles tConsultaCodigo.KeyDown
         If e.KeyCode = Keys.Enter Then
-            AtulizarGrid("Select codigo,nome,Endereco,cidade From Catequista WHERE Codigo = '" & tConsultaCodigo.Text & "' order by Codigo ", "Catequista")
+            AtulizarGrid("Select codigo,nome,Endereco,cidade From Aluno WHERE Codigo = '" & tConsultaCodigo.Text & "' order by Codigo ", "Aluno")
             tConsultaCodigo.Visible = False
         End If
     End Sub
@@ -242,7 +242,7 @@ Public Class FormAluno
                     Habilita()
                     MsgBox("Registro Excluído", MsgBoxStyle.Information, "")
 
-                    AtulizarGrid("Select codigo,nome,Endereco,cidade From Catequista", "Catequista")
+                    AtulizarGrid("Select codigo,nome,Endereco,cidade From Aluno", "Aluno")
 
                 End If
             End If

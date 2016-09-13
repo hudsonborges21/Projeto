@@ -3,7 +3,7 @@
 Public Class FormCatequista
     Dim incluindo As Boolean
     Private Sub btnIncluir_Click(sender As Object, e As EventArgs) Handles btnIncluir.Click
-        'Call Limpar(Me)
+        Call Limpar(Me)
         Desabilita()
         incluindo = True
         TDataCad.Text = Date.Today.Date
@@ -153,7 +153,7 @@ Public Class FormCatequista
                 
                 incluindo = False
             End If
-            AtulizarGrid("Select codigo,nome,Endereco,cidade From Catequista", "Catequista")
+            AtulizarGrid("Select codigo,nome,Endereco,cidade From Professor", "Professor")
             formatarGrid()
             Habilita()
         Catch ex As Exception
@@ -162,7 +162,7 @@ Public Class FormCatequista
     End Sub
 
     Private Sub FormCatequista_Load(sender As Object, e As EventArgs) Handles MyBase.Load
-        AtulizarGrid("Select codigo,nome,Endereco,cidade From Catequista", "Catequista")
+        AtulizarGrid("Select codigo,nome,Endereco,cidade From Professor", "Professor")
     End Sub
 
     Private Sub TNome_KeyPress(sender As Object, e As KeyPressEventArgs) Handles TNome.KeyPress
@@ -205,12 +205,12 @@ Public Class FormCatequista
     Private Sub BtnConsulta_Click(sender As Object, e As EventArgs) Handles BtnConsulta.Click
         txtConsulta.Visible = True
         txtConsulta.Text = ""
-        AtulizarGrid("Select codigo,nome,Endereco,cidade From Catequista", "Catequista")
+        AtulizarGrid("Select codigo,nome,Endereco,cidade From Professor", "Professor")
     End Sub
 
     Private Sub txtConsulta_KeyDown(sender As Object, e As KeyEventArgs) Handles txtConsulta.KeyDown
         If e.KeyCode = Keys.Enter Then
-            AtulizarGrid("Select codigo,nome,Endereco,cidade From Catequista WHERE NOME Like ('%" & txtConsulta.Text & "%') order by Nome,Codigo", "Catequista")
+            AtulizarGrid("Select codigo,nome,Endereco,cidade From Professor WHERE NOME Like ('%" & txtConsulta.Text & "%') order by Nome,Codigo", "Professor")
             txtConsulta.Visible = False
         End If
     End Sub
@@ -219,12 +219,12 @@ Public Class FormCatequista
     Private Sub Button1_Click(sender As Object, e As EventArgs) Handles Button1.Click
         tConsultaCodigo.Text = ""
         tConsultaCodigo.Visible = True
-        AtulizarGrid("Select codigo,nome,Endereco,cidade From Catequista", "Catequista")
+        AtulizarGrid("Select codigo,nome,Endereco,cidade From Professor", "Professor")
     End Sub
 
     Private Sub tConsultaCodigo_KeyDown(sender As Object, e As KeyEventArgs) Handles tConsultaCodigo.KeyDown
         If e.KeyCode = Keys.Enter Then
-            AtulizarGrid("Select codigo,nome,Endereco,cidade From Catequista WHERE Codigo = '" & tConsultaCodigo.Text & "' order by Codigo ", "Catequista")
+            AtulizarGrid("Select codigo,nome,Endereco,cidade From Professor WHERE Codigo = '" & tConsultaCodigo.Text & "' order by Codigo ", "Professor")
             tConsultaCodigo.Visible = False
         End If
     End Sub
@@ -241,7 +241,7 @@ Public Class FormCatequista
                     Habilita()
                     MsgBox("Registro Excluído", MsgBoxStyle.Information, "")
 
-                    AtulizarGrid("Select codigo,nome,Endereco,cidade From Catequista", "Catequista")
+                    AtulizarGrid("Select codigo,nome,Endereco,cidade From Professor", "Professor")
 
                 End If
             End If

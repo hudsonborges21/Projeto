@@ -26,32 +26,32 @@ Partial Class FormTurma
         Me.TabPage1 = New System.Windows.Forms.TabPage()
         Me.BtnCancelar = New System.Windows.Forms.Button()
         Me.BtnConfirmar = New System.Windows.Forms.Button()
-        Me.BtnExcluir = New System.Windows.Forms.Button()
-        Me.BntIncluir = New System.Windows.Forms.Button()
+        Me.btnExluir = New System.Windows.Forms.Button()
+        Me.BtNIncluir = New System.Windows.Forms.Button()
         Me.GroupBox1 = New System.Windows.Forms.GroupBox()
-        Me.MaskedTextBox1 = New System.Windows.Forms.MaskedTextBox()
-        Me.TextBox2 = New System.Windows.Forms.TextBox()
-        Me.TextBox1 = New System.Windows.Forms.TextBox()
+        Me.GroupBox2 = New System.Windows.Forms.GroupBox()
+        Me.TCatequistaNome = New System.Windows.Forms.TextBox()
+        Me.tAnoFim = New System.Windows.Forms.TextBox()
+        Me.Label6 = New System.Windows.Forms.Label()
+        Me.TAnoINI = New System.Windows.Forms.TextBox()
+        Me.Label5 = New System.Windows.Forms.Label()
+        Me.tDescricao = New System.Windows.Forms.TextBox()
+        Me.Label4 = New System.Windows.Forms.Label()
+        Me.tData = New System.Windows.Forms.MaskedTextBox()
+        Me.tcurso = New System.Windows.Forms.TextBox()
+        Me.tCodigo = New System.Windows.Forms.TextBox()
         Me.Label3 = New System.Windows.Forms.Label()
         Me.Label2 = New System.Windows.Forms.Label()
         Me.Label1 = New System.Windows.Forms.Label()
         Me.TabPage2 = New System.Windows.Forms.TabPage()
         Me.DataGridView1 = New System.Windows.Forms.DataGridView()
-        Me.TextBox3 = New System.Windows.Forms.TextBox()
-        Me.Label4 = New System.Windows.Forms.Label()
-        Me.TextBox4 = New System.Windows.Forms.TextBox()
-        Me.Label5 = New System.Windows.Forms.Label()
-        Me.TextBox5 = New System.Windows.Forms.TextBox()
-        Me.Label6 = New System.Windows.Forms.Label()
-        Me.GroupBox2 = New System.Windows.Forms.GroupBox()
-        Me.TextBox6 = New System.Windows.Forms.TextBox()
         Me.TabPage3 = New System.Windows.Forms.TabPage()
         Me.TabControl1.SuspendLayout()
         Me.TabPage1.SuspendLayout()
         Me.GroupBox1.SuspendLayout()
+        Me.GroupBox2.SuspendLayout()
         Me.TabPage2.SuspendLayout()
         CType(Me.DataGridView1, System.ComponentModel.ISupportInitialize).BeginInit()
-        Me.GroupBox2.SuspendLayout()
         Me.SuspendLayout()
         '
         'TabControl1
@@ -70,8 +70,8 @@ Partial Class FormTurma
         '
         Me.TabPage1.Controls.Add(Me.BtnCancelar)
         Me.TabPage1.Controls.Add(Me.BtnConfirmar)
-        Me.TabPage1.Controls.Add(Me.BtnExcluir)
-        Me.TabPage1.Controls.Add(Me.BntIncluir)
+        Me.TabPage1.Controls.Add(Me.btnExluir)
+        Me.TabPage1.Controls.Add(Me.BtNIncluir)
         Me.TabPage1.Controls.Add(Me.GroupBox1)
         Me.TabPage1.Location = New System.Drawing.Point(4, 22)
         Me.TabPage1.Name = "TabPage1"
@@ -99,37 +99,37 @@ Partial Class FormTurma
         Me.BtnConfirmar.Text = "Confirmar"
         Me.BtnConfirmar.UseVisualStyleBackColor = True
         '
-        'BtnExcluir
+        'btnExluir
         '
-        Me.BtnExcluir.Location = New System.Drawing.Point(162, 241)
-        Me.BtnExcluir.Name = "BtnExcluir"
-        Me.BtnExcluir.Size = New System.Drawing.Size(75, 23)
-        Me.BtnExcluir.TabIndex = 2
-        Me.BtnExcluir.Text = "Excluir"
-        Me.BtnExcluir.UseVisualStyleBackColor = True
+        Me.btnExluir.Location = New System.Drawing.Point(162, 241)
+        Me.btnExluir.Name = "btnExluir"
+        Me.btnExluir.Size = New System.Drawing.Size(75, 23)
+        Me.btnExluir.TabIndex = 2
+        Me.btnExluir.Text = "Excluir"
+        Me.btnExluir.UseVisualStyleBackColor = True
         '
-        'BntIncluir
+        'BtNIncluir
         '
-        Me.BntIncluir.Location = New System.Drawing.Point(68, 241)
-        Me.BntIncluir.Name = "BntIncluir"
-        Me.BntIncluir.Size = New System.Drawing.Size(75, 23)
-        Me.BntIncluir.TabIndex = 1
-        Me.BntIncluir.Text = "Incluir"
-        Me.BntIncluir.UseVisualStyleBackColor = True
+        Me.BtNIncluir.Location = New System.Drawing.Point(68, 241)
+        Me.BtNIncluir.Name = "BtNIncluir"
+        Me.BtNIncluir.Size = New System.Drawing.Size(75, 23)
+        Me.BtNIncluir.TabIndex = 1
+        Me.BtNIncluir.Text = "Incluir"
+        Me.BtNIncluir.UseVisualStyleBackColor = True
         '
         'GroupBox1
         '
         Me.GroupBox1.BackColor = System.Drawing.Color.DimGray
         Me.GroupBox1.Controls.Add(Me.GroupBox2)
-        Me.GroupBox1.Controls.Add(Me.TextBox5)
+        Me.GroupBox1.Controls.Add(Me.tAnoFim)
         Me.GroupBox1.Controls.Add(Me.Label6)
-        Me.GroupBox1.Controls.Add(Me.TextBox4)
+        Me.GroupBox1.Controls.Add(Me.TAnoINI)
         Me.GroupBox1.Controls.Add(Me.Label5)
-        Me.GroupBox1.Controls.Add(Me.TextBox3)
+        Me.GroupBox1.Controls.Add(Me.tDescricao)
         Me.GroupBox1.Controls.Add(Me.Label4)
-        Me.GroupBox1.Controls.Add(Me.MaskedTextBox1)
-        Me.GroupBox1.Controls.Add(Me.TextBox2)
-        Me.GroupBox1.Controls.Add(Me.TextBox1)
+        Me.GroupBox1.Controls.Add(Me.tData)
+        Me.GroupBox1.Controls.Add(Me.tcurso)
+        Me.GroupBox1.Controls.Add(Me.tCodigo)
         Me.GroupBox1.Controls.Add(Me.Label3)
         Me.GroupBox1.Controls.Add(Me.Label2)
         Me.GroupBox1.Controls.Add(Me.Label1)
@@ -139,26 +139,91 @@ Partial Class FormTurma
         Me.GroupBox1.TabIndex = 0
         Me.GroupBox1.TabStop = False
         '
-        'MaskedTextBox1
+        'GroupBox2
         '
-        Me.MaskedTextBox1.Location = New System.Drawing.Point(302, 13)
-        Me.MaskedTextBox1.Name = "MaskedTextBox1"
-        Me.MaskedTextBox1.Size = New System.Drawing.Size(86, 20)
-        Me.MaskedTextBox1.TabIndex = 19
+        Me.GroupBox2.Controls.Add(Me.TCatequistaNome)
+        Me.GroupBox2.Location = New System.Drawing.Point(93, 135)
+        Me.GroupBox2.Name = "GroupBox2"
+        Me.GroupBox2.Size = New System.Drawing.Size(408, 58)
+        Me.GroupBox2.TabIndex = 26
+        Me.GroupBox2.TabStop = False
+        Me.GroupBox2.Text = "Catequista"
         '
-        'TextBox2
+        'TCatequistaNome
         '
-        Me.TextBox2.Location = New System.Drawing.Point(93, 43)
-        Me.TextBox2.Name = "TextBox2"
-        Me.TextBox2.Size = New System.Drawing.Size(408, 20)
-        Me.TextBox2.TabIndex = 14
+        Me.TCatequistaNome.Location = New System.Drawing.Point(18, 21)
+        Me.TCatequistaNome.Name = "TCatequistaNome"
+        Me.TCatequistaNome.Size = New System.Drawing.Size(368, 20)
+        Me.TCatequistaNome.TabIndex = 22
         '
-        'TextBox1
+        'tAnoFim
         '
-        Me.TextBox1.Location = New System.Drawing.Point(93, 13)
-        Me.TextBox1.Name = "TextBox1"
-        Me.TextBox1.Size = New System.Drawing.Size(86, 20)
-        Me.TextBox1.TabIndex = 13
+        Me.tAnoFim.Location = New System.Drawing.Point(302, 99)
+        Me.tAnoFim.Name = "tAnoFim"
+        Me.tAnoFim.Size = New System.Drawing.Size(86, 20)
+        Me.tAnoFim.TabIndex = 25
+        '
+        'Label6
+        '
+        Me.Label6.AutoSize = True
+        Me.Label6.Location = New System.Drawing.Point(241, 106)
+        Me.Label6.Name = "Label6"
+        Me.Label6.Size = New System.Drawing.Size(53, 13)
+        Me.Label6.TabIndex = 24
+        Me.Label6.Text = "Ano / Fim"
+        '
+        'TAnoINI
+        '
+        Me.TAnoINI.Location = New System.Drawing.Point(93, 99)
+        Me.TAnoINI.Name = "TAnoINI"
+        Me.TAnoINI.Size = New System.Drawing.Size(86, 20)
+        Me.TAnoINI.TabIndex = 23
+        '
+        'Label5
+        '
+        Me.Label5.AutoSize = True
+        Me.Label5.Location = New System.Drawing.Point(32, 106)
+        Me.Label5.Name = "Label5"
+        Me.Label5.Size = New System.Drawing.Size(62, 13)
+        Me.Label5.TabIndex = 22
+        Me.Label5.Text = "Ano / Inicio"
+        '
+        'tDescricao
+        '
+        Me.tDescricao.Location = New System.Drawing.Point(93, 73)
+        Me.tDescricao.Name = "tDescricao"
+        Me.tDescricao.Size = New System.Drawing.Size(408, 20)
+        Me.tDescricao.TabIndex = 21
+        '
+        'Label4
+        '
+        Me.Label4.AutoSize = True
+        Me.Label4.Location = New System.Drawing.Point(32, 80)
+        Me.Label4.Name = "Label4"
+        Me.Label4.Size = New System.Drawing.Size(55, 13)
+        Me.Label4.TabIndex = 20
+        Me.Label4.Text = "Descrição"
+        '
+        'tData
+        '
+        Me.tData.Location = New System.Drawing.Point(302, 13)
+        Me.tData.Name = "tData"
+        Me.tData.Size = New System.Drawing.Size(86, 20)
+        Me.tData.TabIndex = 19
+        '
+        'tcurso
+        '
+        Me.tcurso.Location = New System.Drawing.Point(93, 43)
+        Me.tcurso.Name = "tcurso"
+        Me.tcurso.Size = New System.Drawing.Size(408, 20)
+        Me.tcurso.TabIndex = 14
+        '
+        'tCodigo
+        '
+        Me.tCodigo.Location = New System.Drawing.Point(93, 13)
+        Me.tCodigo.Name = "tCodigo"
+        Me.tCodigo.Size = New System.Drawing.Size(86, 20)
+        Me.tCodigo.TabIndex = 13
         '
         'Label3
         '
@@ -206,71 +271,6 @@ Partial Class FormTurma
         Me.DataGridView1.Size = New System.Drawing.Size(681, 376)
         Me.DataGridView1.TabIndex = 0
         '
-        'TextBox3
-        '
-        Me.TextBox3.Location = New System.Drawing.Point(93, 73)
-        Me.TextBox3.Name = "TextBox3"
-        Me.TextBox3.Size = New System.Drawing.Size(408, 20)
-        Me.TextBox3.TabIndex = 21
-        '
-        'Label4
-        '
-        Me.Label4.AutoSize = True
-        Me.Label4.Location = New System.Drawing.Point(32, 80)
-        Me.Label4.Name = "Label4"
-        Me.Label4.Size = New System.Drawing.Size(55, 13)
-        Me.Label4.TabIndex = 20
-        Me.Label4.Text = "Descrição"
-        '
-        'TextBox4
-        '
-        Me.TextBox4.Location = New System.Drawing.Point(93, 99)
-        Me.TextBox4.Name = "TextBox4"
-        Me.TextBox4.Size = New System.Drawing.Size(86, 20)
-        Me.TextBox4.TabIndex = 23
-        '
-        'Label5
-        '
-        Me.Label5.AutoSize = True
-        Me.Label5.Location = New System.Drawing.Point(32, 106)
-        Me.Label5.Name = "Label5"
-        Me.Label5.Size = New System.Drawing.Size(62, 13)
-        Me.Label5.TabIndex = 22
-        Me.Label5.Text = "Ano / Inicio"
-        '
-        'TextBox5
-        '
-        Me.TextBox5.Location = New System.Drawing.Point(302, 99)
-        Me.TextBox5.Name = "TextBox5"
-        Me.TextBox5.Size = New System.Drawing.Size(86, 20)
-        Me.TextBox5.TabIndex = 25
-        '
-        'Label6
-        '
-        Me.Label6.AutoSize = True
-        Me.Label6.Location = New System.Drawing.Point(241, 106)
-        Me.Label6.Name = "Label6"
-        Me.Label6.Size = New System.Drawing.Size(53, 13)
-        Me.Label6.TabIndex = 24
-        Me.Label6.Text = "Ano / Fim"
-        '
-        'GroupBox2
-        '
-        Me.GroupBox2.Controls.Add(Me.TextBox6)
-        Me.GroupBox2.Location = New System.Drawing.Point(93, 135)
-        Me.GroupBox2.Name = "GroupBox2"
-        Me.GroupBox2.Size = New System.Drawing.Size(408, 58)
-        Me.GroupBox2.TabIndex = 26
-        Me.GroupBox2.TabStop = False
-        Me.GroupBox2.Text = "Catequista"
-        '
-        'TextBox6
-        '
-        Me.TextBox6.Location = New System.Drawing.Point(18, 21)
-        Me.TextBox6.Name = "TextBox6"
-        Me.TextBox6.Size = New System.Drawing.Size(368, 20)
-        Me.TextBox6.TabIndex = 22
-        '
         'TabPage3
         '
         Me.TabPage3.Location = New System.Drawing.Point(4, 22)
@@ -294,10 +294,10 @@ Partial Class FormTurma
         Me.TabPage1.ResumeLayout(False)
         Me.GroupBox1.ResumeLayout(False)
         Me.GroupBox1.PerformLayout()
-        Me.TabPage2.ResumeLayout(False)
-        CType(Me.DataGridView1, System.ComponentModel.ISupportInitialize).EndInit()
         Me.GroupBox2.ResumeLayout(False)
         Me.GroupBox2.PerformLayout()
+        Me.TabPage2.ResumeLayout(False)
+        CType(Me.DataGridView1, System.ComponentModel.ISupportInitialize).EndInit()
         Me.ResumeLayout(False)
 
     End Sub
@@ -305,20 +305,20 @@ Partial Class FormTurma
     Friend WithEvents TabPage1 As System.Windows.Forms.TabPage
     Friend WithEvents BtnCancelar As System.Windows.Forms.Button
     Friend WithEvents BtnConfirmar As System.Windows.Forms.Button
-    Friend WithEvents BtnExcluir As System.Windows.Forms.Button
-    Friend WithEvents BntIncluir As System.Windows.Forms.Button
+    Friend WithEvents btnExluir As System.Windows.Forms.Button
+    Friend WithEvents BtNIncluir As System.Windows.Forms.Button
     Friend WithEvents GroupBox1 As System.Windows.Forms.GroupBox
     Friend WithEvents GroupBox2 As System.Windows.Forms.GroupBox
-    Friend WithEvents TextBox6 As System.Windows.Forms.TextBox
-    Friend WithEvents TextBox5 As System.Windows.Forms.TextBox
+    Friend WithEvents TCatequistaNome As System.Windows.Forms.TextBox
+    Friend WithEvents tAnoFim As System.Windows.Forms.TextBox
     Friend WithEvents Label6 As System.Windows.Forms.Label
-    Friend WithEvents TextBox4 As System.Windows.Forms.TextBox
+    Friend WithEvents TAnoINI As System.Windows.Forms.TextBox
     Friend WithEvents Label5 As System.Windows.Forms.Label
-    Friend WithEvents TextBox3 As System.Windows.Forms.TextBox
+    Friend WithEvents tDescricao As System.Windows.Forms.TextBox
     Friend WithEvents Label4 As System.Windows.Forms.Label
-    Friend WithEvents MaskedTextBox1 As System.Windows.Forms.MaskedTextBox
-    Friend WithEvents TextBox2 As System.Windows.Forms.TextBox
-    Friend WithEvents TextBox1 As System.Windows.Forms.TextBox
+    Friend WithEvents tData As System.Windows.Forms.MaskedTextBox
+    Friend WithEvents tcurso As System.Windows.Forms.TextBox
+    Friend WithEvents tCodigo As System.Windows.Forms.TextBox
     Friend WithEvents Label3 As System.Windows.Forms.Label
     Friend WithEvents Label2 As System.Windows.Forms.Label
     Friend WithEvents Label1 As System.Windows.Forms.Label
