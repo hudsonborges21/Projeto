@@ -96,6 +96,12 @@ Public Class FormTurma
                     tcurso.Text = obj.Curso
                     tAnoFim.Text = obj.AnoFim
                     TAnoINI.Text = obj.AnoIni
+                    tDescricao.Text = obj.Nome
+
+                    Dim obj2 As Catequista = New Catequista
+                    If obj2.Consultar(obj.CatequistaCodigo) Then
+                        TCatequistaNome.Text = obj2.Nome
+                    End If
                     Habilita()
                 End If
             Else

@@ -105,7 +105,32 @@ Public Class TurmaDAO
         End Using
     End Function
 
+    Public Function ConsultarNome(ByVal Nome As String) As List(Of Turma)
+        Dim dataReader As SqlDataReader
+        Dim lista = New List(Of Turma)
 
+        Using conexao As SqlConnection = New Conexao().GetConnection()
+            'abrindo conexao 
+            conexao.Open()
+            Dim sql As String
+            sql = ObterSqlSelectTodosCampo() & " where Nome like '%" & Nome & "%'"
+            Using comando = New SqlCommand(sql, conexao)
+                dataReader = comando.ExecuteReader
+                If dataReader.HasRows Then
+                    While dataReader.Read()
+                        Dim turma As New Turma
+                        PopularObjeto(dataReader, turma)
+                        lista.Add(turma) ' add o objeto
+                    End While
+                    conexao.Close()
+                    Return lista
+                Else
+                    conexao.Close()
+                    Return Nothing
+                End If
+            End Using
+        End Using
+    End Function
     'CONSULTAR 
 
     Public Function Consultar(ByVal codigolinha As Integer, ByRef turma As Turma) As Boolean
@@ -127,6 +152,26 @@ Public Class TurmaDAO
             End Using
         End Using
     End Function
+
+    'Public Function ConsultarNome(ByVal Nome As String, ByRef turma As Turma) As Boolean
+    '    Dim dataReader As SqlDataReader
+
+    '    Using conexao As SqlConnection = New Conexao().GetConnection()
+    '        'abrindo conexao 
+    '        conexao.Open()
+    '        Dim sql As String
+    '        sql = ObterSqlSelectTodosCampo() & " where Nome like '%" & Nome & "%'"
+    '        Using comando = New SqlCommand(sql, conexao)
+    '            dataReader = comando.ExecuteReader
+    '            If dataReader.HasRows Then
+    '                dataReader.Read()
+    '                PopularObjeto(dataReader, turma)
+    '                conexao.Close()
+    '                Return True
+    '            End If
+    '        End Using
+    '    End Using
+    'End Function
 
     'ALTERAR  - UPDATE
     Public Sub Alterar(ByVal turma As Turma)

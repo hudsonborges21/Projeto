@@ -295,4 +295,10 @@ Public Class FormAluno
     Private Sub RadioButton2_Click(sender As Object, e As EventArgs) Handles RadioButton2.Click
         Desabilita()
     End Sub
+
+    Private Sub BtnMatricula_Click(sender As Object, e As EventArgs) Handles BtnMatricula.Click
+        FormMatricula.tCodigo.Text = tCodigo.Text
+        FormMatricula.tNome.Text = TNome.Text
+        FormMatricula.ShowDialog()
+    End Sub
 End Class

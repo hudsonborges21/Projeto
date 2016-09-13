@@ -106,6 +106,13 @@
     Public Function Consultar(ByVal pCod As String)
         Return New TurmaDAO().Consultar(pCod, Me)
     End Function
+
+    'Public Function ConsultarNome(ByVal Nome As String)
+    '    Return New TurmaDAO().ConsultarNome(Nome, Me)
+    'End Function
+    Public Function ConsultarNome() As List(Of Turma)
+        Return New TurmaDAO().ConsultarNome(Me.vNome)
+    End Function
 #End Region
 
 End Class

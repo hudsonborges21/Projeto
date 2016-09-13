@@ -24,16 +24,16 @@ Partial Class FormMatricula
     Private Sub InitializeComponent()
         Me.GroupBox3 = New System.Windows.Forms.GroupBox()
         Me.Label2 = New System.Windows.Forms.Label()
-        Me.TextBox1 = New System.Windows.Forms.TextBox()
+        Me.TStatus = New System.Windows.Forms.TextBox()
         Me.TDataCad = New System.Windows.Forms.MaskedTextBox()
         Me.Label3 = New System.Windows.Forms.Label()
-        Me.TextBox4 = New System.Windows.Forms.TextBox()
-        Me.TextBox5 = New System.Windows.Forms.TextBox()
-        Me.TextBox6 = New System.Windows.Forms.TextBox()
-        Me.TextBox7 = New System.Windows.Forms.TextBox()
+        Me.TTurmaDescricao = New System.Windows.Forms.TextBox()
+        Me.TturmaCodigo = New System.Windows.Forms.TextBox()
+        Me.tNome = New System.Windows.Forms.TextBox()
+        Me.tCodigo = New System.Windows.Forms.TextBox()
         Me.GroupBox4 = New System.Windows.Forms.GroupBox()
         Me.Label1 = New System.Windows.Forms.Label()
-        Me.TextBox8 = New System.Windows.Forms.TextBox()
+        Me.tmatricula = New System.Windows.Forms.TextBox()
         Me.BtnCancelar = New System.Windows.Forms.Button()
         Me.btnConfirmar = New System.Windows.Forms.Button()
         Me.GroupBox3.SuspendLayout()
@@ -44,11 +44,11 @@ Partial Class FormMatricula
         '
         Me.GroupBox3.BackColor = System.Drawing.SystemColors.AppWorkspace
         Me.GroupBox3.Controls.Add(Me.Label2)
-        Me.GroupBox3.Controls.Add(Me.TextBox1)
+        Me.GroupBox3.Controls.Add(Me.TStatus)
         Me.GroupBox3.Controls.Add(Me.TDataCad)
         Me.GroupBox3.Controls.Add(Me.Label3)
-        Me.GroupBox3.Controls.Add(Me.TextBox4)
-        Me.GroupBox3.Controls.Add(Me.TextBox5)
+        Me.GroupBox3.Controls.Add(Me.TTurmaDescricao)
+        Me.GroupBox3.Controls.Add(Me.TturmaCodigo)
         Me.GroupBox3.Location = New System.Drawing.Point(6, 104)
         Me.GroupBox3.Name = "GroupBox3"
         Me.GroupBox3.Size = New System.Drawing.Size(388, 121)
@@ -65,12 +65,12 @@ Partial Class FormMatricula
         Me.Label2.TabIndex = 23
         Me.Label2.Text = "Status"
         '
-        'TextBox1
+        'TStatus
         '
-        Me.TextBox1.Location = New System.Drawing.Point(97, 78)
-        Me.TextBox1.Name = "TextBox1"
-        Me.TextBox1.Size = New System.Drawing.Size(131, 20)
-        Me.TextBox1.TabIndex = 22
+        Me.TStatus.Location = New System.Drawing.Point(97, 78)
+        Me.TStatus.Name = "TStatus"
+        Me.TStatus.Size = New System.Drawing.Size(131, 20)
+        Me.TStatus.TabIndex = 22
         '
         'TDataCad
         '
@@ -90,41 +90,41 @@ Partial Class FormMatricula
         Me.Label3.TabIndex = 20
         Me.Label3.Text = "Data Matrícula"
         '
-        'TextBox4
+        'TTurmaDescricao
         '
-        Me.TextBox4.Location = New System.Drawing.Point(72, 17)
-        Me.TextBox4.Name = "TextBox4"
-        Me.TextBox4.Size = New System.Drawing.Size(287, 20)
-        Me.TextBox4.TabIndex = 4
+        Me.TTurmaDescricao.Location = New System.Drawing.Point(72, 17)
+        Me.TTurmaDescricao.Name = "TTurmaDescricao"
+        Me.TTurmaDescricao.Size = New System.Drawing.Size(287, 20)
+        Me.TTurmaDescricao.TabIndex = 4
         '
-        'TextBox5
+        'TturmaCodigo
         '
-        Me.TextBox5.Location = New System.Drawing.Point(9, 17)
-        Me.TextBox5.Name = "TextBox5"
-        Me.TextBox5.Size = New System.Drawing.Size(57, 20)
-        Me.TextBox5.TabIndex = 3
+        Me.TturmaCodigo.Location = New System.Drawing.Point(9, 17)
+        Me.TturmaCodigo.Name = "TturmaCodigo"
+        Me.TturmaCodigo.Size = New System.Drawing.Size(57, 20)
+        Me.TturmaCodigo.TabIndex = 3
         '
-        'TextBox6
+        'tNome
         '
-        Me.TextBox6.Location = New System.Drawing.Point(72, 17)
-        Me.TextBox6.Name = "TextBox6"
-        Me.TextBox6.Size = New System.Drawing.Size(287, 20)
-        Me.TextBox6.TabIndex = 4
+        Me.tNome.Location = New System.Drawing.Point(72, 17)
+        Me.tNome.Name = "tNome"
+        Me.tNome.Size = New System.Drawing.Size(287, 20)
+        Me.tNome.TabIndex = 4
         '
-        'TextBox7
+        'tCodigo
         '
-        Me.TextBox7.Location = New System.Drawing.Point(9, 17)
-        Me.TextBox7.Name = "TextBox7"
-        Me.TextBox7.Size = New System.Drawing.Size(57, 20)
-        Me.TextBox7.TabIndex = 3
+        Me.tCodigo.Location = New System.Drawing.Point(9, 17)
+        Me.tCodigo.Name = "tCodigo"
+        Me.tCodigo.Size = New System.Drawing.Size(57, 20)
+        Me.tCodigo.TabIndex = 3
         '
         'GroupBox4
         '
-        Me.GroupBox4.BackColor = System.Drawing.SystemColors.AppWorkspace
+        Me.GroupBox4.BackColor = System.Drawing.SystemColors.Info
         Me.GroupBox4.Controls.Add(Me.Label1)
-        Me.GroupBox4.Controls.Add(Me.TextBox8)
-        Me.GroupBox4.Controls.Add(Me.TextBox6)
-        Me.GroupBox4.Controls.Add(Me.TextBox7)
+        Me.GroupBox4.Controls.Add(Me.tmatricula)
+        Me.GroupBox4.Controls.Add(Me.tNome)
+        Me.GroupBox4.Controls.Add(Me.tCodigo)
         Me.GroupBox4.Location = New System.Drawing.Point(6, 12)
         Me.GroupBox4.Name = "GroupBox4"
         Me.GroupBox4.Size = New System.Drawing.Size(388, 86)
@@ -141,12 +141,12 @@ Partial Class FormMatricula
         Me.Label1.TabIndex = 6
         Me.Label1.Text = "Nº Matrícula:"
         '
-        'TextBox8
+        'tmatricula
         '
-        Me.TextBox8.Location = New System.Drawing.Point(88, 56)
-        Me.TextBox8.Name = "TextBox8"
-        Me.TextBox8.Size = New System.Drawing.Size(131, 20)
-        Me.TextBox8.TabIndex = 5
+        Me.tmatricula.Location = New System.Drawing.Point(88, 56)
+        Me.tmatricula.Name = "tmatricula"
+        Me.tmatricula.Size = New System.Drawing.Size(131, 20)
+        Me.tmatricula.TabIndex = 5
         '
         'BtnCancelar
         '
@@ -178,6 +178,7 @@ Partial Class FormMatricula
         Me.Controls.Add(Me.GroupBox4)
         Me.Controls.Add(Me.GroupBox3)
         Me.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle
+        Me.KeyPreview = True
         Me.Name = "FormMatricula"
         Me.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent
         Me.Text = "Matricula"
@@ -189,17 +190,17 @@ Partial Class FormMatricula
 
     End Sub
     Friend WithEvents GroupBox3 As System.Windows.Forms.GroupBox
-    Friend WithEvents TextBox4 As System.Windows.Forms.TextBox
-    Friend WithEvents TextBox5 As System.Windows.Forms.TextBox
-    Friend WithEvents TextBox6 As System.Windows.Forms.TextBox
-    Friend WithEvents TextBox7 As System.Windows.Forms.TextBox
+    Friend WithEvents TTurmaDescricao As System.Windows.Forms.TextBox
+    Friend WithEvents TturmaCodigo As System.Windows.Forms.TextBox
+    Friend WithEvents tNome As System.Windows.Forms.TextBox
+    Friend WithEvents tCodigo As System.Windows.Forms.TextBox
     Friend WithEvents GroupBox4 As System.Windows.Forms.GroupBox
     Friend WithEvents Label1 As System.Windows.Forms.Label
-    Friend WithEvents TextBox8 As System.Windows.Forms.TextBox
+    Friend WithEvents tmatricula As System.Windows.Forms.TextBox
     Friend WithEvents TDataCad As System.Windows.Forms.MaskedTextBox
     Friend WithEvents Label3 As System.Windows.Forms.Label
     Friend WithEvents Label2 As System.Windows.Forms.Label
-    Friend WithEvents TextBox1 As System.Windows.Forms.TextBox
+    Friend WithEvents TStatus As System.Windows.Forms.TextBox
     Friend WithEvents BtnCancelar As System.Windows.Forms.Button
     Friend WithEvents btnConfirmar As System.Windows.Forms.Button
 End Class
