@@ -44,12 +44,14 @@ Partial Class FormTurmaConsulta
         Me.DataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize
         Me.DataGridView1.Location = New System.Drawing.Point(2, 1)
         Me.DataGridView1.Name = "DataGridView1"
+        Me.DataGridView1.ReadOnly = True
+        Me.DataGridView1.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect
         Me.DataGridView1.Size = New System.Drawing.Size(461, 263)
         Me.DataGridView1.TabIndex = 1
         '
         'TPesquisa
         '
-        Me.TPesquisa.Location = New System.Drawing.Point(10, 19)
+        Me.TPesquisa.Location = New System.Drawing.Point(10, 20)
         Me.TPesquisa.Name = "TPesquisa"
         Me.TPesquisa.Size = New System.Drawing.Size(445, 20)
         Me.TPesquisa.TabIndex = 0
@@ -61,6 +63,7 @@ Partial Class FormTurmaConsulta
         Me.ClientSize = New System.Drawing.Size(466, 323)
         Me.Controls.Add(Me.DataGridView1)
         Me.Controls.Add(Me.GroupBox1)
+        Me.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedToolWindow
         Me.Name = "FormTurmaConsulta"
         Me.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent

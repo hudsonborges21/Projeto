@@ -67,6 +67,10 @@ Public Class FormAluno
 
         'DataGridView1.DataSource = obj.Todos()
         'formatarGrid()
+        If tCodigo.Text <> "" Then
+            BtnMatricula.Enabled = True
+        End If
+        Habilita()
     End Sub
 
     Private Sub TabControl1_SelectedIndexChanged(sender As Object, e As EventArgs) Handles TabControl1.SelectedIndexChanged
@@ -96,6 +100,7 @@ Public Class FormAluno
                     End If
 
                     Habilita()
+                    BtnMatricula.Enabled = True
                 End If
             Else
                 formatarGrid()
@@ -297,8 +302,12 @@ Public Class FormAluno
     End Sub
 
     Private Sub BtnMatricula_Click(sender As Object, e As EventArgs) Handles BtnMatricula.Click
-        FormMatricula.tCodigo.Text = tCodigo.Text
-        FormMatricula.tNome.Text = TNome.Text
-        FormMatricula.ShowDialog()
+        If tCodigo.Text <> "" Then
+            FormMatricula.tCodigo.Text = tCodigo.Text
+            FormMatricula.tNome.Text = TNome.Text
+            FormMatricula.ShowDialog()
+        Else
+            MsgBox("Incluir o Aluno antes de Matricular", MsgBoxStyle.Critical, "")
+        End If
     End Sub
 End Class

@@ -29,6 +29,9 @@ Partial Class FormAluno
         Me.btnExluir = New System.Windows.Forms.Button()
         Me.btnIncluir = New System.Windows.Forms.Button()
         Me.GroupBox1 = New System.Windows.Forms.GroupBox()
+        Me.BtnMatricula = New System.Windows.Forms.Button()
+        Me.GroupBox4 = New System.Windows.Forms.GroupBox()
+        Me.DataGridView2 = New System.Windows.Forms.DataGridView()
         Me.TDataNasc = New System.Windows.Forms.MaskedTextBox()
         Me.tMae = New System.Windows.Forms.TextBox()
         Me.tPai = New System.Windows.Forms.TextBox()
@@ -63,20 +66,15 @@ Partial Class FormAluno
         Me.BtnConsulta = New System.Windows.Forms.Button()
         Me.txtConsulta = New System.Windows.Forms.TextBox()
         Me.DataGridView1 = New System.Windows.Forms.DataGridView()
-        Me.TxtMatricula = New System.Windows.Forms.TextBox()
-        Me.Label13 = New System.Windows.Forms.Label()
-        Me.GroupBox4 = New System.Windows.Forms.GroupBox()
-        Me.DataGridView2 = New System.Windows.Forms.DataGridView()
-        Me.BtnMatricula = New System.Windows.Forms.Button()
         Me.TabControl1.SuspendLayout()
         Me.TabPage1.SuspendLayout()
         Me.GroupBox1.SuspendLayout()
+        Me.GroupBox4.SuspendLayout()
+        CType(Me.DataGridView2, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.GroupBox2.SuspendLayout()
         Me.TabPage2.SuspendLayout()
         Me.GroupBox3.SuspendLayout()
         CType(Me.DataGridView1, System.ComponentModel.ISupportInitialize).BeginInit()
-        Me.GroupBox4.SuspendLayout()
-        CType(Me.DataGridView2, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.SuspendLayout()
         '
         'TabControl1
@@ -150,8 +148,6 @@ Partial Class FormAluno
         Me.GroupBox1.BackColor = System.Drawing.Color.Transparent
         Me.GroupBox1.Controls.Add(Me.BtnMatricula)
         Me.GroupBox1.Controls.Add(Me.GroupBox4)
-        Me.GroupBox1.Controls.Add(Me.TxtMatricula)
-        Me.GroupBox1.Controls.Add(Me.Label13)
         Me.GroupBox1.Controls.Add(Me.TDataNasc)
         Me.GroupBox1.Controls.Add(Me.tMae)
         Me.GroupBox1.Controls.Add(Me.tPai)
@@ -182,6 +178,34 @@ Partial Class FormAluno
         Me.GroupBox1.Size = New System.Drawing.Size(668, 408)
         Me.GroupBox1.TabIndex = 0
         Me.GroupBox1.TabStop = False
+        '
+        'BtnMatricula
+        '
+        Me.BtnMatricula.Enabled = False
+        Me.BtnMatricula.Location = New System.Drawing.Point(307, 280)
+        Me.BtnMatricula.Name = "BtnMatricula"
+        Me.BtnMatricula.Size = New System.Drawing.Size(75, 23)
+        Me.BtnMatricula.TabIndex = 29
+        Me.BtnMatricula.Text = "Matrícula"
+        Me.BtnMatricula.UseVisualStyleBackColor = True
+        '
+        'GroupBox4
+        '
+        Me.GroupBox4.Controls.Add(Me.DataGridView2)
+        Me.GroupBox4.Location = New System.Drawing.Point(17, 307)
+        Me.GroupBox4.Name = "GroupBox4"
+        Me.GroupBox4.Size = New System.Drawing.Size(651, 100)
+        Me.GroupBox4.TabIndex = 28
+        Me.GroupBox4.TabStop = False
+        Me.GroupBox4.Text = "Turma"
+        '
+        'DataGridView2
+        '
+        Me.DataGridView2.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize
+        Me.DataGridView2.Location = New System.Drawing.Point(12, 14)
+        Me.DataGridView2.Name = "DataGridView2"
+        Me.DataGridView2.Size = New System.Drawing.Size(633, 80)
+        Me.DataGridView2.TabIndex = 0
         '
         'TDataNasc
         '
@@ -485,50 +509,6 @@ Partial Class FormAluno
         Me.DataGridView1.Size = New System.Drawing.Size(681, 376)
         Me.DataGridView1.TabIndex = 0
         '
-        'TxtMatricula
-        '
-        Me.TxtMatricula.Enabled = False
-        Me.TxtMatricula.Location = New System.Drawing.Point(61, 17)
-        Me.TxtMatricula.Name = "TxtMatricula"
-        Me.TxtMatricula.Size = New System.Drawing.Size(86, 20)
-        Me.TxtMatricula.TabIndex = 27
-        '
-        'Label13
-        '
-        Me.Label13.AutoSize = True
-        Me.Label13.Location = New System.Drawing.Point(7, 24)
-        Me.Label13.Name = "Label13"
-        Me.Label13.Size = New System.Drawing.Size(50, 13)
-        Me.Label13.TabIndex = 26
-        Me.Label13.Text = "Matricula"
-        '
-        'GroupBox4
-        '
-        Me.GroupBox4.Controls.Add(Me.DataGridView2)
-        Me.GroupBox4.Location = New System.Drawing.Point(17, 307)
-        Me.GroupBox4.Name = "GroupBox4"
-        Me.GroupBox4.Size = New System.Drawing.Size(651, 100)
-        Me.GroupBox4.TabIndex = 28
-        Me.GroupBox4.TabStop = False
-        Me.GroupBox4.Text = "Turma"
-        '
-        'DataGridView2
-        '
-        Me.DataGridView2.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize
-        Me.DataGridView2.Location = New System.Drawing.Point(12, 14)
-        Me.DataGridView2.Name = "DataGridView2"
-        Me.DataGridView2.Size = New System.Drawing.Size(633, 80)
-        Me.DataGridView2.TabIndex = 0
-        '
-        'BtnMatricula
-        '
-        Me.BtnMatricula.Location = New System.Drawing.Point(307, 280)
-        Me.BtnMatricula.Name = "BtnMatricula"
-        Me.BtnMatricula.Size = New System.Drawing.Size(75, 23)
-        Me.BtnMatricula.TabIndex = 29
-        Me.BtnMatricula.Text = "Matrícula"
-        Me.BtnMatricula.UseVisualStyleBackColor = True
-        '
         'FormAluno
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
@@ -542,14 +522,14 @@ Partial Class FormAluno
         Me.TabPage1.ResumeLayout(False)
         Me.GroupBox1.ResumeLayout(False)
         Me.GroupBox1.PerformLayout()
+        Me.GroupBox4.ResumeLayout(False)
+        CType(Me.DataGridView2, System.ComponentModel.ISupportInitialize).EndInit()
         Me.GroupBox2.ResumeLayout(False)
         Me.GroupBox2.PerformLayout()
         Me.TabPage2.ResumeLayout(False)
         Me.GroupBox3.ResumeLayout(False)
         Me.GroupBox3.PerformLayout()
         CType(Me.DataGridView1, System.ComponentModel.ISupportInitialize).EndInit()
-        Me.GroupBox4.ResumeLayout(False)
-        CType(Me.DataGridView2, System.ComponentModel.ISupportInitialize).EndInit()
         Me.ResumeLayout(False)
 
     End Sub
@@ -594,8 +574,6 @@ Partial Class FormAluno
     Friend WithEvents txtConsulta As System.Windows.Forms.TextBox
     Friend WithEvents Button1 As System.Windows.Forms.Button
     Friend WithEvents tConsultaCodigo As System.Windows.Forms.TextBox
-    Friend WithEvents TxtMatricula As System.Windows.Forms.TextBox
-    Friend WithEvents Label13 As System.Windows.Forms.Label
     Friend WithEvents BtnMatricula As System.Windows.Forms.Button
     Friend WithEvents GroupBox4 As System.Windows.Forms.GroupBox
     Friend WithEvents DataGridView2 As System.Windows.Forms.DataGridView

@@ -32,10 +32,9 @@ Partial Class FormMatricula
         Me.tNome = New System.Windows.Forms.TextBox()
         Me.tCodigo = New System.Windows.Forms.TextBox()
         Me.GroupBox4 = New System.Windows.Forms.GroupBox()
-        Me.Label1 = New System.Windows.Forms.Label()
-        Me.tmatricula = New System.Windows.Forms.TextBox()
         Me.BtnCancelar = New System.Windows.Forms.Button()
         Me.btnConfirmar = New System.Windows.Forms.Button()
+        Me.Label4 = New System.Windows.Forms.Label()
         Me.GroupBox3.SuspendLayout()
         Me.GroupBox4.SuspendLayout()
         Me.SuspendLayout()
@@ -49,7 +48,7 @@ Partial Class FormMatricula
         Me.GroupBox3.Controls.Add(Me.Label3)
         Me.GroupBox3.Controls.Add(Me.TTurmaDescricao)
         Me.GroupBox3.Controls.Add(Me.TturmaCodigo)
-        Me.GroupBox3.Location = New System.Drawing.Point(6, 104)
+        Me.GroupBox3.Location = New System.Drawing.Point(6, 67)
         Me.GroupBox3.Name = "GroupBox3"
         Me.GroupBox3.Size = New System.Drawing.Size(388, 121)
         Me.GroupBox3.TabIndex = 2
@@ -120,38 +119,19 @@ Partial Class FormMatricula
         '
         'GroupBox4
         '
-        Me.GroupBox4.BackColor = System.Drawing.SystemColors.Info
-        Me.GroupBox4.Controls.Add(Me.Label1)
-        Me.GroupBox4.Controls.Add(Me.tmatricula)
+        Me.GroupBox4.BackColor = System.Drawing.SystemColors.ButtonShadow
         Me.GroupBox4.Controls.Add(Me.tNome)
         Me.GroupBox4.Controls.Add(Me.tCodigo)
         Me.GroupBox4.Location = New System.Drawing.Point(6, 12)
         Me.GroupBox4.Name = "GroupBox4"
-        Me.GroupBox4.Size = New System.Drawing.Size(388, 86)
+        Me.GroupBox4.Size = New System.Drawing.Size(388, 49)
         Me.GroupBox4.TabIndex = 3
         Me.GroupBox4.TabStop = False
         Me.GroupBox4.Text = "Aluno"
         '
-        'Label1
-        '
-        Me.Label1.AutoSize = True
-        Me.Label1.Location = New System.Drawing.Point(12, 63)
-        Me.Label1.Name = "Label1"
-        Me.Label1.Size = New System.Drawing.Size(70, 13)
-        Me.Label1.TabIndex = 6
-        Me.Label1.Text = "Nº Matrícula:"
-        '
-        'tmatricula
-        '
-        Me.tmatricula.Location = New System.Drawing.Point(88, 56)
-        Me.tmatricula.Name = "tmatricula"
-        Me.tmatricula.Size = New System.Drawing.Size(131, 20)
-        Me.tmatricula.TabIndex = 5
-        '
         'BtnCancelar
         '
-        Me.BtnCancelar.Enabled = False
-        Me.BtnCancelar.Location = New System.Drawing.Point(290, 231)
+        Me.BtnCancelar.Location = New System.Drawing.Point(312, 218)
         Me.BtnCancelar.Name = "BtnCancelar"
         Me.BtnCancelar.Size = New System.Drawing.Size(75, 23)
         Me.BtnCancelar.TabIndex = 6
@@ -160,19 +140,29 @@ Partial Class FormMatricula
         '
         'btnConfirmar
         '
-        Me.btnConfirmar.Enabled = False
-        Me.btnConfirmar.Location = New System.Drawing.Point(209, 231)
+        Me.btnConfirmar.Location = New System.Drawing.Point(231, 218)
         Me.btnConfirmar.Name = "btnConfirmar"
         Me.btnConfirmar.Size = New System.Drawing.Size(75, 23)
         Me.btnConfirmar.TabIndex = 5
         Me.btnConfirmar.Text = "Confimar"
         Me.btnConfirmar.UseVisualStyleBackColor = True
         '
+        'Label4
+        '
+        Me.Label4.BackColor = System.Drawing.Color.Orange
+        Me.Label4.Location = New System.Drawing.Point(-1, 188)
+        Me.Label4.Name = "Label4"
+        Me.Label4.Size = New System.Drawing.Size(396, 16)
+        Me.Label4.TabIndex = 7
+        Me.Label4.Text = "F1 - Turma"
+        Me.Label4.TextAlign = System.Drawing.ContentAlignment.MiddleCenter
+        '
         'FormMatricula
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
-        Me.ClientSize = New System.Drawing.Size(402, 266)
+        Me.ClientSize = New System.Drawing.Size(394, 246)
+        Me.Controls.Add(Me.Label4)
         Me.Controls.Add(Me.BtnCancelar)
         Me.Controls.Add(Me.btnConfirmar)
         Me.Controls.Add(Me.GroupBox4)
@@ -195,12 +185,11 @@ Partial Class FormMatricula
     Friend WithEvents tNome As System.Windows.Forms.TextBox
     Friend WithEvents tCodigo As System.Windows.Forms.TextBox
     Friend WithEvents GroupBox4 As System.Windows.Forms.GroupBox
-    Friend WithEvents Label1 As System.Windows.Forms.Label
-    Friend WithEvents tmatricula As System.Windows.Forms.TextBox
     Friend WithEvents TDataCad As System.Windows.Forms.MaskedTextBox
     Friend WithEvents Label3 As System.Windows.Forms.Label
     Friend WithEvents Label2 As System.Windows.Forms.Label
     Friend WithEvents TStatus As System.Windows.Forms.TextBox
     Friend WithEvents BtnCancelar As System.Windows.Forms.Button
     Friend WithEvents btnConfirmar As System.Windows.Forms.Button
+    Friend WithEvents Label4 As System.Windows.Forms.Label
 End Class
