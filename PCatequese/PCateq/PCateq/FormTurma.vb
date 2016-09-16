@@ -8,18 +8,27 @@ Public Class FormTurma
         ' //define e realiza a formatação de cada coluna
         DataGridView1.Columns(0).HeaderText = "Codigo"
         DataGridView1.Columns(1).HeaderText = "Nome"
-        DataGridView1.Columns(2).HeaderText = "Endereço"
-        DataGridView1.Columns(3).HeaderText = "Cidade"
+        DataGridView1.Columns(2).HeaderText = "Instituicao"
+        DataGridView1.Columns(3).HeaderText = "Curso"
+        DataGridView1.Columns(4).HeaderText = "Inicio"
+        DataGridView1.Columns(5).HeaderText = "Fim"
+        DataGridView1.Columns(6).HeaderText = "Cod Cateq."
+        DataGridView1.Columns(7).HeaderText = "Data"
+
 
         DataGridView1.Columns(0).Width = 65
         DataGridView1.Columns(1).Width = 230
         DataGridView1.Columns(2).Width = 100
         DataGridView1.Columns(3).Width = 100
+        DataGridView1.Columns(4).Width = 100
+        DataGridView1.Columns(5).Width = 100
+        DataGridView1.Columns(6).Width = 100
+        DataGridView1.Columns(7).Width = 100
 
-        DataGridView1.Columns(0).DataGridView.DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleCenter
-        DataGridView1.Columns(1).DataGridView.DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleLeft
-        DataGridView1.Columns(2).DataGridView.DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleLeft
-        DataGridView1.Columns(3).DataGridView.DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleLeft
+        'DataGridView1.Columns(0).DataGridView.DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleCenter
+        'DataGridView1.Columns(1).DataGridView.DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleLeft
+        'DataGridView1.Columns(2).DataGridView.DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleLeft
+        'DataGridView1.Columns(3).DataGridView.DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleLeft
 
 
     End Sub
@@ -80,7 +89,7 @@ Public Class FormTurma
     End Sub
 
     Private Sub FormTurma_Load(sender As Object, e As EventArgs) Handles MyBase.Load
-        AtulizarGrid("Select codigo,nome,anoini,anofim From Turma", "Turma")
+        mostarTurmas()
     End Sub
     Private Sub TabControl1_SelectedIndexChanged(sender As Object, e As EventArgs) Handles TabControl1.SelectedIndexChanged
         Dim codigo As String
@@ -133,10 +142,10 @@ Public Class FormTurma
 
     Private Sub BtnConfirmar_Click(sender As Object, e As EventArgs) Handles BtnConfirmar.Click
         'Declarando e instanciando o obj da classe empresa
-        Dim obj As Turma = New Turma
+
 
         Try
-
+            Dim obj As Turma = New Turma
             obj.Nome = tDescricao.Text
             obj.AnoIni = TAnoINI.Text
             obj.AnoFim = tAnoFim.Text
@@ -164,5 +173,52 @@ Public Class FormTurma
         Catch ex As Exception
             MsgBox("Erro ao salvar, Por favor verificar os dados informado.", MsgBoxStyle.ApplicationModal, "")
         End Try
+    End Sub
+
+    Private Sub BtnConsulta_Click(sender As Object, e As EventArgs) Handles BtnConsulta.Click
+        mostarTurmas()
+        txtConsulta.Visible = True
+        txtConsulta.Text = ""
+        txtConsulta.Focus()
+
+    End Sub
+
+    Private Sub Button1_Click(sender As Object, e As EventArgs) Handles Button1.Click
+        mostarTurmas()
+        tConsultaCodigo.Text = ""
+        tConsultaCodigo.Visible = True
+        tConsultaCodigo.Focus()
+    End Sub
+
+    Private Sub txtConsulta_KeyDown(sender As Object, e As KeyEventArgs) Handles txtConsulta.KeyDown
+        If e.KeyCode = Keys.Enter Then
+            Try
+                Dim obj As New Turma
+                obj.Nome = txtConsulta.Text
+                DataGridView1.DataSource = obj.ConsultarNome()
+            Catch ex As Exception
+                MsgBox("Erro ao realizar consulta", MsgBoxStyle.Critical, "")
+            End Try
+            txtConsulta.Visible = False
+        End If
+    End Sub
+
+    Private Sub tConsultaCodigo_KeyDown(sender As Object, e As KeyEventArgs) Handles tConsultaCodigo.KeyDown
+        If e.KeyCode = Keys.Enter Then
+            Try
+                Dim obj As New Turma
+                obj.Codigo = tConsultaCodigo.Text
+                DataGridView1.DataSource = obj.ConsultarCodigos()
+            Catch ex As Exception
+                MsgBox("Erro ao realizar consulta", MsgBoxStyle.Critical, "")
+            End Try
+            tConsultaCodigo.Visible = False
+        End If
+    End Sub
+
+    Public Sub mostarTurmas()
+        Dim obj As New Turma
+        DataGridView1.DataSource = obj.Todos()
+        formatarGrid()
     End Sub
 End Class

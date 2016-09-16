@@ -41,7 +41,7 @@ Partial Class FormMatricula
         '
         'GroupBox3
         '
-        Me.GroupBox3.BackColor = System.Drawing.SystemColors.AppWorkspace
+        Me.GroupBox3.BackColor = System.Drawing.Color.Transparent
         Me.GroupBox3.Controls.Add(Me.Label2)
         Me.GroupBox3.Controls.Add(Me.TStatus)
         Me.GroupBox3.Controls.Add(Me.TDataCad)
@@ -66,18 +66,20 @@ Partial Class FormMatricula
         '
         'TStatus
         '
+        Me.TStatus.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle
         Me.TStatus.Location = New System.Drawing.Point(97, 78)
         Me.TStatus.Name = "TStatus"
         Me.TStatus.Size = New System.Drawing.Size(131, 20)
-        Me.TStatus.TabIndex = 22
+        Me.TStatus.TabIndex = 2
         '
         'TDataCad
         '
+        Me.TDataCad.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle
         Me.TDataCad.Location = New System.Drawing.Point(97, 52)
         Me.TDataCad.Mask = "00/00/0000"
         Me.TDataCad.Name = "TDataCad"
         Me.TDataCad.Size = New System.Drawing.Size(82, 20)
-        Me.TDataCad.TabIndex = 21
+        Me.TDataCad.TabIndex = 1
         Me.TDataCad.ValidatingType = GetType(Date)
         '
         'Label3
@@ -91,35 +93,42 @@ Partial Class FormMatricula
         '
         'TTurmaDescricao
         '
+        Me.TTurmaDescricao.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle
+        Me.TTurmaDescricao.Enabled = False
         Me.TTurmaDescricao.Location = New System.Drawing.Point(72, 17)
         Me.TTurmaDescricao.Name = "TTurmaDescricao"
         Me.TTurmaDescricao.Size = New System.Drawing.Size(287, 20)
-        Me.TTurmaDescricao.TabIndex = 4
+        Me.TTurmaDescricao.TabIndex = 7
         '
         'TturmaCodigo
         '
+        Me.TturmaCodigo.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle
         Me.TturmaCodigo.Location = New System.Drawing.Point(9, 17)
         Me.TturmaCodigo.Name = "TturmaCodigo"
         Me.TturmaCodigo.Size = New System.Drawing.Size(57, 20)
-        Me.TturmaCodigo.TabIndex = 3
+        Me.TturmaCodigo.TabIndex = 0
         '
         'tNome
         '
+        Me.tNome.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle
+        Me.tNome.Enabled = False
         Me.tNome.Location = New System.Drawing.Point(72, 17)
         Me.tNome.Name = "tNome"
         Me.tNome.Size = New System.Drawing.Size(287, 20)
-        Me.tNome.TabIndex = 4
+        Me.tNome.TabIndex = 6
         '
         'tCodigo
         '
+        Me.tCodigo.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle
+        Me.tCodigo.Enabled = False
         Me.tCodigo.Location = New System.Drawing.Point(9, 17)
         Me.tCodigo.Name = "tCodigo"
         Me.tCodigo.Size = New System.Drawing.Size(57, 20)
-        Me.tCodigo.TabIndex = 3
+        Me.tCodigo.TabIndex = 5
         '
         'GroupBox4
         '
-        Me.GroupBox4.BackColor = System.Drawing.SystemColors.ButtonShadow
+        Me.GroupBox4.BackColor = System.Drawing.Color.Transparent
         Me.GroupBox4.Controls.Add(Me.tNome)
         Me.GroupBox4.Controls.Add(Me.tCodigo)
         Me.GroupBox4.Location = New System.Drawing.Point(6, 12)
@@ -134,7 +143,7 @@ Partial Class FormMatricula
         Me.BtnCancelar.Location = New System.Drawing.Point(312, 218)
         Me.BtnCancelar.Name = "BtnCancelar"
         Me.BtnCancelar.Size = New System.Drawing.Size(75, 23)
-        Me.BtnCancelar.TabIndex = 6
+        Me.BtnCancelar.TabIndex = 4
         Me.BtnCancelar.Text = "Cancelar"
         Me.BtnCancelar.UseVisualStyleBackColor = True
         '
@@ -143,7 +152,7 @@ Partial Class FormMatricula
         Me.btnConfirmar.Location = New System.Drawing.Point(231, 218)
         Me.btnConfirmar.Name = "btnConfirmar"
         Me.btnConfirmar.Size = New System.Drawing.Size(75, 23)
-        Me.btnConfirmar.TabIndex = 5
+        Me.btnConfirmar.TabIndex = 3
         Me.btnConfirmar.Text = "Confimar"
         Me.btnConfirmar.UseVisualStyleBackColor = True
         '

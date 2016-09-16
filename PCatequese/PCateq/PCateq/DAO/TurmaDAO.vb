@@ -16,8 +16,8 @@ Public Class TurmaDAO
         Dim sql As New StringBuilder
         
         sql.AppendLine("Insert Into Turma ")
-        sql.AppendLine(" ( nome, Curso, AnoIni, AnoFim, CatequistaCodigo, DataCadastro) ")
-        sql.AppendLine("values (@nome, @Curso, @AnoIni, @AnoFim, @CatequistaCodigo, @DataCadastro )")
+        sql.AppendLine(" ( nome, Curso, AnoIni, AnoFim, CatequistaCodigo, DataCadastro,InstituicaoCodigo) ")
+        sql.AppendLine("values (@nome, @Curso, @AnoIni, @AnoFim, @CatequistaCodigo, @DataCadastro,@InstituicaoCodigo )")
 
         Return sql.ToString()
 
@@ -27,14 +27,15 @@ Public Class TurmaDAO
         Dim sql As New StringBuilder
         sql.AppendLine(" Update Turma Set ")
         sql.AppendLine(" nome=@nome, Curso=@Curso,AnoIni=@AnoIni, ")
-        sql.AppendLine(" AnoFim=@AnoFim,CatequistaCodigo=@CatequistaCodigo,DataCadastro=@DataCadastro ")
+        sql.AppendLine(" AnoFim=@AnoFim,CatequistaCodigo=@CatequistaCodigo,InstituicaoCodigo=@InstituicaoCodigo,DataCadastro=@DataCadastro ")
         sql.AppendLine(" where Codigo='" & parmCodigo & "'")
         Return sql.ToString()
     End Function
 
     Private Shared Function ObterSqlSelectTodosCampo() As String
         Dim sql As New StringBuilder
-        sql.AppendLine(" SELECT * From Turma  ")
+        'sql.AppendLine(" SELECT * From Turma  ")
+        sql.AppendLine(" SELECT Codigo,Nome, InstituicaoCodigo, Curso, AnoINI, AnoFim, CatequistaCodigo, DataCadastro From Turma  ")
         Return sql.ToString()
     End Function
 
@@ -43,23 +44,26 @@ Public Class TurmaDAO
             comando.Parameters.Add("@Codigo", SqlDbType.VarChar).Value = turma.Codigo
         End If
         comando.Parameters.Add("@nome", SqlDbType.VarChar).Value = turma.Nome
+        comando.Parameters.Add("@InstituicaoCodigo", SqlDbType.Date).Value = turma.CodigoInst
         comando.Parameters.Add("@Curso", SqlDbType.VarChar).Value = turma.Curso
         comando.Parameters.Add("@AnoINI", SqlDbType.VarChar).Value = turma.AnoIni
         comando.Parameters.Add("@AnoFim", SqlDbType.VarChar).Value = turma.AnoFim
         comando.Parameters.Add("@CatequistaCodigo", SqlDbType.VarChar).Value = turma.CatequistaCodigo
         comando.Parameters.Add("@DataCadastro", SqlDbType.Date).Value = turma.DataCad
 
+
     End Sub
 
     Private Shared Sub PopularObjeto(ByVal reader As IDataRecord, ByRef turma As Turma)
         turma.Codigo = reader("Codigo")
         turma.Nome = reader("nome")
+        If Not IsDBNull(reader("InstituicaoCodigo")) Then turma.CatequistaCodigo = reader("InstituicaoCodigo")
         If Not IsDBNull(reader("Curso")) Then turma.Curso = (reader("Curso"))
         If Not IsDBNull(reader("AnoINI")) Then turma.AnoIni = reader("AnoINI")
         If Not IsDBNull(reader("AnoFIM")) Then turma.AnoIni = reader("AnoFIM")
         If Not IsDBNull(reader("CatequistaCodigo")) Then turma.CatequistaCodigo = reader("CatequistaCodigo")
         If Not IsDBNull(reader("DataCadastro")) Then turma.DataCad = reader("DataCadastro")
-        
+
     End Sub
 
     'METODO INCLUIR 
@@ -114,6 +118,32 @@ Public Class TurmaDAO
             conexao.Open()
             Dim sql As String
             sql = ObterSqlSelectTodosCampo() & " where Nome like '%" & Nome & "%'"
+            Using comando = New SqlCommand(sql, conexao)
+                dataReader = comando.ExecuteReader
+                If dataReader.HasRows Then
+                    While dataReader.Read()
+                        Dim turma As New Turma
+                        PopularObjeto(dataReader, turma)
+                        lista.Add(turma) ' add o objeto
+                    End While
+                    conexao.Close()
+                    Return lista
+                Else
+                    conexao.Close()
+                    Return Nothing
+                End If
+            End Using
+        End Using
+    End Function
+    Public Function ConsultarCodigos(ByVal Codigo As String) As List(Of Turma)
+        Dim dataReader As SqlDataReader
+        Dim lista = New List(Of Turma)
+
+        Using conexao As SqlConnection = New Conexao().GetConnection()
+            'abrindo conexao 
+            conexao.Open()
+            Dim sql As String
+            sql = ObterSqlSelectTodosCampo() & " where Codigo = " & Codigo
             Using comando = New SqlCommand(sql, conexao)
                 dataReader = comando.ExecuteReader
                 If dataReader.HasRows Then

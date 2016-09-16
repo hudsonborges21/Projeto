@@ -73,9 +73,11 @@
     <Compile Include="Class\Catequista.vb" />
     <Compile Include="Class\Conexao.vb" />
     <Compile Include="Class\Disciplina.vb" />
+    <Compile Include="Class\Matricula.vb" />
     <Compile Include="Class\Turma.vb" />
     <Compile Include="DAO\AlunoDAO.vb" />
     <Compile Include="DAO\CatequistaDAO.vb" />
+    <Compile Include="DAO\MatriculaADO.vb" />
     <Compile Include="DAO\TurmaDAO.vb" />
     <Compile Include="FormMatricula.Designer.vb">
       <DependentUpon>FormMatricula.vb</DependentUpon>

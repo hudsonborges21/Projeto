@@ -46,12 +46,18 @@ Partial Class FormTurma
         Me.TabPage2 = New System.Windows.Forms.TabPage()
         Me.DataGridView1 = New System.Windows.Forms.DataGridView()
         Me.TabPage3 = New System.Windows.Forms.TabPage()
+        Me.GroupBox3 = New System.Windows.Forms.GroupBox()
+        Me.Button1 = New System.Windows.Forms.Button()
+        Me.tConsultaCodigo = New System.Windows.Forms.TextBox()
+        Me.BtnConsulta = New System.Windows.Forms.Button()
+        Me.txtConsulta = New System.Windows.Forms.TextBox()
         Me.TabControl1.SuspendLayout()
         Me.TabPage1.SuspendLayout()
         Me.GroupBox1.SuspendLayout()
         Me.GroupBox2.SuspendLayout()
         Me.TabPage2.SuspendLayout()
         CType(Me.DataGridView1, System.ComponentModel.ISupportInitialize).BeginInit()
+        Me.GroupBox3.SuspendLayout()
         Me.SuspendLayout()
         '
         'TabControl1
@@ -119,7 +125,7 @@ Partial Class FormTurma
         '
         'GroupBox1
         '
-        Me.GroupBox1.BackColor = System.Drawing.Color.DimGray
+        Me.GroupBox1.BackColor = System.Drawing.Color.Transparent
         Me.GroupBox1.Controls.Add(Me.GroupBox2)
         Me.GroupBox1.Controls.Add(Me.tAnoFim)
         Me.GroupBox1.Controls.Add(Me.Label6)
@@ -135,16 +141,16 @@ Partial Class FormTurma
         Me.GroupBox1.Controls.Add(Me.Label1)
         Me.GroupBox1.Location = New System.Drawing.Point(8, 23)
         Me.GroupBox1.Name = "GroupBox1"
-        Me.GroupBox1.Size = New System.Drawing.Size(668, 212)
+        Me.GroupBox1.Size = New System.Drawing.Size(684, 212)
         Me.GroupBox1.TabIndex = 0
         Me.GroupBox1.TabStop = False
         '
         'GroupBox2
         '
         Me.GroupBox2.Controls.Add(Me.TCatequistaNome)
-        Me.GroupBox2.Location = New System.Drawing.Point(93, 135)
+        Me.GroupBox2.Location = New System.Drawing.Point(35, 135)
         Me.GroupBox2.Name = "GroupBox2"
-        Me.GroupBox2.Size = New System.Drawing.Size(408, 58)
+        Me.GroupBox2.Size = New System.Drawing.Size(492, 58)
         Me.GroupBox2.TabIndex = 26
         Me.GroupBox2.TabStop = False
         Me.GroupBox2.Text = "Catequista"
@@ -153,7 +159,7 @@ Partial Class FormTurma
         '
         Me.TCatequistaNome.Location = New System.Drawing.Point(18, 21)
         Me.TCatequistaNome.Name = "TCatequistaNome"
-        Me.TCatequistaNome.Size = New System.Drawing.Size(368, 20)
+        Me.TCatequistaNome.Size = New System.Drawing.Size(468, 20)
         Me.TCatequistaNome.TabIndex = 22
         '
         'tAnoFim
@@ -254,6 +260,7 @@ Partial Class FormTurma
         '
         'TabPage2
         '
+        Me.TabPage2.Controls.Add(Me.GroupBox3)
         Me.TabPage2.Controls.Add(Me.DataGridView1)
         Me.TabPage2.Location = New System.Drawing.Point(4, 22)
         Me.TabPage2.Name = "TabPage2"
@@ -271,7 +278,7 @@ Partial Class FormTurma
         Me.DataGridView1.Name = "DataGridView1"
         Me.DataGridView1.ReadOnly = True
         Me.DataGridView1.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect
-        Me.DataGridView1.Size = New System.Drawing.Size(681, 376)
+        Me.DataGridView1.Size = New System.Drawing.Size(681, 410)
         Me.DataGridView1.TabIndex = 0
         '
         'TabPage3
@@ -282,6 +289,55 @@ Partial Class FormTurma
         Me.TabPage3.TabIndex = 2
         Me.TabPage3.Text = "Matricula"
         Me.TabPage3.UseVisualStyleBackColor = True
+        '
+        'GroupBox3
+        '
+        Me.GroupBox3.Controls.Add(Me.Button1)
+        Me.GroupBox3.Controls.Add(Me.tConsultaCodigo)
+        Me.GroupBox3.Controls.Add(Me.BtnConsulta)
+        Me.GroupBox3.Controls.Add(Me.txtConsulta)
+        Me.GroupBox3.Location = New System.Drawing.Point(3, 419)
+        Me.GroupBox3.Name = "GroupBox3"
+        Me.GroupBox3.Size = New System.Drawing.Size(681, 58)
+        Me.GroupBox3.TabIndex = 11
+        Me.GroupBox3.TabStop = False
+        Me.GroupBox3.Text = "Pesquisar"
+        '
+        'Button1
+        '
+        Me.Button1.Location = New System.Drawing.Point(491, 29)
+        Me.Button1.Name = "Button1"
+        Me.Button1.Size = New System.Drawing.Size(75, 23)
+        Me.Button1.TabIndex = 5
+        Me.Button1.Text = "Código"
+        Me.Button1.UseVisualStyleBackColor = True
+        '
+        'tConsultaCodigo
+        '
+        Me.tConsultaCodigo.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle
+        Me.tConsultaCodigo.Location = New System.Drawing.Point(383, 32)
+        Me.tConsultaCodigo.Name = "tConsultaCodigo"
+        Me.tConsultaCodigo.Size = New System.Drawing.Size(102, 20)
+        Me.tConsultaCodigo.TabIndex = 4
+        Me.tConsultaCodigo.Visible = False
+        '
+        'BtnConsulta
+        '
+        Me.BtnConsulta.Location = New System.Drawing.Point(252, 29)
+        Me.BtnConsulta.Name = "BtnConsulta"
+        Me.BtnConsulta.Size = New System.Drawing.Size(75, 23)
+        Me.BtnConsulta.TabIndex = 1
+        Me.BtnConsulta.Text = "Nome"
+        Me.BtnConsulta.UseVisualStyleBackColor = True
+        '
+        'txtConsulta
+        '
+        Me.txtConsulta.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle
+        Me.txtConsulta.Location = New System.Drawing.Point(6, 32)
+        Me.txtConsulta.Name = "txtConsulta"
+        Me.txtConsulta.Size = New System.Drawing.Size(240, 20)
+        Me.txtConsulta.TabIndex = 0
+        Me.txtConsulta.Visible = False
         '
         'FormTurma
         '
@@ -301,6 +357,8 @@ Partial Class FormTurma
         Me.GroupBox2.PerformLayout()
         Me.TabPage2.ResumeLayout(False)
         CType(Me.DataGridView1, System.ComponentModel.ISupportInitialize).EndInit()
+        Me.GroupBox3.ResumeLayout(False)
+        Me.GroupBox3.PerformLayout()
         Me.ResumeLayout(False)
 
     End Sub
@@ -328,4 +386,9 @@ Partial Class FormTurma
     Friend WithEvents TabPage2 As System.Windows.Forms.TabPage
     Friend WithEvents DataGridView1 As System.Windows.Forms.DataGridView
     Friend WithEvents TabPage3 As System.Windows.Forms.TabPage
+    Friend WithEvents GroupBox3 As System.Windows.Forms.GroupBox
+    Friend WithEvents Button1 As System.Windows.Forms.Button
+    Friend WithEvents tConsultaCodigo As System.Windows.Forms.TextBox
+    Friend WithEvents BtnConsulta As System.Windows.Forms.Button
+    Friend WithEvents txtConsulta As System.Windows.Forms.TextBox
 End Class

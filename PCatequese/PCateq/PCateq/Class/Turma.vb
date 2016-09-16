@@ -4,12 +4,14 @@
 
     'declarando os atributos da classe produto
     Private vCodigo As Integer
+    Private vcodigoInstituicao As String
     Private vNome As String
     Private vCurso As String
     Private vAnoIni As String
     Private vAnoFim As String
     Private vCatequistaCodigo As String
     Private vDataCadastro As Date
+
 
 #End Region
 
@@ -26,7 +28,14 @@
             vCodigo = value
         End Set
     End Property
-
+    Public Property CodigoInst() As Integer
+        Get
+            Return vcodigoInstituicao
+        End Get
+        Set(ByVal value As Integer)
+            vcodigoInstituicao = value
+        End Set
+    End Property
 
     Public Property Nome() As String
         Get
@@ -83,6 +92,7 @@
         End Set
     End Property
 
+
    
 #End Region
 
@@ -112,6 +122,9 @@
     'End Function
     Public Function ConsultarNome() As List(Of Turma)
         Return New TurmaDAO().ConsultarNome(Me.vNome)
+    End Function
+    Public Function ConsultarCodigos() As List(Of Turma)
+        Return New TurmaDAO().ConsultarCodigos(Me.vCodigo)
     End Function
 #End Region
 
