@@ -53,7 +53,7 @@ Partial Class FormPrincipal
         Me.Button4.Name = "Button4"
         Me.Button4.Size = New System.Drawing.Size(210, 29)
         Me.Button4.TabIndex = 4
-        Me.Button4.Text = "Matriculas"
+        Me.Button4.Text = "Aula"
         Me.Button4.UseVisualStyleBackColor = True
         '
         'Button3
@@ -80,7 +80,7 @@ Partial Class FormPrincipal
         Me.Button1.Name = "Button1"
         Me.Button1.Size = New System.Drawing.Size(210, 29)
         Me.Button1.TabIndex = 1
-        Me.Button1.Text = "Catequisando"
+        Me.Button1.Text = "Aluno"
         Me.Button1.UseVisualStyleBackColor = True
         '
         'Label1

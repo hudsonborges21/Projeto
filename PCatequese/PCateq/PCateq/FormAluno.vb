@@ -22,6 +22,7 @@ Public Class FormAluno
         DataGridView1.Columns(2).DataGridView.DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleLeft
         DataGridView1.Columns(3).DataGridView.DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleLeft
 
+       
 
     End Sub
 
@@ -66,7 +67,7 @@ Public Class FormAluno
         'Dim obj As Aluno = New Aluno
 
         'DataGridView1.DataSource = obj.Todos()
-        'formatarGrid()
+
 
         If tCodigo.Text <> "" Then
             BtnMatricula.Enabled = True

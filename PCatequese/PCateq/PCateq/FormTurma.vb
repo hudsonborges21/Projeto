@@ -106,6 +106,7 @@ Public Class FormTurma
                     tAnoFim.Text = obj.AnoFim
                     TAnoINI.Text = obj.AnoIni
                     tDescricao.Text = obj.Nome
+                    TCatequistaCodigo.Text = obj.CatequistaCodigo
 
                     Dim obj2 As Catequista = New Catequista
                     If obj2.Consultar(obj.CatequistaCodigo) Then
@@ -220,5 +221,14 @@ Public Class FormTurma
         Dim obj As New Turma
         DataGridView1.DataSource = obj.Todos()
         formatarGrid()
+    End Sub
+
+    Private Sub FormTurma_KeyDown(sender As Object, e As KeyEventArgs) Handles MyBase.KeyDown
+        If e.KeyCode = Keys.F1 Then
+            If tCodigo.Text <> "" Then
+                FormCatequistaConsulta.ShowDialog()
+                FormCatequistaConsulta.TPesquisa.Focus()
+            End If
+        End If
     End Sub
 End Class

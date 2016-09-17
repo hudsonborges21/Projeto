@@ -67,6 +67,8 @@ Partial Class FormAluno
         Me.BtnConsulta = New System.Windows.Forms.Button()
         Me.txtConsulta = New System.Windows.Forms.TextBox()
         Me.DataGridView1 = New System.Windows.Forms.DataGridView()
+        Me.x = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.xx = New System.Windows.Forms.DataGridViewTextBoxColumn()
         Me.TabControl1.SuspendLayout()
         Me.TabPage1.SuspendLayout()
         Me.GroupBox1.SuspendLayout()
@@ -223,6 +225,7 @@ Partial Class FormAluno
         'DataGridView2
         '
         Me.DataGridView2.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize
+        Me.DataGridView2.Columns.AddRange(New System.Windows.Forms.DataGridViewColumn() {Me.x, Me.xx})
         Me.DataGridView2.Location = New System.Drawing.Point(12, 14)
         Me.DataGridView2.MultiSelect = False
         Me.DataGridView2.Name = "DataGridView2"
@@ -524,6 +527,20 @@ Partial Class FormAluno
         Me.DataGridView1.Size = New System.Drawing.Size(681, 376)
         Me.DataGridView1.TabIndex = 0
         '
+        'x
+        '
+        Me.x.DataPropertyName = "CodigoTurma"
+        Me.x.HeaderText = "Cod. Turma"
+        Me.x.Name = "x"
+        Me.x.ReadOnly = True
+        '
+        'xx
+        '
+        Me.xx.DataPropertyName = "CodigoAluno"
+        Me.xx.HeaderText = "Cod. Aluno"
+        Me.xx.Name = "xx"
+        Me.xx.ReadOnly = True
+        '
         'FormAluno
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
@@ -594,4 +611,6 @@ Partial Class FormAluno
     Friend WithEvents GroupBox4 As System.Windows.Forms.GroupBox
     Friend WithEvents DataGridView2 As System.Windows.Forms.DataGridView
     Friend WithEvents Label13 As System.Windows.Forms.Label
+    Friend WithEvents x As System.Windows.Forms.DataGridViewTextBoxColumn
+    Friend WithEvents xx As System.Windows.Forms.DataGridViewTextBoxColumn
 End Class

@@ -60,7 +60,7 @@ Public Class TurmaDAO
         If Not IsDBNull(reader("InstituicaoCodigo")) Then turma.CatequistaCodigo = reader("InstituicaoCodigo")
         If Not IsDBNull(reader("Curso")) Then turma.Curso = (reader("Curso"))
         If Not IsDBNull(reader("AnoINI")) Then turma.AnoIni = reader("AnoINI")
-        If Not IsDBNull(reader("AnoFIM")) Then turma.AnoIni = reader("AnoFIM")
+        If Not IsDBNull(reader("AnoFIM")) Then turma.AnoFim = reader("AnoFIM")
         If Not IsDBNull(reader("CatequistaCodigo")) Then turma.CatequistaCodigo = reader("CatequistaCodigo")
         If Not IsDBNull(reader("DataCadastro")) Then turma.DataCad = reader("DataCadastro")
 

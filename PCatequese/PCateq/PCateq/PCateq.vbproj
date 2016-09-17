@@ -79,6 +79,12 @@
     <Compile Include="DAO\CatequistaDAO.vb" />
     <Compile Include="DAO\MatriculaADO.vb" />
     <Compile Include="DAO\TurmaDAO.vb" />
+    <Compile Include="FormCatequistaConsulta.Designer.vb">
+      <DependentUpon>FormCatequistaConsulta.vb</DependentUpon>
+    </Compile>
+    <Compile Include="FormCatequistaConsulta.vb">
+      <SubType>Form</SubType>
+    </Compile>
     <Compile Include="FormMatricula.Designer.vb">
       <DependentUpon>FormMatricula.vb</DependentUpon>
     </Compile>
@@ -134,6 +140,9 @@
     </Compile>
   </ItemGroup>
   <ItemGroup>
+    <EmbeddedResource Include="FormCatequistaConsulta.resx">
+      <DependentUpon>FormCatequistaConsulta.vb</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="FormMatricula.resx">
       <DependentUpon>FormMatricula.vb</DependentUpon>
     </EmbeddedResource>

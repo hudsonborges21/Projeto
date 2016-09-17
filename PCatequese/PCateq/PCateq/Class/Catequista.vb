@@ -187,6 +187,9 @@ Public Class Catequista
     Public Function Todos() As List(Of Catequista)
         Return New CatequistaDAO().Todos()
     End Function
+    Public Function TodosNomes() As List(Of Catequista)
+        Return New CatequistaDAO().TodosNomes(vNome)
+    End Function
     Public Function Consultar(ByVal pCod As String)
         Return New CatequistaDAO().Consultar(pCod, Me)
     End Function

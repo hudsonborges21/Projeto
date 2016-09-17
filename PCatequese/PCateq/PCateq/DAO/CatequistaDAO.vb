@@ -120,7 +120,32 @@ Public Class CatequistaDAO
             End Using
         End Using
     End Function
+    Public Function TodosNomes(ByVal nome As String) As List(Of Catequista)
+        Dim dataReader As SqlDataReader
+        Dim lista = New List(Of Catequista)
 
+        Using conexao As SqlConnection = New Conexao().GetConnection()
+            'abrindo conexao 
+            conexao.Open()
+            Dim sql As String
+            sql = ObterSqlSelectTodosCampo() & " where Nome like '%" & Nome & "%'"
+            Using comando = New SqlCommand(sql, conexao)
+                dataReader = comando.ExecuteReader
+                If dataReader.HasRows Then
+                    While dataReader.Read()
+                        Dim aluno As New Catequista
+                        PopularObjeto(dataReader, aluno)
+                        lista.Add(aluno)
+                    End While
+                    conexao.Close()
+                    Return lista
+                Else
+                    conexao.Close()
+                    Return Nothing
+                End If
+            End Using
+        End Using
+    End Function
 
     'CONSULTAR 
     Public Function Consultar(ByVal codigolinha As Integer, ByRef aluno As Catequista) As Boolean

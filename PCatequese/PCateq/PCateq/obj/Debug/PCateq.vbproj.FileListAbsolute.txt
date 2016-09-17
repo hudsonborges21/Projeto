@@ -24,3 +24,4 @@ C:\PROJETO\PCatequese\PCateq\PCateq\obj\Debug\PCateq.Resources.resources
 C:\PROJETO\PCatequese\PCateq\PCateq\obj\Debug\PCateq.vbproj.GenerateResource.Cache
 C:\PROJETO\PCatequese\PCateq\PCateq\obj\Debug\PCateq.FormMatricula.resources
 C:\PROJETO\PCatequese\PCateq\PCateq\obj\Debug\PCateq.FormTurmaConsulta.resources
+C:\PROJETO\PCatequese\PCateq\PCateq\obj\Debug\PCateq.FormCatequistaConsulta.resources
