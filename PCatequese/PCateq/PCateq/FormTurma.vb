@@ -33,7 +33,26 @@ Public Class FormTurma
 
     End Sub
 
+    Public Sub formatarGridAula()
 
+        ' //define e realiza a formatação de cada coluna
+        DataGridView1.Columns(0).HeaderText = "Turma"
+        DataGridView1.Columns(1).HeaderText = "Aula"
+        DataGridView1.Columns(2).HeaderText = "Instituicao"
+        DataGridView1.Columns(3).HeaderText = "Curso"
+       
+        DataGridView1.Columns(0).Width = 65
+        DataGridView1.Columns(1).Width = 230
+        DataGridView1.Columns(2).Width = 100
+        DataGridView1.Columns(3).Width = 100
+       
+        'DataGridView1.Columns(0).DataGridView.DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleCenter
+        'DataGridView1.Columns(1).DataGridView.DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleLeft
+        'DataGridView1.Columns(2).DataGridView.DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleLeft
+        'DataGridView1.Columns(3).DataGridView.DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleLeft
+
+
+    End Sub
     Public Sub AtulizarGrid(ByVal TextoSql As String, ByVal Tabela As String)
         Dim con As New Conexao
         'criando a conexao com o banco de dados
@@ -83,7 +102,7 @@ Public Class FormTurma
 
 
     Private Sub BtNIncluir_Click(sender As Object, e As EventArgs) Handles BtNIncluir.Click
-        'Call Limpar(Me)
+        Call Limpar(Me)
         Desabilita()
         incluindo = True
     End Sub
@@ -113,6 +132,7 @@ Public Class FormTurma
                         TCatequistaNome.Text = obj2.Nome
                     End If
                     Habilita()
+                    GridAula(codigo)
                 End If
             Else
                 formatarGrid()
@@ -230,5 +250,63 @@ Public Class FormTurma
                 FormCatequistaConsulta.TPesquisa.Focus()
             End If
         End If
+        If e.KeyCode = Keys.F2 Then
+            If tCodigo.Text <> "" Then
+                FormAula.tCodigo.Text = tCodigo.Text
+                FormAula.tDescricao.Text = tDescricao.Text
+                FormAula.TAulaDescricao.Focus()
+                FormAula.incluindo = True
+                FormAula.ShowDialog()
+                GridAula(tCodigo.Text)
+            End If
+        End If
+        If e.KeyCode = Keys.F3 Then
+            If tCodigo.Text <> "" Then
+                Dim codigo As String = DataGridView2.CurrentRow.Cells(2).Value
+
+                FormAula.tCodigo.Text = tCodigo.Text
+                FormAula.tDescricao.Text = tDescricao.Text
+
+                Dim obj As New Aula
+                obj.CodigoAula = codigo
+                obj.Consultar()
+
+                FormAula.TAulaCodigo.Text = obj.CodigoAula
+                FormAula.TAulaDescricao.Text = obj.Descricao
+                FormAula.TAulaData.Text = FormatDateTime(obj.DataCad, DateFormat.ShortDate)
+                FormAula.TAulaDescricao.Focus()
+                FormAula.incluindo = False
+                FormAula.ShowDialog()
+                GridAula(tCodigo.Text)
+            End If
+        End If
+        If e.KeyCode = Keys.F4 Then
+            If tCodigo.Text <> "" Then
+                If MsgBox("Deseja Exlcuir o Registro?", MsgBoxStyle.YesNo) = MsgBoxResult.Yes Then
+                    Dim codigo As String = DataGridView2.CurrentRow.Cells(2).Value
+                    Dim obj As New Aula
+                    obj.CodigoAula = codigo
+                    obj.Consultar()
+                    obj.Excluir()
+                End If
+                GridAula(tCodigo.Text)
+            End If
+        End If
+    End Sub
+    Public Sub GridAula(ByVal codTurma As String)
+        Try
+            Dim obj As New Aula
+            obj.CodigoTurma = codTurma
+            DataGridView2.DataSource = obj.ConsultarTurmaAula(obj.CodigoTurma)
+            'formatarGridAula()
+        Catch ex As Exception
+            MsgBox("Erro ao buscar matricula", MsgBoxStyle.Critical)
+        End Try
+
+
+    End Sub
+
+    Private Sub BtnCancelar_Click(sender As Object, e As EventArgs) Handles BtnCancelar.Click
+
     End Sub
 End Class

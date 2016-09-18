@@ -22,14 +22,19 @@ Partial Class FormTurma
     'Do not modify it using the code editor.
     <System.Diagnostics.DebuggerStepThrough()> _
     Private Sub InitializeComponent()
+        Dim DataGridViewCellStyle2 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
         Me.TabControl1 = New System.Windows.Forms.TabControl()
         Me.TabPage1 = New System.Windows.Forms.TabPage()
+        Me.GroupBox4 = New System.Windows.Forms.GroupBox()
+        Me.DataGridView2 = New System.Windows.Forms.DataGridView()
+        Me.Label13 = New System.Windows.Forms.Label()
         Me.BtnCancelar = New System.Windows.Forms.Button()
         Me.BtnConfirmar = New System.Windows.Forms.Button()
         Me.btnExluir = New System.Windows.Forms.Button()
         Me.BtNIncluir = New System.Windows.Forms.Button()
         Me.GroupBox1 = New System.Windows.Forms.GroupBox()
         Me.GroupBox2 = New System.Windows.Forms.GroupBox()
+        Me.TCatequistaCodigo = New System.Windows.Forms.TextBox()
         Me.TCatequistaNome = New System.Windows.Forms.TextBox()
         Me.tAnoFim = New System.Windows.Forms.TextBox()
         Me.Label6 = New System.Windows.Forms.Label()
@@ -50,10 +55,14 @@ Partial Class FormTurma
         Me.BtnConsulta = New System.Windows.Forms.Button()
         Me.txtConsulta = New System.Windows.Forms.TextBox()
         Me.DataGridView1 = New System.Windows.Forms.DataGridView()
-        Me.Label13 = New System.Windows.Forms.Label()
-        Me.TCatequistaCodigo = New System.Windows.Forms.TextBox()
+        Me.CodigoTurma = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.CodigoAula = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.Descricao = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.Data = New System.Windows.Forms.DataGridViewTextBoxColumn()
         Me.TabControl1.SuspendLayout()
         Me.TabPage1.SuspendLayout()
+        Me.GroupBox4.SuspendLayout()
+        CType(Me.DataGridView2, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.GroupBox1.SuspendLayout()
         Me.GroupBox2.SuspendLayout()
         Me.TabPage2.SuspendLayout()
@@ -74,6 +83,8 @@ Partial Class FormTurma
         '
         'TabPage1
         '
+        Me.TabPage1.Controls.Add(Me.GroupBox4)
+        Me.TabPage1.Controls.Add(Me.Label13)
         Me.TabPage1.Controls.Add(Me.BtnCancelar)
         Me.TabPage1.Controls.Add(Me.BtnConfirmar)
         Me.TabPage1.Controls.Add(Me.btnExluir)
@@ -86,6 +97,40 @@ Partial Class FormTurma
         Me.TabPage1.TabIndex = 0
         Me.TabPage1.Text = "Cadastro"
         Me.TabPage1.UseVisualStyleBackColor = True
+        '
+        'GroupBox4
+        '
+        Me.GroupBox4.Controls.Add(Me.DataGridView2)
+        Me.GroupBox4.ForeColor = System.Drawing.Color.Maroon
+        Me.GroupBox4.Location = New System.Drawing.Point(6, 232)
+        Me.GroupBox4.Name = "GroupBox4"
+        Me.GroupBox4.Size = New System.Drawing.Size(680, 200)
+        Me.GroupBox4.TabIndex = 33
+        Me.GroupBox4.TabStop = False
+        Me.GroupBox4.Text = "Aulas"
+        '
+        'DataGridView2
+        '
+        Me.DataGridView2.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize
+        Me.DataGridView2.Columns.AddRange(New System.Windows.Forms.DataGridViewColumn() {Me.CodigoTurma, Me.CodigoAula, Me.Descricao, Me.Data})
+        Me.DataGridView2.Location = New System.Drawing.Point(2, 19)
+        Me.DataGridView2.MultiSelect = False
+        Me.DataGridView2.Name = "DataGridView2"
+        Me.DataGridView2.ReadOnly = True
+        Me.DataGridView2.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect
+        Me.DataGridView2.Size = New System.Drawing.Size(672, 175)
+        Me.DataGridView2.TabIndex = 0
+        '
+        'Label13
+        '
+        Me.Label13.BackColor = System.Drawing.Color.Orange
+        Me.Label13.Location = New System.Drawing.Point(15, 435)
+        Me.Label13.Name = "Label13"
+        Me.Label13.Size = New System.Drawing.Size(669, 16)
+        Me.Label13.TabIndex = 32
+        Me.Label13.Text = "F1 - Catequista     |   F2 - Aula Incluir   |     F3 - Aula Editar   |    F4 - Au" & _
+    "la Excluir   |     F5 - Frequência"
+        Me.Label13.TextAlign = System.Drawing.ContentAlignment.MiddleCenter
         '
         'BtnCancelar
         '
@@ -139,23 +184,29 @@ Partial Class FormTurma
         Me.GroupBox1.Controls.Add(Me.Label3)
         Me.GroupBox1.Controls.Add(Me.Label2)
         Me.GroupBox1.Controls.Add(Me.Label1)
-        Me.GroupBox1.Location = New System.Drawing.Point(10, 106)
+        Me.GroupBox1.Location = New System.Drawing.Point(6, 6)
         Me.GroupBox1.Name = "GroupBox1"
-        Me.GroupBox1.Size = New System.Drawing.Size(684, 249)
+        Me.GroupBox1.Size = New System.Drawing.Size(684, 220)
         Me.GroupBox1.TabIndex = 0
         Me.GroupBox1.TabStop = False
         '
         'GroupBox2
         '
-        Me.GroupBox2.Controls.Add(Me.Label13)
         Me.GroupBox2.Controls.Add(Me.TCatequistaCodigo)
         Me.GroupBox2.Controls.Add(Me.TCatequistaNome)
         Me.GroupBox2.Location = New System.Drawing.Point(6, 161)
         Me.GroupBox2.Name = "GroupBox2"
-        Me.GroupBox2.Size = New System.Drawing.Size(672, 82)
+        Me.GroupBox2.Size = New System.Drawing.Size(672, 51)
         Me.GroupBox2.TabIndex = 26
         Me.GroupBox2.TabStop = False
         Me.GroupBox2.Text = "Catequista"
+        '
+        'TCatequistaCodigo
+        '
+        Me.TCatequistaCodigo.Location = New System.Drawing.Point(73, 19)
+        Me.TCatequistaCodigo.Name = "TCatequistaCodigo"
+        Me.TCatequistaCodigo.Size = New System.Drawing.Size(88, 20)
+        Me.TCatequistaCodigo.TabIndex = 6
         '
         'TCatequistaNome
         '
@@ -333,22 +384,39 @@ Partial Class FormTurma
         Me.DataGridView1.Size = New System.Drawing.Size(681, 410)
         Me.DataGridView1.TabIndex = 0
         '
-        'Label13
+        'CodigoTurma
         '
-        Me.Label13.BackColor = System.Drawing.Color.Orange
-        Me.Label13.Location = New System.Drawing.Point(3, 53)
-        Me.Label13.Name = "Label13"
-        Me.Label13.Size = New System.Drawing.Size(669, 16)
-        Me.Label13.TabIndex = 32
-        Me.Label13.Text = "F1 - Catequista"
-        Me.Label13.TextAlign = System.Drawing.ContentAlignment.MiddleCenter
+        Me.CodigoTurma.DataPropertyName = "CodigoTurma"
+        Me.CodigoTurma.HeaderText = "Turma"
+        Me.CodigoTurma.Name = "CodigoTurma"
+        Me.CodigoTurma.ReadOnly = True
+        Me.CodigoTurma.Visible = False
         '
-        'TCatequistaCodigo
+        'CodigoAula
         '
-        Me.TCatequistaCodigo.Location = New System.Drawing.Point(73, 19)
-        Me.TCatequistaCodigo.Name = "TCatequistaCodigo"
-        Me.TCatequistaCodigo.Size = New System.Drawing.Size(88, 20)
-        Me.TCatequistaCodigo.TabIndex = 6
+        Me.CodigoAula.DataPropertyName = "CodigoAula"
+        Me.CodigoAula.HeaderText = "Aula"
+        Me.CodigoAula.Name = "CodigoAula"
+        Me.CodigoAula.ReadOnly = True
+        '
+        'Descricao
+        '
+        Me.Descricao.DataPropertyName = "Descricao"
+        Me.Descricao.HeaderText = "Descrição"
+        Me.Descricao.Name = "Descricao"
+        Me.Descricao.ReadOnly = True
+        Me.Descricao.Width = 380
+        '
+        'Data
+        '
+        Me.Data.DataPropertyName = "DataCat"
+        DataGridViewCellStyle2.Format = "d"
+        DataGridViewCellStyle2.NullValue = Nothing
+        Me.Data.DefaultCellStyle = DataGridViewCellStyle2
+        Me.Data.HeaderText = "data"
+        Me.Data.Name = "Data"
+        Me.Data.ReadOnly = True
+        Me.Data.Visible = False
         '
         'FormTurma
         '
@@ -364,6 +432,8 @@ Partial Class FormTurma
         Me.Text = "Turma"
         Me.TabControl1.ResumeLayout(False)
         Me.TabPage1.ResumeLayout(False)
+        Me.GroupBox4.ResumeLayout(False)
+        CType(Me.DataGridView2, System.ComponentModel.ISupportInitialize).EndInit()
         Me.GroupBox1.ResumeLayout(False)
         Me.GroupBox1.PerformLayout()
         Me.GroupBox2.ResumeLayout(False)
@@ -405,4 +475,10 @@ Partial Class FormTurma
     Friend WithEvents txtConsulta As System.Windows.Forms.TextBox
     Friend WithEvents Label13 As System.Windows.Forms.Label
     Friend WithEvents TCatequistaCodigo As System.Windows.Forms.TextBox
+    Friend WithEvents GroupBox4 As System.Windows.Forms.GroupBox
+    Friend WithEvents DataGridView2 As System.Windows.Forms.DataGridView
+    Friend WithEvents CodigoTurma As System.Windows.Forms.DataGridViewTextBoxColumn
+    Friend WithEvents CodigoAula As System.Windows.Forms.DataGridViewTextBoxColumn
+    Friend WithEvents Descricao As System.Windows.Forms.DataGridViewTextBoxColumn
+    Friend WithEvents Data As System.Windows.Forms.DataGridViewTextBoxColumn
 End Class

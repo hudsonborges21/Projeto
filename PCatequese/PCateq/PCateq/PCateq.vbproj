@@ -70,15 +70,22 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Class\Aluno.vb" />
+    <Compile Include="Class\Aula.vb" />
     <Compile Include="Class\Catequista.vb" />
     <Compile Include="Class\Conexao.vb" />
-    <Compile Include="Class\Disciplina.vb" />
     <Compile Include="Class\Matricula.vb" />
     <Compile Include="Class\Turma.vb" />
     <Compile Include="DAO\AlunoDAO.vb" />
+    <Compile Include="DAO\AulaDAO.vb" />
     <Compile Include="DAO\CatequistaDAO.vb" />
     <Compile Include="DAO\MatriculaADO.vb" />
     <Compile Include="DAO\TurmaDAO.vb" />
+    <Compile Include="FormAula.Designer.vb">
+      <DependentUpon>FormAula.vb</DependentUpon>
+    </Compile>
+    <Compile Include="FormAula.vb">
+      <SubType>Form</SubType>
+    </Compile>
     <Compile Include="FormCatequistaConsulta.Designer.vb">
       <DependentUpon>FormCatequistaConsulta.vb</DependentUpon>
     </Compile>
@@ -140,6 +147,9 @@
     </Compile>
   </ItemGroup>
   <ItemGroup>
+    <EmbeddedResource Include="FormAula.resx">
+      <DependentUpon>FormAula.vb</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="FormCatequistaConsulta.resx">
       <DependentUpon>FormCatequistaConsulta.vb</DependentUpon>
     </EmbeddedResource>
