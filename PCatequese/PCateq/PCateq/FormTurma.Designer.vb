@@ -22,7 +22,6 @@ Partial Class FormTurma
     'Do not modify it using the code editor.
     <System.Diagnostics.DebuggerStepThrough()> _
     Private Sub InitializeComponent()
-        Dim DataGridViewCellStyle2 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
         Me.TabControl1 = New System.Windows.Forms.TabControl()
         Me.TabPage1 = New System.Windows.Forms.TabPage()
         Me.GroupBox4 = New System.Windows.Forms.GroupBox()
@@ -55,10 +54,6 @@ Partial Class FormTurma
         Me.BtnConsulta = New System.Windows.Forms.Button()
         Me.txtConsulta = New System.Windows.Forms.TextBox()
         Me.DataGridView1 = New System.Windows.Forms.DataGridView()
-        Me.CodigoTurma = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.CodigoAula = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.Descricao = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.Data = New System.Windows.Forms.DataGridViewTextBoxColumn()
         Me.TabControl1.SuspendLayout()
         Me.TabPage1.SuspendLayout()
         Me.GroupBox4.SuspendLayout()
@@ -112,7 +107,6 @@ Partial Class FormTurma
         'DataGridView2
         '
         Me.DataGridView2.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize
-        Me.DataGridView2.Columns.AddRange(New System.Windows.Forms.DataGridViewColumn() {Me.CodigoTurma, Me.CodigoAula, Me.Descricao, Me.Data})
         Me.DataGridView2.Location = New System.Drawing.Point(2, 19)
         Me.DataGridView2.MultiSelect = False
         Me.DataGridView2.Name = "DataGridView2"
@@ -384,40 +378,6 @@ Partial Class FormTurma
         Me.DataGridView1.Size = New System.Drawing.Size(681, 410)
         Me.DataGridView1.TabIndex = 0
         '
-        'CodigoTurma
-        '
-        Me.CodigoTurma.DataPropertyName = "CodigoTurma"
-        Me.CodigoTurma.HeaderText = "Turma"
-        Me.CodigoTurma.Name = "CodigoTurma"
-        Me.CodigoTurma.ReadOnly = True
-        Me.CodigoTurma.Visible = False
-        '
-        'CodigoAula
-        '
-        Me.CodigoAula.DataPropertyName = "CodigoAula"
-        Me.CodigoAula.HeaderText = "Aula"
-        Me.CodigoAula.Name = "CodigoAula"
-        Me.CodigoAula.ReadOnly = True
-        '
-        'Descricao
-        '
-        Me.Descricao.DataPropertyName = "Descricao"
-        Me.Descricao.HeaderText = "Descrição"
-        Me.Descricao.Name = "Descricao"
-        Me.Descricao.ReadOnly = True
-        Me.Descricao.Width = 380
-        '
-        'Data
-        '
-        Me.Data.DataPropertyName = "DataCat"
-        DataGridViewCellStyle2.Format = "d"
-        DataGridViewCellStyle2.NullValue = Nothing
-        Me.Data.DefaultCellStyle = DataGridViewCellStyle2
-        Me.Data.HeaderText = "data"
-        Me.Data.Name = "Data"
-        Me.Data.ReadOnly = True
-        Me.Data.Visible = False
-        '
         'FormTurma
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
@@ -477,8 +437,4 @@ Partial Class FormTurma
     Friend WithEvents TCatequistaCodigo As System.Windows.Forms.TextBox
     Friend WithEvents GroupBox4 As System.Windows.Forms.GroupBox
     Friend WithEvents DataGridView2 As System.Windows.Forms.DataGridView
-    Friend WithEvents CodigoTurma As System.Windows.Forms.DataGridViewTextBoxColumn
-    Friend WithEvents CodigoAula As System.Windows.Forms.DataGridViewTextBoxColumn
-    Friend WithEvents Descricao As System.Windows.Forms.DataGridViewTextBoxColumn
-    Friend WithEvents Data As System.Windows.Forms.DataGridViewTextBoxColumn
 End Class

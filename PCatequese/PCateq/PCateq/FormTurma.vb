@@ -4,53 +4,22 @@ Public Class FormTurma
     Dim incluindo As Boolean
 
     Public Sub formatarGrid()
-
-        ' //define e realiza a formatação de cada coluna
-        DataGridView1.Columns(0).HeaderText = "Codigo"
-        DataGridView1.Columns(1).HeaderText = "Nome"
-        DataGridView1.Columns(2).HeaderText = "Instituicao"
-        DataGridView1.Columns(3).HeaderText = "Curso"
-        DataGridView1.Columns(4).HeaderText = "Inicio"
-        DataGridView1.Columns(5).HeaderText = "Fim"
-        DataGridView1.Columns(6).HeaderText = "Cod Cateq."
-        DataGridView1.Columns(7).HeaderText = "Data"
-
-
-        DataGridView1.Columns(0).Width = 65
-        DataGridView1.Columns(1).Width = 230
-        DataGridView1.Columns(2).Width = 100
-        DataGridView1.Columns(3).Width = 100
-        DataGridView1.Columns(4).Width = 100
-        DataGridView1.Columns(5).Width = 100
-        DataGridView1.Columns(6).Width = 100
-        DataGridView1.Columns(7).Width = 100
-
-        'DataGridView1.Columns(0).DataGridView.DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleCenter
-        'DataGridView1.Columns(1).DataGridView.DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleLeft
-        'DataGridView1.Columns(2).DataGridView.DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleLeft
-        'DataGridView1.Columns(3).DataGridView.DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleLeft
-
-
+        DataGridView1.AutoGenerateColumns = False
+        DataGridView1.Columns.Clear()
+        DataGridView1.Columns.Add(CriarCampo("Codigo", "Código Turma", "80"))
+        DataGridView1.Columns.Add(CriarCampo("Nome", "Turma", "230"))
+        DataGridView1.Columns.Add(CriarCampo("AnoINI", "Ano Inicio", "80"))
+        DataGridView1.Columns.Add(CriarCampo("AnoFim", "Ano Fim", "80"))
+        DataGridView1.Columns.Add(CriarCampo("Curso", "Curso", "165"))
     End Sub
 
     Public Sub formatarGridAula()
-
-        ' //define e realiza a formatação de cada coluna
-        DataGridView1.Columns(0).HeaderText = "Turma"
-        DataGridView1.Columns(1).HeaderText = "Aula"
-        DataGridView1.Columns(2).HeaderText = "Instituicao"
-        DataGridView1.Columns(3).HeaderText = "Curso"
-       
-        DataGridView1.Columns(0).Width = 65
-        DataGridView1.Columns(1).Width = 230
-        DataGridView1.Columns(2).Width = 100
-        DataGridView1.Columns(3).Width = 100
-       
-        'DataGridView1.Columns(0).DataGridView.DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleCenter
-        'DataGridView1.Columns(1).DataGridView.DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleLeft
-        'DataGridView1.Columns(2).DataGridView.DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleLeft
-        'DataGridView1.Columns(3).DataGridView.DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleLeft
-
+        DataGridView2.AutoGenerateColumns = False
+        DataGridView2.Columns.Clear()
+        'DataGridView2.Columns.Add(CriarCampo("codigoTurma", "Código Turma"))
+        DataGridView2.Columns.Add(CriarCampo("codigoAula", "Código Aula", "80"))
+        DataGridView2.Columns.Add(CriarCampo("Descricao", "Descrição", "445"))
+        DataGridView2.Columns.Add(CriarCampo("DataCad", "Data", "100"))
 
     End Sub
     Public Sub AtulizarGrid(ByVal TextoSql As String, ByVal Tabela As String)
@@ -108,6 +77,7 @@ Public Class FormTurma
     End Sub
 
     Private Sub FormTurma_Load(sender As Object, e As EventArgs) Handles MyBase.Load
+
         mostarTurmas()
     End Sub
     Private Sub TabControl1_SelectedIndexChanged(sender As Object, e As EventArgs) Handles TabControl1.SelectedIndexChanged
@@ -152,7 +122,7 @@ Public Class FormTurma
                     Habilita()
                     MsgBox("Registro Excluído", MsgBoxStyle.Information, "")
 
-                    AtulizarGrid("Select codigo,nome,anoini,anofim From Turma", "Turma")
+                    mostarTurmas()
 
                 End If
             End If
@@ -188,7 +158,7 @@ Public Class FormTurma
 
                 incluindo = False
             End If
-            AtulizarGrid("Select codigo,nome,anoini,anofim From Turma", "Turma")
+
             formatarGrid()
             Habilita()
         Catch ex As Exception
@@ -262,7 +232,8 @@ Public Class FormTurma
         End If
         If e.KeyCode = Keys.F3 Then
             If tCodigo.Text <> "" Then
-                Dim codigo As String = DataGridView2.CurrentRow.Cells(2).Value
+                'Dim codigo As String = DataGridView2.CurrentRow.Cells(2).Value
+                Dim codigo As String = DataGridView2.CurrentRow.Cells(0).Value
 
                 FormAula.tCodigo.Text = tCodigo.Text
                 FormAula.tDescricao.Text = tDescricao.Text
@@ -283,7 +254,8 @@ Public Class FormTurma
         If e.KeyCode = Keys.F4 Then
             If tCodigo.Text <> "" Then
                 If MsgBox("Deseja Exlcuir o Registro?", MsgBoxStyle.YesNo) = MsgBoxResult.Yes Then
-                    Dim codigo As String = DataGridView2.CurrentRow.Cells(2).Value
+                    'Dim codigo As String = DataGridView2.CurrentRow.Cells(2).Value
+                    Dim codigo As String = DataGridView2.CurrentRow.Cells(0).Value
                     Dim obj As New Aula
                     obj.CodigoAula = codigo
                     obj.Consultar()
@@ -298,7 +270,7 @@ Public Class FormTurma
             Dim obj As New Aula
             obj.CodigoTurma = codTurma
             DataGridView2.DataSource = obj.ConsultarTurmaAula(obj.CodigoTurma)
-            'formatarGridAula()
+            formatarGridAula()
         Catch ex As Exception
             MsgBox("Erro ao buscar matricula", MsgBoxStyle.Critical)
         End Try
