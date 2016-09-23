@@ -59,60 +59,17 @@ Public Class FormCatequista
 
     Public Sub formatarGrid()
 
-        ' //define e realiza a formatação de cada coluna
-        DataGridView1.Columns(0).HeaderText = "Codigo"
-        DataGridView1.Columns(1).HeaderText = "Nome"
-        DataGridView1.Columns(2).HeaderText = "Endereço"
-        DataGridView1.Columns(3).HeaderText = "Cidade"
-
-        DataGridView1.Columns(0).Width = 65
-        DataGridView1.Columns(1).Width = 230
-        DataGridView1.Columns(2).Width = 100
-        DataGridView1.Columns(3).Width = 100
-
-        DataGridView1.Columns(0).DataGridView.DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleCenter
-        DataGridView1.Columns(1).DataGridView.DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleLeft
-        DataGridView1.Columns(2).DataGridView.DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleLeft
-        DataGridView1.Columns(3).DataGridView.DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleLeft
+        'Pegar os campos da classe (no dataReader), limpa a grid e na deixa ela gerar as colunas automotica
+        DataGridView1.AutoGenerateColumns = False
+        DataGridView1.Columns.Clear()
+        DataGridView1.Columns.Add(CriarCampo("codigo", "Código", "50"))
+        DataGridView1.Columns.Add(CriarCampo("nome", "Nome", "300"))
+        DataGridView1.Columns.Add(CriarCampo("endereco", "Endereço", "185"))
+        DataGridView1.Columns.Add(CriarCampo("telefone", "Telefone", "100"))
 
 
     End Sub
 
-
-    Public Sub AtulizarGrid(ByVal TextoSql As String, ByVal Tabela As String)
-        Dim con As New Conexao
-        'criando a conexao com o banco de dados
-        Dim conexao As SqlConnection
-        conexao = New SqlConnection(con.StrConexao)
-        'criando o comando sql
-        Dim sql As String
-        sql = TextoSql
-
-        Dim comando As SqlCommand
-        comando = New SqlCommand(sql, conexao)
-
-        Dim dataadapter As SqlDataAdapter = New SqlDataAdapter(comando)
-
-        'define o dataset
-        Dim ds As DataSet = New DataSet()
-
-        Try
-            '---abre a conexao---
-            conexao.Open()
-            '---preenche o dataset---
-            dataadapter.Fill(ds, Tabela)
-            '---fecha a conexao---
-            '---vincula o dataset ao DataGridView---
-            DataGridView1.DataSource = ds           'ou ds.tables(0)
-            '---define a tabela a ser exibida---
-            DataGridView1.DataMember = Tabela
-
-            conexao.Close()
-            formatarGrid()
-        Catch ex As Exception
-            MsgBox(ex.Message)
-        End Try
-    End Sub
 
     Private Sub btnConfirmar_Click(sender As Object, e As EventArgs) Handles btnConfirmar.Click
         'Declarando e instanciando o obj da classe empresa
@@ -153,8 +110,7 @@ Public Class FormCatequista
                 
                 incluindo = False
             End If
-            AtulizarGrid("Select codigo,nome,Endereco,cidade From Professor", "Professor")
-            formatarGrid()
+            
             Habilita()
         Catch ex As Exception
             MsgBox("Erro ao salvar, Por favor verificar os dados informado.", MsgBoxStyle.ApplicationModal, "")
@@ -162,7 +118,7 @@ Public Class FormCatequista
     End Sub
 
     Private Sub FormCatequista_Load(sender As Object, e As EventArgs) Handles MyBase.Load
-        AtulizarGrid("Select codigo,nome,Endereco,cidade From Professor", "Professor")
+        mostarTodos()
     End Sub
 
     Private Sub TNome_KeyPress(sender As Object, e As KeyPressEventArgs) Handles TNome.KeyPress
@@ -205,12 +161,18 @@ Public Class FormCatequista
     Private Sub BtnConsulta_Click(sender As Object, e As EventArgs) Handles BtnConsulta.Click
         txtConsulta.Visible = True
         txtConsulta.Text = ""
-        AtulizarGrid("Select codigo,nome,Endereco,cidade From Professor", "Professor")
+        mostarTodos()
     End Sub
 
     Private Sub txtConsulta_KeyDown(sender As Object, e As KeyEventArgs) Handles txtConsulta.KeyDown
         If e.KeyCode = Keys.Enter Then
-            AtulizarGrid("Select codigo,nome,Endereco,cidade From Professor WHERE NOME Like ('%" & txtConsulta.Text & "%') order by Nome,Codigo", "Professor")
+            Try
+                Dim obj As New Catequista
+                obj.Nome = txtConsulta.Text
+                DataGridView1.DataSource = obj.TodosNomes()
+            Catch ex As Exception
+                MsgBox("Erro ao realizar consulta", MsgBoxStyle.Critical, "")
+            End Try
             txtConsulta.Visible = False
         End If
     End Sub
@@ -219,12 +181,18 @@ Public Class FormCatequista
     Private Sub Button1_Click(sender As Object, e As EventArgs) Handles Button1.Click
         tConsultaCodigo.Text = ""
         tConsultaCodigo.Visible = True
-        AtulizarGrid("Select codigo,nome,Endereco,cidade From Professor", "Professor")
+        mostarTodos()
     End Sub
 
     Private Sub tConsultaCodigo_KeyDown(sender As Object, e As KeyEventArgs) Handles tConsultaCodigo.KeyDown
         If e.KeyCode = Keys.Enter Then
-            AtulizarGrid("Select codigo,nome,Endereco,cidade From Professor WHERE Codigo = '" & tConsultaCodigo.Text & "' order by Codigo ", "Professor")
+            Try
+                Dim obj As New Catequista
+                obj.Codigo = tConsultaCodigo.Text
+                DataGridView1.DataSource = obj.TodosCodigos()
+            Catch ex As Exception
+                MsgBox("Erro ao realizar consulta", MsgBoxStyle.Critical, "")
+            End Try
             tConsultaCodigo.Visible = False
         End If
     End Sub
@@ -241,7 +209,7 @@ Public Class FormCatequista
                     Habilita()
                     MsgBox("Registro Excluído", MsgBoxStyle.Information, "")
 
-                    AtulizarGrid("Select codigo,nome,Endereco,cidade From Professor", "Professor")
+                    mostarTodos()
 
                 End If
             End If
@@ -294,4 +262,12 @@ Public Class FormCatequista
     Private Sub RadioButton2_Click(sender As Object, e As EventArgs) Handles RadioButton2.Click
         Desabilita()
     End Sub
+   
+    Public Sub mostarTodos()
+        Dim obj As New Catequista
+        DataGridView1.DataSource = obj.Todos()
+        formatarGrid()
+    End Sub
+
+    
 End Class

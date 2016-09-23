@@ -24,7 +24,7 @@
             obj.CodigoAluno = tCodigo.Text
             obj.CodigoTurma = TturmaCodigo.Text
             obj.DataCad = FormatDateTime(TDataCad.Text, DateFormat.ShortDate)
-            'obj.Stautus = ""
+            obj.Status = CBStatus.SelectedItem
 
             If Not incluindo Then
                 'chamando o metodo da classe responsavel por incluir os dados 

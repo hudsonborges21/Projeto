@@ -1,33 +1,22 @@
 ﻿Public Class FormTurmaConsulta
 
     Public Sub formatarGrid()
-
-        ' //define e realiza a formatação de cada coluna
-        DataGridView1.Columns(0).HeaderText = "Codigo"
-        DataGridView1.Columns(1).HeaderText = "Nome"
-        
-
-        DataGridView1.Columns(0).Width = 65
-        DataGridView1.Columns(1).Width = 230
-       
-
-        DataGridView1.Columns(0).DataGridView.DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleCenter
-        DataGridView1.Columns(1).DataGridView.DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleLeft
-        
-
-
-    End Sub
-
-
-    Public Sub AtulizarGrid(ByVal TextoSql As String, ByVal Tabela As String)
+        DataGridView1.AutoGenerateColumns = False
+        DataGridView1.Columns.Clear()
+        DataGridView1.Columns.Add(CriarCampo("Codigo", "Código Turma", "80"))
+        DataGridView1.Columns.Add(CriarCampo("Nome", "Turma", "255"))
+        DataGridView1.Columns.Add(CriarCampo("AnoINI", "Ano Inicio", "80"))
         
     End Sub
+
+
+    
 
     Private Sub FormTurmaConsulta_Load(sender As Object, e As EventArgs) Handles MyBase.Load
         Dim obj As New Turma
         DataGridView1.DataSource = obj.Todos
         TPesquisa.Focus()
-        'formatarGrid()
+        formatarGrid()
     End Sub
 
     Private Sub TPesquisa_KeyPress(sender As Object, e As KeyPressEventArgs) Handles TPesquisa.KeyPress

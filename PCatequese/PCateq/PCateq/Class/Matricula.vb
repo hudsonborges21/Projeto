@@ -33,7 +33,7 @@
         End Set
     End Property
 
-    Public Property Stautus() As String
+    Public Property Status() As String
         Get
             Return vStatus
         End Get

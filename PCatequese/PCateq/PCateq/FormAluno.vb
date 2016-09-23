@@ -6,69 +6,48 @@ Public Class FormAluno
 
     Public Sub formatarGrid()
 
-        ' //define e realiza a formatação de cada coluna
-        DataGridView1.Columns(0).HeaderText = "Codigo"
-        DataGridView1.Columns(1).HeaderText = "Nome"
-        DataGridView1.Columns(2).HeaderText = "Endereço"
-        DataGridView1.Columns(3).HeaderText = "Cidade"
-
-        DataGridView1.Columns(0).Width = 65
-        DataGridView1.Columns(1).Width = 230
-        DataGridView1.Columns(2).Width = 100
-        DataGridView1.Columns(3).Width = 100
-
-        DataGridView1.Columns(0).DataGridView.DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleCenter
-        DataGridView1.Columns(1).DataGridView.DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleLeft
-        DataGridView1.Columns(2).DataGridView.DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleLeft
-        DataGridView1.Columns(3).DataGridView.DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleLeft
-
-       
+        'define e realiza a formatação de cada coluna
+        'Pegar os campos da classe (atributos), limpa a grid e na deixa ela gerar as colunas automatica
+        DataGridView1.AutoGenerateColumns = False
+        DataGridView1.Columns.Clear()
+        DataGridView1.Columns.Add(CriarCampo("codigo", "Código", "50"))
+        DataGridView1.Columns.Add(CriarCampo("nome", "Nome", "300"))
+        DataGridView1.Columns.Add(CriarCampo("endereco", "Endereço", "185"))
+        DataGridView1.Columns.Add(CriarCampo("telefone", "Telefone", "100"))
 
     End Sub
+    Public Sub formatarGridTurma()
 
+        'define e realiza a formatação de cada coluna
+        'Pegar os campos da classe (atributos), limpa a grid e na deixa ela gerar as colunas automatica
+        DataGridView2.AutoGenerateColumns = False
+        DataGridView2.Columns.Clear()
+        DataGridView2.Columns.Add(CriarCampo("codigoTurma", "Código Turma", "80"))
+        'DataGridView2.Columns.Add(CriarCampo("codigoAluno", "Código aluno", "80"))
+        DataGridView2.Columns.Add(CriarCampo("dataCad", "data", "100"))
+        DataGridView2.Columns.Add(CriarCampo("Status", "Status", "200"))
 
-    Public Sub AtulizarGrid(ByVal TextoSql As String, ByVal Tabela As String)
-        Dim con As New Conexao
-        'criando a conexao com o banco de dados
-        Dim conexao As SqlConnection
-        conexao = New SqlConnection(con.StrConexao)
-        'criando o comando sql
-        Dim sql As String
-        sql = TextoSql
-
-        Dim comando As SqlCommand
-        comando = New SqlCommand(sql, conexao)
-
-        Dim dataadapter As SqlDataAdapter = New SqlDataAdapter(comando)
-
-        'define o dataset
-        Dim ds As DataSet = New DataSet()
-
+    End Sub
+    Public Sub mostarTodos()
+        Dim obj As New Aluno
+        DataGridView1.DataSource = obj.Todos()
+        formatarGrid()
+    End Sub
+    Public Sub GridMatricula(ByVal codAluno As String)
         Try
-            '---abre a conexao---
-            conexao.Open()
-            '---preenche o dataset---
-            dataadapter.Fill(ds, Tabela)
-            '---fecha a conexao---
-            '---vincula o dataset ao DataGridView---
-            DataGridView1.DataSource = ds           'ou ds.tables(0)
-            '---define a tabela a ser exibida---
-            DataGridView1.DataMember = Tabela
+            formatarGridTurma()
+            Dim obj As New Matricula
+            obj.CodigoAluno = codAluno
+            DataGridView2.DataSource = obj.Consultar(obj.CodigoAluno)
 
-            conexao.Close()
-            formatarGrid()
         Catch ex As Exception
-            MsgBox(ex.Message)
+            MsgBox("Erro ao buscar matricula", MsgBoxStyle.Critical)
         End Try
+
+
     End Sub
-
     Private Sub FormAluno_Load(sender As Object, e As EventArgs) Handles MyBase.Load
-        AtulizarGrid("Select codigo,nome,Endereco,cidade From Aluno", "Aluno")
-        'Dim obj As Aluno = New Aluno
-
-        'DataGridView1.DataSource = obj.Todos()
-
-
+        mostarTodos()
         If tCodigo.Text <> "" Then
             BtnMatricula.Enabled = True
         End If
@@ -106,8 +85,10 @@ Public Class FormAluno
                     GridMatricula(codigo)
                 End If
             Else
-                formatarGrid()
+                'mostarTodos()
             End If
+        Else
+            mostarTodos()
         End If
 
     End Sub
@@ -169,8 +150,6 @@ Public Class FormAluno
                 
                 incluindo = False
             End If
-            AtulizarGrid("Select codigo,nome,Endereco,cidade From Aluno", "Aluno")
-            formatarGrid()
             Habilita()
         Catch ex As Exception
             MsgBox("Erro ao salvar, Por favor verificar os dados informado.", MsgBoxStyle.ApplicationModal, "")
@@ -216,12 +195,18 @@ Public Class FormAluno
     Private Sub BtnConsulta_Click(sender As Object, e As EventArgs) Handles BtnConsulta.Click
         txtConsulta.Visible = True
         txtConsulta.Text = ""
-        AtulizarGrid("Select codigo,nome,Endereco,cidade From Aluno", "Aluno")
+        mostarTodos()
     End Sub
 
     Private Sub txtConsulta_KeyDown(sender As Object, e As KeyEventArgs) Handles txtConsulta.KeyDown
         If e.KeyCode = Keys.Enter Then
-            AtulizarGrid("Select codigo,nome,Endereco,cidade From Aluno WHERE NOME Like ('%" & txtConsulta.Text & "%') order by Nome,Codigo", "Aluno")
+            Try
+                Dim obj As New Aluno
+                obj.Nome = txtConsulta.Text
+                DataGridView1.DataSource = obj.TodosNomes()
+            Catch ex As Exception
+                MsgBox("Erro ao realizar consulta", MsgBoxStyle.Critical, "")
+            End Try
             txtConsulta.Visible = False
         End If
     End Sub
@@ -229,12 +214,18 @@ Public Class FormAluno
     Private Sub Button1_Click(sender As Object, e As EventArgs) Handles Button1.Click
         tConsultaCodigo.Text = ""
         tConsultaCodigo.Visible = True
-        AtulizarGrid("Select codigo,nome,Endereco,cidade From Aluno", "Aluno")
+        mostarTodos()
     End Sub
 
     Private Sub tConsultaCodigo_KeyDown(sender As Object, e As KeyEventArgs) Handles tConsultaCodigo.KeyDown
         If e.KeyCode = Keys.Enter Then
-            AtulizarGrid("Select codigo,nome,Endereco,cidade From Aluno WHERE Codigo = '" & tConsultaCodigo.Text & "' order by Codigo ", "Aluno")
+            Try
+                Dim obj As New Aluno
+                obj.Codigo = tConsultaCodigo.Text
+                DataGridView1.DataSource = obj.TodosCodigos()
+            Catch ex As Exception
+                MsgBox("Erro ao realizar consulta", MsgBoxStyle.Critical, "")
+            End Try
             tConsultaCodigo.Visible = False
         End If
     End Sub
@@ -250,7 +241,7 @@ Public Class FormAluno
                     Habilita()
                     MsgBox("Registro Excluído", MsgBoxStyle.Information, "")
 
-                    AtulizarGrid("Select codigo,nome,Endereco,cidade From Aluno", "Aluno")
+                    mostarTodos()
 
                 End If
             End If
@@ -313,18 +304,7 @@ Public Class FormAluno
             MsgBox("Incluir o Aluno antes de Matricular", MsgBoxStyle.Critical, "")
         End If
     End Sub
-    Public Sub GridMatricula(ByVal codAluno As String)
-        Try
-            Dim obj As New Matricula
-            obj.CodigoAluno = codAluno
-            DataGridView2.DataSource = obj.Consultar(obj.CodigoAluno)
-
-        Catch ex As Exception
-            MsgBox("Erro ao buscar matricula", MsgBoxStyle.Critical)
-        End Try
-
-
-    End Sub
+    
 
     Private Sub DataGridView2_KeyDown(sender As Object, e As KeyEventArgs) Handles DataGridView2.KeyDown
         Try
@@ -339,7 +319,7 @@ Public Class FormAluno
 
                     Dim obj2 As Matricula = New Matricula
                     obj2.Consultar(codigo, tCodigo.Text)
-                    FormMatricula.TStatus.Text = obj2.Stautus
+                    FormMatricula.TStatus.Text = obj2.Status
                     FormMatricula.TDataCad.Text = FormatDateTime(obj.DataCad, DateFormat.ShortDate)
                     FormMatricula.tCodigo.Text = tCodigo.Text
                     FormMatricula.tNome.Text = TNome.Text

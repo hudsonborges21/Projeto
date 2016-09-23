@@ -7,7 +7,7 @@ Public Class Catequista
 
 #Region "Atributos"
 
-    'declarando os atributos da classe produto
+    'declarando os atributos da classe 
     Private vCodigo As Integer
     Private vNome As String
     Private vEndereco As String
@@ -189,6 +189,9 @@ Public Class Catequista
     End Function
     Public Function TodosNomes() As List(Of Catequista)
         Return New CatequistaDAO().TodosNomes(vNome)
+    End Function
+    Public Function TodosCodigos() As List(Of Catequista)
+        Return New CatequistaDAO().TodosCodigos(vCodigo)
     End Function
     Public Function Consultar(ByVal pCod As String)
         Return New CatequistaDAO().Consultar(pCod, Me)

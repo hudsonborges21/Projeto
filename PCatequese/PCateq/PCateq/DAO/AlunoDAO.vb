@@ -120,7 +120,58 @@ Public Class AlunoDAO
         End Using
     End Function
 
+    Public Function TodosNomes(ByVal nome As String) As List(Of Aluno)
+        Dim dataReader As SqlDataReader
+        Dim lista = New List(Of Aluno)
 
+        Using conexao As SqlConnection = New Conexao().GetConnection()
+            'abrindo conexao 
+            conexao.Open()
+            Dim sql As String
+            sql = ObterSqlSelectTodosCampo() & " where Nome like '%" & nome & "%'"
+            Using comando = New SqlCommand(sql, conexao)
+                dataReader = comando.ExecuteReader
+                If dataReader.HasRows Then
+                    While dataReader.Read()
+                        Dim aluno As New Aluno
+                        PopularObjeto(dataReader, aluno)
+                        lista.Add(aluno)
+                    End While
+                    conexao.Close()
+                    Return lista
+                Else
+                    conexao.Close()
+                    Return Nothing
+                End If
+            End Using
+        End Using
+    End Function
+    Public Function TodosCodigos(ByVal Codigo As String) As List(Of Aluno)
+        Dim dataReader As SqlDataReader
+        Dim lista = New List(Of Aluno)
+
+        Using conexao As SqlConnection = New Conexao().GetConnection()
+            'abrindo conexao 
+            conexao.Open()
+            Dim sql As String
+            sql = ObterSqlSelectTodosCampo() & " where Codigo =" & Codigo
+            Using comando = New SqlCommand(sql, conexao)
+                dataReader = comando.ExecuteReader
+                If dataReader.HasRows Then
+                    While dataReader.Read()
+                        Dim aluno As New Aluno
+                        PopularObjeto(dataReader, aluno)
+                        lista.Add(aluno)
+                    End While
+                    conexao.Close()
+                    Return lista
+                Else
+                    conexao.Close()
+                    Return Nothing
+                End If
+            End Using
+        End Using
+    End Function
     'CONSULTAR 
 
     Public Function Consultar(ByVal codigolinha As Integer, ByRef aluno As Aluno) As Boolean

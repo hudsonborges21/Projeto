@@ -36,7 +36,7 @@ Public Class MatriculaADO
         'End If
         comando.Parameters.Add("@CodigoTurma", SqlDbType.VarChar).Value = turma.CodigoTurma
         comando.Parameters.Add("@CodigoAluno", SqlDbType.VarChar).Value = turma.CodigoAluno
-        comando.Parameters.Add("@Status", SqlDbType.VarChar).Value = turma.Stautus
+        comando.Parameters.Add("@Status", SqlDbType.VarChar).Value = turma.Status
         comando.Parameters.Add("@Data", SqlDbType.Date).Value = turma.DataCad
 
     End Sub
@@ -44,7 +44,7 @@ Public Class MatriculaADO
     Private Shared Sub PopularObjeto(ByVal reader As IDataRecord, ByRef turma As Matricula)
         turma.CodigoTurma = reader("CodigoTurma")
         turma.CodigoAluno = reader("CodigoAluno")
-        If Not IsDBNull(reader("Status")) Then turma.Stautus = (reader("Status"))
+        If Not IsDBNull(reader("Status")) Then turma.Status = (reader("Status"))
         If Not IsDBNull(reader("Data")) Then turma.DataCad = reader("Data")
 
     End Sub
