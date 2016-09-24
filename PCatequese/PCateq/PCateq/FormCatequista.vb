@@ -119,6 +119,7 @@ Public Class FormCatequista
 
     Private Sub FormCatequista_Load(sender As Object, e As EventArgs) Handles MyBase.Load
         mostarTodos()
+        Habilita()
     End Sub
 
     Private Sub TNome_KeyPress(sender As Object, e As KeyPressEventArgs) Handles TNome.KeyPress

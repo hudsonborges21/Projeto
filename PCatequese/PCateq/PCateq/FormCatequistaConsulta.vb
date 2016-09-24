@@ -2,19 +2,10 @@
 
     Public Sub formatarGrid()
 
-        ' //define e realiza a formatação de cada coluna
-        DataGridView1.Columns(0).HeaderText = "Codigo"
-        DataGridView1.Columns(1).HeaderText = "Nome"
-
-
-        DataGridView1.Columns(0).Width = 65
-        DataGridView1.Columns(1).Width = 230
-
-
-        DataGridView1.Columns(0).DataGridView.DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleCenter
-        DataGridView1.Columns(1).DataGridView.DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleLeft
-
-
+        DataGridView1.AutoGenerateColumns = False
+        DataGridView1.Columns.Clear()
+        DataGridView1.Columns.Add(CriarCampo("codigo", "Código", "50"))
+        DataGridView1.Columns.Add(CriarCampo("nome", "Nome", "285"))
 
     End Sub
 
@@ -59,5 +50,6 @@
     Private Sub FormCatequistaConsulta_Load(sender As Object, e As EventArgs) Handles MyBase.Load
         Dim obj As New Catequista
         DataGridView1.DataSource = obj.Todos
+        formatarGrid()
     End Sub
 End Class

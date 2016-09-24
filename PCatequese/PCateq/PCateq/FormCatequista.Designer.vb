@@ -174,6 +174,7 @@ Partial Class FormCatequista
         '
         'TDataNasc
         '
+        Me.TDataNasc.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle
         Me.TDataNasc.Location = New System.Drawing.Point(419, 13)
         Me.TDataNasc.Mask = "00/00/0000"
         Me.TDataNasc.Name = "TDataNasc"
@@ -183,6 +184,7 @@ Partial Class FormCatequista
         '
         'tMae
         '
+        Me.tMae.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle
         Me.tMae.Location = New System.Drawing.Point(60, 191)
         Me.tMae.Name = "tMae"
         Me.tMae.Size = New System.Drawing.Size(441, 20)
@@ -190,6 +192,7 @@ Partial Class FormCatequista
         '
         'tPai
         '
+        Me.tPai.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle
         Me.tPai.Location = New System.Drawing.Point(60, 162)
         Me.tPai.Name = "tPai"
         Me.tPai.Size = New System.Drawing.Size(441, 20)
@@ -197,6 +200,7 @@ Partial Class FormCatequista
         '
         'tTelefone
         '
+        Me.tTelefone.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle
         Me.tTelefone.Location = New System.Drawing.Point(379, 131)
         Me.tTelefone.Name = "tTelefone"
         Me.tTelefone.Size = New System.Drawing.Size(122, 20)
@@ -204,6 +208,7 @@ Partial Class FormCatequista
         '
         'tNaturalidade
         '
+        Me.tNaturalidade.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle
         Me.tNaturalidade.Location = New System.Drawing.Point(84, 131)
         Me.tNaturalidade.Name = "tNaturalidade"
         Me.tNaturalidade.Size = New System.Drawing.Size(234, 20)
@@ -211,6 +216,7 @@ Partial Class FormCatequista
         '
         'TDataCad
         '
+        Me.TDataCad.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle
         Me.TDataCad.Location = New System.Drawing.Point(236, 13)
         Me.TDataCad.Mask = "00/00/0000"
         Me.TDataCad.Name = "TDataCad"
@@ -220,6 +226,7 @@ Partial Class FormCatequista
         '
         'tCep
         '
+        Me.tCep.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle
         Me.tCep.Location = New System.Drawing.Point(401, 105)
         Me.tCep.Name = "tCep"
         Me.tCep.Size = New System.Drawing.Size(100, 20)
@@ -227,6 +234,7 @@ Partial Class FormCatequista
         '
         'Tcidade
         '
+        Me.Tcidade.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle
         Me.Tcidade.Location = New System.Drawing.Point(60, 102)
         Me.Tcidade.Name = "Tcidade"
         Me.Tcidade.Size = New System.Drawing.Size(258, 20)
@@ -234,6 +242,7 @@ Partial Class FormCatequista
         '
         'tBairro
         '
+        Me.tBairro.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle
         Me.tBairro.Location = New System.Drawing.Point(364, 76)
         Me.tBairro.Name = "tBairro"
         Me.tBairro.Size = New System.Drawing.Size(137, 20)
@@ -241,6 +250,7 @@ Partial Class FormCatequista
         '
         'TEndereco
         '
+        Me.TEndereco.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle
         Me.TEndereco.Location = New System.Drawing.Point(60, 72)
         Me.TEndereco.Name = "TEndereco"
         Me.TEndereco.Size = New System.Drawing.Size(258, 20)
@@ -248,6 +258,7 @@ Partial Class FormCatequista
         '
         'TNome
         '
+        Me.TNome.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle
         Me.TNome.Location = New System.Drawing.Point(60, 43)
         Me.TNome.Name = "TNome"
         Me.TNome.Size = New System.Drawing.Size(441, 20)
@@ -255,6 +266,7 @@ Partial Class FormCatequista
         '
         'tCodigo
         '
+        Me.tCodigo.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle
         Me.tCodigo.Enabled = False
         Me.tCodigo.Location = New System.Drawing.Point(60, 13)
         Me.tCodigo.Name = "tCodigo"

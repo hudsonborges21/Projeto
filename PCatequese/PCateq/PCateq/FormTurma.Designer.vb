@@ -41,7 +41,6 @@ Partial Class FormTurma
         Me.Label5 = New System.Windows.Forms.Label()
         Me.tDescricao = New System.Windows.Forms.TextBox()
         Me.Label4 = New System.Windows.Forms.Label()
-        Me.tData = New System.Windows.Forms.MaskedTextBox()
         Me.tcurso = New System.Windows.Forms.TextBox()
         Me.tCodigo = New System.Windows.Forms.TextBox()
         Me.Label3 = New System.Windows.Forms.Label()
@@ -54,6 +53,7 @@ Partial Class FormTurma
         Me.BtnConsulta = New System.Windows.Forms.Button()
         Me.txtConsulta = New System.Windows.Forms.TextBox()
         Me.DataGridView1 = New System.Windows.Forms.DataGridView()
+        Me.TData = New System.Windows.Forms.MaskedTextBox()
         Me.TabControl1.SuspendLayout()
         Me.TabPage1.SuspendLayout()
         Me.GroupBox4.SuspendLayout()
@@ -118,7 +118,7 @@ Partial Class FormTurma
         'Label13
         '
         Me.Label13.BackColor = System.Drawing.Color.Orange
-        Me.Label13.Location = New System.Drawing.Point(15, 435)
+        Me.Label13.Location = New System.Drawing.Point(9, 429)
         Me.Label13.Name = "Label13"
         Me.Label13.Size = New System.Drawing.Size(669, 16)
         Me.Label13.TabIndex = 32
@@ -165,6 +165,7 @@ Partial Class FormTurma
         'GroupBox1
         '
         Me.GroupBox1.BackColor = System.Drawing.Color.Transparent
+        Me.GroupBox1.Controls.Add(Me.TData)
         Me.GroupBox1.Controls.Add(Me.GroupBox2)
         Me.GroupBox1.Controls.Add(Me.tAnoFim)
         Me.GroupBox1.Controls.Add(Me.Label6)
@@ -172,7 +173,6 @@ Partial Class FormTurma
         Me.GroupBox1.Controls.Add(Me.Label5)
         Me.GroupBox1.Controls.Add(Me.tDescricao)
         Me.GroupBox1.Controls.Add(Me.Label4)
-        Me.GroupBox1.Controls.Add(Me.tData)
         Me.GroupBox1.Controls.Add(Me.tcurso)
         Me.GroupBox1.Controls.Add(Me.tCodigo)
         Me.GroupBox1.Controls.Add(Me.Label3)
@@ -197,6 +197,7 @@ Partial Class FormTurma
         '
         'TCatequistaCodigo
         '
+        Me.TCatequistaCodigo.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle
         Me.TCatequistaCodigo.Location = New System.Drawing.Point(73, 19)
         Me.TCatequistaCodigo.Name = "TCatequistaCodigo"
         Me.TCatequistaCodigo.Size = New System.Drawing.Size(88, 20)
@@ -204,6 +205,7 @@ Partial Class FormTurma
         '
         'TCatequistaNome
         '
+        Me.TCatequistaNome.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle
         Me.TCatequistaNome.Enabled = False
         Me.TCatequistaNome.Location = New System.Drawing.Point(167, 19)
         Me.TCatequistaNome.Name = "TCatequistaNome"
@@ -212,6 +214,7 @@ Partial Class FormTurma
         '
         'tAnoFim
         '
+        Me.tAnoFim.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle
         Me.tAnoFim.Location = New System.Drawing.Point(327, 99)
         Me.tAnoFim.Name = "tAnoFim"
         Me.tAnoFim.Size = New System.Drawing.Size(86, 20)
@@ -228,6 +231,7 @@ Partial Class FormTurma
         '
         'TAnoINI
         '
+        Me.TAnoINI.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle
         Me.TAnoINI.Location = New System.Drawing.Point(118, 99)
         Me.TAnoINI.Name = "TAnoINI"
         Me.TAnoINI.Size = New System.Drawing.Size(86, 20)
@@ -244,6 +248,7 @@ Partial Class FormTurma
         '
         'tDescricao
         '
+        Me.tDescricao.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle
         Me.tDescricao.Location = New System.Drawing.Point(118, 73)
         Me.tDescricao.Name = "tDescricao"
         Me.tDescricao.Size = New System.Drawing.Size(408, 20)
@@ -258,15 +263,9 @@ Partial Class FormTurma
         Me.Label4.TabIndex = 20
         Me.Label4.Text = "Descrição"
         '
-        'tData
-        '
-        Me.tData.Location = New System.Drawing.Point(327, 13)
-        Me.tData.Name = "tData"
-        Me.tData.Size = New System.Drawing.Size(86, 20)
-        Me.tData.TabIndex = 1
-        '
         'tcurso
         '
+        Me.tcurso.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle
         Me.tcurso.Location = New System.Drawing.Point(118, 43)
         Me.tcurso.Name = "tcurso"
         Me.tcurso.Size = New System.Drawing.Size(408, 20)
@@ -274,6 +273,7 @@ Partial Class FormTurma
         '
         'tCodigo
         '
+        Me.tCodigo.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle
         Me.tCodigo.Location = New System.Drawing.Point(118, 13)
         Me.tCodigo.Name = "tCodigo"
         Me.tCodigo.Size = New System.Drawing.Size(86, 20)
@@ -378,6 +378,16 @@ Partial Class FormTurma
         Me.DataGridView1.Size = New System.Drawing.Size(681, 410)
         Me.DataGridView1.TabIndex = 0
         '
+        'TData
+        '
+        Me.TData.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle
+        Me.TData.Location = New System.Drawing.Point(327, 13)
+        Me.TData.Mask = "00/00/0000"
+        Me.TData.Name = "TData"
+        Me.TData.Size = New System.Drawing.Size(82, 20)
+        Me.TData.TabIndex = 27
+        Me.TData.ValidatingType = GetType(Date)
+        '
         'FormTurma
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
@@ -420,7 +430,6 @@ Partial Class FormTurma
     Friend WithEvents Label5 As System.Windows.Forms.Label
     Friend WithEvents tDescricao As System.Windows.Forms.TextBox
     Friend WithEvents Label4 As System.Windows.Forms.Label
-    Friend WithEvents tData As System.Windows.Forms.MaskedTextBox
     Friend WithEvents tcurso As System.Windows.Forms.TextBox
     Friend WithEvents tCodigo As System.Windows.Forms.TextBox
     Friend WithEvents Label3 As System.Windows.Forms.Label
@@ -437,4 +446,5 @@ Partial Class FormTurma
     Friend WithEvents TCatequistaCodigo As System.Windows.Forms.TextBox
     Friend WithEvents GroupBox4 As System.Windows.Forms.GroupBox
     Friend WithEvents DataGridView2 As System.Windows.Forms.DataGridView
+    Friend WithEvents TData As System.Windows.Forms.MaskedTextBox
 End Class

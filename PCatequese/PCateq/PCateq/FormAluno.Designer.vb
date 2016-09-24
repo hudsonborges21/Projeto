@@ -192,6 +192,7 @@ Partial Class FormAluno
         '
         'TDataNasc
         '
+        Me.TDataNasc.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle
         Me.TDataNasc.Location = New System.Drawing.Point(496, 12)
         Me.TDataNasc.Mask = "00/00/0000"
         Me.TDataNasc.Name = "TDataNasc"
@@ -233,6 +234,7 @@ Partial Class FormAluno
         '
         'tMae
         '
+        Me.tMae.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle
         Me.tMae.Location = New System.Drawing.Point(137, 190)
         Me.tMae.Name = "tMae"
         Me.tMae.Size = New System.Drawing.Size(441, 20)
@@ -240,6 +242,7 @@ Partial Class FormAluno
         '
         'tPai
         '
+        Me.tPai.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle
         Me.tPai.Location = New System.Drawing.Point(137, 161)
         Me.tPai.Name = "tPai"
         Me.tPai.Size = New System.Drawing.Size(441, 20)
@@ -247,6 +250,7 @@ Partial Class FormAluno
         '
         'tTelefone
         '
+        Me.tTelefone.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle
         Me.tTelefone.Location = New System.Drawing.Point(456, 130)
         Me.tTelefone.Name = "tTelefone"
         Me.tTelefone.Size = New System.Drawing.Size(122, 20)
@@ -254,6 +258,7 @@ Partial Class FormAluno
         '
         'tNaturalidade
         '
+        Me.tNaturalidade.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle
         Me.tNaturalidade.Location = New System.Drawing.Point(161, 130)
         Me.tNaturalidade.Name = "tNaturalidade"
         Me.tNaturalidade.Size = New System.Drawing.Size(234, 20)
@@ -261,6 +266,7 @@ Partial Class FormAluno
         '
         'TDataCad
         '
+        Me.TDataCad.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle
         Me.TDataCad.Location = New System.Drawing.Point(313, 12)
         Me.TDataCad.Mask = "00/00/0000"
         Me.TDataCad.Name = "TDataCad"
@@ -270,6 +276,7 @@ Partial Class FormAluno
         '
         'tCep
         '
+        Me.tCep.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle
         Me.tCep.Location = New System.Drawing.Point(478, 104)
         Me.tCep.Name = "tCep"
         Me.tCep.Size = New System.Drawing.Size(100, 20)
@@ -277,6 +284,7 @@ Partial Class FormAluno
         '
         'Tcidade
         '
+        Me.Tcidade.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle
         Me.Tcidade.Location = New System.Drawing.Point(137, 101)
         Me.Tcidade.Name = "Tcidade"
         Me.Tcidade.Size = New System.Drawing.Size(258, 20)
@@ -284,6 +292,7 @@ Partial Class FormAluno
         '
         'tBairro
         '
+        Me.tBairro.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle
         Me.tBairro.Location = New System.Drawing.Point(441, 75)
         Me.tBairro.Name = "tBairro"
         Me.tBairro.Size = New System.Drawing.Size(137, 20)
@@ -291,6 +300,7 @@ Partial Class FormAluno
         '
         'TEndereco
         '
+        Me.TEndereco.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle
         Me.TEndereco.Location = New System.Drawing.Point(137, 71)
         Me.TEndereco.Name = "TEndereco"
         Me.TEndereco.Size = New System.Drawing.Size(258, 20)
@@ -298,6 +308,7 @@ Partial Class FormAluno
         '
         'TNome
         '
+        Me.TNome.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle
         Me.TNome.Location = New System.Drawing.Point(137, 42)
         Me.TNome.Name = "TNome"
         Me.TNome.Size = New System.Drawing.Size(441, 20)
@@ -305,6 +316,7 @@ Partial Class FormAluno
         '
         'tCodigo
         '
+        Me.tCodigo.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle
         Me.tCodigo.Enabled = False
         Me.tCodigo.Location = New System.Drawing.Point(137, 12)
         Me.tCodigo.Name = "tCodigo"

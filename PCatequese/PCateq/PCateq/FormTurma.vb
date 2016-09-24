@@ -216,6 +216,7 @@ Public Class FormTurma
     Private Sub FormTurma_KeyDown(sender As Object, e As KeyEventArgs) Handles MyBase.KeyDown
         If e.KeyCode = Keys.F1 Then
             If tCodigo.Text <> "" Then
+                Desabilita()
                 FormCatequistaConsulta.ShowDialog()
                 FormCatequistaConsulta.TPesquisa.Focus()
             End If
@@ -279,6 +280,24 @@ Public Class FormTurma
     End Sub
 
     Private Sub BtnCancelar_Click(sender As Object, e As EventArgs) Handles BtnCancelar.Click
+        Dim obj As Turma = New Turma
 
+        obj.Codigo = tCodigo.Text
+        If obj.Consultar(obj.Codigo) Then
+            tCodigo.Text = obj.Codigo
+            tData.Text = FormatDateTime(obj.DataCad, DateFormat.ShortDate)
+            tcurso.Text = obj.Curso
+            tAnoFim.Text = obj.AnoFim
+            TAnoINI.Text = obj.AnoIni
+            tDescricao.Text = obj.Nome
+            TCatequistaCodigo.Text = obj.CatequistaCodigo
+
+            Dim obj2 As Catequista = New Catequista
+            If obj2.Consultar(obj.CatequistaCodigo) Then
+                TCatequistaNome.Text = obj2.Nome
+            End If
+            Habilita()
+
+        End If
     End Sub
 End Class
