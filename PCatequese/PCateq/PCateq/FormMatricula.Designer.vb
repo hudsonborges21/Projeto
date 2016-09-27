@@ -23,8 +23,8 @@ Partial Class FormMatricula
     <System.Diagnostics.DebuggerStepThrough()> _
     Private Sub InitializeComponent()
         Me.GroupBox3 = New System.Windows.Forms.GroupBox()
+        Me.CBStatus = New System.Windows.Forms.ComboBox()
         Me.Label2 = New System.Windows.Forms.Label()
-        Me.TStatus = New System.Windows.Forms.TextBox()
         Me.TDataCad = New System.Windows.Forms.MaskedTextBox()
         Me.Label3 = New System.Windows.Forms.Label()
         Me.TTurmaDescricao = New System.Windows.Forms.TextBox()
@@ -35,7 +35,6 @@ Partial Class FormMatricula
         Me.BtnCancelar = New System.Windows.Forms.Button()
         Me.btnConfirmar = New System.Windows.Forms.Button()
         Me.Label4 = New System.Windows.Forms.Label()
-        Me.CBStatus = New System.Windows.Forms.ComboBox()
         Me.GroupBox3.SuspendLayout()
         Me.GroupBox4.SuspendLayout()
         Me.SuspendLayout()
@@ -45,7 +44,6 @@ Partial Class FormMatricula
         Me.GroupBox3.BackColor = System.Drawing.Color.Transparent
         Me.GroupBox3.Controls.Add(Me.CBStatus)
         Me.GroupBox3.Controls.Add(Me.Label2)
-        Me.GroupBox3.Controls.Add(Me.TStatus)
         Me.GroupBox3.Controls.Add(Me.TDataCad)
         Me.GroupBox3.Controls.Add(Me.Label3)
         Me.GroupBox3.Controls.Add(Me.TTurmaDescricao)
@@ -57,6 +55,16 @@ Partial Class FormMatricula
         Me.GroupBox3.TabStop = False
         Me.GroupBox3.Text = "Turma"
         '
+        'CBStatus
+        '
+        Me.CBStatus.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList
+        Me.CBStatus.FormattingEnabled = True
+        Me.CBStatus.Items.AddRange(New Object() {"Concluído", "Cursando", "Reprovado"})
+        Me.CBStatus.Location = New System.Drawing.Point(97, 82)
+        Me.CBStatus.Name = "CBStatus"
+        Me.CBStatus.Size = New System.Drawing.Size(125, 21)
+        Me.CBStatus.TabIndex = 24
+        '
         'Label2
         '
         Me.Label2.AutoSize = True
@@ -65,15 +73,6 @@ Partial Class FormMatricula
         Me.Label2.Size = New System.Drawing.Size(37, 13)
         Me.Label2.TabIndex = 23
         Me.Label2.Text = "Status"
-        '
-        'TStatus
-        '
-        Me.TStatus.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle
-        Me.TStatus.Location = New System.Drawing.Point(97, 102)
-        Me.TStatus.Name = "TStatus"
-        Me.TStatus.Size = New System.Drawing.Size(131, 20)
-        Me.TStatus.TabIndex = 2
-        Me.TStatus.Visible = False
         '
         'TDataCad
         '
@@ -169,16 +168,6 @@ Partial Class FormMatricula
         Me.Label4.Text = "F1 - Turma"
         Me.Label4.TextAlign = System.Drawing.ContentAlignment.MiddleCenter
         '
-        'CBStatus
-        '
-        Me.CBStatus.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList
-        Me.CBStatus.FormattingEnabled = True
-        Me.CBStatus.Items.AddRange(New Object() {"Concluido", "Cursando", "Reprovado"})
-        Me.CBStatus.Location = New System.Drawing.Point(97, 82)
-        Me.CBStatus.Name = "CBStatus"
-        Me.CBStatus.Size = New System.Drawing.Size(125, 21)
-        Me.CBStatus.TabIndex = 24
-        '
         'FormMatricula
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
@@ -210,7 +199,6 @@ Partial Class FormMatricula
     Friend WithEvents TDataCad As System.Windows.Forms.MaskedTextBox
     Friend WithEvents Label3 As System.Windows.Forms.Label
     Friend WithEvents Label2 As System.Windows.Forms.Label
-    Friend WithEvents TStatus As System.Windows.Forms.TextBox
     Friend WithEvents BtnCancelar As System.Windows.Forms.Button
     Friend WithEvents btnConfirmar As System.Windows.Forms.Button
     Friend WithEvents Label4 As System.Windows.Forms.Label

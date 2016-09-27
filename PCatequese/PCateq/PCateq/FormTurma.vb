@@ -77,7 +77,7 @@ Public Class FormTurma
     End Sub
 
     Private Sub FormTurma_Load(sender As Object, e As EventArgs) Handles MyBase.Load
-
+        Habilita()
         mostarTurmas()
     End Sub
     Private Sub TabControl1_SelectedIndexChanged(sender As Object, e As EventArgs) Handles TabControl1.SelectedIndexChanged
@@ -263,6 +263,25 @@ Public Class FormTurma
                     obj.Excluir()
                 End If
                 GridAula(tCodigo.Text)
+            End If
+        End If
+        If e.KeyCode = Keys.F5 Then
+            If tCodigo.Text <> "" Then
+
+                Dim codigo As String = DataGridView2.CurrentRow.Cells(0).Value
+                'Dados da turma pelo textbox
+                FormFrequencia.tCodigo.Text = tCodigo.Text
+                FormFrequencia.tDescricao.Text = tDescricao.Text
+
+                'data da aula pelo objeto
+                Dim obj As New Aula
+                obj.CodigoAula = codigo
+                obj.Consultar()
+                FormFrequencia.TAulaCodigo.Text = obj.CodigoAula
+                FormFrequencia.TAulaDescricao.Text = obj.Descricao
+                FormFrequencia.TAulaData.Text = FormatDateTime(obj.DataCad, DateFormat.ShortDate)
+                FormFrequencia.ShowDialog()
+
             End If
         End If
     End Sub

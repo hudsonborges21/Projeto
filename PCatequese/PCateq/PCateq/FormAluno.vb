@@ -319,7 +319,16 @@ Public Class FormAluno
 
                     Dim obj2 As Matricula = New Matricula
                     obj2.Consultar(codigo, tCodigo.Text)
-                    FormMatricula.TStatus.Text = obj2.Status
+                    'FormMatricula.TStatus.Text = obj2.Status
+
+                    If obj2.Status = "Concluído" Then
+                        FormMatricula.CBStatus.SelectedIndex = 0
+                    ElseIf obj2.Status = "Cursando" Then
+                        FormMatricula.CBStatus.SelectedIndex = 1
+                    Else
+                        FormMatricula.CBStatus.SelectedIndex = 2
+                    End If
+
                     FormMatricula.TDataCad.Text = FormatDateTime(obj.DataCad, DateFormat.ShortDate)
                     FormMatricula.tCodigo.Text = tCodigo.Text
                     FormMatricula.tNome.Text = TNome.Text
@@ -351,7 +360,7 @@ Public Class FormAluno
 
                     FormMatricula.tCodigo.Text = tCodigo.Text
                     FormMatricula.tNome.Text = TNome.Text
-                    FormMatricula.TStatus.Text = ""
+                    FormMatricula.CBStatus.SelectedIndex = 1
                     FormMatricula.TDataCad.Text = ""
                     FormMatricula.incluindo = True
                     FormMatricula.ShowDialog()
