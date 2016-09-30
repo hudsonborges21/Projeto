@@ -29,7 +29,11 @@ Public Class AulaDAO
         sql.AppendLine(" SELECT * From Aula  ")
         Return sql.ToString()
     End Function
-
+    Private Shared Function ObterSqlSelectMatricula() As String
+        Dim sql As New StringBuilder
+        sql.AppendLine(" SELECT * From Matricula ")
+        Return sql.ToString()
+    End Function
     Private Shared Sub PopularComando(ByRef comando As SqlCommand, ByVal turma As Aula, ByVal incluindo As Boolean)
         If Not incluindo Then
             comando.Parameters.Add("@CodigoAula", SqlDbType.VarChar).Value = turma.CodigoAula
@@ -198,5 +202,74 @@ Public Class AulaDAO
             conexao.Close()
         End Using
     End Sub
+
+    Public Function TodosAlunosTurma(ByVal codigolinha As Integer) As List(Of Aula)
+        Dim dataReader As SqlDataReader
+        Dim lista = New List(Of Aula)
+
+        Using conexao As SqlConnection = New Conexao().GetConnection()
+            'abrindo conexao 
+            conexao.Open()
+            Dim sql As String
+            sql = ObterSqlSelectMatricula() & " where CodigoTurma = " & codigolinha
+            ' sql = ObterSqlSelectTodosCampo() & " inner join alunos on alunos.codigo = Matricula.codigoAluno where CodigoTurma = " & codigolinha
+            Using comando = New SqlCommand(sql, conexao)
+                dataReader = comando.ExecuteReader
+                If dataReader.HasRows Then
+                    While dataReader.Read()
+                        Dim turma As New Aula
+                        PopularObjetoAula(dataReader, turma)
+                        lista.Add(turma) ' add o objeto
+                    End While
+                    conexao.Close()
+                    Return lista
+                Else
+                    conexao.Close()
+                    Return Nothing
+                End If
+            End Using
+        End Using
+    End Function
+    Private Shared Sub PopularObjetoAula(ByVal reader As IDataRecord, ByRef turma As Aula)
+
+        turma.CodigoTurma = reader("CodigoTurma")
+        turma.CodigoAluno = reader("CodigoAluno")
+
+        Dim obj As Aluno = New Aluno
+        obj.Consultar(turma.CodigoAluno)
+        turma.Aluno = obj.Nome
+       
+    End Sub
+    Private Shared Sub PopularObjetoFrequencia(ByVal reader As IDataRecord, ByRef turma As Aula)
+        turma.Presenca = reader("Presenca")
+    End Sub
+    Private Shared Sub PopularComandoAula(ByRef comando As SqlCommand, ByVal turma As Aula, ByVal incluindo As Boolean)
+
+        comando.Parameters.Add("@CodigoTurma", SqlDbType.VarChar).Value = turma.CodigoTurma
+        comando.Parameters.Add("@CodigoAluno", SqlDbType.VarChar).Value = turma.CodigoAluno
+        comando.Parameters.Add("@Presenca", SqlDbType.Date).Value = turma.Presenca
+
+    End Sub
+
+    Public Function ConsultarPresenca(ByVal codigoAluno As Integer, ByVal codigoAula As Integer, ByRef turma As Aula) As Boolean
+        Dim dataReader As SqlDataReader
+
+        Using conexao As SqlConnection = New Conexao().GetConnection()
+            'abrindo conexao 
+            conexao.Open()
+            Dim sql As String
+            sql = "select * from Frequencia where codigoAula = " & codigoAula & " and codigoAluno = " & codigoAluno
+            Using comando = New SqlCommand(sql, conexao)
+                dataReader = comando.ExecuteReader
+                If dataReader.HasRows Then
+                    dataReader.Read()
+                    PopularObjetoFrequencia(dataReader, turma)
+                    conexao.Close()
+                    Return True
+                End If
+            End Using
+        End Using
+        Return True
+    End Function
 #End Region
 End Class

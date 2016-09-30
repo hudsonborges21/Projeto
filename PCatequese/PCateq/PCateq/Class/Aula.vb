@@ -8,6 +8,11 @@
     Private vDescricao As String
     Private vDataCadastro As Date
 
+    'Dados aluno turma
+    Private vcodigoAluno As Integer
+    Private vAlunoNome As String
+    Private vPresenca As String
+
 
 #End Region
 
@@ -53,7 +58,30 @@
         End Set
     End Property
 
-
+    Public Property CodigoAluno() As Integer
+        Get
+            Return vcodigoAluno
+        End Get
+        Set(value As Integer)
+            vcodigoAluno = value
+        End Set
+    End Property
+    Public Property Aluno() As String
+        Get
+            Return vAlunoNome
+        End Get
+        Set(ByVal value As String)
+            vAlunoNome = (value)
+        End Set
+    End Property
+    Public Property Presenca() As Boolean
+        Get
+            Return vPresenca
+        End Get
+        Set(ByVal value As Boolean)
+            vPresenca = (value)
+        End Set
+    End Property
 
 #End Region
 
@@ -77,6 +105,12 @@
     End Function
     Public Function ConsultarTurmaAula(ByVal pCod As String) As List(Of Aula)
         Return New AulaDAO().ConsultarAulasTurma(pCod)
+    End Function
+    Public Function TodosAlunosTurma()
+        Return New AulaDAO().TodosAlunosTurma(vCodigoTurma)
+    End Function
+    Public Function ConsultarAlunoPresenca()
+        Return New AulaDAO().ConsultarPresenca(vcodigoAluno, vCodigoAula, Me)
     End Function
 #End Region
 End Class

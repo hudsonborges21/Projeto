@@ -79,9 +79,7 @@
     Public Function Consultar(ByVal pCod As String) As List(Of Matricula)
         Return New MatriculaADO().Consultar(pCod)
     End Function
-    Public Function TodosAlunosTurma()
-        Return New MatriculaADO().TodosAlunosTurma(vCodigoTurma)
-    End Function
+   
 #End Region
 
 End Class

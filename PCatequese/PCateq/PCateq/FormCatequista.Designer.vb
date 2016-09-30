@@ -301,6 +301,7 @@ Partial Class FormCatequista
         Me.GroupBox2.TabIndex = 10
         Me.GroupBox2.TabStop = False
         Me.GroupBox2.Text = "Batizado"
+        Me.GroupBox2.Visible = False
         '
         'RadioButton2
         '
