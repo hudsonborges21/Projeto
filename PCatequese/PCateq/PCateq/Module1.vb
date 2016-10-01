@@ -35,7 +35,7 @@
         col1.Name = campo
         col1.HeaderText = titulo
         col1.DataPropertyName = campo
-        col1.ReadOnly = True
+        col1.ReadOnly = False
         col1.SortMode = DataGridViewColumnSortMode.Automatic
         col1.Width = tamanho
 

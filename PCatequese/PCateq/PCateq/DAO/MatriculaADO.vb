@@ -117,6 +117,32 @@ Public Class MatriculaADO
             End Using
         End Using
     End Function
+    Public Function TodosAlunosTurma(ByVal codigolinha As Integer) As List(Of Matricula)
+        Dim dataReader As SqlDataReader
+        Dim lista = New List(Of Matricula)
+
+        Using conexao As SqlConnection = New Conexao().GetConnection()
+            'abrindo conexao 
+            conexao.Open()
+            Dim sql As String
+            sql = ObterSqlSelectTodosCampo() & " where Codigoturma = " & codigolinha
+            Using comando = New SqlCommand(sql, conexao)
+                dataReader = comando.ExecuteReader
+                If dataReader.HasRows Then
+                    While dataReader.Read()
+                        Dim turma As New Matricula
+                        PopularObjeto(dataReader, turma)
+                        lista.Add(turma) ' add o objeto
+                    End While
+                    conexao.Close()
+                    Return lista
+                Else
+                    conexao.Close()
+                    Return Nothing
+                End If
+            End Using
+        End Using
+    End Function
     'CONSULTAR 
 
     Public Function Consultar(ByVal codigolinha As Integer, ByVal codigoAluno As Integer, ByRef turma As Matricula) As Boolean

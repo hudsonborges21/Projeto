@@ -26,10 +26,13 @@
                 obj.Alterar() ' nao passa o codigo atual , vai passar o codigo ta turma que sera alterado
                 MsgBox("Registro salvo com sucesso.", MsgBoxStyle.Information, "")
                 incluindo = False
+
+
             Else
 
                 'chamando o metodo da classe responsavel por incluir os dados 
                 obj.Incluir()
+                LancarAlunosAula()
                 MsgBox("Registro salvo com sucesso.", MsgBoxStyle.Information, "")
 
                 incluindo = False
@@ -39,5 +42,21 @@
         Catch ex As Exception
             MsgBox("Erro ao salvar, Por favor verificar os dados informado.", MsgBoxStyle.ApplicationModal, "")
         End Try
+    End Sub
+
+    Private Sub LancarAlunosAula()
+        Dim obj As Aula = New Aula
+
+        obj.CodigoAula = 13
+
+        Dim mat As Matricula = New Matricula
+        mat.CodigoTurma = tCodigo.Text
+        For Each matr As Matricula In mat.TodosAlunosTurma()
+            obj.CodigoAluno = matr.CodigoAluno
+            obj.Presenca = False
+            obj.IncluirFrequencia()
+        Next
+
+
     End Sub
 End Class

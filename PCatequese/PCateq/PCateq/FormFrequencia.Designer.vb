@@ -50,7 +50,7 @@ Partial Class FormFrequencia
         Me.GroupBox1.Controls.Add(Me.Label1)
         Me.GroupBox1.Location = New System.Drawing.Point(4, 6)
         Me.GroupBox1.Name = "GroupBox1"
-        Me.GroupBox1.Size = New System.Drawing.Size(705, 116)
+        Me.GroupBox1.Size = New System.Drawing.Size(613, 116)
         Me.GroupBox1.TabIndex = 1
         Me.GroupBox1.TabStop = False
         Me.GroupBox1.Text = "Turma"
@@ -58,7 +58,7 @@ Partial Class FormFrequencia
         'tDescricao
         '
         Me.tDescricao.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle
-        Me.tDescricao.Location = New System.Drawing.Point(175, 9)
+        Me.tDescricao.Location = New System.Drawing.Point(161, 9)
         Me.tDescricao.Name = "tDescricao"
         Me.tDescricao.Size = New System.Drawing.Size(291, 20)
         Me.tDescricao.TabIndex = 3
@@ -66,7 +66,7 @@ Partial Class FormFrequencia
         'Label4
         '
         Me.Label4.AutoSize = True
-        Me.Label4.Location = New System.Drawing.Point(114, 16)
+        Me.Label4.Location = New System.Drawing.Point(110, 16)
         Me.Label4.Name = "Label4"
         Me.Label4.Size = New System.Drawing.Size(55, 13)
         Me.Label4.TabIndex = 20
@@ -99,7 +99,7 @@ Partial Class FormFrequencia
         Me.GroupBox2.Controls.Add(Me.Label8)
         Me.GroupBox2.Location = New System.Drawing.Point(6, 47)
         Me.GroupBox2.Name = "GroupBox2"
-        Me.GroupBox2.Size = New System.Drawing.Size(668, 51)
+        Me.GroupBox2.Size = New System.Drawing.Size(596, 51)
         Me.GroupBox2.TabIndex = 21
         Me.GroupBox2.TabStop = False
         Me.GroupBox2.Text = "Aula"
@@ -107,7 +107,7 @@ Partial Class FormFrequencia
         'TAulaData
         '
         Me.TAulaData.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle
-        Me.TAulaData.Location = New System.Drawing.Point(514, 19)
+        Me.TAulaData.Location = New System.Drawing.Point(488, 21)
         Me.TAulaData.Mask = "00/00/0000"
         Me.TAulaData.Name = "TAulaData"
         Me.TAulaData.Size = New System.Drawing.Size(82, 20)
@@ -117,7 +117,7 @@ Partial Class FormFrequencia
         'Label3
         '
         Me.Label3.AutoSize = True
-        Me.Label3.Location = New System.Drawing.Point(478, 26)
+        Me.Label3.Location = New System.Drawing.Point(452, 26)
         Me.Label3.Name = "Label3"
         Me.Label3.Size = New System.Drawing.Size(30, 13)
         Me.Label3.TabIndex = 28
@@ -126,7 +126,7 @@ Partial Class FormFrequencia
         'TAulaDescricao
         '
         Me.TAulaDescricao.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle
-        Me.TAulaDescricao.Location = New System.Drawing.Point(169, 19)
+        Me.TAulaDescricao.Location = New System.Drawing.Point(155, 19)
         Me.TAulaDescricao.Name = "TAulaDescricao"
         Me.TAulaDescricao.Size = New System.Drawing.Size(291, 20)
         Me.TAulaDescricao.TabIndex = 26
@@ -134,7 +134,7 @@ Partial Class FormFrequencia
         'Label7
         '
         Me.Label7.AutoSize = True
-        Me.Label7.Location = New System.Drawing.Point(108, 26)
+        Me.Label7.Location = New System.Drawing.Point(104, 26)
         Me.Label7.Name = "Label7"
         Me.Label7.Size = New System.Drawing.Size(55, 13)
         Me.Label7.TabIndex = 27
@@ -163,14 +163,14 @@ Partial Class FormFrequencia
         Me.DataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize
         Me.DataGridView1.Location = New System.Drawing.Point(4, 128)
         Me.DataGridView1.Name = "DataGridView1"
-        Me.DataGridView1.Size = New System.Drawing.Size(705, 433)
+        Me.DataGridView1.Size = New System.Drawing.Size(613, 433)
         Me.DataGridView1.TabIndex = 2
         '
         'FormFrequencia
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
-        Me.ClientSize = New System.Drawing.Size(714, 616)
+        Me.ClientSize = New System.Drawing.Size(622, 616)
         Me.Controls.Add(Me.DataGridView1)
         Me.Controls.Add(Me.GroupBox1)
         Me.Name = "FormFrequencia"

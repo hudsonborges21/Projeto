@@ -107,10 +107,20 @@
         Return New AulaDAO().ConsultarAulasTurma(pCod)
     End Function
     Public Function TodosAlunosTurma()
-        Return New AulaDAO().TodosAlunosTurma(vCodigoTurma)
+        Return New AulaDAO().TodosAlunosTurma(vCodigoAula)
     End Function
     Public Function ConsultarAlunoPresenca()
         Return New AulaDAO().ConsultarPresenca(vcodigoAluno, vCodigoAula, Me)
     End Function
+#End Region
+#Region "Metodos Frequencia"
+    Public Sub IncluirFrequencia()
+        Call New AulaDAO().IncluirFrequencia(Me)
+    End Sub
+
+    Public Sub AlterarFrequencia()
+        Call New AulaDAO().AlterarFrequencia(Me)
+    End Sub
+ 
 #End Region
 End Class

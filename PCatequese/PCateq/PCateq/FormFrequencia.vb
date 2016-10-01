@@ -6,8 +6,8 @@
         DataGridView1.AutoGenerateColumns = False
         DataGridView1.Columns.Clear()
         DataGridView1.Columns.Add(CriarCampo("codigoAluno", "Código", "50"))
-        DataGridView1.Columns.Add(CriarCampo("Aluno", "Aluno", "300"))
-        'DataGridView1.Columns.Add(CriarCampoCheck("Presenca", "Presenca", "50"))
+        DataGridView1.Columns.Add(CriarCampo("Aluno", "Aluno", "400"))
+        DataGridView1.Columns.Add(CriarCampoCheck("Presenca", "Presença", "90"))
 
     End Sub
     Public Sub mostarTodos()
