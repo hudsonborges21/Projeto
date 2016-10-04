@@ -251,7 +251,7 @@ Public Class AulaDAO
         sql.AppendLine(" Update Frequencia Set ")
         sql.AppendLine(" CodigoAula=@CodigoAula,CodigoAluno=@CodigoAluno, ")
         sql.AppendLine(" Presenca=@Presenca ")
-        sql.AppendLine(" where CodigoAula = " & pCodAula & " and CodigoAula = " & pCodAluno)
+        sql.AppendLine(" where CodigoAula = " & pCodAula & " and CodigoAluno = " & pCodAluno)
         Return sql.ToString()
     End Function
 
