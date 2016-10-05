@@ -112,6 +112,9 @@
     Public Function ConsultarAlunoPresenca()
         Return New AulaDAO().ConsultarPresenca(vcodigoAluno, vCodigoAula, Me)
     End Function
+    Public Function UltimoCodigo()
+        Return New AulaDAO().UltimoCodigo(vCodigoTurma, Me)
+    End Function
 #End Region
 #Region "Metodos Frequencia"
     Public Sub IncluirFrequencia()
@@ -121,6 +124,8 @@
     Public Sub AlterarFrequencia()
         Call New AulaDAO().AlterarFrequencia(Me)
     End Sub
- 
+    Public Sub ExcluirFrequencia()
+        Call New AulaDAO().ExcluirFrequencia(Me)
+    End Sub
 #End Region
 End Class

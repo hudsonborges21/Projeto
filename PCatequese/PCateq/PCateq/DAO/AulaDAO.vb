@@ -53,7 +53,9 @@ Public Class AulaDAO
         If Not IsDBNull(reader("Data")) Then turma.DataCad = reader("Data")
 
     End Sub
-
+    Private Shared Sub PopularObjetoUltimoCodigo(ByVal reader As IDataRecord, ByRef turma As Aula)
+        turma.CodigoAula = reader("CodigoAula")
+     End Sub
     'METODO INCLUIR 
     Public Sub Incluir(ByVal turma As Aula)
         Using conexao As SqlConnection = New Conexao().GetConnection()
@@ -167,6 +169,7 @@ Public Class AulaDAO
                 End If
             End Using
         End Using
+        Return True
     End Function
 
 
@@ -202,7 +205,26 @@ Public Class AulaDAO
             conexao.Close()
         End Using
     End Sub
+    Public Function UltimoCodigo(ByVal codigoTurma As String, ByVal turma As Aula) As Boolean
+        Dim dataReader As SqlDataReader
 
+        Using conexao As SqlConnection = New Conexao().GetConnection()
+            'abrindo conexao 
+            conexao.Open()
+            Dim sql As String
+            sql = "SELECT max(CodigoAula) as codigoAula  FROM Aula where codigoTurma = " & codigoTurma
+            Using comando = New SqlCommand(sql, conexao)
+                dataReader = comando.ExecuteReader
+                If dataReader.HasRows Then
+                    dataReader.Read()
+                    PopularObjetoUltimoCodigo(dataReader, turma)
+                    conexao.Close()
+                    Return True
+                End If
+            End Using
+        End Using
+        Return True
+    End Function
     'Public Function TodosAlunosTurma(ByVal codigolinha As Integer) As List(Of Aula)
     '    Dim dataReader As SqlDataReader
     '    Dim lista = New List(Of Aula)
@@ -363,5 +385,21 @@ Public Class AulaDAO
             End Using
         End Using
     End Function
+    'EXCLUIR  - DELETE
+    Public Sub ExcluirFrequencia(ByVal turma As Aula)
+        Using conexao As SqlConnection = New Conexao().GetConnection()
+            'abrindo conexao 
+            conexao.Open()
+            Dim sql As String
+            sql = "DELETE FROM Frequencia WHERE codigoAula=" & turma.CodigoAula
+            Using comando = New SqlCommand(sql, conexao)
+                comando.Parameters.Add("@codigoAula", SqlDbType.VarChar).Value = turma.CodigoTurma
+                'comando sql
+                comando.ExecuteNonQuery()
+            End Using
+            'fechando a conexao 
+            conexao.Close()
+        End Using
+    End Sub
 #End Region
 End Class

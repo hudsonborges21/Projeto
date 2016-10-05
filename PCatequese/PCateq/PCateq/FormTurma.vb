@@ -77,6 +77,7 @@ Public Class FormTurma
     End Sub
 
     Private Sub FormTurma_Load(sender As Object, e As EventArgs) Handles MyBase.Load
+        TabControl1.SelectedIndex = "1"
         Habilita()
         mostarTurmas()
     End Sub
@@ -254,12 +255,19 @@ Public Class FormTurma
         End If
         If e.KeyCode = Keys.F4 Then
             If tCodigo.Text <> "" Then
-                If MsgBox("Deseja Exlcuir o Registro?", MsgBoxStyle.YesNo) = MsgBoxResult.Yes Then
-                    'Dim codigo As String = DataGridView2.CurrentRow.Cells(2).Value
+                If MsgBox("Ao Exluir Aula será exluido as presenças lançadas.  Deseja Realmente Exlcuir o Registro?", MsgBoxStyle.YesNo) = MsgBoxResult.Yes Then
+
+
                     Dim codigo As String = DataGridView2.CurrentRow.Cells(0).Value
                     Dim obj As New Aula
+
                     obj.CodigoAula = codigo
                     obj.Consultar()
+
+                    'Exlcuindo Frequencia
+                    obj.ExcluirFrequencia()
+
+                    'Excluindo AULA
                     obj.Excluir()
                 End If
                 GridAula(tCodigo.Text)

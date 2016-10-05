@@ -118,6 +118,7 @@ Public Class FormCatequista
     End Sub
 
     Private Sub FormCatequista_Load(sender As Object, e As EventArgs) Handles MyBase.Load
+        TabControl1.SelectedIndex = "1"
         mostarTodos()
         Habilita()
     End Sub

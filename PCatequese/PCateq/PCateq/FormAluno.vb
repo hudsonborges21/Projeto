@@ -47,6 +47,7 @@ Public Class FormAluno
 
     End Sub
     Private Sub FormAluno_Load(sender As Object, e As EventArgs) Handles MyBase.Load
+        TabControl1.SelectedIndex = "1"
         mostarTodos()
         If tCodigo.Text <> "" Then
             BtnMatricula.Enabled = True
