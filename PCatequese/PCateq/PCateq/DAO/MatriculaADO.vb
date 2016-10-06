@@ -126,6 +126,8 @@ Public Class MatriculaADO
             conexao.Open()
             Dim sql As String
             sql = ObterSqlSelectTodosCampo() & " where Codigoturma = " & codigolinha
+            'sql = "Select Matricula.codigoTurma,Matricula.CodigoAluno, Matricula.Data, Matricula.Status " & _
+            '        " From Matricula inner join Aluno on Aluno.codigo = Matricula.codigoAluno where Codigoturma = " & codigolinha & " Order by Aluno.nome"
             Using comando = New SqlCommand(sql, conexao)
                 dataReader = comando.ExecuteReader
                 If dataReader.HasRows Then

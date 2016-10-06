@@ -366,8 +366,13 @@ Public Class AulaDAO
             'abrindo conexao 
             conexao.Open()
             Dim sql As String
-            sql = ObterSqlSelectFrequencia() & " where CodigoAula = " & codigolinha
-            'sql = ObterSqlSelectTodosCampo() & " inner join alunos on alunos.codigo = Aula.codigoAluno where CodigoTurma = " & codigolinha & "Order by Nome"
+            'sql = ObterSqlSelectFrequencia() & " where CodigoAula = " & codigolinha
+
+            sql = "Select Frequencia.* From Frequencia " & _
+            "inner join aluno on aluno.codigo = Frequencia.codigoAluno " & _
+            "inner join aula on Aula.CodigoAula = Frequencia.codigoAula " & _
+             " where frequencia.codigoAula = " & codigolinha & " order by aluno.Nome"
+
             Using comando = New SqlCommand(sql, conexao)
                 dataReader = comando.ExecuteReader
                 If dataReader.HasRows Then

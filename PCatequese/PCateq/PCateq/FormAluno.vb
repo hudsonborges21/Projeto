@@ -75,11 +75,8 @@ Public Class FormAluno
                     tMae.Text = obj.Mae
                     TDataCad.Text = FormatDateTime(obj.DataCad, DateFormat.ShortDate)
                     TDataNasc.Text = FormatDateTime(obj.DataNasc, DateFormat.ShortDate)
-                    If obj.Batizado Then
-                        RadioButton1.Checked = True
-                    Else
-                        RadioButton2.Checked = True
-                    End If
+                    RadioButton1.Checked = obj.Batizado
+                    RadioButton2.Checked = Not obj.Batizado
 
                     Habilita()
                     BtnMatricula.Enabled = True
@@ -89,7 +86,7 @@ Public Class FormAluno
                 'mostarTodos()
             End If
         Else
-            mostarTodos()
+            'mostarTodos()
         End If
 
     End Sub
@@ -131,11 +128,7 @@ Public Class FormAluno
             obj.UF = "MG"
             obj.DataCad = FormatDateTime(TDataCad.Text, DateFormat.ShortDate) 'Convert.ToDateTime(TDataCad.Text)
             obj.DataNasc = FormatDateTime(TDataNasc.Text, DateFormat.ShortDate) ' Convert.ToDateTime(TDataNasc.Text)
-            If RadioButton1.Checked Then
-                obj.Batizado = True
-            Else
-                obj.Batizado = False
-            End If
+            obj.Batizado = RadioButton1.Checked
 
             If Not incluindo Then
                 'chamando o metodo da classe responsavel por incluir os dados 
@@ -148,7 +141,7 @@ Public Class FormAluno
                 'chamando o metodo da classe responsavel por incluir os dados 
                 obj.Incluir()
                 MsgBox("Registro salvo com sucesso.", MsgBoxStyle.Information, "")
-                
+
                 incluindo = False
             End If
             Habilita()
