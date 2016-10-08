@@ -22,10 +22,14 @@ Public Class FormAluno
         'Pegar os campos da classe (atributos), limpa a grid e na deixa ela gerar as colunas automatica
         DataGridView2.AutoGenerateColumns = False
         DataGridView2.Columns.Clear()
-        DataGridView2.Columns.Add(CriarCampo("codigoTurma", "Código Turma", "80"))
+        DataGridView2.Columns.Add(CriarCampo("codigoTurma", "Código Turma", "50"))
         'DataGridView2.Columns.Add(CriarCampo("codigoAluno", "Código aluno", "80"))
         DataGridView2.Columns.Add(CriarCampo("dataCad", "data", "100"))
-        DataGridView2.Columns.Add(CriarCampo("Status", "Status", "200"))
+        DataGridView2.Columns.Add(CriarCampo("Status", "Status", "120"))
+
+        DataGridView2.Columns.Add(CriarCampo("QtdeAula", "Qtde Aulas", "50"))
+        DataGridView2.Columns.Add(CriarCampo("QtdePresenca", "Presenças", "60"))
+        DataGridView2.Columns.Add(CriarCampo("QtdeFalta", "Faltas", "50"))
 
     End Sub
     Public Sub mostarTodos()
@@ -36,8 +40,10 @@ Public Class FormAluno
     Public Sub GridMatricula(ByVal codAluno As String)
         Try
             formatarGridTurma()
+
             Dim obj As New Matricula
             obj.CodigoAluno = codAluno
+
             DataGridView2.DataSource = obj.Consultar(obj.CodigoAluno)
 
         Catch ex As Exception

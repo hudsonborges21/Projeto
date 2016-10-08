@@ -192,6 +192,7 @@ Public Class AlunoDAO
                 End If
             End Using
         End Using
+        Return True
     End Function
 
     'ALTERAR  - UPDATE
@@ -226,5 +227,8 @@ Public Class AlunoDAO
             conexao.Close()
         End Using
     End Sub
+
+    
+
 #End Region
 End Class

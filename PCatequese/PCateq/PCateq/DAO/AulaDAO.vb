@@ -133,7 +133,7 @@ Public Class AulaDAO
             'abrindo conexao 
             conexao.Open()
             Dim sql As String
-            sql = ObterSqlSelectTodosCampo() & " where CodigoTurma = " & codigolinha & " order by codigoAula desc"
+            sql = ObterSqlSelectTodosCampo() & " where CodigoTurma = " & codigolinha & " order by Data desc"
             Using comando = New SqlCommand(sql, conexao)
                 dataReader = comando.ExecuteReader
                 If dataReader.HasRows Then

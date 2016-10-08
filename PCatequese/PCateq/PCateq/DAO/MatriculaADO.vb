@@ -47,8 +47,20 @@ Public Class MatriculaADO
         If Not IsDBNull(reader("Status")) Then turma.Status = (reader("Status"))
         If Not IsDBNull(reader("Data")) Then turma.DataCad = reader("Data")
 
-    End Sub
+        turma.ConsultarQtdeAula(turma.CodigoTurma)
+        turma.ConsultarQtdePresenca(turma.CodigoTurma, turma.CodigoAluno)
+        turma.ConsultarQtdeFaltas(turma.CodigoTurma, turma.CodigoAluno)
 
+    End Sub
+    Private Shared Sub PopularObjetoAula(ByVal reader As IDataRecord, ByRef turma As Matricula)
+        turma.QtdeAula = reader("QtdeAula")
+    End Sub
+    Private Shared Sub PopularObjetoPresenca(ByVal reader As IDataRecord, ByRef turma As Matricula)
+        turma.QtdePresenca = reader("QtdePresenca")
+    End Sub
+    Private Shared Sub PopularObjetoFalta(ByVal reader As IDataRecord, ByRef turma As Matricula)
+        turma.Qtdefalta = reader("QtdeFaltas")
+    End Sub
     'METODO INCLUIR 
     Public Sub Incluir(ByVal turma As Matricula)
         Using conexao As SqlConnection = New Conexao().GetConnection()
@@ -220,5 +232,80 @@ Public Class MatriculaADO
             conexao.Close()
         End Using
     End Sub
+
+
+
+
+    Public Function ConsultarQtdeAula(ByVal codigoTurma As Integer, ByVal turma As Matricula) As Boolean
+        Dim dataReader As SqlDataReader
+
+        Using conexao As SqlConnection = New Conexao().GetConnection()
+            'abrindo conexao 
+            conexao.Open()
+            Dim sql As String
+            sql = "select count(codigoAula) as qtdeAula from aula where CodigoTurma=" & codigoTurma
+            Using comando = New SqlCommand(sql, conexao)
+                dataReader = comando.ExecuteReader
+                If dataReader.HasRows Then
+                    dataReader.Read()
+                    PopularObjetoAula(dataReader, turma) 'popular o obj como aula
+                    conexao.Close()
+                    Return True
+                End If
+            End Using
+        End Using
+        Return True
+    End Function
+
+    Public Function ConsultarQtdePresenca(ByVal codigoTurma As Integer, ByVal codigoAluno As Integer, ByVal turma As Matricula) As Boolean
+        Dim dataReader As SqlDataReader
+
+        Using conexao As SqlConnection = New Conexao().GetConnection()
+            'abrindo conexao 
+            conexao.Open()
+            Dim sql As String
+            'sql = "select count(codigoAula) as qtdeAula from aula where CodigoTurma=" & codigoTurma
+            sql = "select count(*) as QtdePresenca from Frequencia " & _
+            "inner join Aula on Aula.CodigoAula = Frequencia.codigoAula " & _
+            " inner join turma on Aula.CodigoTurma =  Turma.Codigo " & _
+            " where turma.Codigo = " & codigoTurma & " And codigoAluno = " & codigoAluno & " And Presenca = 1" '1-> true, verdadeiro 
+
+            Using comando = New SqlCommand(sql, conexao)
+                dataReader = comando.ExecuteReader
+                If dataReader.HasRows Then
+                    dataReader.Read()
+                    PopularObjetoPresenca(dataReader, turma) 'popular o objeto com soma das presenças
+                    conexao.Close()
+                    Return True
+                End If
+            End Using
+        End Using
+        Return True
+    End Function
+    Public Function ConsultarQtdeFaltas(ByVal codigoTurma As Integer, ByVal codigoAluno As Integer, ByVal turma As Matricula) As Boolean
+        Dim dataReader As SqlDataReader
+
+        Using conexao As SqlConnection = New Conexao().GetConnection()
+            'abrindo conexao 
+            conexao.Open()
+            Dim sql As String
+
+            sql = "select count(*) as QtdeFaltas from Frequencia " & _
+            "inner join Aula on Aula.CodigoAula = Frequencia.codigoAula " & _
+            " inner join turma on Aula.CodigoTurma =  Turma.Codigo " & _
+            " where turma.Codigo = " & codigoTurma & " And codigoAluno = " & codigoAluno & " And Presenca = 0" '0-> false, falso 
+
+            Using comando = New SqlCommand(sql, conexao)
+                dataReader = comando.ExecuteReader
+                If dataReader.HasRows Then
+                    dataReader.Read()
+                    PopularObjetoFalta(dataReader, turma) 'popular o objeto com soma das faltas
+                    conexao.Close()
+                    Return True
+                End If
+            End Using
+        End Using
+        Return True
+    End Function
 #End Region
 End Class

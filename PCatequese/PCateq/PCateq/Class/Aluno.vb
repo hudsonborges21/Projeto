@@ -22,6 +22,8 @@ Public Class Aluno
     Private vDataCadastro As Date
     Private vDataNasc As Date
 
+    
+
 #End Region
 
 
@@ -165,6 +167,8 @@ Public Class Aluno
             vBatizado = value
         End Set
     End Property
+
+    
 #End Region
 
 
@@ -192,6 +196,8 @@ Public Class Aluno
     Public Function Consultar(ByVal pCod As String)
         Return New AlunoDAO().Consultar(pCod, Me)
     End Function
+    
+
 #End Region
 
 End Class

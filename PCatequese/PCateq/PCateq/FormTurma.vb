@@ -21,6 +21,7 @@ Public Class FormTurma
         DataGridView2.Columns.Add(CriarCampo("Descricao", "Descrição", "445"))
         DataGridView2.Columns.Add(CriarCampo("DataCad", "Data", "100"))
 
+        QtdeAulas() 'rotina para somar quantidade de aulas da turma
     End Sub
     Public Sub AtulizarGrid(ByVal TextoSql As String, ByVal Tabela As String)
         Dim con As New Conexao
@@ -326,5 +327,13 @@ Public Class FormTurma
             Habilita()
 
         End If
+    End Sub
+    Private Sub QtdeAulas()
+        Dim qtde As Integer
+        qtde = 0
+        For i = 0 To DataGridView2.RowCount - 1
+            qtde = qtde + 1
+        Next
+        TQtdeAulas.Text = qtde
     End Sub
 End Class

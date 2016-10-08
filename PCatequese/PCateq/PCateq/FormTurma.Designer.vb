@@ -32,6 +32,7 @@ Partial Class FormTurma
         Me.btnExluir = New System.Windows.Forms.Button()
         Me.BtNIncluir = New System.Windows.Forms.Button()
         Me.GroupBox1 = New System.Windows.Forms.GroupBox()
+        Me.TData = New System.Windows.Forms.MaskedTextBox()
         Me.GroupBox2 = New System.Windows.Forms.GroupBox()
         Me.TCatequistaCodigo = New System.Windows.Forms.TextBox()
         Me.TCatequistaNome = New System.Windows.Forms.TextBox()
@@ -53,7 +54,8 @@ Partial Class FormTurma
         Me.BtnConsulta = New System.Windows.Forms.Button()
         Me.txtConsulta = New System.Windows.Forms.TextBox()
         Me.DataGridView1 = New System.Windows.Forms.DataGridView()
-        Me.TData = New System.Windows.Forms.MaskedTextBox()
+        Me.Label7 = New System.Windows.Forms.Label()
+        Me.TQtdeAulas = New System.Windows.Forms.TextBox()
         Me.TabControl1.SuspendLayout()
         Me.TabPage1.SuspendLayout()
         Me.GroupBox4.SuspendLayout()
@@ -165,6 +167,8 @@ Partial Class FormTurma
         'GroupBox1
         '
         Me.GroupBox1.BackColor = System.Drawing.Color.Transparent
+        Me.GroupBox1.Controls.Add(Me.TQtdeAulas)
+        Me.GroupBox1.Controls.Add(Me.Label7)
         Me.GroupBox1.Controls.Add(Me.TData)
         Me.GroupBox1.Controls.Add(Me.GroupBox2)
         Me.GroupBox1.Controls.Add(Me.tAnoFim)
@@ -183,6 +187,16 @@ Partial Class FormTurma
         Me.GroupBox1.Size = New System.Drawing.Size(684, 220)
         Me.GroupBox1.TabIndex = 0
         Me.GroupBox1.TabStop = False
+        '
+        'TData
+        '
+        Me.TData.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle
+        Me.TData.Location = New System.Drawing.Point(327, 13)
+        Me.TData.Mask = "00/00/0000"
+        Me.TData.Name = "TData"
+        Me.TData.Size = New System.Drawing.Size(82, 20)
+        Me.TData.TabIndex = 27
+        Me.TData.ValidatingType = GetType(Date)
         '
         'GroupBox2
         '
@@ -378,15 +392,25 @@ Partial Class FormTurma
         Me.DataGridView1.Size = New System.Drawing.Size(681, 410)
         Me.DataGridView1.TabIndex = 0
         '
-        'TData
+        'Label7
         '
-        Me.TData.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle
-        Me.TData.Location = New System.Drawing.Point(327, 13)
-        Me.TData.Mask = "00/00/0000"
-        Me.TData.Name = "TData"
-        Me.TData.Size = New System.Drawing.Size(82, 20)
-        Me.TData.TabIndex = 27
-        Me.TData.ValidatingType = GetType(Date)
+        Me.Label7.AutoSize = True
+        Me.Label7.Location = New System.Drawing.Point(57, 136)
+        Me.Label7.Name = "Label7"
+        Me.Label7.Size = New System.Drawing.Size(59, 13)
+        Me.Label7.TabIndex = 28
+        Me.Label7.Text = "Qtde Aulas"
+        '
+        'TQtdeAulas
+        '
+        Me.TQtdeAulas.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle
+        Me.TQtdeAulas.ForeColor = System.Drawing.Color.Maroon
+        Me.TQtdeAulas.Location = New System.Drawing.Point(118, 134)
+        Me.TQtdeAulas.Name = "TQtdeAulas"
+        Me.TQtdeAulas.ReadOnly = True
+        Me.TQtdeAulas.Size = New System.Drawing.Size(86, 20)
+        Me.TQtdeAulas.TabIndex = 29
+        Me.TQtdeAulas.TextAlign = System.Windows.Forms.HorizontalAlignment.Center
         '
         'FormTurma
         '
@@ -447,4 +471,6 @@ Partial Class FormTurma
     Friend WithEvents GroupBox4 As System.Windows.Forms.GroupBox
     Friend WithEvents DataGridView2 As System.Windows.Forms.DataGridView
     Friend WithEvents TData As System.Windows.Forms.MaskedTextBox
+    Friend WithEvents TQtdeAulas As System.Windows.Forms.TextBox
+    Friend WithEvents Label7 As System.Windows.Forms.Label
 End Class

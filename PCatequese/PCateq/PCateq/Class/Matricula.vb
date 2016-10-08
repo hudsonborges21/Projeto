@@ -8,6 +8,11 @@
     Private vStatus As String
     Private vDataCadastro As Date
 
+    'Frequencia de Aulas
+    Private vQtdeAula As Integer
+    Private vQtdePresenca As Integer
+    Private vQtdeFalta As Integer
+    Private vMediaPresenca As Double
 
 #End Region
 
@@ -41,9 +46,6 @@
             vStatus = (value)
         End Set
     End Property
-
-   
-
     Public Property DataCad() As Date
         Get
             Return vDataCadastro
@@ -53,7 +55,30 @@
         End Set
     End Property
    
-
+    Public Property QtdeAula() As Integer
+        Get
+            Return vQtdeAula
+        End Get
+        Set(value As Integer)
+            vQtdeAula = value
+        End Set
+    End Property
+    Public Property QtdePresenca() As Integer
+        Get
+            Return vQtdePresenca
+        End Get
+        Set(value As Integer)
+            vQtdePresenca = value
+        End Set
+    End Property
+    Public Property Qtdefalta() As Integer
+        Get
+            Return vQtdeFalta
+        End Get
+        Set(value As Integer)
+            vQtdeFalta = value
+        End Set
+    End Property
 
 #End Region
 
@@ -81,6 +106,16 @@
     End Function
     Public Function TodosAlunosTurma() As List(Of Matricula)
         Return New MatriculaADO().TodosAlunosTurma(vCodigoTurma)
+    End Function
+
+    Public Function ConsultarQtdeAula(ByVal pCod As String)
+        Return New MatriculaADO().ConsultarQtdeAula(pCod, Me)
+    End Function
+    Public Function ConsultarQtdePresenca(ByVal pcodturma As String, ByVal pCodAluno As String)
+        Return New MatriculaADO().ConsultarQtdePresenca(pcodturma, pCodAluno, Me)
+    End Function
+    Public Function ConsultarQtdeFaltas(ByVal pcodturma As String, ByVal pCodAluno As String)
+        Return New MatriculaADO().ConsultarQtdeFaltas(pcodturma, pCodAluno, Me)
     End Function
 #End Region
 
