@@ -146,6 +146,10 @@ Public Class FormAluno
 
                 'chamando o metodo da classe responsavel por incluir os dados 
                 obj.Incluir()
+                obj.UltimoCodigo()
+                tCodigo.Text = obj.Codigo
+                GridMatricula(tCodigo.Text)
+
                 MsgBox("Registro salvo com sucesso.", MsgBoxStyle.Information, "")
 
                 incluindo = False

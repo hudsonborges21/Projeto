@@ -12,4 +12,16 @@
         FormTurma.ShowDialog()
 
     End Sub
+
+    Private Sub AlunoToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles AlunoToolStripMenuItem.Click
+        FormAluno.ShowDialog()
+    End Sub
+
+    Private Sub CatequistaToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles CatequistaToolStripMenuItem.Click
+        FormCatequista.ShowDialog()
+    End Sub
+
+    Private Sub TurmasToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles TurmasToolStripMenuItem.Click
+        FormTurma.ShowDialog()
+    End Sub
 End Class

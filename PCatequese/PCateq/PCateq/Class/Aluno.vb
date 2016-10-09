@@ -5,7 +5,7 @@ Public Class Aluno
 
 #Region "Atributos"
 
-    'declarando os atributos da classe produto
+    'declarando os atributos da classe 
     Private vCodigo As Integer
     Private vNome As String
     Private vEndereco As String
@@ -196,7 +196,9 @@ Public Class Aluno
     Public Function Consultar(ByVal pCod As String)
         Return New AlunoDAO().Consultar(pCod, Me)
     End Function
-    
+    Public Function UltimoCodigo()
+        Return New AlunoDAO().UltimoCodigo(Me)
+    End Function
 
 #End Region
 

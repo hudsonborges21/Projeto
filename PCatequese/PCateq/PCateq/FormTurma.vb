@@ -23,40 +23,7 @@ Public Class FormTurma
 
         QtdeAulas() 'rotina para somar quantidade de aulas da turma
     End Sub
-    Public Sub AtulizarGrid(ByVal TextoSql As String, ByVal Tabela As String)
-        Dim con As New Conexao
-        'criando a conexao com o banco de dados
-        Dim conexao As SqlConnection
-        conexao = New SqlConnection(con.StrConexao)
-        'criando o comando sql
-        Dim sql As String
-        sql = TextoSql
-
-        Dim comando As SqlCommand
-        comando = New SqlCommand(sql, conexao)
-
-        Dim dataadapter As SqlDataAdapter = New SqlDataAdapter(comando)
-
-        'define o dataset
-        Dim ds As DataSet = New DataSet()
-
-        Try
-            '---abre a conexao---
-            conexao.Open()
-            '---preenche o dataset---
-            dataadapter.Fill(ds, Tabela)
-            '---fecha a conexao---
-            '---vincula o dataset ao DataGridView---
-            DataGridView1.DataSource = ds           'ou ds.tables(0)
-            '---define a tabela a ser exibida---
-            DataGridView1.DataMember = Tabela
-
-            conexao.Close()
-            formatarGrid()
-        Catch ex As Exception
-            MsgBox(ex.Message)
-        End Try
-    End Sub
+  
     Private Sub Desabilita()
         BtNIncluir.Enabled = False
         btnExluir.Enabled = False
@@ -75,6 +42,7 @@ Public Class FormTurma
         Call Limpar(Me)
         Desabilita()
         incluindo = True
+        tcurso.Focus()
     End Sub
 
     Private Sub FormTurma_Load(sender As Object, e As EventArgs) Handles MyBase.Load
@@ -134,17 +102,15 @@ Public Class FormTurma
     End Sub
 
     Private Sub BtnConfirmar_Click(sender As Object, e As EventArgs) Handles BtnConfirmar.Click
-        'Declarando e instanciando o obj da classe empresa
-
-
         Try
             Dim obj As Turma = New Turma
             obj.Nome = tDescricao.Text
             obj.AnoIni = TAnoINI.Text
             obj.AnoFim = tAnoFim.Text
             obj.Curso = tcurso.Text
-            obj.DataCad = FormatDateTime(tData.Text, DateFormat.ShortDate)
-
+            obj.DataCad = FormatDateTime(TData.Text, DateFormat.ShortDate)
+            obj.CatequistaCodigo = TCatequistaCodigo.Text
+            obj.CodigoInst = 1
 
             If Not incluindo Then
                 'chamando o metodo da classe responsavel por incluir os dados 
@@ -153,9 +119,11 @@ Public Class FormTurma
                 MsgBox("Registro salvo com sucesso.", MsgBoxStyle.Information, "")
                 incluindo = False
             Else
-
                 'chamando o metodo da classe responsavel por incluir os dados 
                 obj.Incluir()
+                obj.UltimoCodigo()
+                tCodigo.Text = obj.Codigo
+                GridAula(tCodigo.Text)
                 MsgBox("Registro salvo com sucesso.", MsgBoxStyle.Information, "")
 
                 incluindo = False
@@ -217,11 +185,13 @@ Public Class FormTurma
 
     Private Sub FormTurma_KeyDown(sender As Object, e As KeyEventArgs) Handles MyBase.KeyDown
         If e.KeyCode = Keys.F1 Then
-            If tCodigo.Text <> "" Then
+            If tCodigo.Text <> "" Or incluindo Then
                 Desabilita()
-                FormCatequistaConsulta.ShowDialog()
                 FormCatequistaConsulta.TPesquisa.Focus()
+                FormCatequistaConsulta.ShowDialog()
             End If
+            TCatequistaCodigo.Focus()
+
         End If
         If e.KeyCode = Keys.F2 Then
             If tCodigo.Text <> "" Then

@@ -44,7 +44,7 @@ Public Class TurmaDAO
             comando.Parameters.Add("@Codigo", SqlDbType.VarChar).Value = turma.Codigo
         End If
         comando.Parameters.Add("@nome", SqlDbType.VarChar).Value = turma.Nome
-        comando.Parameters.Add("@InstituicaoCodigo", SqlDbType.Date).Value = turma.CodigoInst
+        comando.Parameters.Add("@InstituicaoCodigo", SqlDbType.VarChar).Value = turma.CodigoInst
         comando.Parameters.Add("@Curso", SqlDbType.VarChar).Value = turma.Curso
         comando.Parameters.Add("@AnoINI", SqlDbType.VarChar).Value = turma.AnoIni
         comando.Parameters.Add("@AnoFim", SqlDbType.VarChar).Value = turma.AnoFim
@@ -65,7 +65,10 @@ Public Class TurmaDAO
         If Not IsDBNull(reader("DataCadastro")) Then turma.DataCad = reader("DataCadastro")
 
     End Sub
-
+    Private Shared Sub PopularObjetoUltimoCodigo(ByVal reader As IDataRecord, ByRef turma As Turma)
+        turma.Codigo = reader("CodigoTurma")
+    
+    End Sub
     'METODO INCLUIR 
     Public Sub Incluir(ByVal turma As Turma)
         Using conexao As SqlConnection = New Conexao().GetConnection()
@@ -90,7 +93,7 @@ Public Class TurmaDAO
             'abrindo conexao 
             conexao.Open()
             Dim sql As String
-            sql = ObterSqlSelectTodosCampo()
+            sql = ObterSqlSelectTodosCampo() & "Order by Codigo desc"
             Using comando = New SqlCommand(sql, conexao)
                 dataReader = comando.ExecuteReader
                 If dataReader.HasRows Then
@@ -181,6 +184,7 @@ Public Class TurmaDAO
                 End If
             End Using
         End Using
+        Return True
     End Function
 
     'Public Function ConsultarNome(ByVal Nome As String, ByRef turma As Turma) As Boolean
@@ -225,7 +229,7 @@ Public Class TurmaDAO
             'abrindo conexao 
             conexao.Open()
             Dim sql As String
-            sql = "DELETE FROM Turma WHERE id = " & turma.Codigo
+            sql = "DELETE FROM Turma WHERE codigo = " & turma.Codigo
             Using comando = New SqlCommand(sql, conexao)
                 comando.Parameters.Add("@Codigo", SqlDbType.VarChar).Value = turma.Codigo
                 'comando sql
@@ -235,5 +239,26 @@ Public Class TurmaDAO
             conexao.Close()
         End Using
     End Sub
+
+    Public Function UltimoCodigo(ByVal turma As Turma) As Boolean
+        Dim dataReader As SqlDataReader
+
+        Using conexao As SqlConnection = New Conexao().GetConnection()
+            'abrindo conexao 
+            conexao.Open()
+            Dim sql As String
+            sql = "SELECT max(Codigo) as codigoTurma FROM Turma "
+            Using comando = New SqlCommand(sql, conexao)
+                dataReader = comando.ExecuteReader
+                If dataReader.HasRows Then
+                    dataReader.Read()
+                    PopularObjetoUltimoCodigo(dataReader, turma)
+                    conexao.Close()
+                    Return True
+                End If
+            End Using
+        End Using
+        Return True
+    End Function
 #End Region
 End Class

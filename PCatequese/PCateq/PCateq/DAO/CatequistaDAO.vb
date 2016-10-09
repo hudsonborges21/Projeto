@@ -191,6 +191,7 @@ Public Class CatequistaDAO
                 End If
             End Using
         End Using
+        Return True
     End Function
 
     'ALTERAR  - UPDATE
@@ -224,6 +225,30 @@ Public Class CatequistaDAO
             'fechando a conexao 
             conexao.Close()
         End Using
+    End Sub
+
+    Public Function UltimoCodigo(ByVal aluno As Catequista) As Boolean
+        Dim dataReader As SqlDataReader
+
+        Using conexao As SqlConnection = New Conexao().GetConnection()
+            'abrindo conexao 
+            conexao.Open()
+            Dim sql As String
+            sql = "SELECT max(Codigo) as codigo FROM Catequista "
+            Using comando = New SqlCommand(sql, conexao)
+                dataReader = comando.ExecuteReader
+                If dataReader.HasRows Then
+                    dataReader.Read()
+                    PopularObjetoUltimoCodigo(dataReader, aluno)
+                    conexao.Close()
+                    Return True
+                End If
+            End Using
+        End Using
+        Return True
+    End Function
+    Private Shared Sub PopularObjetoUltimoCodigo(ByVal reader As IDataRecord, ByRef aluno As Catequista)
+        aluno.Codigo = reader("Codigo")
     End Sub
 #End Region
 End Class

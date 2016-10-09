@@ -126,6 +126,9 @@
     Public Function ConsultarCodigos() As List(Of Turma)
         Return New TurmaDAO().ConsultarCodigos(Me.vCodigo)
     End Function
+    Public Function UltimoCodigo()
+        Return New TurmaDAO().UltimoCodigo(Me)
+    End Function
 #End Region
 
 End Class

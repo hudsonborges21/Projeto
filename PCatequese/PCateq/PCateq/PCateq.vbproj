@@ -75,11 +75,13 @@
     <Compile Include="Class\Conexao.vb" />
     <Compile Include="Class\Matricula.vb" />
     <Compile Include="Class\Turma.vb" />
+    <Compile Include="Class\Usuario.vb" />
     <Compile Include="DAO\AlunoDAO.vb" />
     <Compile Include="DAO\AulaDAO.vb" />
     <Compile Include="DAO\CatequistaDAO.vb" />
     <Compile Include="DAO\MatriculaADO.vb" />
     <Compile Include="DAO\TurmaDAO.vb" />
+    <Compile Include="DAO\UsuarioDAO.vb" />
     <Compile Include="FormAula.Designer.vb">
       <DependentUpon>FormAula.vb</DependentUpon>
     </Compile>

@@ -177,6 +177,7 @@ Public Class MatriculaADO
                 End If
             End Using
         End Using
+        Return True
     End Function
    
     'Public Function Consultar(ByVal codigolinha As Integer, ByRef turma As Matricula) As Boolean
@@ -243,7 +244,18 @@ Public Class MatriculaADO
             'abrindo conexao 
             conexao.Open()
             Dim sql As String
-            sql = "select count(codigoAula) as qtdeAula from aula where CodigoTurma=" & codigoTurma
+
+            '**** tabela AULA
+            'Conta as aulas lanças na tabela Aula referente a turma
+            'sql = "select count(codigoAula) as qtdeAula from aula where CodigoTurma=" & codigoTurma
+
+            '**** tabela FREQUENCIA
+            'Conta as aulas lanças na tabela Frequencia
+            sql = "select COUNT( distinct Frequencia.codigoAula) as qtdeAula from Frequencia " & _
+            "inner join Aula on Aula.CodigoAula = Frequencia.codigoAula " & _
+            "inner join turma on Aula.CodigoTurma =  Turma.Codigo  " & _
+            " where turma.Codigo = " & codigoTurma & " And Aula.CodigoTurma = " & codigoTurma
+
             Using comando = New SqlCommand(sql, conexao)
                 dataReader = comando.ExecuteReader
                 If dataReader.HasRows Then

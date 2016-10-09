@@ -1,80 +1,53 @@
 ﻿Imports System.Data.SqlClient
 Imports System.Text
 
-Public Class AlunoDAO
+Public Class UsuarioDAO
 #Region "Metodos"
 
     Private Shared Function ObterSqlInsert() As String
         Dim sql As New StringBuilder
-        sql.AppendLine("Insert Into ALUNO ")
-        sql.AppendLine(" ( nome, endereco, cidade, bairro, UF, telefone, CEP, PAI, Mae, Naturalidade, DataCadastro, DataNascimento,Batizado) ")
-        sql.AppendLine("values ( @nome, @endereco, @cidade, @bairro, @UF, @telefone, @CEP,  @PAI, @Mae, @Naturalidade, @DataCadastro, @DataNascimento,@Batizado)")
-
-        'MsgBox(sql.ToString())
+        sql.AppendLine("Insert Into Usuario ")
+        sql.AppendLine(" ( nome) ")
+        sql.AppendLine("values ( @nome)")
         Return sql.ToString()
 
     End Function
 
     Private Shared Function ObterSqlUpdate(ByVal parmCodigo As Integer) As String
         Dim sql As New StringBuilder
-        sql.AppendLine(" Update ALUNO Set ")
-        sql.AppendLine(" nome=@nome, Endereco=@endereco,cidade=@cidade, ")
-        sql.AppendLine(" bairro=@bairro,uf=@uf,telefone=@telefone,cep=@cep, ")
-        sql.AppendLine(" Pai=@Pai, Mae=@Mae, Naturalidade=@Naturalidade, batizado=@batizado, ")
-        sql.AppendLine(" DataCadastro=@DataCadastro, datanascimento=@datanascimento ")
+        sql.AppendLine(" Update Usuario Set ")
+        sql.AppendLine(" nome=@nome ")
         sql.AppendLine(" where Codigo='" & parmCodigo & "'")
         Return sql.ToString()
     End Function
 
     Private Shared Function ObterSqlSelectTodosCampo() As String
         Dim sql As New StringBuilder
-        sql.AppendLine(" SELECT * From ALUNO ")
+        sql.AppendLine(" SELECT * From Usuario ")
         Return sql.ToString()
     End Function
 
-    Private Shared Sub PopularComando(ByRef comando As SqlCommand, ByVal aluno As Aluno, ByVal incluindo As Boolean)
+    Private Shared Sub PopularComando(ByRef comando As SqlCommand, ByVal usuario As Usuario, ByVal incluindo As Boolean)
         If Not incluindo Then
-            comando.Parameters.Add("@codigo", SqlDbType.VarChar).Value = aluno.Codigo
+            comando.Parameters.Add("@codigo", SqlDbType.VarChar).Value = usuario.Codigo
         End If
-        comando.Parameters.Add("@nome", SqlDbType.VarChar).Value = aluno.Nome
-        comando.Parameters.Add("@endereco", SqlDbType.VarChar).Value = aluno.Endereco
-        comando.Parameters.Add("@cidade", SqlDbType.VarChar).Value = aluno.Cidade
-        comando.Parameters.Add("@bairro", SqlDbType.VarChar).Value = aluno.Bairro
-        comando.Parameters.Add("@UF", SqlDbType.VarChar).Value = aluno.UF
-        comando.Parameters.Add("@telefone", SqlDbType.VarChar).Value = aluno.Telefone
-        comando.Parameters.Add("@CEP", SqlDbType.VarChar).Value = aluno.CEP
-        comando.Parameters.Add("@Pai", SqlDbType.VarChar).Value = aluno.Pai
-        comando.Parameters.Add("@Mae", SqlDbType.VarChar).Value = aluno.Mae
-        comando.Parameters.Add("@Naturalidade", SqlDbType.VarChar).Value = aluno.Naturalidade
-        comando.Parameters.Add("@DataCadastro", SqlDbType.Date).Value = aluno.DataCad
-        comando.Parameters.Add("@DataNascimento", SqlDbType.Date).Value = aluno.DataNasc
-        comando.Parameters.Add("@Batizado", SqlDbType.Bit).Value = aluno.Batizado
+        comando.Parameters.Add("@nome", SqlDbType.VarChar).Value = usuario.Nome
+
     End Sub
 
-    Private Shared Sub PopularObjeto(ByVal reader As IDataRecord, ByRef aluno As Aluno)
-        aluno.Codigo = reader("Codigo")
-        aluno.Nome = reader("nome")
-        If Not IsDBNull(reader("endereco")) Then aluno.Endereco = (reader("endereco"))
-        If Not IsDBNull(reader("cidade")) Then aluno.Cidade = reader("cidade")
-        If Not IsDBNull(reader("bairro")) Then aluno.Bairro = reader("bairro")
-        If Not IsDBNull(reader("uf")) Then aluno.UF = reader("UF")
-        If Not IsDBNull(reader("telefone")) Then aluno.Telefone = reader("telefone")
-        If Not IsDBNull(reader("CEP")) Then aluno.CEP = reader("CEP")
-        If Not IsDBNull(reader("Pai")) Then aluno.Pai = reader("Pai")
-        If Not IsDBNull(reader("mae")) Then aluno.Mae = reader("mae")
-        If Not IsDBNull(reader("Naturalidade")) Then aluno.Naturalidade = reader("Naturalidade")
-        If Not IsDBNull(reader("DataCadastro")) Then aluno.DataCad = reader("DataCadastro")
-        If Not IsDBNull(reader("DataNascimento")) Then aluno.DataNasc = reader("DataNascimento")
-        If Not IsDBNull(reader("Batizado")) Then aluno.Batizado = reader("Batizado")
+    Private Shared Sub PopularObjeto(ByVal reader As IDataRecord, ByRef usuario As Usuario)
+        usuario.Codigo = reader("Codigo")
+        usuario.Nome = reader("nome")
+
     End Sub
 
     'METODO INCLUIR 
-    Public Sub Incluir(ByVal aluno As Aluno)
+    Public Sub Incluir(ByVal usuario As Usuario)
         Using conexao As SqlConnection = New Conexao().GetConnection()
             'abrindo conexao 
             conexao.Open()
             Using comando = New SqlCommand(ObterSqlInsert(), conexao)
-                PopularComando(comando, aluno, True)
+                PopularComando(comando, usuario, True)
 
                 'comando sql
                 comando.ExecuteNonQuery()
@@ -84,9 +57,9 @@ Public Class AlunoDAO
         End Using
     End Sub
 
-    Public Function Todos() As List(Of Aluno)
+    Public Function Todos() As List(Of Usuario)
         Dim dataReader As SqlDataReader
-        Dim lista = New List(Of Aluno)
+        Dim lista = New List(Of Usuario)
 
         Using conexao As SqlConnection = New Conexao().GetConnection()
             'abrindo conexao 
@@ -97,9 +70,9 @@ Public Class AlunoDAO
                 dataReader = comando.ExecuteReader
                 If dataReader.HasRows Then
                     While dataReader.Read()
-                        Dim aluno As New Aluno
-                        PopularObjeto(dataReader, aluno)
-                        lista.Add(aluno)
+                        Dim usuario As New Usuario
+                        PopularObjeto(dataReader, usuario)
+                        lista.Add(usuario)
                     End While
                     conexao.Close()
                     Return lista
@@ -111,9 +84,9 @@ Public Class AlunoDAO
         End Using
     End Function
 
-    Public Function TodosNomes(ByVal nome As String) As List(Of Aluno)
+    Public Function TodosNomes(ByVal nome As String) As List(Of Usuario)
         Dim dataReader As SqlDataReader
-        Dim lista = New List(Of Aluno)
+        Dim lista = New List(Of Usuario)
 
         Using conexao As SqlConnection = New Conexao().GetConnection()
             'abrindo conexao 
@@ -124,9 +97,9 @@ Public Class AlunoDAO
                 dataReader = comando.ExecuteReader
                 If dataReader.HasRows Then
                     While dataReader.Read()
-                        Dim aluno As New Aluno
-                        PopularObjeto(dataReader, aluno)
-                        lista.Add(aluno)
+                        Dim usuario As New Usuario
+                        PopularObjeto(dataReader, usuario)
+                        lista.Add(usuario)
                     End While
                     conexao.Close()
                     Return lista
@@ -137,9 +110,9 @@ Public Class AlunoDAO
             End Using
         End Using
     End Function
-    Public Function TodosCodigos(ByVal Codigo As String) As List(Of Aluno)
+    Public Function TodosCodigos(ByVal Codigo As String) As List(Of Usuario)
         Dim dataReader As SqlDataReader
-        Dim lista = New List(Of Aluno)
+        Dim lista = New List(Of Usuario)
 
         Using conexao As SqlConnection = New Conexao().GetConnection()
             'abrindo conexao 
@@ -150,9 +123,9 @@ Public Class AlunoDAO
                 dataReader = comando.ExecuteReader
                 If dataReader.HasRows Then
                     While dataReader.Read()
-                        Dim aluno As New Aluno
-                        PopularObjeto(dataReader, aluno)
-                        lista.Add(aluno)
+                        Dim usuario As New Usuario
+                        PopularObjeto(dataReader, usuario)
+                        lista.Add(usuario)
                     End While
                     conexao.Close()
                     Return lista
@@ -165,7 +138,7 @@ Public Class AlunoDAO
     End Function
     'CONSULTAR 
 
-    Public Function Consultar(ByVal codigolinha As Integer, ByRef aluno As Aluno) As Boolean
+    Public Function Consultar(ByVal codigolinha As Integer, ByRef usuario As Usuario) As Boolean
         Dim dataReader As SqlDataReader
 
         Using conexao As SqlConnection = New Conexao().GetConnection()
@@ -177,7 +150,7 @@ Public Class AlunoDAO
                 dataReader = comando.ExecuteReader
                 If dataReader.HasRows Then
                     dataReader.Read()
-                    PopularObjeto(dataReader, aluno)
+                    PopularObjeto(dataReader, usuario)
                     conexao.Close()
                     Return True
                 End If
@@ -187,12 +160,12 @@ Public Class AlunoDAO
     End Function
 
     'ALTERAR  - UPDATE
-    Public Sub Alterar(ByVal aluno As Aluno)
+    Public Sub Alterar(ByVal usuario As Usuario)
         Using conexao As SqlConnection = New Conexao().GetConnection()
             'abrindo conexao 
             conexao.Open()
-            Using comando = New SqlCommand(ObterSqlUpdate(aluno.Codigo), conexao)
-                PopularComando(comando, aluno, True)
+            Using comando = New SqlCommand(ObterSqlUpdate(usuario.Codigo), conexao)
+                PopularComando(comando, usuario, True)
 
                 'comando sql
                 comando.ExecuteNonQuery()
@@ -203,14 +176,14 @@ Public Class AlunoDAO
     End Sub
 
     'EXCLUIR  - DELETE
-    Public Sub Excluir(ByVal aluno As Aluno)
+    Public Sub Excluir(ByVal usuario As Usuario)
         Using conexao As SqlConnection = New Conexao().GetConnection()
             'abrindo conexao 
             conexao.Open()
             Dim sql As String
-            sql = "DELETE FROM ALUNO WHERE codigo = " & aluno.Codigo
+            sql = "DELETE FROM Usuario WHERE codigo = " & usuario.Codigo
             Using comando = New SqlCommand(sql, conexao)
-                comando.Parameters.Add("@Codigo", SqlDbType.VarChar).Value = aluno.Codigo
+                comando.Parameters.Add("@Codigo", SqlDbType.VarChar).Value = usuario.Codigo
                 'comando sql
                 comando.ExecuteNonQuery()
             End Using
@@ -219,19 +192,19 @@ Public Class AlunoDAO
         End Using
     End Sub
 
-    Public Function UltimoCodigo(ByVal aluno As Aluno) As Boolean
+    Public Function UltimoCodigo(ByVal usuario As Usuario) As Boolean
         Dim dataReader As SqlDataReader
 
         Using conexao As SqlConnection = New Conexao().GetConnection()
             'abrindo conexao 
             conexao.Open()
             Dim sql As String
-            sql = "SELECT max(Codigo) as codigo FROM Aluno "
+            sql = "SELECT max(Codigo) as codigo FROM usuario "
             Using comando = New SqlCommand(sql, conexao)
                 dataReader = comando.ExecuteReader
                 If dataReader.HasRows Then
                     dataReader.Read()
-                    PopularObjetoUltimoCodigo(dataReader, aluno)
+                    PopularObjetoUltimoCodigo(dataReader, usuario)
                     conexao.Close()
                     Return True
                 End If
@@ -239,8 +212,9 @@ Public Class AlunoDAO
         End Using
         Return True
     End Function
-    Private Shared Sub PopularObjetoUltimoCodigo(ByVal reader As IDataRecord, ByRef aluno As Aluno)
-        aluno.Codigo = reader("Codigo")
+    Private Shared Sub PopularObjetoUltimoCodigo(ByVal reader As IDataRecord, ByRef usuario As Usuario)
+        usuario.Codigo = reader("Codigo")
     End Sub
 #End Region
+
 End Class

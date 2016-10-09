@@ -23,38 +23,37 @@ Partial Class FormPrincipal
     <System.Diagnostics.DebuggerStepThrough()> _
     Private Sub InitializeComponent()
         Me.GroupBox1 = New System.Windows.Forms.GroupBox()
-        Me.Button4 = New System.Windows.Forms.Button()
         Me.Button3 = New System.Windows.Forms.Button()
         Me.Button2 = New System.Windows.Forms.Button()
         Me.Button1 = New System.Windows.Forms.Button()
         Me.Label1 = New System.Windows.Forms.Label()
+        Me.MenuStrip1 = New System.Windows.Forms.MenuStrip()
+        Me.CadastroToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
+        Me.AlunoToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
+        Me.CatequistaToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
+        Me.TurmasToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
+        Me.RelatóriosToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
+        Me.ListaDeAlunosToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
+        Me.UsuáriosToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.GroupBox1.SuspendLayout()
+        Me.MenuStrip1.SuspendLayout()
         Me.SuspendLayout()
         '
         'GroupBox1
         '
+        Me.GroupBox1.Anchor = CType(((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Bottom) _
+            Or System.Windows.Forms.AnchorStyles.Left), System.Windows.Forms.AnchorStyles)
         Me.GroupBox1.BackColor = System.Drawing.SystemColors.ControlDark
-        Me.GroupBox1.Controls.Add(Me.Button4)
         Me.GroupBox1.Controls.Add(Me.Button3)
         Me.GroupBox1.Controls.Add(Me.Button2)
         Me.GroupBox1.Controls.Add(Me.Button1)
         Me.GroupBox1.Controls.Add(Me.Label1)
-        Me.GroupBox1.Dock = System.Windows.Forms.DockStyle.Left
         Me.GroupBox1.FlatStyle = System.Windows.Forms.FlatStyle.Popup
-        Me.GroupBox1.Location = New System.Drawing.Point(0, 0)
+        Me.GroupBox1.Location = New System.Drawing.Point(0, 27)
         Me.GroupBox1.Name = "GroupBox1"
-        Me.GroupBox1.Size = New System.Drawing.Size(220, 411)
+        Me.GroupBox1.Size = New System.Drawing.Size(220, 384)
         Me.GroupBox1.TabIndex = 0
         Me.GroupBox1.TabStop = False
-        '
-        'Button4
-        '
-        Me.Button4.Location = New System.Drawing.Point(6, 172)
-        Me.Button4.Name = "Button4"
-        Me.Button4.Size = New System.Drawing.Size(210, 29)
-        Me.Button4.TabIndex = 4
-        Me.Button4.Text = "Aula"
-        Me.Button4.UseVisualStyleBackColor = True
         '
         'Button3
         '
@@ -97,26 +96,91 @@ Partial Class FormPrincipal
         Me.Label1.Text = "Menu"
         Me.Label1.TextAlign = System.Drawing.ContentAlignment.MiddleCenter
         '
+        'MenuStrip1
+        '
+        Me.MenuStrip1.Items.AddRange(New System.Windows.Forms.ToolStripItem() {Me.CadastroToolStripMenuItem, Me.RelatóriosToolStripMenuItem})
+        Me.MenuStrip1.Location = New System.Drawing.Point(0, 0)
+        Me.MenuStrip1.Name = "MenuStrip1"
+        Me.MenuStrip1.Size = New System.Drawing.Size(802, 24)
+        Me.MenuStrip1.TabIndex = 1
+        Me.MenuStrip1.Text = "MenuStrip1"
+        '
+        'CadastroToolStripMenuItem
+        '
+        Me.CadastroToolStripMenuItem.DropDownItems.AddRange(New System.Windows.Forms.ToolStripItem() {Me.AlunoToolStripMenuItem, Me.CatequistaToolStripMenuItem, Me.TurmasToolStripMenuItem, Me.UsuáriosToolStripMenuItem})
+        Me.CadastroToolStripMenuItem.Name = "CadastroToolStripMenuItem"
+        Me.CadastroToolStripMenuItem.Size = New System.Drawing.Size(66, 20)
+        Me.CadastroToolStripMenuItem.Text = "Cadastro"
+        '
+        'AlunoToolStripMenuItem
+        '
+        Me.AlunoToolStripMenuItem.Name = "AlunoToolStripMenuItem"
+        Me.AlunoToolStripMenuItem.Size = New System.Drawing.Size(152, 22)
+        Me.AlunoToolStripMenuItem.Text = "Aluno..."
+        '
+        'CatequistaToolStripMenuItem
+        '
+        Me.CatequistaToolStripMenuItem.Name = "CatequistaToolStripMenuItem"
+        Me.CatequistaToolStripMenuItem.Size = New System.Drawing.Size(152, 22)
+        Me.CatequistaToolStripMenuItem.Text = "Catequista..."
+        '
+        'TurmasToolStripMenuItem
+        '
+        Me.TurmasToolStripMenuItem.Name = "TurmasToolStripMenuItem"
+        Me.TurmasToolStripMenuItem.Size = New System.Drawing.Size(152, 22)
+        Me.TurmasToolStripMenuItem.Text = "Turmas..."
+        '
+        'RelatóriosToolStripMenuItem
+        '
+        Me.RelatóriosToolStripMenuItem.DropDownItems.AddRange(New System.Windows.Forms.ToolStripItem() {Me.ListaDeAlunosToolStripMenuItem})
+        Me.RelatóriosToolStripMenuItem.Name = "RelatóriosToolStripMenuItem"
+        Me.RelatóriosToolStripMenuItem.Size = New System.Drawing.Size(71, 20)
+        Me.RelatóriosToolStripMenuItem.Text = "Relatórios"
+        '
+        'ListaDeAlunosToolStripMenuItem
+        '
+        Me.ListaDeAlunosToolStripMenuItem.Name = "ListaDeAlunosToolStripMenuItem"
+        Me.ListaDeAlunosToolStripMenuItem.Size = New System.Drawing.Size(160, 22)
+        Me.ListaDeAlunosToolStripMenuItem.Text = "Lista de Alunos.."
+        '
+        'UsuáriosToolStripMenuItem
+        '
+        Me.UsuáriosToolStripMenuItem.Name = "UsuáriosToolStripMenuItem"
+        Me.UsuáriosToolStripMenuItem.Size = New System.Drawing.Size(152, 22)
+        Me.UsuáriosToolStripMenuItem.Text = "Usuários..."
+        '
         'FormPrincipal
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
         Me.ClientSize = New System.Drawing.Size(802, 411)
         Me.Controls.Add(Me.GroupBox1)
+        Me.Controls.Add(Me.MenuStrip1)
         Me.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle
+        Me.MainMenuStrip = Me.MenuStrip1
         Me.Name = "FormPrincipal"
         Me.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen
-        Me.Text = "Programa Cateq"
+        Me.Text = "Programa Catequese"
         Me.WindowState = System.Windows.Forms.FormWindowState.Maximized
         Me.GroupBox1.ResumeLayout(False)
+        Me.MenuStrip1.ResumeLayout(False)
+        Me.MenuStrip1.PerformLayout()
         Me.ResumeLayout(False)
+        Me.PerformLayout()
 
     End Sub
     Friend WithEvents GroupBox1 As System.Windows.Forms.GroupBox
     Friend WithEvents Label1 As System.Windows.Forms.Label
-    Friend WithEvents Button4 As System.Windows.Forms.Button
     Friend WithEvents Button3 As System.Windows.Forms.Button
     Friend WithEvents Button2 As System.Windows.Forms.Button
     Friend WithEvents Button1 As System.Windows.Forms.Button
+    Friend WithEvents MenuStrip1 As System.Windows.Forms.MenuStrip
+    Friend WithEvents CadastroToolStripMenuItem As System.Windows.Forms.ToolStripMenuItem
+    Friend WithEvents AlunoToolStripMenuItem As System.Windows.Forms.ToolStripMenuItem
+    Friend WithEvents CatequistaToolStripMenuItem As System.Windows.Forms.ToolStripMenuItem
+    Friend WithEvents TurmasToolStripMenuItem As System.Windows.Forms.ToolStripMenuItem
+    Friend WithEvents RelatóriosToolStripMenuItem As System.Windows.Forms.ToolStripMenuItem
+    Friend WithEvents ListaDeAlunosToolStripMenuItem As System.Windows.Forms.ToolStripMenuItem
+    Friend WithEvents UsuáriosToolStripMenuItem As System.Windows.Forms.ToolStripMenuItem
 
 End Class

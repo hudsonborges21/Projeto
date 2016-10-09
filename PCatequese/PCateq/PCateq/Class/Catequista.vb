@@ -196,6 +196,9 @@ Public Class Catequista
     Public Function Consultar(ByVal pCod As String)
         Return New CatequistaDAO().Consultar(pCod, Me)
     End Function
+    Public Function UltimoCodigo()
+        Return New CatequistaDAO().UltimoCodigo(Me)
+    End Function
 #End Region
     
 

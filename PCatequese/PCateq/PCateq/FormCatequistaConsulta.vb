@@ -38,18 +38,28 @@
     End Sub
 
     Private Sub DataGridView1_KeyPress(sender As Object, e As KeyPressEventArgs) Handles DataGridView1.KeyPress
-        If Asc(e.KeyChar) = 13 Then
-            FormTurma.TCatequistaCodigo.Text = DataGridView1.CurrentRow.Cells(0).Value
-            FormTurma.TCatequistaNome.Text = DataGridView1.CurrentRow.Cells(1).Value
-            TPesquisa.Text = ""
-            FormTurma.TCatequistaCodigo.Focus()
-            Me.Close()
-        End If
+        'If Asc(e.KeyChar) = 13 Then
+        '    FormTurma.TCatequistaCodigo.Text = DataGridView1.CurrentRow.Cells(0).Value
+        '    FormTurma.TCatequistaNome.Text = DataGridView1.CurrentRow.Cells(1).Value
+        '    TPesquisa.Text = ""
+        '    FormTurma.TCatequistaCodigo.Focus()
+        '    Me.Close()
+        'End If
     End Sub
 
     Private Sub FormCatequistaConsulta_Load(sender As Object, e As EventArgs) Handles MyBase.Load
         Dim obj As New Catequista
         DataGridView1.DataSource = obj.Todos
         formatarGrid()
+    End Sub
+
+    Private Sub DataGridView1_KeyDown(sender As Object, e As KeyEventArgs) Handles DataGridView1.KeyDown
+        If e.KeyCode = Keys.Enter Then
+            FormTurma.TCatequistaCodigo.Text = DataGridView1.CurrentRow.Cells(0).Value
+            FormTurma.TCatequistaNome.Text = DataGridView1.CurrentRow.Cells(1).Value
+            TPesquisa.Text = ""
+            TPesquisa.Focus()
+            Me.Close()
+        End If
     End Sub
 End Class
