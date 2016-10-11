@@ -38,30 +38,30 @@
 
 #Region "Metodos"
     Public Sub Incluir()
-        Call New AlunoDAO().Incluir(Me)
+        Call New UsuarioDAO().Incluir(Me)
     End Sub
 
     Public Sub Alterar()
-        Call New AlunoDAO().Alterar(Me)
+        Call New UsuarioDAO().Alterar(Me)
     End Sub
     Public Sub Excluir()
-        Call New AlunoDAO().Excluir(Me)
+        Call New UsuarioDAO().Excluir(Me)
     End Sub
 
-    Public Function Todos() As List(Of Aluno)
-        Return New AlunoDAO().Todos()
+    Public Function Todos() As List(Of Usuario)
+        Return New UsuarioDAO().Todos()
     End Function
-    Public Function TodosNomes() As List(Of Aluno)
-        Return New AlunoDAO().TodosNomes(vNome)
+    Public Function TodosNomes() As List(Of Usuario)
+        Return New UsuarioDAO().TodosNomes(vNome)
     End Function
-    Public Function TodosCodigos() As List(Of Aluno)
-        Return New AlunoDAO().TodosCodigos(vCodigo)
+    Public Function TodosCodigos() As List(Of Usuario)
+        Return New UsuarioDAO().TodosCodigos(vCodigo)
     End Function
     Public Function Consultar(ByVal pCod As String)
-        Return New AlunoDAO().Consultar(pCod, Me)
+        Return New UsuarioDAO().Consultar(pCod, Me)
     End Function
     Public Function UltimoCodigo()
-        Return New AlunoDAO().UltimoCodigo(Me)
+        Return New UsuarioDAO().UltimoCodigo(Me)
     End Function
 
 #End Region

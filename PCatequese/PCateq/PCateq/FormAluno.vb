@@ -27,9 +27,10 @@ Public Class FormAluno
         DataGridView2.Columns.Add(CriarCampo("dataCad", "data", "100"))
         DataGridView2.Columns.Add(CriarCampo("Status", "Status", "120"))
 
-        DataGridView2.Columns.Add(CriarCampo("QtdeAula", "Qtde Aulas", "50"))
-        DataGridView2.Columns.Add(CriarCampo("QtdePresenca", "Presenças", "60"))
-        DataGridView2.Columns.Add(CriarCampo("QtdeFalta", "Faltas", "50"))
+        DataGridView2.Columns.Add(CriarCampo("QtdeAula", "Qtde Aulas", "70"))
+        DataGridView2.Columns.Add(CriarCampo("QtdePresenca", "Presenças", "70"))
+        DataGridView2.Columns.Add(CriarCampo("QtdeFalta", "Faltas", "70"))
+        DataGridView2.Columns.Add(CriarCampo("MediaFrequencia", "Média %", "90"))
 
     End Sub
     Public Sub mostarTodos()

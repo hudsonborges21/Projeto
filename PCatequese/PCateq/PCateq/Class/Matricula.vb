@@ -79,7 +79,14 @@
             vQtdeFalta = value
         End Set
     End Property
-
+    Public Property MediaFrequencia() As Double
+        Get
+            Return vMediaPresenca
+        End Get
+        Set(value As Double)
+            vMediaPresenca = value
+        End Set
+    End Property
 #End Region
 
 

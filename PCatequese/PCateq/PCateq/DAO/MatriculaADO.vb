@@ -6,13 +6,10 @@ Public Class MatriculaADO
 
     Private Shared Function ObterSqlInsert() As String
         Dim sql As New StringBuilder
-
         sql.AppendLine("Insert Into MATRICULA ")
         sql.AppendLine(" ( CodigoTurma, CodigoAluno,data, status) ")
         sql.AppendLine("values (@CodigoTurma, @CodigoAluno, @data, @status )")
-
         Return sql.ToString()
-
     End Function
 
     Private Shared Function ObterSqlUpdate(ByVal pCodTurma As Integer, ByVal pCodAluno As Integer) As String
@@ -51,6 +48,8 @@ Public Class MatriculaADO
         turma.ConsultarQtdePresenca(turma.CodigoTurma, turma.CodigoAluno)
         turma.ConsultarQtdeFaltas(turma.CodigoTurma, turma.CodigoAluno)
 
+        turma.MediaFrequencia = Format((turma.QtdePresenca / turma.QtdeAula) * 100, "0.00")
+
     End Sub
     Private Shared Sub PopularObjetoAula(ByVal reader As IDataRecord, ByRef turma As Matricula)
         turma.QtdeAula = reader("QtdeAula")
@@ -68,7 +67,6 @@ Public Class MatriculaADO
             conexao.Open()
             Using comando = New SqlCommand(ObterSqlInsert(), conexao)
                 PopularComando(comando, turma, True)
-
                 'comando sql
                 comando.ExecuteNonQuery()
             End Using
@@ -158,7 +156,6 @@ Public Class MatriculaADO
         End Using
     End Function
     'CONSULTAR 
-
     Public Function Consultar(ByVal codigolinha As Integer, ByVal codigoAluno As Integer, ByRef turma As Matricula) As Boolean
         Dim dataReader As SqlDataReader
 
@@ -180,27 +177,6 @@ Public Class MatriculaADO
         Return True
     End Function
    
-    'Public Function Consultar(ByVal codigolinha As Integer, ByRef turma As Matricula) As Boolean
-    '    Dim dataReader As SqlDataReader
-
-    '    Using conexao As SqlConnection = New Conexao().GetConnection()
-    '        'abrindo conexao 
-    '        conexao.Open()
-    '        Dim sql As String
-    '        sql = ObterSqlSelectTodosCampo() & " where CodigoAluno = " & codigolinha
-    '        Using comando = New SqlCommand(sql, conexao)
-    '            dataReader = comando.ExecuteReader
-    '            If dataReader.HasRows Then
-    '                dataReader.Read()
-    '                PopularObjeto(dataReader, turma)
-    '                conexao.Close()
-    '                Return True
-    '            End If
-    '        End Using
-    '    End Using
-    'End Function
-
-
     'ALTERAR  - UPDATE
     Public Sub Alterar(ByVal pcod As String, ByVal turma As Matricula)
         Using conexao As SqlConnection = New Conexao().GetConnection()
@@ -233,8 +209,6 @@ Public Class MatriculaADO
             conexao.Close()
         End Using
     End Sub
-
-
 
 
     Public Function ConsultarQtdeAula(ByVal codigoTurma As Integer, ByVal turma As Matricula) As Boolean
