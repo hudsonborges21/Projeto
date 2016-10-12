@@ -24,4 +24,12 @@
     Private Sub TurmasToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles TurmasToolStripMenuItem.Click
         FormTurma.ShowDialog()
     End Sub
+
+    Private Sub UsuáriosToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles UsuáriosToolStripMenuItem.Click
+        FormUsuario.ShowDialog()
+    End Sub
+
+    Private Sub FormPrincipal_FormClosed(sender As Object, e As FormClosedEventArgs) Handles MyBase.FormClosed
+        Login.Close() 'fecha o formulario de login que fica oculto
+    End Sub
 End Class

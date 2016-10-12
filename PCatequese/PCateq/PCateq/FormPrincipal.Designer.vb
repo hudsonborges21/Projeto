@@ -32,9 +32,9 @@ Partial Class FormPrincipal
         Me.AlunoToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.CatequistaToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.TurmasToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
+        Me.UsuáriosToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.RelatóriosToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.ListaDeAlunosToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
-        Me.UsuáriosToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.GroupBox1.SuspendLayout()
         Me.MenuStrip1.SuspendLayout()
         Me.SuspendLayout()
@@ -130,6 +130,12 @@ Partial Class FormPrincipal
         Me.TurmasToolStripMenuItem.Size = New System.Drawing.Size(152, 22)
         Me.TurmasToolStripMenuItem.Text = "Turmas..."
         '
+        'UsuáriosToolStripMenuItem
+        '
+        Me.UsuáriosToolStripMenuItem.Name = "UsuáriosToolStripMenuItem"
+        Me.UsuáriosToolStripMenuItem.Size = New System.Drawing.Size(152, 22)
+        Me.UsuáriosToolStripMenuItem.Text = "Usuários..."
+        '
         'RelatóriosToolStripMenuItem
         '
         Me.RelatóriosToolStripMenuItem.DropDownItems.AddRange(New System.Windows.Forms.ToolStripItem() {Me.ListaDeAlunosToolStripMenuItem})
@@ -142,12 +148,6 @@ Partial Class FormPrincipal
         Me.ListaDeAlunosToolStripMenuItem.Name = "ListaDeAlunosToolStripMenuItem"
         Me.ListaDeAlunosToolStripMenuItem.Size = New System.Drawing.Size(160, 22)
         Me.ListaDeAlunosToolStripMenuItem.Text = "Lista de Alunos.."
-        '
-        'UsuáriosToolStripMenuItem
-        '
-        Me.UsuáriosToolStripMenuItem.Name = "UsuáriosToolStripMenuItem"
-        Me.UsuáriosToolStripMenuItem.Size = New System.Drawing.Size(152, 22)
-        Me.UsuáriosToolStripMenuItem.Text = "Usuários..."
         '
         'FormPrincipal
         '

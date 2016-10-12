@@ -15,6 +15,15 @@
 
             End If
 
+            If TypeOf ctl Is MaskedTextBox Then
+
+                DirectCast(ctl, MaskedTextBox).Text = String.Empty
+
+            ElseIf ctl.Controls.Count > 0 Then
+
+                Limpar(ctl)
+
+            End If
         Next
 
     End Sub
@@ -45,4 +54,6 @@
     'Public Function CriarCampo(ByVal campo As String)
     '    Return CriarCampo(campo, campo)
     'End Function
+
+   
 End Module

@@ -4,6 +4,8 @@
 
     Private vCodigo As Integer
     Private vNome As String
+    Private vDataCadastro As Date
+    Private vSenha As String
 
 #End Region
 
@@ -31,7 +33,22 @@
         End Set
     End Property
 
-  
+    Public Property DataCad() As Date
+        Get
+            Return vDataCadastro
+        End Get
+        Set(ByVal value As Date)
+            vDataCadastro = value
+        End Set
+    End Property
+    Public Property Senha() As String
+        Get
+            Return vSenha
+        End Get
+        Set(ByVal value As String)
+            vSenha = value
+        End Set
+    End Property
 
 #End Region
 

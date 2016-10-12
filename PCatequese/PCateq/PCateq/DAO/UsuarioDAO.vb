@@ -7,8 +7,8 @@ Public Class UsuarioDAO
     Private Shared Function ObterSqlInsert() As String
         Dim sql As New StringBuilder
         sql.AppendLine("Insert Into Usuario ")
-        sql.AppendLine(" ( nome) ")
-        sql.AppendLine("values ( @nome)")
+        sql.AppendLine(" ( nome,Data,Senha) ")
+        sql.AppendLine("values ( @nome,@Data,@Senha)")
         Return sql.ToString()
 
     End Function
@@ -16,7 +16,7 @@ Public Class UsuarioDAO
     Private Shared Function ObterSqlUpdate(ByVal parmCodigo As Integer) As String
         Dim sql As New StringBuilder
         sql.AppendLine(" Update Usuario Set ")
-        sql.AppendLine(" nome=@nome ")
+        sql.AppendLine(" nome=@nome,data=@data,senha=@senha  ")
         sql.AppendLine(" where Codigo='" & parmCodigo & "'")
         Return sql.ToString()
     End Function
@@ -32,12 +32,16 @@ Public Class UsuarioDAO
             comando.Parameters.Add("@codigo", SqlDbType.VarChar).Value = usuario.Codigo
         End If
         comando.Parameters.Add("@nome", SqlDbType.VarChar).Value = usuario.Nome
+        comando.Parameters.Add("@Data", SqlDbType.Date).Value = usuario.DataCad
+        comando.Parameters.Add("@senha", SqlDbType.VarChar).Value = usuario.Senha
 
     End Sub
 
     Private Shared Sub PopularObjeto(ByVal reader As IDataRecord, ByRef usuario As Usuario)
         usuario.Codigo = reader("Codigo")
         usuario.Nome = reader("nome")
+        usuario.DataCad = reader("Data")
+        usuario.Senha = reader("senha")
 
     End Sub
 
