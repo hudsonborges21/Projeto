@@ -115,25 +115,25 @@ Partial Class FormPrincipal
         'AlunoToolStripMenuItem
         '
         Me.AlunoToolStripMenuItem.Name = "AlunoToolStripMenuItem"
-        Me.AlunoToolStripMenuItem.Size = New System.Drawing.Size(152, 22)
+        Me.AlunoToolStripMenuItem.Size = New System.Drawing.Size(139, 22)
         Me.AlunoToolStripMenuItem.Text = "Aluno..."
         '
         'CatequistaToolStripMenuItem
         '
         Me.CatequistaToolStripMenuItem.Name = "CatequistaToolStripMenuItem"
-        Me.CatequistaToolStripMenuItem.Size = New System.Drawing.Size(152, 22)
+        Me.CatequistaToolStripMenuItem.Size = New System.Drawing.Size(139, 22)
         Me.CatequistaToolStripMenuItem.Text = "Catequista..."
         '
         'TurmasToolStripMenuItem
         '
         Me.TurmasToolStripMenuItem.Name = "TurmasToolStripMenuItem"
-        Me.TurmasToolStripMenuItem.Size = New System.Drawing.Size(152, 22)
+        Me.TurmasToolStripMenuItem.Size = New System.Drawing.Size(139, 22)
         Me.TurmasToolStripMenuItem.Text = "Turmas..."
         '
         'UsuáriosToolStripMenuItem
         '
         Me.UsuáriosToolStripMenuItem.Name = "UsuáriosToolStripMenuItem"
-        Me.UsuáriosToolStripMenuItem.Size = New System.Drawing.Size(152, 22)
+        Me.UsuáriosToolStripMenuItem.Size = New System.Drawing.Size(139, 22)
         Me.UsuáriosToolStripMenuItem.Text = "Usuários..."
         '
         'RelatóriosToolStripMenuItem

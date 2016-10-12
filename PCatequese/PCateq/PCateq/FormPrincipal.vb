@@ -32,4 +32,8 @@
     Private Sub FormPrincipal_FormClosed(sender As Object, e As FormClosedEventArgs) Handles MyBase.FormClosed
         Login.Close() 'fecha o formulario de login que fica oculto
     End Sub
+
+    Private Sub ListaDeAlunosToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles ListaDeAlunosToolStripMenuItem.Click
+        FormRelListaAlunos.Show()
+    End Sub
 End Class
