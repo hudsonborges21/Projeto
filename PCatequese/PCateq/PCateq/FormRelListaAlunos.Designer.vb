@@ -23,6 +23,7 @@ Partial Class FormRelListaAlunos
     <System.Diagnostics.DebuggerStepThrough()> _
     Private Sub InitializeComponent()
         Me.Button1 = New System.Windows.Forms.Button()
+        Me.Button2 = New System.Windows.Forms.Button()
         Me.SuspendLayout()
         '
         'Button1
@@ -34,11 +35,21 @@ Partial Class FormRelListaAlunos
         Me.Button1.Text = "Todos Alunos"
         Me.Button1.UseVisualStyleBackColor = True
         '
+        'Button2
+        '
+        Me.Button2.Location = New System.Drawing.Point(138, 197)
+        Me.Button2.Name = "Button2"
+        Me.Button2.Size = New System.Drawing.Size(105, 23)
+        Me.Button2.TabIndex = 2
+        Me.Button2.Text = "Todos Alunos"
+        Me.Button2.UseVisualStyleBackColor = True
+        '
         'FormRelListaAlunos
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
         Me.ClientSize = New System.Drawing.Size(545, 226)
+        Me.Controls.Add(Me.Button2)
         Me.Controls.Add(Me.Button1)
         Me.Name = "FormRelListaAlunos"
         Me.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent
@@ -47,4 +58,5 @@ Partial Class FormRelListaAlunos
 
     End Sub
     Friend WithEvents Button1 As System.Windows.Forms.Button
+    Friend WithEvents Button2 As System.Windows.Forms.Button
 End Class
