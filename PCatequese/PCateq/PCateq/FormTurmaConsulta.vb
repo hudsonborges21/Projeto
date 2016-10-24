@@ -1,4 +1,7 @@
 ﻿Public Class FormTurmaConsulta
+    Public Nome As String
+    Public codigo As String
+
 
     Public Sub formatarGrid()
         DataGridView1.AutoGenerateColumns = False
@@ -13,6 +16,8 @@
     
 
     Private Sub FormTurmaConsulta_Load(sender As Object, e As EventArgs) Handles MyBase.Load
+        Nome = ""
+        codigo = ""
         Dim obj As New Turma
         DataGridView1.DataSource = obj.Todos
         TPesquisa.Focus()
@@ -58,7 +63,20 @@
     End Sub
 
     Private Sub DataGridView1_KeyPress(sender As Object, e As KeyPressEventArgs) Handles DataGridView1.KeyPress
-        If Asc(e.KeyChar) = 13 Then
+        'If Asc(e.KeyChar) = 13 Then
+        '    codigo = DataGridView1.CurrentRow.Cells(0).Value
+        '    Nome = DataGridView1.CurrentRow.Cells(1).Value
+        '    FormMatricula.TturmaCodigo.Text = DataGridView1.CurrentRow.Cells(0).Value
+        '    FormMatricula.TTurmaDescricao.Text = DataGridView1.CurrentRow.Cells(2).Value
+        '    TPesquisa.Text = ""
+        '    Me.Close()
+        'End If
+    End Sub
+
+    Private Sub DataGridView1_KeyDown(sender As Object, e As KeyEventArgs) Handles DataGridView1.KeyDown
+        If e.KeyCode = Keys.Enter Then
+            codigo = DataGridView1.CurrentRow.Cells(0).Value
+            Nome = DataGridView1.CurrentRow.Cells(1).Value
             FormMatricula.TturmaCodigo.Text = DataGridView1.CurrentRow.Cells(0).Value
             FormMatricula.TTurmaDescricao.Text = DataGridView1.CurrentRow.Cells(2).Value
             TPesquisa.Text = ""

@@ -144,6 +144,12 @@
     <Compile Include="FormRelListaAlunos.vb">
       <SubType>Form</SubType>
     </Compile>
+    <Compile Include="FormRelTurma.Designer.vb">
+      <DependentUpon>FormRelTurma.vb</DependentUpon>
+    </Compile>
+    <Compile Include="FormRelTurma.vb">
+      <SubType>Form</SubType>
+    </Compile>
     <Compile Include="FormTurma.Designer.vb">
       <DependentUpon>FormTurma.vb</DependentUpon>
     </Compile>
@@ -184,6 +190,78 @@
       <DependentUpon>Settings.settings</DependentUpon>
       <DesignTimeSharedInput>True</DesignTimeSharedInput>
     </Compile>
+    <Compile Include="FormTurmaAluno.Designer.vb">
+      <DependentUpon>FormTurmaAluno.vb</DependentUpon>
+    </Compile>
+    <Compile Include="FormTurmaAluno.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Relatórios\AlunoPresenca.vb">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>AlunoPresenca.rpt</DependentUpon>
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Relatórios\AlunoPresencaTodos.vb">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>AlunoPresencaTodos.rpt</DependentUpon>
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Relatórios\Aniversarios.vb">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Aniversarios.rpt</DependentUpon>
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Relatórios\AniversariosPorTurma.vb">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>AniversariosPorTurma.rpt</DependentUpon>
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Relatórios\FormAniversarios.Designer.vb">
+      <DependentUpon>FormAniversarios.vb</DependentUpon>
+    </Compile>
+    <Compile Include="Relatórios\FormAniversarios.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Relatórios\TurmaAulaPresenca.vb">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>TurmaAulaPresenca.rpt</DependentUpon>
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Relatórios\FormMostarRelatorio.Designer.vb">
+      <DependentUpon>FormMostarRelatorio.vb</DependentUpon>
+    </Compile>
+    <Compile Include="Relatórios\FormMostarRelatorio.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Relatórios\ListaDeAulasPorTurma.vb">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>ListaDeAulasPorTurma.rpt</DependentUpon>
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Relatórios\ListadeTurma.vb">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>ListadeTurma.rpt</DependentUpon>
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Relatórios\TurmaAluno.vb">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>TurmaAluno.rpt</DependentUpon>
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Relatórios\TurmaAlunoTodos.vb">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>TurmaAlunoTodos.rpt</DependentUpon>
+      <SubType>Component</SubType>
+    </Compile>
   </ItemGroup>
   <ItemGroup>
     <EmbeddedResource Include="FormAula.resx">
@@ -210,6 +288,9 @@
     <EmbeddedResource Include="FormRelListaAlunos.resx">
       <DependentUpon>FormRelListaAlunos.vb</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="FormRelTurma.resx">
+      <DependentUpon>FormRelTurma.vb</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="FormTurma.resx">
       <DependentUpon>FormTurma.vb</DependentUpon>
     </EmbeddedResource>
@@ -227,6 +308,51 @@
       <LastGenOutput>Resources.Designer.vb</LastGenOutput>
       <CustomToolNamespace>My.Resources</CustomToolNamespace>
       <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FormTurmaAluno.resx">
+      <DependentUpon>FormTurmaAluno.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Relatórios\AlunoPresenca.rpt">
+      <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
+      <LastGenOutput>AlunoPresenca.vb</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Relatórios\AlunoPresencaTodos.rpt">
+      <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
+      <LastGenOutput>AlunoPresencaTodos.vb</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Relatórios\Aniversarios.rpt">
+      <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
+      <LastGenOutput>Aniversarios.vb</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Relatórios\AniversariosPorTurma.rpt">
+      <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
+      <LastGenOutput>AniversariosPorTurma.vb</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Relatórios\FormAniversarios.resx">
+      <DependentUpon>FormAniversarios.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Relatórios\TurmaAulaPresenca.rpt">
+      <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
+      <LastGenOutput>TurmaAulaPresenca.vb</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Relatórios\FormMostarRelatorio.resx">
+      <DependentUpon>FormMostarRelatorio.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Relatórios\ListaDeAulasPorTurma.rpt">
+      <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
+      <LastGenOutput>ListaDeAulasPorTurma.vb</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Relatórios\ListadeTurma.rpt">
+      <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
+      <LastGenOutput>ListadeTurma.vb</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Relatórios\TurmaAluno.rpt">
+      <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
+      <LastGenOutput>TurmaAluno.vb</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Relatórios\TurmaAlunoTodos.rpt">
+      <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
+      <LastGenOutput>TurmaAlunoTodos.vb</LastGenOutput>
     </EmbeddedResource>
   </ItemGroup>
   <ItemGroup>
@@ -255,6 +381,7 @@
       <EmbedInteropTypes>True</EmbedInteropTypes>
     </COMReference>
   </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.VisualBasic.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.

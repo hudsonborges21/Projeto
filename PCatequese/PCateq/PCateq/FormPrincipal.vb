@@ -36,4 +36,12 @@
     Private Sub ListaDeAlunosToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles ListaDeAlunosToolStripMenuItem.Click
         FormRelListaAlunos.Show()
     End Sub
+
+    Private Sub ListaDeTurmasToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles ListaDeTurmasToolStripMenuItem.Click
+        FormRelTurma.Show()
+    End Sub
+
+    Private Sub AniversariosToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles AniversariosToolStripMenuItem.Click
+        FormAniversarios.Show()
+    End Sub
 End Class

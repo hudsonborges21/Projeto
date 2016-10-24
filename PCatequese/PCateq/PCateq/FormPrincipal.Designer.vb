@@ -35,6 +35,8 @@ Partial Class FormPrincipal
         Me.UsuáriosToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.RelatóriosToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.ListaDeAlunosToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
+        Me.ListaDeTurmasToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
+        Me.AniversariosToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.GroupBox1.SuspendLayout()
         Me.MenuStrip1.SuspendLayout()
         Me.SuspendLayout()
@@ -138,7 +140,7 @@ Partial Class FormPrincipal
         '
         'RelatóriosToolStripMenuItem
         '
-        Me.RelatóriosToolStripMenuItem.DropDownItems.AddRange(New System.Windows.Forms.ToolStripItem() {Me.ListaDeAlunosToolStripMenuItem})
+        Me.RelatóriosToolStripMenuItem.DropDownItems.AddRange(New System.Windows.Forms.ToolStripItem() {Me.ListaDeAlunosToolStripMenuItem, Me.ListaDeTurmasToolStripMenuItem, Me.AniversariosToolStripMenuItem})
         Me.RelatóriosToolStripMenuItem.Name = "RelatóriosToolStripMenuItem"
         Me.RelatóriosToolStripMenuItem.Size = New System.Drawing.Size(71, 20)
         Me.RelatóriosToolStripMenuItem.Text = "Relatórios"
@@ -146,8 +148,20 @@ Partial Class FormPrincipal
         'ListaDeAlunosToolStripMenuItem
         '
         Me.ListaDeAlunosToolStripMenuItem.Name = "ListaDeAlunosToolStripMenuItem"
-        Me.ListaDeAlunosToolStripMenuItem.Size = New System.Drawing.Size(160, 22)
+        Me.ListaDeAlunosToolStripMenuItem.Size = New System.Drawing.Size(166, 22)
         Me.ListaDeAlunosToolStripMenuItem.Text = "Lista de Alunos.."
+        '
+        'ListaDeTurmasToolStripMenuItem
+        '
+        Me.ListaDeTurmasToolStripMenuItem.Name = "ListaDeTurmasToolStripMenuItem"
+        Me.ListaDeTurmasToolStripMenuItem.Size = New System.Drawing.Size(166, 22)
+        Me.ListaDeTurmasToolStripMenuItem.Text = "Lista de Turmas..."
+        '
+        'AniversariosToolStripMenuItem
+        '
+        Me.AniversariosToolStripMenuItem.Name = "AniversariosToolStripMenuItem"
+        Me.AniversariosToolStripMenuItem.Size = New System.Drawing.Size(166, 22)
+        Me.AniversariosToolStripMenuItem.Text = "Aniversarios..."
         '
         'FormPrincipal
         '
@@ -182,5 +196,7 @@ Partial Class FormPrincipal
     Friend WithEvents RelatóriosToolStripMenuItem As System.Windows.Forms.ToolStripMenuItem
     Friend WithEvents ListaDeAlunosToolStripMenuItem As System.Windows.Forms.ToolStripMenuItem
     Friend WithEvents UsuáriosToolStripMenuItem As System.Windows.Forms.ToolStripMenuItem
+    Friend WithEvents ListaDeTurmasToolStripMenuItem As System.Windows.Forms.ToolStripMenuItem
+    Friend WithEvents AniversariosToolStripMenuItem As System.Windows.Forms.ToolStripMenuItem
 
 End Class

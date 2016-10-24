@@ -1,5 +1,5 @@
 ﻿<Global.Microsoft.VisualBasic.CompilerServices.DesignerGenerated()> _
-Partial Class FormRelListaAlunos
+Partial Class FormAniversarios
     Inherits System.Windows.Forms.Form
 
     'Form overrides dispose to clean up the component list.
@@ -22,13 +22,26 @@ Partial Class FormRelListaAlunos
     'Do not modify it using the code editor.
     <System.Diagnostics.DebuggerStepThrough()> _
     Private Sub InitializeComponent()
+        Me.Button4 = New System.Windows.Forms.Button()
         Me.GroupBox1 = New System.Windows.Forms.GroupBox()
         Me.TTurmaDescricao = New System.Windows.Forms.TextBox()
         Me.TturmaCodigo = New System.Windows.Forms.TextBox()
-        Me.Button4 = New System.Windows.Forms.Button()
+        Me.TDataI = New System.Windows.Forms.MaskedTextBox()
+        Me.TDataF = New System.Windows.Forms.MaskedTextBox()
+        Me.Label1 = New System.Windows.Forms.Label()
+        Me.Label2 = New System.Windows.Forms.Label()
         Me.Label4 = New System.Windows.Forms.Label()
         Me.GroupBox1.SuspendLayout()
         Me.SuspendLayout()
+        '
+        'Button4
+        '
+        Me.Button4.Location = New System.Drawing.Point(95, 177)
+        Me.Button4.Name = "Button4"
+        Me.Button4.Size = New System.Drawing.Size(116, 24)
+        Me.Button4.TabIndex = 3
+        Me.Button4.Text = "Confirmar"
+        Me.Button4.UseVisualStyleBackColor = True
         '
         'GroupBox1
         '
@@ -36,8 +49,8 @@ Partial Class FormRelListaAlunos
         Me.GroupBox1.Controls.Add(Me.TturmaCodigo)
         Me.GroupBox1.Location = New System.Drawing.Point(12, 12)
         Me.GroupBox1.Name = "GroupBox1"
-        Me.GroupBox1.Size = New System.Drawing.Size(404, 61)
-        Me.GroupBox1.TabIndex = 3
+        Me.GroupBox1.Size = New System.Drawing.Size(409, 70)
+        Me.GroupBox1.TabIndex = 6
         Me.GroupBox1.TabStop = False
         Me.GroupBox1.Text = "Turma"
         '
@@ -56,47 +69,86 @@ Partial Class FormRelListaAlunos
         Me.TturmaCodigo.Location = New System.Drawing.Point(20, 30)
         Me.TturmaCodigo.Name = "TturmaCodigo"
         Me.TturmaCodigo.Size = New System.Drawing.Size(57, 20)
-        Me.TturmaCodigo.TabIndex = 8
+        Me.TturmaCodigo.TabIndex = 0
         '
-        'Button4
+        'TDataI
         '
-        Me.Button4.Location = New System.Drawing.Point(32, 104)
-        Me.Button4.Name = "Button4"
-        Me.Button4.Size = New System.Drawing.Size(116, 24)
-        Me.Button4.TabIndex = 5
-        Me.Button4.Text = "Agrupado Por Turma"
-        Me.Button4.UseVisualStyleBackColor = True
+        Me.TDataI.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle
+        Me.TDataI.Location = New System.Drawing.Point(95, 88)
+        Me.TDataI.Mask = "00/00/0000"
+        Me.TDataI.Name = "TDataI"
+        Me.TDataI.Size = New System.Drawing.Size(82, 20)
+        Me.TDataI.TabIndex = 1
+        Me.TDataI.ValidatingType = GetType(Date)
+        '
+        'TDataF
+        '
+        Me.TDataF.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle
+        Me.TDataF.Location = New System.Drawing.Point(95, 114)
+        Me.TDataF.Mask = "00/00/0000"
+        Me.TDataF.Name = "TDataF"
+        Me.TDataF.Size = New System.Drawing.Size(82, 20)
+        Me.TDataF.TabIndex = 2
+        Me.TDataF.ValidatingType = GetType(Date)
+        '
+        'Label1
+        '
+        Me.Label1.AutoSize = True
+        Me.Label1.Location = New System.Drawing.Point(26, 95)
+        Me.Label1.Name = "Label1"
+        Me.Label1.Size = New System.Drawing.Size(63, 13)
+        Me.Label1.TabIndex = 26
+        Me.Label1.Text = "Data Inicial:"
+        '
+        'Label2
+        '
+        Me.Label2.AutoSize = True
+        Me.Label2.Location = New System.Drawing.Point(26, 121)
+        Me.Label2.Name = "Label2"
+        Me.Label2.Size = New System.Drawing.Size(58, 13)
+        Me.Label2.TabIndex = 27
+        Me.Label2.Text = "Data Final:"
+        Me.Label2.TextAlign = System.Drawing.ContentAlignment.TopCenter
         '
         'Label4
         '
         Me.Label4.BackColor = System.Drawing.Color.Orange
-        Me.Label4.Location = New System.Drawing.Point(-4, 76)
+        Me.Label4.Location = New System.Drawing.Point(9, 153)
         Me.Label4.Name = "Label4"
-        Me.Label4.Size = New System.Drawing.Size(435, 16)
-        Me.Label4.TabIndex = 29
+        Me.Label4.Size = New System.Drawing.Size(420, 16)
+        Me.Label4.TabIndex = 28
         Me.Label4.Text = "F1 - Turma"
         Me.Label4.TextAlign = System.Drawing.ContentAlignment.MiddleCenter
         '
-        'FormRelListaAlunos
+        'FormAniversarios
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
-        Me.ClientSize = New System.Drawing.Size(428, 150)
+        Me.ClientSize = New System.Drawing.Size(431, 213)
         Me.Controls.Add(Me.Label4)
+        Me.Controls.Add(Me.Label2)
+        Me.Controls.Add(Me.Label1)
+        Me.Controls.Add(Me.TDataF)
+        Me.Controls.Add(Me.TDataI)
         Me.Controls.Add(Me.Button4)
         Me.Controls.Add(Me.GroupBox1)
         Me.KeyPreview = True
-        Me.Name = "FormRelListaAlunos"
+        Me.Name = "FormAniversarios"
         Me.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen
-        Me.Text = "Relatórios de Alunos"
+        Me.Text = "Relatórios de Aniversarios"
         Me.GroupBox1.ResumeLayout(False)
         Me.GroupBox1.PerformLayout()
         Me.ResumeLayout(False)
+        Me.PerformLayout()
 
     End Sub
+    Friend WithEvents Button4 As System.Windows.Forms.Button
     Friend WithEvents GroupBox1 As System.Windows.Forms.GroupBox
     Friend WithEvents TTurmaDescricao As System.Windows.Forms.TextBox
     Friend WithEvents TturmaCodigo As System.Windows.Forms.TextBox
-    Friend WithEvents Button4 As System.Windows.Forms.Button
+    Friend WithEvents TDataI As System.Windows.Forms.MaskedTextBox
+    Friend WithEvents TDataF As System.Windows.Forms.MaskedTextBox
+    Friend WithEvents Label1 As System.Windows.Forms.Label
+    Friend WithEvents Label2 As System.Windows.Forms.Label
     Friend WithEvents Label4 As System.Windows.Forms.Label
 End Class

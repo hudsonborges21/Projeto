@@ -1,4 +1,7 @@
-﻿Public Class FormFrequencia
+﻿Imports CrystalDecisions.CrystalReports.Engine
+Imports CrystalDecisions.Shared
+
+Public Class FormFrequencia
     Public Sub formatarGrid()
 
         'define e realiza a formatação de cada coluna
@@ -51,7 +54,7 @@
         Catch ex As Exception
             MsgBox("Erro ao gravar Dados", MsgBoxStyle.Critical, "")
         End Try
-        
+
     End Sub
     Private Sub Desabilita()
         btnConfirmar.Enabled = True
@@ -64,5 +67,62 @@
 
     Private Sub DataGridView1_CellMouseClick(sender As Object, e As DataGridViewCellMouseEventArgs) Handles DataGridView1.CellMouseClick
         Desabilita()
+    End Sub
+
+    Private Sub Button1_Click(sender As Object, e As EventArgs) Handles Button1.Click
+        Try
+            ' carrega o relatorio desejado
+            Dim strReportName As String
+
+            strReportName = "TurmaAulaPresenca.rpt"
+
+            '
+            'define o caminho e nome do relatorio
+            Dim strReportPath As String = "C:\PROJETO\PCatequese\PCateq\PCateq\Relatórios\" & strReportName
+            '
+            'verifiqa se o arquivo existe
+            'If Not io.File.Exists(strReportPath) Then
+            '    Throw (New Exception("Relatorio nao localizado :" & vbCrLf & strReportPath))
+            'End If
+            '
+            'instancia o relaorio e carrega
+            Dim CR As New ReportDocument
+            CR.Load(strReportPath)
+            '
+            ' atribui os parametros declarados aos objetos relacionados
+            Dim crParameterDiscreteValue As ParameterDiscreteValue
+            Dim crParameterFieldDefinitions As ParameterFieldDefinitions
+            Dim crParameterFieldLocation As ParameterFieldDefinition
+            Dim crParameterValues As ParameterValues
+            '
+            ' Pega a coleção de parametros do relatorio
+            crParameterFieldDefinitions = CR.DataDefinition.ParameterFields
+            '
+            ' define o primeiro parametro
+            ' - pega o parametro e diz a ela para usar os valores atuais
+            ' - define o valor do parametro
+            ' - inclui e aplica o valor
+            ' - repete para cada parametro se for o caso (não é o caso deste exemplo)
+            ' Vamos usar o parametro 'cidade'
+            crParameterFieldLocation = crParameterFieldDefinitions.Item("PTurma")
+            crParameterFieldLocation = crParameterFieldDefinitions.Item("PAula")
+
+            crParameterValues = crParameterFieldLocation.CurrentValues
+            crParameterDiscreteValue = New CrystalDecisions.Shared.ParameterDiscreteValue
+
+            'obtem o valor da caixa de texto
+            crParameterDiscreteValue.Value = tCodigo.Text
+            crParameterValues.Add(crParameterDiscreteValue)
+            crParameterFieldLocation.ApplyCurrentValues(crParameterValues)
+
+            crParameterDiscreteValue.Value = TAulaCodigo.Text
+            crParameterValues.Add(crParameterDiscreteValue)
+            crParameterFieldLocation.ApplyCurrentValues(crParameterValues)
+
+            FormMostarRelatorio.CrystalReportViewer1.ReportSource = CR
+            FormMostarRelatorio.Show()
+        Catch ex As Exception
+            MsgBox("Erro ao gerar relatório", MsgBoxStyle.Critical, "")
+        End Try
     End Sub
 End Class
