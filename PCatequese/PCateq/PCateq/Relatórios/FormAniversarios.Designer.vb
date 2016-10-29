@@ -31,6 +31,8 @@ Partial Class FormAniversarios
         Me.Label1 = New System.Windows.Forms.Label()
         Me.Label2 = New System.Windows.Forms.Label()
         Me.Label4 = New System.Windows.Forms.Label()
+        Me.CBStatus = New System.Windows.Forms.ComboBox()
+        Me.Label3 = New System.Windows.Forms.Label()
         Me.GroupBox1.SuspendLayout()
         Me.SuspendLayout()
         '
@@ -120,11 +122,32 @@ Partial Class FormAniversarios
         Me.Label4.Text = "F1 - Turma"
         Me.Label4.TextAlign = System.Drawing.ContentAlignment.MiddleCenter
         '
+        'CBStatus
+        '
+        Me.CBStatus.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList
+        Me.CBStatus.FormattingEnabled = True
+        Me.CBStatus.Items.AddRange(New Object() {"Concluído", "Cursando", "Reprovado", "Todos"})
+        Me.CBStatus.Location = New System.Drawing.Point(257, 113)
+        Me.CBStatus.Name = "CBStatus"
+        Me.CBStatus.Size = New System.Drawing.Size(125, 21)
+        Me.CBStatus.TabIndex = 30
+        '
+        'Label3
+        '
+        Me.Label3.AutoSize = True
+        Me.Label3.Location = New System.Drawing.Point(214, 121)
+        Me.Label3.Name = "Label3"
+        Me.Label3.Size = New System.Drawing.Size(37, 13)
+        Me.Label3.TabIndex = 29
+        Me.Label3.Text = "Status"
+        '
         'FormAniversarios
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
         Me.ClientSize = New System.Drawing.Size(431, 213)
+        Me.Controls.Add(Me.CBStatus)
+        Me.Controls.Add(Me.Label3)
         Me.Controls.Add(Me.Label4)
         Me.Controls.Add(Me.Label2)
         Me.Controls.Add(Me.Label1)
@@ -151,4 +174,6 @@ Partial Class FormAniversarios
     Friend WithEvents Label1 As System.Windows.Forms.Label
     Friend WithEvents Label2 As System.Windows.Forms.Label
     Friend WithEvents Label4 As System.Windows.Forms.Label
+    Friend WithEvents CBStatus As System.Windows.Forms.ComboBox
+    Friend WithEvents Label3 As System.Windows.Forms.Label
 End Class

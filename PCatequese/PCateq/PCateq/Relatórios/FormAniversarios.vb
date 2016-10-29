@@ -16,6 +16,7 @@ Public Class FormAniversarios
 
     Private Sub Button4_Click(sender As Object, e As EventArgs) Handles Button4.Click
         Try
+            Dim status As String
             ' carrega o relatorio desejado
             Dim strReportName As String
             If TturmaCodigo.Text <> "" Then
@@ -27,11 +28,7 @@ Public Class FormAniversarios
             'define o caminho e nome do relatorio
             Dim strReportPath As String = "C:\PROJETO\PCatequese\PCateq\PCateq\Relatórios\" & strReportName
             '
-            'verifiqa se o arquivo existe
-            'If Not io.File.Exists(strReportPath) Then
-            '    Throw (New Exception("Relatorio nao localizado :" & vbCrLf & strReportPath))
-            'End If
-            '
+           
             'instancia o relaorio e carrega
             Dim CR As New ReportDocument
             CR.Load(strReportPath)
@@ -79,6 +76,21 @@ Public Class FormAniversarios
             crParameterValues.Add(crParameterDiscreteValue)
             crParameterFieldLocation.ApplyCurrentValues(crParameterValues)
 
+            If CBStatus.SelectedItem = Nothing Then
+                status = ""
+            ElseIf CBStatus.SelectedItem = "Todos" Then
+                status = ""
+            Else
+                status = CBStatus.SelectedItem
+            End If
+            crParameterFieldLocation = crParameterFieldDefinitions.Item("Status")
+            crParameterValues = crParameterFieldLocation.CurrentValues
+            crParameterDiscreteValue = New CrystalDecisions.Shared.ParameterDiscreteValue
+
+            crParameterDiscreteValue.Value = status
+            crParameterValues.Add(crParameterDiscreteValue)
+            crParameterFieldLocation.ApplyCurrentValues(crParameterValues)
+
             FormMostarRelatorio.CrystalReportViewer1.ReportSource = CR
             FormMostarRelatorio.Show()
 
@@ -86,5 +98,9 @@ Public Class FormAniversarios
             MsgBox("Erro ao gerar relatório", MsgBoxStyle.Critical, "")
         End Try
        
+    End Sub
+
+    Private Sub TturmaCodigo_Leave(sender As Object, e As EventArgs) Handles TturmaCodigo.Leave
+        If TturmaCodigo.Text = "" Then TTurmaDescricao.Text = ""
     End Sub
 End Class

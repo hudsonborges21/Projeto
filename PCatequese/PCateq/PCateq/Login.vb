@@ -12,21 +12,37 @@
         Try
             Dim senhaCrip As String
 
-            Dim us As New Usuario
-            us.Codigo = tusario.Text
-            us.Consultar(us.Codigo)
-
-            Dim cifrado As New clsCrypto()
-            senhaCrip = cifrado.clsCrypto(tsenha.Text, True)
-
-            If us.Senha = senhaCrip Then
+            '***** USUARIO PADRAO PARA COMEÇAR A COFIGURAR O SISTEMA
+            '***** USUARIO USANDO QUANDO NAO HA CADASTRO DO BANCO DE DADOS
+            If tusario.Text = "99" And tsenha.Text = "99" Then
                 FormPrincipal.Show()
                 Me.Visible = False
+
             Else
-                MsgBox("Senha invalida.", MsgBoxStyle.Critical, "")
-                tsenha.Focus()
+                'CRIAR O OBJE E INSTANCIA DA CLASSE USUARIO
+                'PEGA DADO SO USUARIO
+                Dim us As New Usuario
+                us.Codigo = tusario.Text
+                us.Consultar(us.Codigo)
+
+                'CRIPTOGRA A SENHA
+                Dim cifrado As New clsCrypto()
+                senhaCrip = cifrado.clsCrypto(tsenha.Text, True)
+
+                'VERIFIA SE A CRIPTOGRAFIA É IGUAL A SENHA( JÁ CRIPTOGRAFADA NO BANCO)
+                'OU SEJA PEGAS A SENHA DIGITA CRIPTOGRAFA
+                ' E COMPRA ELA COM A SENHA NO CAMPO, SE FOR IGUAL É A MESMA SENHA, SENAO ESTA ERRADA
+                If us.Senha = senhaCrip Then
+                    FormPrincipal.Show()
+                    Me.Visible = False
+                Else
+                    MsgBox("Senha invalida.", MsgBoxStyle.Critical, "")
+                    tsenha.Focus()
+                End If
+
             End If
 
+      
         Catch ex As Exception
             MsgBox("Erro ao Consultar Usuario.", MsgBoxStyle.Critical, "")
         End Try

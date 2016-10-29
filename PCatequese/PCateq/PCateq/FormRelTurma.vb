@@ -164,4 +164,8 @@ Public Class FormRelTurma
 
         End If
     End Sub
+
+    Private Sub TturmaCodigo_Leave(sender As Object, e As EventArgs) Handles TturmaCodigo.Leave
+        If TturmaCodigo.Text = "" Then TTurmaDescricao.Text = ""
+    End Sub
 End Class

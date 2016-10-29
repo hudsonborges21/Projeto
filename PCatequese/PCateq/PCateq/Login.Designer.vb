@@ -44,17 +44,18 @@ Partial Class Login
         'LogoPictureBox
         '
         Me.LogoPictureBox.Image = CType(resources.GetObject("LogoPictureBox.Image"), System.Drawing.Image)
-        Me.LogoPictureBox.Location = New System.Drawing.Point(0, 0)
+        Me.LogoPictureBox.InitialImage = CType(resources.GetObject("LogoPictureBox.InitialImage"), System.Drawing.Image)
+        Me.LogoPictureBox.Location = New System.Drawing.Point(12, 12)
         Me.LogoPictureBox.Name = "LogoPictureBox"
-        Me.LogoPictureBox.Size = New System.Drawing.Size(119, 150)
+        Me.LogoPictureBox.Size = New System.Drawing.Size(297, 138)
         Me.LogoPictureBox.TabIndex = 0
         Me.LogoPictureBox.TabStop = False
         '
         'UsernameLabel
         '
-        Me.UsernameLabel.Location = New System.Drawing.Point(172, 24)
+        Me.UsernameLabel.Location = New System.Drawing.Point(173, 24)
         Me.UsernameLabel.Name = "UsernameLabel"
-        Me.UsernameLabel.Size = New System.Drawing.Size(220, 23)
+        Me.UsernameLabel.Size = New System.Drawing.Size(100, 23)
         Me.UsernameLabel.TabIndex = 0
         Me.UsernameLabel.Text = "&Usuário"
         Me.UsernameLabel.TextAlign = System.Drawing.ContentAlignment.MiddleLeft
@@ -71,7 +72,7 @@ Partial Class Login
         'tusario
         '
         Me.tusario.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle
-        Me.tusario.Location = New System.Drawing.Point(174, 44)
+        Me.tusario.Location = New System.Drawing.Point(176, 50)
         Me.tusario.MaxLength = 3
         Me.tusario.Name = "tusario"
         Me.tusario.Size = New System.Drawing.Size(57, 20)
@@ -89,7 +90,7 @@ Partial Class Login
         '
         'OK
         '
-        Me.OK.Location = New System.Drawing.Point(125, 127)
+        Me.OK.Location = New System.Drawing.Point(113, 127)
         Me.OK.Name = "OK"
         Me.OK.Size = New System.Drawing.Size(94, 23)
         Me.OK.TabIndex = 4
@@ -98,7 +99,7 @@ Partial Class Login
         'Cancel
         '
         Me.Cancel.DialogResult = System.Windows.Forms.DialogResult.Cancel
-        Me.Cancel.Location = New System.Drawing.Point(225, 127)
+        Me.Cancel.Location = New System.Drawing.Point(215, 127)
         Me.Cancel.Name = "Cancel"
         Me.Cancel.Size = New System.Drawing.Size(94, 23)
         Me.Cancel.TabIndex = 5
@@ -110,7 +111,7 @@ Partial Class Login
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
         Me.CancelButton = Me.Cancel
-        Me.ClientSize = New System.Drawing.Size(325, 157)
+        Me.ClientSize = New System.Drawing.Size(321, 157)
         Me.Controls.Add(Me.Cancel)
         Me.Controls.Add(Me.OK)
         Me.Controls.Add(Me.tsenha)

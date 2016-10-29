@@ -545,7 +545,7 @@ Partial Class FormAluno
         Me.KeyPreview = True
         Me.Name = "FormAluno"
         Me.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent
-        Me.Text = "Catequista"
+        Me.Text = "Aluno"
         Me.TabControl1.ResumeLayout(False)
         Me.TabPage1.ResumeLayout(False)
         Me.GroupBox1.ResumeLayout(False)

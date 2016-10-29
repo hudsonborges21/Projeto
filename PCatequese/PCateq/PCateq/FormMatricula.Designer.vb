@@ -68,7 +68,7 @@ Partial Class FormMatricula
         'Label2
         '
         Me.Label2.AutoSize = True
-        Me.Label2.Location = New System.Drawing.Point(54, 85)
+        Me.Label2.Location = New System.Drawing.Point(54, 90)
         Me.Label2.Name = "Label2"
         Me.Label2.Size = New System.Drawing.Size(37, 13)
         Me.Label2.TabIndex = 23

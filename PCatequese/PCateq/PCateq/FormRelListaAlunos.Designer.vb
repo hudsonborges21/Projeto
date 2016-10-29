@@ -60,7 +60,7 @@ Partial Class FormRelListaAlunos
         '
         'Button4
         '
-        Me.Button4.Location = New System.Drawing.Point(32, 104)
+        Me.Button4.Location = New System.Drawing.Point(145, 96)
         Me.Button4.Name = "Button4"
         Me.Button4.Size = New System.Drawing.Size(116, 24)
         Me.Button4.TabIndex = 5
@@ -81,7 +81,7 @@ Partial Class FormRelListaAlunos
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
-        Me.ClientSize = New System.Drawing.Size(428, 150)
+        Me.ClientSize = New System.Drawing.Size(428, 123)
         Me.Controls.Add(Me.Label4)
         Me.Controls.Add(Me.Button4)
         Me.Controls.Add(Me.GroupBox1)
