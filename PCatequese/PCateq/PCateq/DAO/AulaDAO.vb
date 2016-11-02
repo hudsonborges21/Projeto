@@ -6,7 +6,6 @@ Public Class AulaDAO
 
     Private Shared Function ObterSqlInsert() As String
         Dim sql As New StringBuilder
-
         sql.AppendLine("Insert Into Aula ")
         sql.AppendLine(" ( CodigoTurma, data, Descricao) ")
         sql.AppendLine("values (@CodigoTurma, @data, @Descricao )")
@@ -34,35 +33,35 @@ Public Class AulaDAO
         sql.AppendLine(" SELECT * From Matricula ")
         Return sql.ToString()
     End Function
-    Private Shared Sub PopularComando(ByRef comando As SqlCommand, ByVal turma As Aula, ByVal incluindo As Boolean)
+    Private Shared Sub PopularComando(ByRef comando As SqlCommand, ByVal aula As Aula, ByVal incluindo As Boolean)
         If Not incluindo Then
-            comando.Parameters.Add("@CodigoAula", SqlDbType.VarChar).Value = turma.CodigoAula
+            comando.Parameters.Add("@CodigoAula", SqlDbType.VarChar).Value = aula.CodigoAula
         End If
-        comando.Parameters.Add("@CodigoTurma", SqlDbType.VarChar).Value = turma.CodigoTurma
-        'comando.Parameters.Add("@CodigoAula", SqlDbType.VarChar).Value = turma.CodigoAula
-        comando.Parameters.Add("@Descricao", SqlDbType.VarChar).Value = turma.Descricao
-        comando.Parameters.Add("@Data", SqlDbType.Date).Value = turma.DataCad
+        comando.Parameters.Add("@CodigoTurma", SqlDbType.VarChar).Value = aula.CodigoTurma
+        'comando.Parameters.Add("@CodigoAula", SqlDbType.VarChar).Value = aula.CodigoAula
+        comando.Parameters.Add("@Descricao", SqlDbType.VarChar).Value = aula.Descricao
+        comando.Parameters.Add("@Data", SqlDbType.Date).Value = aula.DataCad
 
     End Sub
 
-    Private Shared Sub PopularObjeto(ByVal reader As IDataRecord, ByRef turma As Aula)
-        'turma.CodigoAula = reader("CodigoAula")
-        turma.CodigoTurma = reader("CodigoTurma")
-        turma.CodigoAula = reader("CodigoAula")
-        If Not IsDBNull(reader("Descricao")) Then turma.Descricao = (reader("Descricao"))
-        If Not IsDBNull(reader("Data")) Then turma.DataCad = reader("Data")
+    Private Shared Sub PopularObjeto(ByVal reader As IDataRecord, ByRef aula As Aula)
+        'aula.CodigoAula = reader("CodigoAula")
+        aula.CodigoTurma = reader("CodigoTurma")
+        aula.CodigoAula = reader("CodigoAula")
+        If Not IsDBNull(reader("Descricao")) Then aula.Descricao = (reader("Descricao"))
+        If Not IsDBNull(reader("Data")) Then aula.DataCad = reader("Data")
 
     End Sub
-    Private Shared Sub PopularObjetoUltimoCodigo(ByVal reader As IDataRecord, ByRef turma As Aula)
-        turma.CodigoAula = reader("CodigoAula")
-     End Sub
+    Private Shared Sub PopularObjetoUltimoCodigo(ByVal reader As IDataRecord, ByRef aula As Aula)
+        aula.CodigoAula = reader("CodigoAula")
+    End Sub
     'METODO INCLUIR 
-    Public Sub Incluir(ByVal turma As Aula)
+    Public Sub Incluir(ByVal aula As Aula) 'Passa objeto da classe "Aula"
         Using conexao As SqlConnection = New Conexao().GetConnection()
             'abrindo conexao 
             conexao.Open()
-            Using comando = New SqlCommand(ObterSqlInsert(), conexao)
-                PopularComando(comando, turma, True)
+            Using comando = New SqlCommand(ObterSqlInsert(), conexao) 'passa instruçao sql
+                PopularComando(comando, aula, True) 'passa os dados pra o comando sql
 
                 'comando sql
                 comando.ExecuteNonQuery()
@@ -72,22 +71,22 @@ Public Class AulaDAO
         End Using
     End Sub
 
-    Public Function Todos() As List(Of Aula)
+    Public Function Todos() As List(Of Aula) 'retorna uma  lista de objetos do tipo aula
         Dim dataReader As SqlDataReader
-        Dim lista = New List(Of Aula)
+        Dim lista = New List(Of Aula) 'cria lista
 
         Using conexao As SqlConnection = New Conexao().GetConnection()
             'abrindo conexao 
             conexao.Open()
             Dim sql As String
-            sql = ObterSqlSelectTodosCampo()
+            sql = ObterSqlSelectTodosCampo() 'passa sql
             Using comando = New SqlCommand(sql, conexao)
                 dataReader = comando.ExecuteReader
-                If dataReader.HasRows Then
+                If dataReader.HasRows Then 'se encontrou alguma coisa preenche um novo obj e coloca ele na lista
                     While dataReader.Read()
-                        Dim turma As New Aula
-                        PopularObjeto(dataReader, turma)
-                        lista.Add(turma) ' add o objeto
+                        Dim aula As New Aula 'cria objeto
+                        PopularObjeto(dataReader, aula)
+                        lista.Add(aula) ' add o objeto na lista
                     End While
                     conexao.Close()
                     Return lista
@@ -111,9 +110,9 @@ Public Class AulaDAO
                 dataReader = comando.ExecuteReader
                 If dataReader.HasRows Then
                     While dataReader.Read()
-                        Dim turma As New Aula
-                        PopularObjeto(dataReader, turma)
-                        lista.Add(turma) ' add o objeto
+                        Dim aula As New Aula
+                        PopularObjeto(dataReader, aula)
+                        lista.Add(aula) ' add o objeto
                     End While
                     conexao.Close()
                     Return lista
@@ -125,9 +124,9 @@ Public Class AulaDAO
         End Using
     End Function
     'CONSULTAR 
-    Public Function ConsultarAulasTurma(ByVal codigolinha As Integer) As List(Of Aula)
+    Public Function ConsultarAulasTurma(ByVal codigolinha As Integer) As List(Of Aula) 'retorna uma lista de obj, com as aulas da turma
         Dim dataReader As SqlDataReader
-        Dim lista = New List(Of Aula)
+        Dim lista = New List(Of Aula) 'cria uma lista
 
         Using conexao As SqlConnection = New Conexao().GetConnection()
             'abrindo conexao 
@@ -138,9 +137,9 @@ Public Class AulaDAO
                 dataReader = comando.ExecuteReader
                 If dataReader.HasRows Then
                     While dataReader.Read()
-                        Dim turma As New Aula
-                        PopularObjeto(dataReader, turma)
-                        lista.Add(turma) ' add o objeto
+                        Dim aula As New Aula 'cria um novo objet da classe aula
+                        PopularObjeto(dataReader, aula)
+                        lista.Add(aula) ' add o objeto na lista
                     End While
                     conexao.Close()
                     Return lista
@@ -151,19 +150,19 @@ Public Class AulaDAO
             End Using
         End Using
     End Function
-    Public Function Consultar(ByVal codigoAula As Integer, ByRef turma As Aula) As Boolean
+    Public Function Consultar(ByVal codigoAula As Integer, ByRef aula As Aula) As Boolean
         Dim dataReader As SqlDataReader
 
         Using conexao As SqlConnection = New Conexao().GetConnection()
             'abrindo conexao 
             conexao.Open()
             Dim sql As String
-            sql = ObterSqlSelectTodosCampo() & " where codigoAula = " & codigoAula
+            sql = ObterSqlSelectTodosCampo() & " where codigoAula = " & codigoAula 'sql
             Using comando = New SqlCommand(sql, conexao)
                 dataReader = comando.ExecuteReader
                 If dataReader.HasRows Then
                     dataReader.Read()
-                    PopularObjeto(dataReader, turma)
+                    PopularObjeto(dataReader, aula) 'preeenche os dados
                     conexao.Close()
                     Return True
                 End If
@@ -174,12 +173,12 @@ Public Class AulaDAO
 
 
     'ALTERAR  - UPDATE
-    Public Sub Alterar(ByVal turma As Aula)
+    Public Sub Alterar(ByVal aula As Aula)
         Using conexao As SqlConnection = New Conexao().GetConnection()
             'abrindo conexao 
             conexao.Open()
-            Using comando = New SqlCommand(ObterSqlUpdate(turma.CodigoAula), conexao)
-                PopularComando(comando, turma, True)
+            Using comando = New SqlCommand(ObterSqlUpdate(aula.CodigoAula), conexao)
+                PopularComando(comando, aula, True)
 
                 'comando sql
                 comando.ExecuteNonQuery()
@@ -190,14 +189,14 @@ Public Class AulaDAO
     End Sub
 
     'EXCLUIR  - DELETE
-    Public Sub Excluir(ByVal turma As Aula)
+    Public Sub Excluir(ByVal aula As Aula)
         Using conexao As SqlConnection = New Conexao().GetConnection()
             'abrindo conexao 
             conexao.Open()
             Dim sql As String
-            sql = "DELETE FROM Aula WHERE codigoAula=" & turma.CodigoAula
+            sql = "DELETE FROM Aula WHERE codigoAula=" & aula.CodigoAula
             Using comando = New SqlCommand(sql, conexao)
-                comando.Parameters.Add("@codigoAula", SqlDbType.VarChar).Value = turma.CodigoTurma
+                comando.Parameters.Add("@codigoAula", SqlDbType.VarChar).Value = aula.CodigoTurma
                 'comando sql
                 comando.ExecuteNonQuery()
             End Using
@@ -205,7 +204,7 @@ Public Class AulaDAO
             conexao.Close()
         End Using
     End Sub
-    Public Function UltimoCodigo(ByVal codigoTurma As String, ByVal turma As Aula) As Boolean
+    Public Function UltimoCodigo(ByVal codigoTurma As String, ByVal aula As Aula) As Boolean
         Dim dataReader As SqlDataReader
 
         Using conexao As SqlConnection = New Conexao().GetConnection()
@@ -217,7 +216,7 @@ Public Class AulaDAO
                 dataReader = comando.ExecuteReader
                 If dataReader.HasRows Then
                     dataReader.Read()
-                    PopularObjetoUltimoCodigo(dataReader, turma)
+                    PopularObjetoUltimoCodigo(dataReader, aula)
                     conexao.Close()
                     Return True
                 End If
@@ -239,9 +238,9 @@ Public Class AulaDAO
     '            dataReader = comando.ExecuteReader
     '            If dataReader.HasRows Then
     '                While dataReader.Read()
-    '                    Dim turma As New Aula
-    '                    PopularObjetoAula(dataReader, turma)
-    '                    lista.Add(turma) ' add o objeto
+    '                    Dim aula As New Aula
+    '                    PopularObjetoAula(dataReader, aula)
+    '                    lista.Add(aula) ' add o objeto
     '                End While
     '                conexao.Close()
     '                Return lista
@@ -255,8 +254,15 @@ Public Class AulaDAO
     
    
 #End Region
+    '*********************************************************************************************************************************************************
+    '*********************************************************************************************************************************************************
+    '
+    'METODOS USADOS PARA MANIPULAR A FREQUENCIA
+    '
+    '*********************************************************************************************************************************************************
+    '*********************************************************************************************************************************************************
 #Region "Metodos Frequencia"
-
+   
     Private Shared Function ObterSqlInsertFrequencia() As String
         Dim sql As New StringBuilder
 
@@ -283,35 +289,35 @@ Public Class AulaDAO
         sql.AppendLine(" SELECT * From Frequencia ")
         Return sql.ToString()
     End Function
-    Private Shared Sub PopularComandoFrequencia(ByRef comando As SqlCommand, ByVal turma As Aula, ByVal incluindo As Boolean)
+    Private Shared Sub PopularComandoFrequencia(ByRef comando As SqlCommand, ByVal aula As Aula, ByVal incluindo As Boolean)
         'If Not incluindo Then
-        '    comando.Parameters.Add("@CodigoAula", SqlDbType.VarChar).Value = turma.CodigoAula
+        '    comando.Parameters.Add("@CodigoAula", SqlDbType.VarChar).Value = aula.CodigoAula
         'End If
-        comando.Parameters.Add("@CodigoAluno", SqlDbType.VarChar).Value = turma.CodigoAluno
-        comando.Parameters.Add("@CodigoAula", SqlDbType.VarChar).Value = turma.CodigoAula
-        comando.Parameters.Add("@Presenca", SqlDbType.VarChar).Value = turma.Presenca
+        comando.Parameters.Add("@CodigoAluno", SqlDbType.VarChar).Value = aula.CodigoAluno
+        comando.Parameters.Add("@CodigoAula", SqlDbType.VarChar).Value = aula.CodigoAula
+        comando.Parameters.Add("@Presenca", SqlDbType.VarChar).Value = aula.Presenca
 
     End Sub
 
    
-    Private Shared Sub PopularObjetoFrequencia(ByVal reader As IDataRecord, ByRef turma As Aula)
+    Private Shared Sub PopularObjetoFrequencia(ByVal reader As IDataRecord, ByRef aula As Aula)
 
-        'turma.CodigoTurma = reader("CodigoTurma")
-        turma.CodigoAluno = reader("CodigoAluno")
-        turma.Presenca = reader("Presenca")
+        'aula.CodigoTurma = reader("CodigoTurma")
+        aula.CodigoAluno = reader("CodigoAluno")
+        aula.Presenca = reader("Presenca")
 
-        Dim obj As Aluno = New Aluno
-        obj.Consultar(turma.CodigoAluno)
-        turma.Aluno = obj.Nome
+        Dim obj As Aluno = New Aluno 'CRIA OBJET ALUNO PARA BUSCAR O NOME DO ALUNO
+        obj.Consultar(aula.CodigoAluno) 'CONSULTA DADOS DO ALUNO
+        aula.Aluno = obj.Nome
 
     End Sub
     'METODO INCLUIR 
-    Public Sub IncluirFrequencia(ByVal turma As Aula)
+    Public Sub IncluirFrequencia(ByVal aula As Aula)
         Using conexao As SqlConnection = New Conexao().GetConnection()
             'abrindo conexao 
             conexao.Open()
-            Using comando = New SqlCommand(ObterSqlInsertFrequencia(), conexao)
-                PopularComandoFrequencia(comando, turma, True)
+            Using comando = New SqlCommand(ObterSqlInsertFrequencia(), conexao) 'passa instruçao sql
+                PopularComandoFrequencia(comando, aula, True)
 
                 'comando sql
                 comando.ExecuteNonQuery()
@@ -323,12 +329,12 @@ Public Class AulaDAO
 
    
     'ALTERAR  - UPDATE
-    Public Sub AlterarFrequencia(ByVal turma As Aula)
+    Public Sub AlterarFrequencia(ByVal aula As Aula)
         Using conexao As SqlConnection = New Conexao().GetConnection()
             'abrindo conexao 
             conexao.Open()
-            Using comando = New SqlCommand(ObterSqlUpdateFrequencia(turma.CodigoAula, turma.CodigoAluno), conexao)
-                PopularComandoFrequencia(comando, turma, True)
+            Using comando = New SqlCommand(ObterSqlUpdateFrequencia(aula.CodigoAula, aula.CodigoAluno), conexao) 'passa instruçao sql
+                PopularComandoFrequencia(comando, aula, True)
 
                 'comando sql
                 comando.ExecuteNonQuery()
@@ -338,7 +344,7 @@ Public Class AulaDAO
         End Using
     End Sub
 
-    Public Function ConsultarPresenca(ByVal codigoAluno As Integer, ByVal codigoAula As Integer, ByRef turma As Aula) As Boolean
+    Public Function ConsultarPresenca(ByVal codigoAluno As Integer, ByVal codigoAula As Integer, ByRef aula As Aula) As Boolean
         Dim dataReader As SqlDataReader
 
         Using conexao As SqlConnection = New Conexao().GetConnection()
@@ -350,7 +356,7 @@ Public Class AulaDAO
                 dataReader = comando.ExecuteReader
                 If dataReader.HasRows Then
                     dataReader.Read()
-                    PopularObjetoFrequencia(dataReader, turma)
+                    PopularObjetoFrequencia(dataReader, aula) 'preencher dados
                     conexao.Close()
                     Return True
                 End If
@@ -358,9 +364,9 @@ Public Class AulaDAO
         End Using
         Return True
     End Function
-    Public Function TodosAlunosTurma(ByVal codigolinha As Integer) As List(Of Aula)
+    Public Function TodosAlunosTurma(ByVal codigolinha As Integer) As List(Of Aula) 'retorna uma lista de aluno da pertencentees aquela aula
         Dim dataReader As SqlDataReader
-        Dim lista = New List(Of Aula)
+        Dim lista = New List(Of Aula) 'cria uma lista
 
         Using conexao As SqlConnection = New Conexao().GetConnection()
             'abrindo conexao 
@@ -377,9 +383,9 @@ Public Class AulaDAO
                 dataReader = comando.ExecuteReader
                 If dataReader.HasRows Then
                     While dataReader.Read()
-                        Dim turma As New Aula
-                        PopularObjetoFrequencia(dataReader, turma)
-                        lista.Add(turma) ' add o objeto
+                        Dim aula As New Aula
+                        PopularObjetoFrequencia(dataReader, aula) 'preenche dados 
+                        lista.Add(aula) ' add o objeto
                     End While
                     conexao.Close()
                     Return lista
@@ -391,14 +397,14 @@ Public Class AulaDAO
         End Using
     End Function
     'EXCLUIR  - DELETE
-    Public Sub ExcluirFrequencia(ByVal turma As Aula)
+    Public Sub ExcluirFrequencia(ByVal aula As Aula)
         Using conexao As SqlConnection = New Conexao().GetConnection()
             'abrindo conexao 
             conexao.Open()
             Dim sql As String
-            sql = "DELETE FROM Frequencia WHERE codigoAula=" & turma.CodigoAula
+            sql = "DELETE FROM Frequencia WHERE codigoAula=" & aula.CodigoAula
             Using comando = New SqlCommand(sql, conexao)
-                comando.Parameters.Add("@codigoAula", SqlDbType.VarChar).Value = turma.CodigoTurma
+                comando.Parameters.Add("@codigoAula", SqlDbType.VarChar).Value = aula.CodigoTurma
                 'comando sql
                 comando.ExecuteNonQuery()
             End Using

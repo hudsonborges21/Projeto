@@ -16,9 +16,9 @@ Public Class FormUsuario
         Try
             If Not incluindo Then
                 If Not IsDBNull(tCodigo.Text) Then
-                    Dim obj As Usuario = New Usuario
+                    Dim obj As Usuario = New Usuario 'cria objeto
                     obj.Codigo = tCodigo.Text
-                    obj.Excluir()
+                    obj.Excluir()   'exluir
                     Call Limpar(Me)
                     Habilita()
                     MsgBox("Registro Excluído", MsgBoxStyle.Information, "")
@@ -32,14 +32,14 @@ Public Class FormUsuario
 
     Private Sub btnConfirmar_Click(sender As Object, e As EventArgs) Handles btnConfirmar.Click
         'Declarando e instanciando o obj da classe empresa
-        Dim obj As Usuario = New Usuario
+        Dim obj As Usuario = New Usuario 'cria objeto
 
         Try
 
             obj.Nome = TNome.Text
 
-            Dim cifrado As New clsCrypto()
-            obj.Senha = cifrado.clsCrypto(tsenha.Text, True)
+            Dim cifrado As New clsCrypto() 'usa esta classe, para criar a criptografia da senha
+            obj.Senha = cifrado.clsCrypto(tsenha.Text, True) 'criptografa senha
 
             If Not IsDBNull(TDataCad.Text) And TDataCad.Mask <> "00/00/0000" Then obj.DataCad = Convert.ToDateTime(TDataCad.Text)
 
@@ -69,11 +69,11 @@ Public Class FormUsuario
 
     Private Sub BtnCancelar_Click(sender As Object, e As EventArgs) Handles BtnCancelar.Click
         Try
-            Dim obj As Usuario = New Usuario
+            Dim obj As Usuario = New Usuario 'cria objeto
 
             If incluindo Then tCodigo.Text = ultCodigo
 
-            obj.Consultar(tCodigo.Text)
+            obj.Consultar(tCodigo.Text) 'consulta os dados do usuario
             tCodigo.Text = obj.Codigo
             TNome.Text = obj.Nome
             TDataCad.Text = FormatDateTime(obj.DataCad, DateFormat.ShortDate)
@@ -98,12 +98,12 @@ Public Class FormUsuario
     Private Sub TabControl1_SelectedIndexChanged(sender As Object, e As EventArgs) Handles TabControl1.SelectedIndexChanged
         Dim codigo As String
         If TabControl1.SelectedIndex = "0" Then
-            Dim obj As Usuario = New Usuario
+            Dim obj As Usuario = New Usuario    'cria objeto
 
-            codigo = DataGridView1.CurrentRow.Cells(0).Value
+            codigo = DataGridView1.CurrentRow.Cells(0).Value 'pega codigo da gridview
             If Not IsDBNull(codigo) Then
 
-                If obj.Consultar(codigo) Then
+                If obj.Consultar(codigo) Then 'consulta dados
                     tCodigo.Text = obj.Codigo
                     TNome.Text = obj.Nome
                     tsenha.Text = obj.Senha
@@ -128,7 +128,7 @@ Public Class FormUsuario
         DataGridView1.AutoGenerateColumns = False
         DataGridView1.Columns.Clear()
         DataGridView1.Columns.Add(CriarCampo("codigo", "Código", "50"))
-        DataGridView1.Columns.Add(CriarCampo("nome", "Nome", "300"))
+        DataGridView1.Columns.Add(CriarCampo("nome", "Nome", "500"))
 
     End Sub
 

@@ -53,26 +53,26 @@ Public Class FormTurma
     Private Sub TabControl1_SelectedIndexChanged(sender As Object, e As EventArgs) Handles TabControl1.SelectedIndexChanged
         Dim codigo As String
         If TabControl1.SelectedIndex = "0" Then
-            Dim obj As Turma = New Turma
+            Dim obj As Turma = New Turma 'cria objeto turma
 
             codigo = DataGridView1.CurrentRow.Cells(0).Value
             If Not IsDBNull(codigo) Then
 
-                If obj.Consultar(codigo) Then
+                If obj.Consultar(codigo) Then 'consulta dados
                     tCodigo.Text = obj.Codigo
-                    tData.Text = FormatDateTime(obj.DataCad, DateFormat.ShortDate)
+                    TData.Text = FormatDateTime(obj.DataCad, DateFormat.ShortDate)
                     tcurso.Text = obj.Curso
                     tAnoFim.Text = obj.AnoFim
                     TAnoINI.Text = obj.AnoIni
                     tDescricao.Text = obj.Nome
                     TCatequistaCodigo.Text = obj.CatequistaCodigo
 
-                    Dim obj2 As Catequista = New Catequista
-                    If obj2.Consultar(obj.CatequistaCodigo) Then
+                    Dim obj2 As Catequista = New Catequista 'cria objeto catquista
+                    If obj2.Consultar(obj.CatequistaCodigo) Then 'busca dados do professor catequista
                         TCatequistaNome.Text = obj2.Nome
                     End If
                     Habilita()
-                    GridAula(codigo)
+                    GridAula(codigo) 'busca aulas da turma
                 End If
             Else
                 formatarGrid()
@@ -85,9 +85,9 @@ Public Class FormTurma
         Try
             If Not incluindo Then
                 If Not IsDBNull(tCodigo.Text) Then
-                    Dim obj As Turma = New Turma
+                    Dim obj As Turma = New Turma 'cria objeto
                     obj.Codigo = tCodigo.Text
-                    obj.Excluir()
+                    obj.Excluir() 'exluir
                     Call Limpar(Me)
                     Habilita()
                     MsgBox("Registro Excluído", MsgBoxStyle.Information, "")
@@ -115,12 +115,12 @@ Public Class FormTurma
             If Not incluindo Then
                 'chamando o metodo da classe responsavel por incluir os dados 
                 obj.Codigo = tCodigo.Text
-                obj.Alterar()
+                obj.Alterar()   'alterar dados
                 MsgBox("Registro salvo com sucesso.", MsgBoxStyle.Information, "")
                 incluindo = False
             Else
                 'chamando o metodo da classe responsavel por incluir os dados 
-                obj.Incluir()
+                obj.Incluir()   'incluir turma
                 obj.UltimoCodigo()
                 tCodigo.Text = obj.Codigo
                 GridAula(tCodigo.Text)
@@ -137,7 +137,7 @@ Public Class FormTurma
     End Sub
 
     Private Sub BtnConsulta_Click(sender As Object, e As EventArgs) Handles BtnConsulta.Click
-        mostarTurmas()
+        mostarTurmas() 'dados da turmas
         txtConsulta.Visible = True
         txtConsulta.Text = ""
         txtConsulta.Focus()
@@ -156,7 +156,7 @@ Public Class FormTurma
             Try
                 Dim obj As New Turma
                 obj.Nome = txtConsulta.Text
-                DataGridView1.DataSource = obj.ConsultarNome()
+                DataGridView1.DataSource = obj.ConsultarNome() 'consultar turmas por nome
             Catch ex As Exception
                 MsgBox("Erro ao realizar consulta", MsgBoxStyle.Critical, "")
             End Try
@@ -169,7 +169,7 @@ Public Class FormTurma
             Try
                 Dim obj As New Turma
                 obj.Codigo = tConsultaCodigo.Text
-                DataGridView1.DataSource = obj.ConsultarCodigos()
+                DataGridView1.DataSource = obj.ConsultarCodigos() 'consultar turmas por codigo
             Catch ex As Exception
                 MsgBox("Erro ao realizar consulta", MsgBoxStyle.Critical, "")
             End Try
@@ -188,18 +188,18 @@ Public Class FormTurma
             If tCodigo.Text <> "" Or incluindo Then
                 Desabilita()
                 FormCatequistaConsulta.TPesquisa.Focus()
-                FormCatequistaConsulta.ShowDialog()
+                FormCatequistaConsulta.ShowDialog() 'chama formu de consulta professor
             End If
             TCatequistaCodigo.Focus()
 
         End If
-        If e.KeyCode = Keys.F2 Then
+        If e.KeyCode = Keys.F2 Then '*******    CADASTRAR AULA
             If tCodigo.Text <> "" Then
                 FormAula.tCodigo.Text = tCodigo.Text
                 FormAula.tDescricao.Text = tDescricao.Text
                 FormAula.TAulaDescricao.Focus()
                 FormAula.incluindo = True
-                FormAula.ShowDialog()
+                FormAula.ShowDialog() 'chama formulario de aula
                 GridAula(tCodigo.Text)
             End If
         End If
@@ -211,23 +211,22 @@ Public Class FormTurma
                 FormAula.tCodigo.Text = tCodigo.Text
                 FormAula.tDescricao.Text = tDescricao.Text
 
-                Dim obj As New Aula
+                Dim obj As New Aula 'CRIA OBJETO DA AULA
                 obj.CodigoAula = codigo
-                obj.Consultar()
+                obj.Consultar() 'busca dados
 
                 FormAula.TAulaCodigo.Text = obj.CodigoAula
                 FormAula.TAulaDescricao.Text = obj.Descricao
                 FormAula.TAulaData.Text = FormatDateTime(obj.DataCad, DateFormat.ShortDate)
                 FormAula.TAulaDescricao.Focus()
                 FormAula.incluindo = False
-                FormAula.ShowDialog()
+                FormAula.ShowDialog() 'CHAMA FORMULARIO DE AULA
                 GridAula(tCodigo.Text)
             End If
         End If
-        If e.KeyCode = Keys.F4 Then
+        If e.KeyCode = Keys.F4 Then '*********** EXCLUIR AULA
             If tCodigo.Text <> "" Then
                 If MsgBox("Ao Exluir Aula será exluido as presenças lançadas.  Deseja Realmente Exlcuir o Registro?", MsgBoxStyle.YesNo) = MsgBoxResult.Yes Then
-
 
                     Dim codigo As String = DataGridView2.CurrentRow.Cells(0).Value
                     Dim obj As New Aula
@@ -244,7 +243,7 @@ Public Class FormTurma
                 GridAula(tCodigo.Text)
             End If
         End If
-        If e.KeyCode = Keys.F5 Then
+        If e.KeyCode = Keys.F5 Then '******* CHAMA O FORM DE FREQUENCIA
             If tCodigo.Text <> "" Then
 
                 Dim codigo As String = DataGridView2.CurrentRow.Cells(0).Value
@@ -298,7 +297,7 @@ Public Class FormTurma
 
         End If
     End Sub
-    Private Sub QtdeAulas()
+    Private Sub QtdeAulas() 'CONTADOR DE AULAS
         Dim qtde As Integer
         qtde = 0
         For i = 0 To DataGridView2.RowCount - 1

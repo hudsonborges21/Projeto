@@ -78,7 +78,7 @@
             codigo = DataGridView1.CurrentRow.Cells(0).Value
             Nome = DataGridView1.CurrentRow.Cells(1).Value
             FormMatricula.TturmaCodigo.Text = DataGridView1.CurrentRow.Cells(0).Value
-            FormMatricula.TTurmaDescricao.Text = DataGridView1.CurrentRow.Cells(2).Value
+            FormMatricula.TTurmaDescricao.Text = Nome 'DataGridView1.CurrentRow.Cells(2).Value
             TPesquisa.Text = ""
             Me.Close()
         End If

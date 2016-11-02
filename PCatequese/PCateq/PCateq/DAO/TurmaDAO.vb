@@ -70,24 +70,24 @@ Public Class TurmaDAO
     
     End Sub
     'METODO INCLUIR 
-    Public Sub Incluir(ByVal turma As Turma)
+    Public Sub Incluir(ByVal turma As Turma) 'passa o objet da classe Turma.vb como referencia
         Using conexao As SqlConnection = New Conexao().GetConnection()
             'abrindo conexao 
             conexao.Open()
-            Using comando = New SqlCommand(ObterSqlInsert(), conexao)
-                PopularComando(comando, turma, True)
+            Using comando = New SqlCommand(ObterSqlInsert(), conexao) 'passa comando sql
+                PopularComando(comando, turma, True) 'prenche o comando
 
                 'comando sql
-                comando.ExecuteNonQuery()
+                comando.ExecuteNonQuery() 'executa
             End Using
             'fechando a conexao 
             conexao.Close()
         End Using
     End Sub
 
-    Public Function Todos() As List(Of Turma)
+    Public Function Todos() As List(Of Turma) 'retorna uma lista de turmas por order Desc de codigo
         Dim dataReader As SqlDataReader
-        Dim lista = New List(Of Turma)
+        Dim lista = New List(Of Turma)  'cria lista 
 
         Using conexao As SqlConnection = New Conexao().GetConnection()
             'abrindo conexao 
@@ -98,7 +98,7 @@ Public Class TurmaDAO
                 dataReader = comando.ExecuteReader
                 If dataReader.HasRows Then
                     While dataReader.Read()
-                        Dim turma As New Turma
+                        Dim turma As New Turma 'cria objeto
                         PopularObjeto(dataReader, turma)
                         lista.Add(turma) ' add o objeto
                     End While
@@ -114,7 +114,7 @@ Public Class TurmaDAO
 
     Public Function ConsultarNome(ByVal Nome As String) As List(Of Turma)
         Dim dataReader As SqlDataReader
-        Dim lista = New List(Of Turma)
+        Dim lista = New List(Of Turma) 'cria lista
 
         Using conexao As SqlConnection = New Conexao().GetConnection()
             'abrindo conexao 
@@ -125,7 +125,7 @@ Public Class TurmaDAO
                 dataReader = comando.ExecuteReader
                 If dataReader.HasRows Then
                     While dataReader.Read()
-                        Dim turma As New Turma
+                        Dim turma As New Turma 'cria objeto
                         PopularObjeto(dataReader, turma)
                         lista.Add(turma) ' add o objeto
                     End While
@@ -138,9 +138,9 @@ Public Class TurmaDAO
             End Using
         End Using
     End Function
-    Public Function ConsultarCodigos(ByVal Codigo As String) As List(Of Turma)
+    Public Function ConsultarCodigos(ByVal Codigo As String) As List(Of Turma) 'retorna lista de turma
         Dim dataReader As SqlDataReader
-        Dim lista = New List(Of Turma)
+        Dim lista = New List(Of Turma) 'cria lista
 
         Using conexao As SqlConnection = New Conexao().GetConnection()
             'abrindo conexao 
@@ -151,7 +151,7 @@ Public Class TurmaDAO
                 dataReader = comando.ExecuteReader
                 If dataReader.HasRows Then
                     While dataReader.Read()
-                        Dim turma As New Turma
+                        Dim turma As New Turma 'cria obj
                         PopularObjeto(dataReader, turma)
                         lista.Add(turma) ' add o objeto
                     End While
@@ -178,7 +178,7 @@ Public Class TurmaDAO
                 dataReader = comando.ExecuteReader
                 If dataReader.HasRows Then
                     dataReader.Read()
-                    PopularObjeto(dataReader, turma)
+                    PopularObjeto(dataReader, turma) 'preenche os dados
                     conexao.Close()
                     Return True
                 End If
@@ -212,11 +212,11 @@ Public Class TurmaDAO
         Using conexao As SqlConnection = New Conexao().GetConnection()
             'abrindo conexao 
             conexao.Open()
-            Using comando = New SqlCommand(ObterSqlUpdate(turma.Codigo), conexao)
-                PopularComando(comando, turma, True)
+            Using comando = New SqlCommand(ObterSqlUpdate(turma.Codigo), conexao) 'passa o sql
+                PopularComando(comando, turma, True) 'preeche os commandos
 
                 'comando sql
-                comando.ExecuteNonQuery()
+                comando.ExecuteNonQuery()   'executa
             End Using
             'fechando a conexao 
             conexao.Close()

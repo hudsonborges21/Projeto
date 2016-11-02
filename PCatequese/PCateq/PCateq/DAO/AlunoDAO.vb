@@ -5,6 +5,7 @@ Public Class AlunoDAO
 #Region "Metodos"
 
     Private Shared Function ObterSqlInsert() As String
+        'DEFINIR SQL PARA INCLUIR
         Dim sql As New StringBuilder
         sql.AppendLine("Insert Into ALUNO ")
         sql.AppendLine(" ( nome, endereco, cidade, bairro, UF, telefone, CEP, PAI, Mae, Naturalidade, DataCadastro, DataNascimento,Batizado) ")
@@ -16,6 +17,7 @@ Public Class AlunoDAO
     End Function
 
     Private Shared Function ObterSqlUpdate(ByVal parmCodigo As Integer) As String
+        'DEFINIR SQL APARA UPDATE
         Dim sql As New StringBuilder
         sql.AppendLine(" Update ALUNO Set ")
         sql.AppendLine(" nome=@nome, Endereco=@endereco,cidade=@cidade, ")
@@ -69,12 +71,12 @@ Public Class AlunoDAO
     End Sub
 
     'METODO INCLUIR 
-    Public Sub Incluir(ByVal aluno As Aluno)
+    Public Sub Incluir(ByVal aluno As Aluno) 'Passa obj da classe "ALUNO.vb" como referencia
         Using conexao As SqlConnection = New Conexao().GetConnection()
             'abrindo conexao 
             conexao.Open()
             Using comando = New SqlCommand(ObterSqlInsert(), conexao)
-                PopularComando(comando, aluno, True)
+                PopularComando(comando, aluno, True) 'chama funçao para popular comando e passa o obj ALUNO
 
                 'comando sql
                 comando.ExecuteNonQuery()
@@ -84,7 +86,7 @@ Public Class AlunoDAO
         End Using
     End Sub
 
-    Public Function Todos() As List(Of Aluno)
+    Public Function Todos() As List(Of Aluno) 'cria uma lista de objeto do tipo "Aluno"
         Dim dataReader As SqlDataReader
         Dim lista = New List(Of Aluno)
 
@@ -92,14 +94,14 @@ Public Class AlunoDAO
             'abrindo conexao 
             conexao.Open()
             Dim sql As String
-            sql = ObterSqlSelectTodosCampo()
+            sql = ObterSqlSelectTodosCampo() 'sql para pegar todos os registros exemplo->. select * from
             Using comando = New SqlCommand(sql, conexao)
                 dataReader = comando.ExecuteReader
-                If dataReader.HasRows Then
+                If dataReader.HasRows Then 'se reader tiver linhas(rows), cria um novo objeto aluno
                     While dataReader.Read()
-                        Dim aluno As New Aluno
-                        PopularObjeto(dataReader, aluno)
-                        lista.Add(aluno)
+                        Dim aluno As New Aluno 'cria um novo objeto aqui
+                        PopularObjeto(dataReader, aluno) 'passa os dados para esse novo objeto
+                        lista.Add(aluno)    'adiciona esse objeto na lista objeto aluno
                     End While
                     conexao.Close()
                     Return lista
@@ -172,12 +174,12 @@ Public Class AlunoDAO
             'abrindo conexao 
             conexao.Open()
             Dim sql As String
-            sql = ObterSqlSelectTodosCampo() & " where Codigo = " & codigolinha
+            sql = ObterSqlSelectTodosCampo() & " where Codigo = " & codigolinha 'define a sql de consulta
             Using comando = New SqlCommand(sql, conexao)
                 dataReader = comando.ExecuteReader
                 If dataReader.HasRows Then
                     dataReader.Read()
-                    PopularObjeto(dataReader, aluno)
+                    PopularObjeto(dataReader, aluno) 'passa os dados para o objeto aluno
                     conexao.Close()
                     Return True
                 End If

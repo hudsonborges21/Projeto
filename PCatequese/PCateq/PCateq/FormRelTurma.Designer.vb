@@ -90,9 +90,9 @@ Partial Class FormRelTurma
         'Label4
         '
         Me.Label4.BackColor = System.Drawing.Color.Orange
-        Me.Label4.Location = New System.Drawing.Point(9, 75)
+        Me.Label4.Location = New System.Drawing.Point(-1, 75)
         Me.Label4.Name = "Label4"
-        Me.Label4.Size = New System.Drawing.Size(440, 16)
+        Me.Label4.Size = New System.Drawing.Size(454, 16)
         Me.Label4.TabIndex = 29
         Me.Label4.Text = "F1 - Turma"
         Me.Label4.TextAlign = System.Drawing.ContentAlignment.MiddleCenter

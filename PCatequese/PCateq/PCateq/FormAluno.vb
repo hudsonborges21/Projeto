@@ -3,6 +3,7 @@
 Public Class FormAluno
 
     Dim incluindo As Boolean
+    Dim vCODIGO As String
 
     Public Sub formatarGrid()
 
@@ -23,7 +24,6 @@ Public Class FormAluno
         DataGridView2.AutoGenerateColumns = False
         DataGridView2.Columns.Clear()
         DataGridView2.Columns.Add(CriarCampo("codigoTurma", "Código Turma", "50"))
-        'DataGridView2.Columns.Add(CriarCampo("codigoAluno", "Código aluno", "80"))
         DataGridView2.Columns.Add(CriarCampo("dataCad", "data", "100"))
         DataGridView2.Columns.Add(CriarCampo("Status", "Status", "120"))
 
@@ -40,12 +40,12 @@ Public Class FormAluno
     End Sub
     Public Sub GridMatricula(ByVal codAluno As String)
         Try
-            formatarGridTurma()
+            formatarGridTurma() 'FORMATAR CAMPOS DA GRID
 
-            Dim obj As New Matricula
-            obj.CodigoAluno = codAluno
+            Dim obj As New Matricula ' CLASSE MATRICULA 
+            obj.CodigoAluno = codAluno 'PASSA O CODIGO DO ALUNO  NO Objt da matricula
 
-            DataGridView2.DataSource = obj.Consultar(obj.CodigoAluno)
+            DataGridView2.DataSource = obj.Consultar(obj.CodigoAluno) 'chama o metodo para consultar para buscar as turmar em que o aluno esta matriculado
 
         Catch ex As Exception
             MsgBox("Erro ao buscar matricula", MsgBoxStyle.Critical)
@@ -54,8 +54,8 @@ Public Class FormAluno
 
     End Sub
     Private Sub FormAluno_Load(sender As Object, e As EventArgs) Handles MyBase.Load
-        TabControl1.SelectedIndex = "1"
-        mostarTodos()
+        TabControl1.SelectedIndex = "1" 'defina a aba que vai começar
+        mostarTodos() ' mostra alunos
         If tCodigo.Text <> "" Then
             BtnMatricula.Enabled = True
         End If
@@ -65,12 +65,13 @@ Public Class FormAluno
     Private Sub TabControl1_SelectedIndexChanged(sender As Object, e As EventArgs) Handles TabControl1.SelectedIndexChanged
         Dim codigo As String
         If TabControl1.SelectedIndex = "0" Then
-            Dim obj As Aluno = New Aluno
+            Dim obj As Aluno = New Aluno 'classe aluno
 
-            codigo = DataGridView1.CurrentRow.Cells(0).Value
-            If Not IsDBNull(codigo) Then
+            codigo = DataGridView1.CurrentRow.Cells(0).Value 'pega o codigo do aluno na grid
+            If Not IsDBNull(codigo) Then ' se codigo do aluno nao for nulo executa o if
 
-                If obj.Consultar(codigo) Then
+                If obj.Consultar(codigo) Then ' buscar dados do aluno
+                    vCODIGO = obj.Codigo
                     tCodigo.Text = obj.Codigo
                     TNome.Text = obj.Nome
                     TEndereco.Text = obj.Endereco
@@ -87,7 +88,7 @@ Public Class FormAluno
 
                     Habilita()
                     BtnMatricula.Enabled = True
-                    GridMatricula(codigo)
+                    GridMatricula(codigo) ' busca as turma do aluno
                 End If
             Else
                 'mostarTodos()
@@ -111,7 +112,8 @@ Public Class FormAluno
         BtnCancelar.Enabled = False
     End Sub
     Private Sub btnIncluir_Click(sender As Object, e As EventArgs) Handles btnIncluir.Click
-        'Call Limpar(Me)
+        Call Limpar(Me)
+        DataGridView2.Columns.Clear()
         Desabilita()
         incluindo = True
         TDataCad.Text = Date.Today.Date
@@ -119,10 +121,9 @@ Public Class FormAluno
 
     Private Sub btnConfirmar_Click(sender As Object, e As EventArgs) Handles btnConfirmar.Click
         'Declarando e instanciando o obj da classe empresa
-        Dim obj As Aluno = New Aluno
 
         Try
-
+            Dim obj As Aluno = New Aluno 'cria objeto
             obj.Nome = TNome.Text
             obj.Endereco = TEndereco.Text
             obj.Bairro = tBairro.Text
@@ -137,19 +138,19 @@ Public Class FormAluno
             obj.DataNasc = FormatDateTime(TDataNasc.Text, DateFormat.ShortDate) ' Convert.ToDateTime(TDataNasc.Text)
             obj.Batizado = RadioButton1.Checked
 
-            If Not incluindo Then
+            If Not incluindo Then ' se nao tiver incluido vai alterar
                 'chamando o metodo da classe responsavel por incluir os dados 
                 obj.Codigo = tCodigo.Text
-                obj.Alterar()
+                obj.Alterar()   'alterando dados do aluno
                 MsgBox("Registro salvo com sucesso.", MsgBoxStyle.Information, "")
                 incluindo = False
             Else
 
                 'chamando o metodo da classe responsavel por incluir os dados 
-                obj.Incluir()
-                obj.UltimoCodigo()
+                obj.Incluir() 'incluindo aluno
+                obj.UltimoCodigo() 'busca ultimo codigo, para colocar no tcodigo.text
                 tCodigo.Text = obj.Codigo
-                GridMatricula(tCodigo.Text)
+                GridMatricula(tCodigo.Text) 'busca turmas do aluno
 
                 MsgBox("Registro salvo com sucesso.", MsgBoxStyle.Information, "")
 
@@ -239,9 +240,9 @@ Public Class FormAluno
         Try
             If Not incluindo Then
                 If Not IsDBNull(tCodigo.Text) Then
-                    Dim obj As Aluno = New Aluno
+                    Dim obj As Aluno = New Aluno 'cria objeto
                     obj.Codigo = tCodigo.Text
-                    obj.Excluir()
+                    obj.Excluir() 'excluir 
                     Call Limpar(Me)
                     Habilita()
                     MsgBox("Registro Excluído", MsgBoxStyle.Information, "")
@@ -257,9 +258,15 @@ Public Class FormAluno
 
     Private Sub BtnCancelar_Click(sender As Object, e As EventArgs) Handles BtnCancelar.Click
         Try
-            Dim obj As Aluno = New Aluno
-           
-            obj.Consultar(tCodigo.Text)
+            'quando clicar no botao cancelar
+            'vai cosultar o codigo que estava  no tcodigo.tex
+            'e consultar os dados novamente no banco
+            If tCodigo.Text = "" Then
+                tCodigo.Text = vCODIGO
+            End If
+
+            Dim obj As Aluno = New Aluno 'cria objeto
+            obj.Consultar(tCodigo.Text) 'consultar
             tCodigo.Text = obj.Codigo
             TNome.Text = obj.Nome
             TEndereco.Text = obj.Endereco
@@ -276,7 +283,7 @@ Public Class FormAluno
             Else
                 RadioButton2.Checked = True
             End If
-
+            GridMatricula(tCodigo.Text) 'busca turma
             Habilita()
 
         Catch ex As Exception
@@ -313,17 +320,17 @@ Public Class FormAluno
 
     Private Sub DataGridView2_KeyDown(sender As Object, e As KeyEventArgs) Handles DataGridView2.KeyDown
         Try
-            Dim codigo As String = DataGridView2.CurrentRow.Cells(0).Value
+            Dim codigo As String = DataGridView2.CurrentRow.Cells(0).Value 'pega codigo da turma na gridview
             If e.KeyCode = Keys.F2 Then
 
                 If codigo <> "" Then
-                    Dim obj As Turma = New Turma
-                    obj.Consultar(codigo)
-                    FormMatricula.TturmaCodigo.Text = obj.Codigo
-                    FormMatricula.TTurmaDescricao.Text = obj.Nome
+                    Dim obj As Turma = New Turma 'objeto Turma
+                    obj.Consultar(codigo) 'consutar turma
+                    FormMatricula.TturmaCodigo.Text = obj.Codigo 'turma codigo
+                    FormMatricula.TTurmaDescricao.Text = obj.Nome 'turma nome
 
-                    Dim obj2 As Matricula = New Matricula
-                    obj2.Consultar(codigo, tCodigo.Text)
+                    Dim obj2 As Matricula = New Matricula 'objeto Matricula
+                    obj2.Consultar(codigo, tCodigo.Text) 'consulta dados da matricula
                     'FormMatricula.TStatus.Text = obj2.Status
 
                     If obj2.Status = "Concluído" Then
@@ -339,16 +346,16 @@ Public Class FormAluno
                     FormMatricula.tNome.Text = TNome.Text
                     FormMatricula.incluindo = False
                     FormMatricula.codturmaCarregado = obj.Codigo
-                    FormMatricula.ShowDialog()
+                    FormMatricula.ShowDialog() 'chama o formulario de Matricula
                     GridMatricula(tCodigo.Text)
                 End If
             End If
             If e.KeyCode = Keys.F5 Then
                 If MsgBox("Deseja Excluir o Registro?", MsgBoxStyle.YesNo, "") = MsgBoxResult.Yes Then
-                    Dim obj As Matricula = New Matricula
+                    Dim obj As Matricula = New Matricula 'cria objeto
                     obj.CodigoTurma = codigo
                     obj.CodigoAluno = tCodigo.Text
-                    obj.Excluir()
+                    obj.Excluir() 'excluir matricula
                     GridMatricula(tCodigo.Text)
                 End If
             End If
@@ -360,6 +367,8 @@ Public Class FormAluno
 
     Private Sub FormAluno_KeyDown(sender As Object, e As KeyEventArgs) Handles MyBase.KeyDown
         Try
+            'Chama o formulario matricula
+            'com alguns dados do aluno
             If tCodigo.Text <> "" Then
                 If e.KeyCode = Keys.F1 Then
 
@@ -368,7 +377,7 @@ Public Class FormAluno
                     FormMatricula.CBStatus.SelectedIndex = 1
                     FormMatricula.TDataCad.Text = ""
                     FormMatricula.incluindo = True
-                    FormMatricula.ShowDialog()
+                    FormMatricula.ShowDialog() 'chama o formulario de matricula
 
                     GridMatricula(tCodigo.Text)
                 End If
