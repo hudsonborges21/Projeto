@@ -19,35 +19,9 @@ Public Class FormRelTurma
         'instancia o relaorio e carrega
         Dim CR As New ReportDocument
         CR.Load(strReportPath)
-        '
-        ' atribui os parametros declarados aos objetos relacionados
-        'Dim crParameterDiscreteValue As ParameterDiscreteValue
-        'Dim crParameterFieldDefinitions As ParameterFieldDefinitions
-        'Dim crParameterFieldLocation As ParameterFieldDefinition
-        'Dim crParameterValues As ParameterValues
-        ''
-        '' Pega a coleção de parametros do relatorio
-        'crParameterFieldDefinitions = CR.DataDefinition.ParameterFields
-        ''
-        '' define o primeiro parametro
-        '' - pega o parametro e diz a ela para usar os valores atuais
-        '' - define o valor do parametro
-        '' - inclui e aplica o valor
-        '' - repete para cada parametro se for o caso (não é o caso deste exemplo)
-        '' Vamos usar o parametro 'cidade'
-        'crParameterFieldLocation = crParameterFieldDefinitions.Item("PTurma")
+        CR.SetDatabaseLogon("sa", "123") '* Passando Usuario,senha para nao pedir no relatorio, usando assim provisoro
 
-        'crParameterValues = crParameterFieldLocation.CurrentValues
-        'crParameterDiscreteValue = New CrystalDecisions.Shared.ParameterDiscreteValue
-
-        ''obtem o valor da caixa de texto
-        'crParameterDiscreteValue.Value = TturmaCodigo.Text
-        'crParameterValues.Add(crParameterDiscreteValue)
-        'crParameterFieldLocation.ApplyCurrentValues(crParameterValues)
-        '
-        ' Define a fonte do controle Crystal Report Viewer como sendo o relatorio definido acima
-        'CrystalReportViewer1.ReportSource = CR
-
+        
         FormMostarRelatorio.CrystalReportViewer1.ReportSource = CR
         FormMostarRelatorio.Show()
 
@@ -67,6 +41,7 @@ Public Class FormRelTurma
             'instancia o relaorio e carrega
             Dim CR As New ReportDocument
             CR.Load(strReportPath)
+            CR.SetDatabaseLogon("sa", "123") '* Passando Usuario,senha para nao pedir no relatorio, usando assim provisoro
 
             ' atribui os parametros declarados aos objetos relacionados
             Dim crParameterDiscreteValue As ParameterDiscreteValue
@@ -120,6 +95,7 @@ Public Class FormRelTurma
             Dim CR As New ReportDocument
 
             CR.Load(strReportPath)
+            CR.SetDatabaseLogon("sa", "123") '* Passando Usuario,senha para nao pedir no relatorio, usando assim provisoro
 
             ' atribui os parametros declarados aos objetos relacionados
             Dim crParameterDiscreteValue As ParameterDiscreteValue

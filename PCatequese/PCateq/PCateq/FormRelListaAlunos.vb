@@ -213,10 +213,12 @@ Public Class FormRelListaAlunos
         'If Not io.File.Exists(strReportPath) Then
         '    Throw (New Exception("Relatorio nao localizado :" & vbCrLf & strReportPath))
         'End If
-        '
+
+     
         'instancia o relaorio e carrega
         Dim CR As New ReportDocument
         CR.Load(strReportPath)
+        CR.SetDatabaseLogon("sa", "123")
         '
         ' atribui os parametros declarados aos objetos relacionados
         Dim crParameterDiscreteValue As ParameterDiscreteValue
@@ -245,6 +247,7 @@ Public Class FormRelListaAlunos
         '
         ' Define a fonte do controle Crystal Report Viewer como sendo o relatorio definido acima
         'CrystalReportViewer1.ReportSource = CR
+        
 
         FormMostarRelatorio.CrystalReportViewer1.ReportSource = CR
         FormMostarRelatorio.Show()
@@ -263,6 +266,10 @@ Public Class FormRelListaAlunos
 
     Private Sub TturmaCodigo_Leave(sender As Object, e As EventArgs) Handles TturmaCodigo.Leave
         If TturmaCodigo.Text = "" Then TTurmaDescricao.Text = ""
+    End Sub
+
+    Private Sub FormRelListaAlunos_Load(sender As Object, e As EventArgs) Handles MyBase.Load
+
     End Sub
 End Class
 

@@ -32,7 +32,7 @@ Public Class FormAniversarios
             'instancia o relaorio e carrega
             Dim CR As New ReportDocument
             CR.Load(strReportPath)
-            '
+            CR.SetDatabaseLogon("sa", "123") '* Passando Usuario,senha para nao pedir no relatorio, usando assim provisoro
             ' atribui os parametros declarados aos objetos relacionados
             Dim crParameterDiscreteValue As ParameterDiscreteValue
             Dim crParameterFieldDefinitions As ParameterFieldDefinitions
